@@ -1,5 +1,5 @@
+import { arrays, notArrays } from '../../../scripts/fixtures';
 import * as api from '../src';
-import { arrays, notArrays } from './lib/fixtures';
 
 check.it('accepts if value is an array', arrays, (value) => {
   expect(api.isArray(value)).toEqual(true);

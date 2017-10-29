@@ -1,5 +1,5 @@
+import { booleans, notBooleans } from '../../../scripts/fixtures';
 import * as api from '../src';
-import { booleans, notBooleans } from './lib/fixtures';
 
 check.it('accepts if value is a boolean', booleans, (value) => {
   expect(api.isBoolean(value)).toEqual(true);

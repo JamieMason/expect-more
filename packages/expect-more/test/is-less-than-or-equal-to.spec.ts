@@ -1,5 +1,5 @@
+import { notNumbers, numbers } from '../../../scripts/fixtures';
 import * as api from '../src';
-import { notNumbers, numbers } from './lib/fixtures';
 
 check.it('accepts if value is a number less than or equal to another', numbers, (value: number) => {
   expect(api.isLessThanOrEqualTo(value)(value - 1)).toEqual(true);

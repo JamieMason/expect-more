@@ -1,5 +1,5 @@
+import { midnight, oneAm } from '../../../scripts/fixtures';
 import * as api from '../src';
-import { midnight, oneAm } from './lib/fixtures';
 
 it('accepts if value is a date occurring after the date provided', () => {
   [[midnight(), oneAm()]].forEach(([otherDate, date]) => {

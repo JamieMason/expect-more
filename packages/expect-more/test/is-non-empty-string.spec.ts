@@ -1,5 +1,5 @@
+import { nonEmptyStrings, notNonEmptyStrings } from '../../../scripts/fixtures';
 import * as api from '../src';
-import { nonEmptyStrings, notNonEmptyStrings } from './lib/fixtures';
 
 check.it('accepts if value is a string with at least one character', nonEmptyStrings, (value) => {
   expect(api.isNonEmptyString(value)).toEqual(true);

@@ -1,5 +1,5 @@
+import { notOddNumbers, oddNumbers } from '../../../scripts/fixtures';
 import * as api from '../src';
-import { notOddNumbers, oddNumbers } from './lib/fixtures';
 
 check.it('accepts if value is an odd number', oddNumbers, (value) => {
   expect(api.isOddNumber(value)).toEqual(true);

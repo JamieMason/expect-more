@@ -1,7 +1,4 @@
 {
-  "files": [
-    "./packages/expect-more/src/index.ts"
-  ],
   "compilerOptions": {
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
@@ -11,9 +8,9 @@
     "noImplicitReturns": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "outDir": "./packages/expect-more/dist",
     "removeComments": true,
     "stripInternal": true,
-    "target": "es3"
+    "target": "es3",
+    "types": ["jest"]
   }
 }

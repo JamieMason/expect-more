@@ -1,5 +1,5 @@
+import { functions, notFunctions } from '../../../scripts/fixtures';
 import * as api from '../src';
-import { functions, notFunctions } from './lib/fixtures';
 
 check.it('accepts if value is a function', functions, (value) => {
   expect(api.isFunction(value)).toEqual(true);

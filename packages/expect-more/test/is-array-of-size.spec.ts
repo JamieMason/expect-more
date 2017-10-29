@@ -1,5 +1,5 @@
+import { arrayOfFiveItems, notArrayOfFiveItems } from '../../../scripts/fixtures';
 import * as api from '../src';
-import { arrayOfFiveItems, notArrayOfFiveItems } from './lib/fixtures';
 
 check.it('accepts if value is an array whose length matches the given number', arrayOfFiveItems, (value) => {
   expect(api.isArrayOfSize(5)(value)).toEqual(true);

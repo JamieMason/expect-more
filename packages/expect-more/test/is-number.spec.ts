@@ -1,5 +1,5 @@
+import { notNumbers, numbers } from '../../../scripts/fixtures';
 import * as api from '../src';
-import { notNumbers, numbers } from './lib/fixtures';
 
 check.it('accepts if value is a number', numbers, (value) => {
   expect(api.isNumber(value)).toEqual(true);
