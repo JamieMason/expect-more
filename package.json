@@ -1,0 +1,21 @@
+{
+  "version": "0.0.0",
+  "devDependencies": {
+    "@types/jest": "21.1.5",
+    "jasmine-check": "1.0.0-rc.0",
+    "jest": "21.2.1",
+    "lerna": "2.4.0",
+    "rimraf": "2.6.2",
+    "testcheck": "1.0.0-rc.2",
+    "tslint": "5.8.0",
+    "typescript": "2.5.3"
+  },
+  "private": true,
+  "scripts": {
+    "build": "tsc --project ./tsconfig.json",
+    "lint": "tslint --fix --project ./tsconfig.json",
+    "postinstall": "lerna bootstrap",
+    "prebuild": "rimraf **/dist",
+    "test": "jest"
+  }
+}
