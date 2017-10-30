@@ -1,4 +1,4 @@
-import { gen } from 'testcheck';
+import { gen, Generator } from 'testcheck';
 
 export const emptyArrays = gen.array(gen.primitive, { size: 0 });
 export const nonEmptyArrays = gen.array(gen.primitive, { minSize: 1, maxSize: 3 });
@@ -9,10 +9,7 @@ export const nonEmptyObjects = gen.object(gen.primitive, { minSize: 1, maxSize: 
 export const objects = gen.oneOf([nonEmptyObjects, emptyObjects]);
 
 export const emptyStrings = gen.oneOf(['', new String('')]);
-export const nonEmptyStrings = gen.oneOf([
-  gen.string.notEmpty(),
-  gen.string.then((val) => new String(val)).notEmpty()
-]);
+export const nonEmptyStrings = gen.oneOf([gen.string.notEmpty(), gen.string.then((val) => new String(val)).notEmpty()]);
 export const whitespaceStrings = gen.oneOf([' ', new String(' '), ' ', new String(' ')]);
 export const strings = gen.oneOf([nonEmptyStrings, emptyStrings, whitespaceStrings]);
 
@@ -60,6 +57,26 @@ export const arrayOfNumbers = gen.array(numbers, { minSize: 1, maxSize: 3 });
 export const arrayOfObjects = gen.array(objects, { minSize: 1, maxSize: 3 });
 export const arrayOfStrings = gen.array(strings, { minSize: 1, maxSize: 3 });
 
+export const endingWith = gen.oneOf([['mie', 'jamie']]);
+export const notEndingWith = gen.oneOf([
+  ['mie', 'jamie '],
+  ['mie', 'jamiE'],
+  ['', ''],
+  ['', undefined],
+  ['undefined', undefined],
+  [undefined, 'undefined']
+]);
+
+export const startingWith = gen.oneOf([['jam', 'jamie']]);
+export const notStartingWith = gen.oneOf([
+  ['jam', ' jamie'],
+  ['jam', 'JAmie'],
+  ['', ''],
+  ['', undefined],
+  ['undefined', undefined],
+  [undefined, 'undefined']
+]);
+
 export const notArrayOfBooleans = gen.NaN;
 export const notArrayOfFiveItems = gen.NaN;
 export const notArrayOfNumbers = gen.NaN;
@@ -101,6 +118,11 @@ export const notTrues = gen.NaN;
 
 export const midnight = () => new Date('2013-01-01T00:00:00.000Z');
 export const oneAm = () => new Date('2013-01-01T01:00:00.000Z');
+
+export const dateAfter = gen.oneOf([[midnight(), oneAm()]]);
+export const notDateAfter = gen.oneOf([[oneAm(), midnight()], [oneAm(), oneAm()]]);
+export const dateBefore = gen.oneOf([[oneAm(), midnight()]]);
+export const notDateBefore = gen.oneOf([[midnight(), oneAm()], [oneAm(), oneAm()]]);
 
 export function argsObject(..._) {
   return arguments;
