@@ -1,0 +1,257 @@
+import matchers from '../src';
+
+beforeEach(() => {
+  expect.extend(matchers);
+});
+
+it('provides toBeAfter', () => {
+  expect(new Date(200)).toBeAfter(new Date(100));
+  expect(() => { expect(new Date(100)).toBeAfter(new Date(200)); }).toThrow();
+  expect(() => { expect(new Date(new Date(200))).not.toBeAfter(new Date(100)); }).toThrow();
+});
+
+it('provides toBeArray', () => {
+  expect([]).toBeArray();
+  expect(() => { expect(null).toBeArray(); }).toThrow();
+  expect(() => { expect([]).not.toBeArray(); }).toThrow();
+});
+
+it('provides toBeArrayOfBooleans', () => {
+  expect([true]).toBeArrayOfBooleans();
+  expect(() => { expect([null]).toBeArrayOfBooleans(); }).toThrow();
+  expect(() => { expect([true]).not.toBeArrayOfBooleans(); }).toThrow();
+});
+
+it('provides toBeArrayOfNumbers', () => {
+  expect([1]).toBeArrayOfNumbers();
+  expect(() => { expect([null]).toBeArrayOfNumbers(); }).toThrow();
+  expect(() => { expect([1]).not.toBeArrayOfNumbers(); }).toThrow();
+});
+
+it('provides toBeArrayOfObjects', () => {
+  expect([{}]).toBeArrayOfObjects();
+  expect(() => { expect([null]).toBeArrayOfObjects(); }).toThrow();
+  expect(() => { expect([{}]).not.toBeArrayOfObjects(); }).toThrow();
+});
+
+it('provides toBeArrayOfSize', () => {
+  expect([1]).toBeArrayOfSize(1);
+  expect(() => { expect([1]).toBeArrayOfSize(2); }).toThrow();
+  expect(() => { expect([1]).not.toBeArrayOfSize(1); }).toThrow();
+});
+
+it('provides toBeArrayOfStrings', () => {
+  expect(['']).toBeArrayOfStrings();
+  expect(() => { expect([null]).toBeArrayOfStrings(); }).toThrow();
+  expect(() => { expect(['']).not.toBeArrayOfStrings(); }).toThrow();
+});
+
+it('provides toBeBefore', () => {
+  expect(new Date(100)).toBeBefore(new Date(200));
+  expect(() => { expect(new Date(200)).toBeBefore(new Date(100)); }).toThrow();
+  expect(() => { expect(new Date(new Date(100))).not.toBeBefore(new Date(200)); }).toThrow();
+});
+
+it('provides toBeBoolean', () => {
+  expect(true).toBeBoolean();
+  expect(() => { expect(null).toBeBoolean(); }).toThrow();
+  expect(() => { expect(true).not.toBeBoolean(); }).toThrow();
+});
+
+it('provides toBeCalculable', () => {
+  expect('1').toBeCalculable();
+  expect(() => { expect({}).toBeCalculable(); }).toThrow();
+  expect(() => { expect('1').not.toBeCalculable(); }).toThrow();
+});
+
+it('provides toBeDate', () => {
+  expect(new Date()).toBeDate();
+  expect(() => { expect(null).toBeDate(); }).toThrow();
+  expect(() => { expect(new Date()).not.toBeDate(); }).toThrow();
+});
+
+it('provides toBeDivisibleBy', () => {
+  expect(4).toBeDivisibleBy(2);
+  expect(() => { expect(3).toBeDivisibleBy(2); }).toThrow();
+  expect(() => { expect(4).not.toBeDivisibleBy(2); }).toThrow();
+});
+
+it('provides toBeEmptyArray', () => {
+  expect([]).toBeEmptyArray();
+  expect(() => { expect(null).toBeEmptyArray(); }).toThrow();
+  expect(() => { expect([]).not.toBeEmptyArray(); }).toThrow();
+});
+
+it('provides toBeEmptyObject', () => {
+  expect({}).toBeEmptyObject();
+  expect(() => { expect(null).toBeEmptyObject(); }).toThrow();
+  expect(() => { expect({}).not.toBeEmptyObject(); }).toThrow();
+});
+
+it('provides toBeEmptyString', () => {
+  expect('').toBeEmptyString();
+  expect(() => { expect(null).toBeEmptyString(); }).toThrow();
+  expect(() => { expect('').not.toBeEmptyString(); }).toThrow();
+});
+
+it('provides toBeEvenNumber', () => {
+  expect(2).toBeEvenNumber();
+  expect(() => { expect(null).toBeEvenNumber(); }).toThrow();
+  expect(() => { expect(2).not.toBeEvenNumber(); }).toThrow();
+});
+
+it('provides toBeFalse', () => {
+  expect(false).toBeFalse();
+  expect(() => { expect(null).toBeFalse(); }).toThrow();
+  expect(() => { expect(false).not.toBeFalse(); }).toThrow();
+});
+
+it('provides toBeFunction', () => {
+  expect(() => {}).toBeFunction();
+  expect(() => { expect(null).toBeFunction(); }).toThrow();
+  expect(() => { expect(() => {}).not.toBeFunction(); }).toThrow();
+});
+
+it('provides toBeIso8601', () => {
+  expect('2017-10-31T15:17:11').toBeIso8601();
+  expect(() => { expect(null).toBeIso8601(); }).toThrow();
+  expect(() => { expect('2017-10-31T15:17:11').not.toBeIso8601(); }).toThrow();
+});
+
+it('provides toBeJsonString', () => {
+  expect('{}').toBeJsonString();
+  expect(() => { expect(null).toBeJsonString(); }).toThrow();
+  expect(() => { expect('{}').not.toBeJsonString(); }).toThrow();
+});
+
+it('provides toBeLongerThan', () => {
+  expect('abc').toBeLongerThan('de');
+  expect(() => { expect('abc').toBeLongerThan('defghi'); }).toThrow();
+  expect(() => { expect('abc').not.toBeLongerThan('de'); }).toThrow();
+});
+
+it('provides toBeNear', () => {
+  expect(1.25).toBeNear({ epsilon: 0.30, number: 1 });
+  expect(() => { expect(1.25).toBeNear({ epsilon: 0.10, number: 1 }); }).toThrow();
+  expect(() => { expect(1.25).not.toBeNear({ epsilon: 0.30, number: 1 }); }).toThrow();
+});
+
+it('provides toBeNonEmptyArray', () => {
+  expect([1, 2]).toBeNonEmptyArray();
+  expect(() => { expect([]).toBeNonEmptyArray(); }).toThrow();
+  expect(() => { expect([1, 2]).not.toBeNonEmptyArray(); }).toThrow();
+});
+
+it('provides toBeNonEmptyObject', () => {
+  expect({ a: 1 }).toBeNonEmptyObject();
+  expect(() => { expect({}).toBeNonEmptyObject(); }).toThrow();
+  expect(() => { expect({ a: 1 }).not.toBeNonEmptyObject(); }).toThrow();
+});
+
+it('provides toBeNonEmptyString', () => {
+  expect('a').toBeNonEmptyString();
+  expect(() => { expect('').toBeNonEmptyString(); }).toThrow();
+  expect(() => { expect('a').not.toBeNonEmptyString(); }).toThrow();
+});
+
+it('provides toBeNull', () => {
+  expect(null).toBeNull();
+  expect(() => { expect(1).toBeNull(); }).toThrow();
+  expect(() => { expect(null).not.toBeNull(); }).toThrow();
+});
+
+it('provides toBeNumber', () => {
+  expect(1).toBeNumber();
+  expect(() => { expect(null).toBeNumber(); }).toThrow();
+  expect(() => { expect(1).not.toBeNumber(); }).toThrow();
+});
+
+it('provides toBeObject', () => {
+  expect({}).toBeObject();
+  expect(() => { expect(null).toBeObject(); }).toThrow();
+  expect(() => { expect({}).not.toBeObject(); }).toThrow();
+});
+
+it('provides toBeOddNumber', () => {
+  expect(3).toBeOddNumber();
+  expect(() => { expect(null).toBeOddNumber(); }).toThrow();
+  expect(() => { expect(3).not.toBeOddNumber(); }).toThrow();
+});
+
+it('provides toBeRegExp', () => {
+  expect(/match/).toBeRegExp();
+  expect(() => { expect(null).toBeRegExp(); }).toThrow();
+  expect(() => { expect(/match/).not.toBeRegExp(); }).toThrow();
+});
+
+it('provides toBeSameLengthAs', () => {
+  expect('abc').toBeSameLengthAs('abc');
+  expect(() => { expect('abc').toBeSameLengthAs('defghi'); }).toThrow();
+  expect(() => { expect('abc').not.toBeSameLengthAs('abc'); }).toThrow();
+});
+
+it('provides toBeShorterThan', () => {
+  expect('ab').toBeShorterThan('abc');
+  expect(() => { expect('abc').toBeShorterThan('ab'); }).toThrow();
+  expect(() => { expect('ab').not.toBeShorterThan('abc'); }).toThrow();
+});
+
+it('provides toBeString', () => {
+  expect('a').toBeString();
+  expect(() => { expect(null).toBeString(); }).toThrow();
+  expect(() => { expect('a').not.toBeString(); }).toThrow();
+});
+
+it('provides toBeTrue', () => {
+  expect(true).toBeTrue();
+  expect(() => { expect(null).toBeTrue(); }).toThrow();
+  expect(() => { expect(true).not.toBeTrue(); }).toThrow();
+});
+
+it('provides toBeUndefined', () => {
+  expect(undefined).toBeUndefined();
+  expect(() => { expect(null).toBeUndefined(); }).toThrow();
+  expect(() => { expect(undefined).not.toBeUndefined(); }).toThrow();
+});
+
+it('provides toBeValidDate', () => {
+  expect(new Date(1)).toBeValidDate();
+  expect(() => { expect(new Date('never gonna')).toBeValidDate(); }).toThrow();
+  expect(() => { expect(new Date(1)).not.toBeValidDate(); }).toThrow();
+});
+
+it('provides toBeWalkable', () => {
+  expect(true).toBeWalkable();
+  expect(() => { expect(null).toBeWalkable(); }).toThrow();
+  expect(() => { expect(true).not.toBeWalkable(); }).toThrow();
+});
+
+it('provides toBeWhitespace', () => {
+  expect(' ').toBeWhitespace();
+  expect(() => { expect('a').toBeWhitespace(); }).toThrow();
+  expect(() => { expect(' ').not.toBeWhitespace(); }).toThrow();
+});
+
+it('provides toBeWholeNumber', () => {
+  expect(1).toBeWholeNumber();
+  expect(() => { expect(1.25).toBeWholeNumber(); }).toThrow();
+  expect(() => { expect(1).not.toBeWholeNumber(); }).toThrow();
+});
+
+it('provides toBeWithinRange', () => {
+  expect(2).toBeWithinRange({ ceiling: 3, floor: 1 });
+  expect(() => { expect(5).toBeWithinRange({ ceiling: 3, floor: 1 }); }).toThrow();
+  expect(() => { expect(2).not.toBeWithinRange({ ceiling: 3, floor: 1 }); }).toThrow();
+});
+
+it('provides toEndWith', () => {
+  expect('jamie').toEndWith('mie');
+  expect(() => { expect('wut?').toEndWith('nah!'); }).toThrow();
+  expect(() => { expect('jamie').not.toEndWith('mie'); }).toThrow();
+});
+
+it('provides toStartWith', () => {
+  expect('jamie').toStartWith('jam');
+  expect(() => { expect('wut?').toStartWith('nah!'); }).toThrow();
+  expect(() => { expect('jamie').not.toStartWith('jamie'); }).toThrow();
+});

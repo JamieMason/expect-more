@@ -12,10 +12,12 @@
   },
   "private": true,
   "scripts": {
-    "build": "tsc --project ./tsconfig.json",
+    "build": "npm run build:expect-more && npm run build:expect-more-jest",
+    "build:expect-more": "tsc --project ./packages/expect-more",
+    "build:expect-more-jest": "tsc --project ./packages/expect-more-jest",
     "lint": "tslint --fix --project ./tsconfig.json",
     "postinstall": "lerna bootstrap",
-    "prebuild": "rimraf **/dist",
+    "prebuild": "rimraf ./packages/*/dist",
     "test": "jest"
   }
 }

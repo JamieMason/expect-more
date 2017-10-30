@@ -7,6 +7,9 @@
   "files": [
     "dist"
   ],
+  "scripts": {
+    "prepublish": "cd ../ && npm run build:expect-more"
+  },
   "homepage": "https://github.com/JamieMason/expect-more#readme",
   "keywords": [],
   "license": "MIT",
