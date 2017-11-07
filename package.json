@@ -4,11 +4,11 @@
     "@types/jest": "21.1.5",
     "jasmine-check": "1.0.0-rc.0",
     "jest": "21.2.1",
-    "lerna": "2.4.0",
+    "lerna": "2.5.1",
     "rimraf": "2.6.2",
     "testcheck": "1.0.0-rc.2",
     "tslint": "5.8.0",
-    "typescript": "2.5.3"
+    "typescript": "2.6.1"
   },
   "private": true,
   "scripts": {
