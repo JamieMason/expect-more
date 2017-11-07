@@ -132,9 +132,9 @@ it('provides toBeLongerThan', () => {
 });
 
 it('provides toBeNear', () => {
-  expect(1.25).toBeNear({ epsilon: 0.30, number: 1 });
-  expect(() => { expect(1.25).toBeNear({ epsilon: 0.10, number: 1 }); }).toThrow();
-  expect(() => { expect(1.25).not.toBeNear({ epsilon: 0.30, number: 1 }); }).toThrow();
+  expect(1.25).toBeNear(0.30, 1);
+  expect(() => { expect(1.25).toBeNear(0.10, 1); }).toThrow();
+  expect(() => { expect(1.25).not.toBeNear(0.30, 1); }).toThrow();
 });
 
 it('provides toBeNonEmptyArray', () => {
@@ -240,9 +240,9 @@ it('provides toBeWholeNumber', () => {
 });
 
 it('provides toBeWithinRange', () => {
-  expect(2).toBeWithinRange({ ceiling: 3, floor: 1 });
-  expect(() => { expect(5).toBeWithinRange({ ceiling: 3, floor: 1 }); }).toThrow();
-  expect(() => { expect(2).not.toBeWithinRange({ ceiling: 3, floor: 1 }); }).toThrow();
+  expect(2).toBeWithinRange(1, 3);
+  expect(() => { expect(5).toBeWithinRange(1, 3); }).toThrow();
+  expect(() => { expect(2).not.toBeWithinRange(1, 3); }).toThrow();
 });
 
 it('provides toEndWith', () => {

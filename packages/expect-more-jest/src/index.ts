@@ -26,7 +26,7 @@ declare global {
       toBeIso8601(): R;
       toBeJsonString(): R;
       toBeLongerThan(other: string): R;
-      toBeNear(proximity: { number: number; epsilon: number }): R;
+      toBeNear(epsilon: number, other: number): R;
       toBeNonEmptyArray(): R;
       toBeNonEmptyObject(): R;
       toBeNonEmptyString(): R;
@@ -44,7 +44,7 @@ declare global {
       toBeWalkable(): R;
       toBeWhitespace(): R;
       toBeWholeNumber(): R;
-      toBeWithinRange(range: { floor: number; ceiling: number }): R;
+      toBeWithinRange(floor: number, ceiling: number): R;
       toEndWith(other: string): R;
       toStartWith(other: string): R;
     }
@@ -277,8 +277,7 @@ export default {
       pass: api.isLongerThan(other, received)
     });
   },
-  toBeNear(received: any, proximity: { epsilon: number; number: number }) {
-    const { epsilon, number: other } = proximity;
+  toBeNear(received: any, epsilon: number, other: number) {
     return boilerplate({
       message: () => `expected ${received} to be no more than ${epsilon} greater or smaller than ${other}`,
       notMessage: () => `expected ${received} not to be no more than ${epsilon} greater or smaller than ${other}`,
@@ -404,8 +403,7 @@ export default {
       pass: api.isWholeNumber(received)
     });
   },
-  toBeWithinRange(received: any, range: { ceiling: number; floor: number }) {
-    const { ceiling, floor } = range;
+  toBeWithinRange(received: any, floor: number, ceiling: number) {
     return boilerplate({
       message: () => `expected ${received} to be within range ${floor} - ${ceiling} (inclusive}`,
       notMessage: () => `expected ${received} not to be within range ${floor} - ${ceiling} (inclusive}`,

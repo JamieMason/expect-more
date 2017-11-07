@@ -1,7 +1,7 @@
 {
   "version": "0.0.0",
   "devDependencies": {
-    "@types/jest": "21.1.5",
+    "@types/jest": "21.1.6",
     "jasmine-check": "1.0.0-rc.0",
     "jest": "21.2.1",
     "lerna": "2.5.1",
