@@ -92,6 +92,7 @@ export const isDivisibleBy = curry<number, any, boolean>((other, value) => value
 export const isEvenNumber = (value) => isNumber(value) && isDivisibleBy(2, value);
 export const isOddNumber = (value) => isNumber(value) && !isDivisibleBy(2, value);
 export const isWholeNumber = (value) => isNumber(value) && (value === 0 || isDivisibleBy(1, value));
+export const isDecimalNumber = (value: any) => isNumber(value) && String(value).indexOf('.') !== -1;
 export const isCalculable = (value: any) => !isNaN(value * 2);
 
 export const isGreaterThanOrEqualTo = curry<number, any, boolean>(

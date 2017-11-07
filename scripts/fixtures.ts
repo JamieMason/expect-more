@@ -49,6 +49,7 @@ export const numbers = gen.oneOf([
 export const evenNumbers = gen.oneOf([2, 4, 6, 8, 10]);
 export const oddNumbers = gen.oneOf([1, 3, 5, 7, 9]);
 export const wholeNumbers = gen.int;
+export const decimalNumbers = gen.number.suchThat((val) => !isNaN(val) && String(val).indexOf('.') !== -1);
 export const numbersWithinRange = gen.numberWithin(8, 15);
 
 export const arrayOfFiveItems = gen.array(gen.primitive, { size: 5 });
@@ -94,6 +95,7 @@ export const notRegExs = gen.oneOf([
   gen.primitive
 ]);
 export const notDates = gen.NaN;
+export const notDecimalNumbers = gen.NaN;
 export const notValidDates = gen.oneOf([new Date(''), new Date('invalid')]);
 export const notEmptyArrays = gen.NaN;
 export const notEmptyObjects = gen.NaN;
