@@ -23,9 +23,10 @@ npm install expect-more-jest --save-dev
 ## Usage
 
 ```js
-import matchers from 'expect-more-jest';
+import matchers, { asymmetric } from 'expect-more-jest';
 
 beforeEach(() => {
+  Object.assign(expect, asymmetric);
   expect.extend(matchers);
 });
 ```
@@ -34,62 +35,89 @@ beforeEach(() => {
 
 ### General
 
-+ `toBeBoolean(received: any)`
-+ `toBeFalse(received: any)`
-+ `toBeNull(received: any)`
-+ `toBeRegExp(received: any)`
-+ `toBeTrue(received: any)`
-+ `toBeUndefined(received: any)`
-+ `toBeWalkable(received: any)`
++ `.toBeBoolean()`
++ `.toBeFalse()`
++ `.toBeNull()`
++ `.toBeRegExp()`
++ `.toBeTrue()`
++ `.toBeUndefined()`
++ `.toBeWalkable()`
++ `expect.walkable()`
 
 ### Functions
 
-+ `toBeFunction(received: any)`
++ `.toBeFunction()`
 
 ### Objects
 
-+ `toBeEmptyObject(received: any)`
-+ `toBeNonEmptyObject(received: any)`
-+ `toBeObject(received: any)`
++ `.toBeEmptyObject()`
++ `.toBeNonEmptyObject()`
++ `.toBeObject()`
++ `expect.nonEmptyObject()`
 
 ### Arrays
 
-+ `toBeArray(received: any)`
-+ `toBeArrayOfBooleans(received: any)`
-+ `toBeArrayOfNumbers(received: any)`
-+ `toBeArrayOfObjects(received: any)`
-+ `toBeArrayOfStrings(received: any)`
-+ `toBeEmptyArray(received: any)`
-+ `toBeNonEmptyArray(received: any)`
++ `.toBeArray()`
++ `.toBeArrayOfBooleans()`
++ `.toBeArrayOfNumbers()`
++ `.toBeArrayOfObjects()`
++ `.toBeArrayOfStrings()`
++ `.toBeEmptyArray()`
++ `.toBeNonEmptyArray()`
++ `expect.arrayOfBooleans()`
++ `expect.arrayOfNumbers()`
++ `expect.arrayOfObjects()`
++ `expect.arrayOfSize(number)`
++ `expect.arrayOfStrings()`
++ `expect.nonEmptyArray()`
 
 ### Dates
 
-+ `toBeAfter(received: any, other: Date)`
-+ `toBeBefore(received: any, other: Date)`
-+ `toBeDate(received: any)`
-+ `toBeIso8601(received: any)`
-+ `toBeValidDate(received: any)`
++ `.toBeAfter(date)`
++ `.toBeBefore(date)`
++ `.toBeDate()`
++ `.toBeIso8601()`
++ `.toBeValidDate()`
++ `expect.after(date)`
++ `expect.before(date)`
++ `expect.iso8601()`
++ `expect.validDate()`
 
 ### Numbers
 
-+ `toBeArrayOfSize(received: any, size: number)`
-+ `toBeCalculable(received: any)`
-+ `toBeEvenNumber(received: any)`
-+ `toBeNear(received: any, proximity: { epsilon: number; number: number })`
-+ `toBeNumber(received: any)`
-+ `toBeOddNumber(received: any)`
-+ `toBeWholeNumber(received: any)`
-+ `toBeWithinRange(received: any, range: { ceiling: number; floor: number })`
++ `.toBeArrayOfSize(number)`
++ `.toBeCalculable()`
++ `.toBeEvenNumber()`
++ `.toBeNear({ epsilon: number; number: number })`
++ `.toBeNumber()`
++ `.toBeOddNumber()`
++ `.toBeWholeNumber()`
++ `.toBeWithinRange({ floor: number, ceiling: number })`
++ `expect.calculable()`
++ `expect.divisibleBy(number)`
++ `expect.evenNumber()`
++ `expect.near(other: number, epsilon: number)`
++ `expect.oddNumber()`
++ `expect.wholeNumber()`
++ `expect.withinRange(floor: number, ceiling: number)`
 
 ### Strings
 
-+ `toBeEmptyString(received: any)`
-+ `toBeJsonString(received: any)`
-+ `toBeLongerThan(received: any, other: string)`
-+ `toBeNonEmptyString(received: any)`
-+ `toBeSameLengthAs(received: any, other: string)`
-+ `toBeShorterThan(received: any, other: string)`
-+ `toBeString(received: any)`
-+ `toBeWhitespace(received: any)`
-+ `toEndWith(received: any, other: string)`
-+ `toStartWith(received: any, other: string)`
++ `.toBeEmptyString()`
++ `.toBeJsonString()`
++ `.toBeLongerThan(string)`
++ `.toBeNonEmptyString()`
++ `.toBeSameLengthAs(string)`
++ `.toBeShorterThan(string)`
++ `.toBeString()`
++ `.toBeWhitespace()`
++ `.toEndWith(string)`
++ `.toStartWith(string)`
++ `expect.endingWith(string)`
++ `expect.jsonString()`
++ `expect.longerThan(string)`
++ `expect.nonEmptyString()`
++ `expect.sameLengthAs(string)`
++ `expect.shorterThan(string)`
++ `expect.startingWith(string)`
++ `expect.whitespace()`

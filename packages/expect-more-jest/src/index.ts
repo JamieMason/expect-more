@@ -1,5 +1,7 @@
 import * as api from 'expect-more';
 
+export type AsymmetricMatcher = (value: any) => { asymmetricMatch: (value: any) => boolean };
+
 declare global {
   namespace jest {
     interface Matchers<R> {
@@ -46,6 +48,35 @@ declare global {
       toEndWith(other: string): R;
       toStartWith(other: string): R;
     }
+    interface Expect {
+      after(other: Date): AsymmetricMatcher;
+      arrayOfBooleans(): AsymmetricMatcher;
+      arrayOfNumbers(): AsymmetricMatcher;
+      arrayOfObjects(): AsymmetricMatcher;
+      arrayOfSize(size: number): AsymmetricMatcher;
+      arrayOfStrings(): AsymmetricMatcher;
+      before(other: Date): AsymmetricMatcher;
+      calculable(): AsymmetricMatcher;
+      divisibleBy(divisor: number): AsymmetricMatcher;
+      endingWith(other: string): AsymmetricMatcher;
+      evenNumber(): AsymmetricMatcher;
+      iso8601(): AsymmetricMatcher;
+      jsonString(): AsymmetricMatcher;
+      longerThan(other: string): AsymmetricMatcher;
+      near(other: number, epsilon: number): AsymmetricMatcher;
+      nonEmptyArray(): AsymmetricMatcher;
+      nonEmptyObject(): AsymmetricMatcher;
+      nonEmptyString(): AsymmetricMatcher;
+      oddNumber(): AsymmetricMatcher;
+      sameLengthAs(other: string): AsymmetricMatcher;
+      shorterThan(other: string): AsymmetricMatcher;
+      startingWith(other: string): AsymmetricMatcher;
+      validDate(): AsymmetricMatcher;
+      walkable(): AsymmetricMatcher;
+      whitespace(): AsymmetricMatcher;
+      wholeNumber(): AsymmetricMatcher;
+      withinRange(floor: number, ceiling: number): AsymmetricMatcher;
+    }
   }
 }
 
@@ -59,6 +90,44 @@ const boilerplate = ({ pass, message, notMessage }: IBoilerplate) => ({
   message: pass ? notMessage : message,
   pass
 });
+
+const asymmBoilerplate = (contract: string, expectation: (...args: any[]) => boolean): AsymmetricMatcher => (
+  ...cache
+) => ({
+  $$typeof: Symbol.for('jest.asymmetricMatcher'),
+  asymmetricMatch: (...args) => expectation(...cache, ...args),
+  toAsymmetricMatcher: () => contract
+});
+
+export const asymmetric = {
+  after: asymmBoilerplate('Any<After(other: date)>', api.isAfter),
+  arrayOfBooleans: asymmBoilerplate('Any<ArrayOfBooleans>', api.isArrayOfBooleans),
+  arrayOfNumbers: asymmBoilerplate('Any<ArrayOfNumbers>', api.isArrayOfNumbers),
+  arrayOfObjects: asymmBoilerplate('Any<ArrayOfObjects>', api.isArrayOfObjects),
+  arrayOfSize: asymmBoilerplate('Any<ArrayOfSize(other: number)>', api.isArrayOfSize),
+  arrayOfStrings: asymmBoilerplate('Any<ArrayOfStrings>', api.isArrayOfStrings),
+  before: asymmBoilerplate('Any<Before(other: date)>', api.isBefore),
+  calculable: asymmBoilerplate('Any<Calculable>', api.isCalculable),
+  divisibleBy: asymmBoilerplate('Any<DivisibleBy(other: number)>', api.isDivisibleBy),
+  endingWith: asymmBoilerplate('Any<EndingWith(other: string)>', api.endsWith),
+  evenNumber: asymmBoilerplate('Any<EvenNumber>', api.isEvenNumber),
+  iso8601: asymmBoilerplate('Any<Iso8601>', api.isIso8601),
+  jsonString: asymmBoilerplate('Any<JsonString>', api.isJsonString),
+  longerThan: asymmBoilerplate('Any<LongerThan(other: string)>', api.isLongerThan),
+  near: asymmBoilerplate('Any<Near<other: number, epsilon: number>', api.isNear),
+  nonEmptyArray: asymmBoilerplate('Any<NonEmptyArray>', api.isNonEmptyArray),
+  nonEmptyObject: asymmBoilerplate('Any<NonEmptyObject>', api.isNonEmptyObject),
+  nonEmptyString: asymmBoilerplate('Any<NonEmptyString>', api.isNonEmptyString),
+  oddNumber: asymmBoilerplate('Any<OddNumber>', api.isOddNumber),
+  sameLengthAs: asymmBoilerplate('Any<SameLengthAs(other: string)>', api.isSameLengthAs),
+  shorterThan: asymmBoilerplate('Any<ShorterThan(other: string)>', api.isShorterThan),
+  startingWith: asymmBoilerplate('Any<StartingWith(other: string)>', api.startsWith),
+  validDate: asymmBoilerplate('Any<ValidDate>', api.isValidDate),
+  walkable: asymmBoilerplate('Any<Walkable>', api.isWalkable),
+  whitespace: asymmBoilerplate('Any<Whitespace>', api.isWhitespace),
+  wholeNumber: asymmBoilerplate('Any<WholeNumber>', api.isWholeNumber),
+  withinRange: asymmBoilerplate('Any<WithinRange<floor: number, ceiling: number>', api.isWithinRange)
+};
 
 export default {
   toBeAfter(received: any, other: Date) {

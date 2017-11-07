@@ -1,6 +1,7 @@
-import matchers from '../src';
+import matchers, { asymmetric } from '../src';
 
 beforeEach(() => {
+  Object.assign(expect, asymmetric);
   expect.extend(matchers);
 });
 
@@ -254,4 +255,112 @@ it('provides toStartWith', () => {
   expect('jamie').toStartWith('jam');
   expect(() => { expect('wut?').toStartWith('nah!'); }).toThrow();
   expect(() => { expect('jamie').not.toStartWith('jamie'); }).toThrow();
+});
+
+it('provides expect.after', () => {
+  expect(new Date(200)).toEqual(expect.after(new Date(100)));
+});
+
+it('provides expect.arrayOfBooleans', () => {
+  expect([true]).toEqual(expect.arrayOfBooleans());
+});
+
+it('provides expect.arrayOfNumbers', () => {
+  expect([1]).toEqual(expect.arrayOfNumbers());
+});
+
+it('provides expect.arrayOfObjects', () => {
+  expect([{}]).toEqual(expect.arrayOfObjects());
+});
+
+it('provides expect.arrayOfSize', () => {
+  expect([1]).toEqual(expect.arrayOfSize(1));
+});
+
+it('provides expect.arrayOfStrings', () => {
+  expect(['']).toEqual(expect.arrayOfStrings());
+});
+
+it('provides expect.before', () => {
+  expect(new Date(100)).toEqual(expect.before(new Date(200)));
+});
+
+it('provides expect.calculable', () => {
+  expect('1').toEqual(expect.calculable());
+});
+
+it('provides expect.divisibleBy', () => {
+  expect(4).toEqual(expect.divisibleBy(2));
+});
+
+it('provides expect.endingWith', () => {
+  expect('jamie').toEqual(expect.endingWith('mie'));
+});
+
+it('provides expect.evenNumber', () => {
+  expect(2).toEqual(expect.evenNumber());
+});
+
+it('provides expect.iso8601', () => {
+  expect('2017-10-31T15:17:11').toEqual(expect.iso8601());
+});
+
+it('provides expect.jsonString', () => {
+  expect('{}').toEqual(expect.jsonString());
+});
+
+it('provides expect.longerThan', () => {
+  expect('abc').toEqual(expect.longerThan('a'));
+});
+
+it('provides expect.near', () => {
+  expect(1.25).toEqual(expect.near(1, 0.3));
+});
+
+it('provides expect.nonEmptyArray', () => {
+  expect([1, 2]).toEqual(expect.nonEmptyArray());
+});
+
+it('provides expect.nonEmptyObject', () => {
+  expect({ a: 1 }).toEqual(expect.nonEmptyObject());
+});
+
+it('provides expect.nonEmptyString', () => {
+  expect('a').toEqual(expect.nonEmptyString());
+});
+
+it('provides expect.oddNumber', () => {
+  expect(3).toEqual(expect.oddNumber());
+});
+
+it('provides expect.sameLengthAs', () => {
+  expect('abc').toEqual(expect.sameLengthAs('def'));
+});
+
+it('provides expect.shorterThan', () => {
+  expect('ab').toEqual(expect.shorterThan('abc'));
+});
+
+it('provides expect.startingWith', () => {
+  expect('jamie').toEqual(expect.startingWith('jam'));
+});
+
+it('provides expect.validDate', () => {
+  expect(new Date(1)).toEqual(expect.validDate());
+});
+
+it('provides expect.walkable', () => {
+  expect(true).toEqual(expect.walkable());
+});
+
+it('provides expect.whitespace', () => {
+  expect(' ').toEqual(expect.whitespace());
+});
+
+it('provides expect.wholeNumber', () => {
+  expect(1).toEqual(expect.wholeNumber());
+});
+
+it('provides expect.withinRange', () => {
+  expect(2).toEqual(expect.withinRange(1, 3));
 });
