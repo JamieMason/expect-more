@@ -1,4 +1,4 @@
-import { endingWith, notEndingWith } from '../../../scripts/fixtures';
+import { endingWith, notEndingWith } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts case-sensitive string ending with another', endingWith, ([otherString, value]) => {

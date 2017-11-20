@@ -1,4 +1,4 @@
-import { decimalNumbers, notDecimalNumbers } from '../../../scripts/fixtures';
+import { decimalNumbers, notDecimalNumbers } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a number with decimal places', decimalNumbers, (value) => {

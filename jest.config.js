@@ -11,7 +11,7 @@ module.exports = {
     }
   },
   moduleFileExtensions: ['ts', 'tsx', 'js'],
-  setupTestFrameworkScriptFile: '<rootDir>/scripts/setup-test-framework-script-file.ts',
+  setupTestFrameworkScriptFile: '<rootDir>/test/setup-test-framework-script-file.ts',
   testMatch: ['<rootDir>/packages/*/test/**/*.spec.(ts|tsx|js)'],
   transform: {
     '^.+\\.(ts|tsx)$': '<rootDir>/scripts/transpile-tests.js'

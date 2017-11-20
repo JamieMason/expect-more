@@ -1,4 +1,4 @@
-import { notStrings, strings } from '../../../scripts/fixtures';
+import { notStrings, strings } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a string', strings, (value) => {

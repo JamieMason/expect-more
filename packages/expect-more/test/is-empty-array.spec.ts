@@ -1,4 +1,4 @@
-import { emptyArrays, notEmptyArrays } from '../../../scripts/fixtures';
+import { emptyArrays, notEmptyArrays } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is an empty array', emptyArrays, (value) => {

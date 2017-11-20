@@ -1,4 +1,4 @@
-import { notUndefineds, undefineds } from '../../../scripts/fixtures';
+import { notUndefineds, undefineds } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is undefined', undefineds, (value) => {

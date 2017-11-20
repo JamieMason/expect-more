@@ -1,4 +1,4 @@
-import { dateBefore, notDateBefore } from '../../../scripts/fixtures';
+import { dateBefore, notDateBefore } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a date occurring before the date provided', dateBefore, ([otherDate, value]) => {

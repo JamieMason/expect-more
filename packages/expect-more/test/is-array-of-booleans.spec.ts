@@ -1,4 +1,4 @@
-import { arrayOfBooleans, notArrayOfBooleans } from '../../../scripts/fixtures';
+import { arrayOfBooleans, notArrayOfBooleans } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a non-empty array containing only booleans', arrayOfBooleans, (value) => {

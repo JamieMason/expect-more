@@ -1,4 +1,4 @@
-import { emptyObjects, notEmptyObjects } from '../../../scripts/fixtures';
+import { emptyObjects, notEmptyObjects } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is an empty object', emptyObjects, (value) => {

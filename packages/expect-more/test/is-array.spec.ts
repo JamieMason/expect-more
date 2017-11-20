@@ -1,4 +1,4 @@
-import { arrays, notArrays } from '../../../scripts/fixtures';
+import { arrays, notArrays } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is an array', arrays, (value) => {

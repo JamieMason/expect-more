@@ -1,4 +1,4 @@
-import { notNumbersWithinRange, numbersWithinRange } from '../../../scripts/fixtures';
+import { notNumbersWithinRange, numbersWithinRange } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a number falling within the given range', numbersWithinRange, (value) => {

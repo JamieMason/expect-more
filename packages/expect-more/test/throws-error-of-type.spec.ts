@@ -1,4 +1,4 @@
-import { errorConstructors } from '../../../scripts/fixtures';
+import { errorConstructors } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if function throws error of the given type when called', errorConstructors, (Err) => {

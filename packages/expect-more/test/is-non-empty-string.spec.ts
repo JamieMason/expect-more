@@ -1,4 +1,4 @@
-import { nonEmptyStrings, notNonEmptyStrings } from '../../../scripts/fixtures';
+import { nonEmptyStrings, notNonEmptyStrings } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a string with at least one character', nonEmptyStrings, (value) => {

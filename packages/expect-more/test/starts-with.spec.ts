@@ -1,4 +1,4 @@
-import { notStartingWith, startingWith } from '../../../scripts/fixtures';
+import { notStartingWith, startingWith } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts case-sensitive string starting with another', startingWith, ([otherString, value]) => {

@@ -87,7 +87,7 @@ export const isAfter = curry<Date, any, boolean>(
 export const isFalse = isGivenBoolean(false);
 export const isTrue = isGivenBoolean(true);
 export const isBefore = curry<Date, any, boolean>((otherDate, value) => isAfter(value, otherDate));
-export const isNumber = (value: any) => !isNaN(parseFloat(value)) && !isString(value);
+export const isNumber = (value: any) => hasType('Number')(value) && !isNaN(parseFloat(value));
 export const isDivisibleBy = curry<number, any, boolean>((other, value) => value % other === 0);
 export const isEvenNumber = (value) => isNumber(value) && isDivisibleBy(2, value);
 export const isOddNumber = (value) => isNumber(value) && !isDivisibleBy(2, value);

@@ -1,4 +1,4 @@
-import { nonEmptyArrays, notNonEmptyArrays } from '../../../scripts/fixtures';
+import { nonEmptyArrays, notNonEmptyArrays } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is an array with at least one member', nonEmptyArrays, (value) => {

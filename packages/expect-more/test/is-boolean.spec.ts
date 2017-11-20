@@ -1,4 +1,4 @@
-import { booleans, notBooleans } from '../../../scripts/fixtures';
+import { booleans, notBooleans } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a boolean', booleans, (value) => {

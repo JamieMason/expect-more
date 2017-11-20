@@ -1,4 +1,4 @@
-import { notOddNumbers, oddNumbers } from '../../../scripts/fixtures';
+import { notOddNumbers, oddNumbers } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is an odd number', oddNumbers, (value) => {

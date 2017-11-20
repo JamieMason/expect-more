@@ -1,4 +1,4 @@
-import { notWalkables, walkables } from '../../../scripts/fixtures';
+import { notWalkables, walkables } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is able to have members', walkables, (value) => {

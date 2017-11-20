@@ -1,4 +1,4 @@
-import { evenNumbers, notEvenNumbers } from '../../../scripts/fixtures';
+import { evenNumbers, notEvenNumbers } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is an even number', evenNumbers, (value) => {

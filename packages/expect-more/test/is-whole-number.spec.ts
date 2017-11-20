@@ -1,4 +1,4 @@
-import { notWholeNumbers, wholeNumbers } from '../../../scripts/fixtures';
+import { notWholeNumbers, wholeNumbers } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a number with no decimal places', wholeNumbers, (value) => {

@@ -1,4 +1,4 @@
-import { iso8601s, notIso8601s } from '../../../scripts/fixtures';
+import { iso8601s, notIso8601s } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a valid ISO8601 date string', iso8601s, (value) => {

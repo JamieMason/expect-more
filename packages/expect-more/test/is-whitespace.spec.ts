@@ -1,4 +1,4 @@
-import { notWhitespaceStrings, whitespaceStrings } from '../../../scripts/fixtures';
+import { notWhitespaceStrings, whitespaceStrings } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a non-empty string containing only whitespace', whitespaceStrings, (value) => {

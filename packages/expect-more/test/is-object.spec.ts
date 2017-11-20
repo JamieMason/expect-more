@@ -1,4 +1,4 @@
-import { notObjects, objects } from '../../../scripts/fixtures';
+import { notObjects, objects } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is an object', objects, (value) => {

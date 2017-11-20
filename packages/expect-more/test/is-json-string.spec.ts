@@ -1,4 +1,4 @@
-import { jsonStrings, notJsonStrings } from '../../../scripts/fixtures';
+import { jsonStrings, notJsonStrings } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a valid JSON string', jsonStrings, (value) => {

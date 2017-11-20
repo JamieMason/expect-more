@@ -1,4 +1,4 @@
-import { notRegExs, regExs } from '../../../scripts/fixtures';
+import { notRegExs, regExs } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a regular expression', regExs, (value) => {

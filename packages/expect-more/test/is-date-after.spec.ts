@@ -1,4 +1,4 @@
-import { dateAfter, notDateAfter } from '../../../scripts/fixtures';
+import { dateAfter, notDateAfter } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a date occurring after the date provided', dateAfter, ([otherDate, value]) => {

@@ -1,4 +1,4 @@
-import { dates, notDates } from '../../../scripts/fixtures';
+import { dates, notDates } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a date', dates, (value) => {

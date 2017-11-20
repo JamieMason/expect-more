@@ -1,4 +1,4 @@
-import { arrayOfNumbers, notArrayOfNumbers } from '../../../scripts/fixtures';
+import { arrayOfNumbers, notArrayOfNumbers } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a non-empty array containing only numbers', arrayOfNumbers, (value) => {

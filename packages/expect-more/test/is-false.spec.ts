@@ -1,4 +1,4 @@
-import { falses, notFalses } from '../../../scripts/fixtures';
+import { falses, notFalses } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is false', falses, (value) => {

@@ -1,4 +1,4 @@
-import { functions, notFunctions } from '../../../scripts/fixtures';
+import { functions, notFunctions } from '../../../test/fixtures';
 import * as api from '../src';
 
 check.it('accepts if value is a function', functions, (value) => {
