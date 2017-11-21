@@ -1,5 +1,17 @@
 export type AsymmetricMatcher = (value: any) => { asymmetricMatch: (value: any) => boolean };
 
+export type Collection = object | any[];
+export type Locator = string | number;
+export type DeepReducer<T> = (memo: T, path: Locator[], value?: any) => T;
+export type ArrayMutator = (key: Locator, owner: any[]) => void;
+export type ObjectMutator = (key: Locator, owner: object) => void;
+
+export interface IBoilerplate {
+  pass: boolean;
+  message: () => string;
+  notMessage: () => string;
+}
+
 declare global {
   namespace jest {
     interface Matchers<R> {
@@ -76,10 +88,4 @@ declare global {
       withinRange(floor: number, ceiling: number): AsymmetricMatcher;
     }
   }
-}
-
-export interface IBoilerplate {
-  pass: boolean;
-  message: () => string;
-  notMessage: () => string;
 }
