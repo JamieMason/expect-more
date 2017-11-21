@@ -1,4 +1,4 @@
-import matchers, { asymmetric } from '../src';
+import { asymmetric, matchers } from '../src';
 
 beforeEach(() => {
   Object.assign(expect, asymmetric);

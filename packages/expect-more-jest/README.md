@@ -23,7 +23,7 @@ npm install expect-more-jest --save-dev
 ## Usage
 
 ```js
-import matchers, { asymmetric } from 'expect-more-jest';
+import { asymmetric, matchers } from 'expect-more-jest';
 
 beforeEach(() => {
   Object.assign(expect, asymmetric);
@@ -88,11 +88,11 @@ beforeEach(() => {
 + `.toBeArrayOfSize(number)`
 + `.toBeCalculable()`
 + `.toBeEvenNumber()`
-+ `.toBeNear({ epsilon: number; number: number })`
++ `.toBeNear(epsilon: number; number: number)`
 + `.toBeNumber()`
 + `.toBeOddNumber()`
 + `.toBeWholeNumber()`
-+ `.toBeWithinRange({ floor: number, ceiling: number })`
++ `.toBeWithinRange(floor: number, ceiling: number)`
 + `expect.calculable()`
 + `expect.divisibleBy(number)`
 + `expect.evenNumber()`

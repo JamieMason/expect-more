@@ -44,7 +44,7 @@ export const asymmetric = {
   withinRange: asymmBoilerplate('Any<WithinRange<floor: number, ceiling: number>', api.isWithinRange)
 };
 
-export default {
+export const matchers = {
   toBeAfter(received: any, other: Date) {
     return boilerplate({
       message: () => `expected ${received} to be an instance of Date, occurring after ${other}`,
