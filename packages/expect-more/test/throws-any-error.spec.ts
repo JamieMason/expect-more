@@ -10,5 +10,9 @@ check.it('accepts if function throws any type of error when called', errorConstr
 });
 
 it('rejects otherwise', () => {
-  expect(api.throwsAnyError(() => {/*  */})).toEqual(false);
+  expect(
+    api.throwsAnyError(() => {
+      /*  */
+    })
+  ).toEqual(false);
 });

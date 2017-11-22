@@ -5,6 +5,7 @@
     "jasmine-check": "1.0.0-rc.0",
     "jest": "21.2.1",
     "lerna": "2.5.1",
+    "prettier": "1.8.2",
     "rimraf": "2.6.2",
     "testcheck": "1.0.0-rc.2",
     "tslint": "5.8.0",
@@ -15,9 +16,11 @@
     "build": "npm run build:expect-more && npm run build:expect-more-jest",
     "build:expect-more": "tsc --project ./packages/expect-more",
     "build:expect-more-jest": "tsc --project ./packages/expect-more-jest",
+    "format": "prettier --write ./packages/**/*.ts",
     "lint": "tslint --fix --project ./tsconfig.json",
     "postinstall": "lerna bootstrap",
     "prebuild": "rimraf ./packages/*/dist",
+    "prelint": "npm run format",
     "test": "jest"
   }
 }
