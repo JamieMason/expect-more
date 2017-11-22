@@ -69,6 +69,22 @@ export const withMissingBranches = (collection: Collection) =>
     collection
   );
 
+export const withMissingLeaves = (collection: Collection) =>
+  deconstruct(
+    (key: string, parent: object) => {
+      if (!isBranch(parent[key])) {
+        deleteKey(key, parent);
+      }
+    },
+    (key: number, parent: any[]) => {
+      if (!isBranch(parent[key])) {
+        removeItem(key, parent);
+      }
+    },
+    [undefined],
+    collection
+  );
+
 export const withMissingNodes = (collection: Collection) => deconstruct(deleteKey, removeItem, [undefined], collection);
 
 export const withNulledBranches = (collection: Collection) =>
@@ -80,6 +96,22 @@ export const withNulledBranches = (collection: Collection) =>
     },
     (key: number, parent: any[]) => {
       if (isBranch(parent[key])) {
+        nullifyItem(key, parent);
+      }
+    },
+    [null],
+    collection
+  );
+
+export const withNulledLeaves = (collection: Collection) =>
+  deconstruct(
+    (key: string, parent: object) => {
+      if (!isBranch(parent[key])) {
+        nullifyKey(key, parent);
+      }
+    },
+    (key: number, parent: any[]) => {
+      if (!isBranch(parent[key])) {
         nullifyItem(key, parent);
       }
     },
