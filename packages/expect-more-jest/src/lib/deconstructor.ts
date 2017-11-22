@@ -45,5 +45,6 @@ const nullifyItem = (key: number, parent: any[]): void => {
   parent.splice(key, 1, null);
 };
 
-export const getIncomplete = createDeconstructor(deleteKey, removeItem);
-export const getNullable = createDeconstructor(nullifyKey, nullifyItem);
+export const withMissingNodes = createDeconstructor(deleteKey, removeItem);
+
+export const withNulledNodes = createDeconstructor(nullifyKey, nullifyItem);
