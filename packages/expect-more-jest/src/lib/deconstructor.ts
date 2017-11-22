@@ -16,16 +16,19 @@ const deconstruct = (
   initialValue: any[],
   collection: Collection
 ): any[] => {
+  const original = JSON.stringify(collection);
   const mutateDescendant = (memo: any[], path: Locator[]): any[] => {
     if (path.length) {
-      const clone = JSON.parse(JSON.stringify(collection));
+      const clone = JSON.parse(original);
       const { key, parent } = locateDescendant(path, clone);
       if (isObject(parent)) {
         mutateObject(key, parent);
       } else if (isArray(parent)) {
         mutateArray(key, parent);
       }
-      memo.push(clone);
+      if (JSON.stringify(clone) !== original) {
+        memo.push(clone);
+      }
     }
     return memo;
   };
@@ -48,6 +51,40 @@ const nullifyItem = (key: number, parent: any[]): void => {
   parent.splice(key, 1, null);
 };
 
+const isBranch = (value: any): boolean => isObject(value) || isArray(value);
+
+export const withMissingBranches = (collection: Collection) =>
+  deconstruct(
+    (key: string, parent: object) => {
+      if (isBranch(parent[key])) {
+        deleteKey(key, parent);
+      }
+    },
+    (key: number, parent: any[]) => {
+      if (isBranch(parent[key])) {
+        removeItem(key, parent);
+      }
+    },
+    [undefined],
+    collection
+  );
+
 export const withMissingNodes = (collection: Collection) => deconstruct(deleteKey, removeItem, [undefined], collection);
+
+export const withNulledBranches = (collection: Collection) =>
+  deconstruct(
+    (key: string, parent: object) => {
+      if (isBranch(parent[key])) {
+        nullifyKey(key, parent);
+      }
+    },
+    (key: number, parent: any[]) => {
+      if (isBranch(parent[key])) {
+        nullifyItem(key, parent);
+      }
+    },
+    [null],
+    collection
+  );
 
 export const withNulledNodes = (collection: Collection) => deconstruct(nullifyKey, nullifyItem, [null], collection);
