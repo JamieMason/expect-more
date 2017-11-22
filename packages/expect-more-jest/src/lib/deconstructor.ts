@@ -10,7 +10,10 @@ const locateDescendant = (path: Locator[], clone: Collection) => {
   return { key, parent };
 };
 
-const createDeconstructor = (mutateObject: ObjectMutator, mutateArray: ArrayMutator) => (
+const deconstruct = (
+  mutateObject: ObjectMutator,
+  mutateArray: ArrayMutator,
+  initialValue: any[],
   collection: Collection
 ): any[] => {
   const mutateDescendant = (memo: any[], path: Locator[]): any[] => {
@@ -26,7 +29,7 @@ const createDeconstructor = (mutateObject: ObjectMutator, mutateArray: ArrayMuta
     }
     return memo;
   };
-  return deepReduce<any[]>(collection, mutateDescendant, []);
+  return deepReduce<any[]>(collection, mutateDescendant, initialValue);
 };
 
 const deleteKey = (key: string, parent: object): void => {
@@ -45,6 +48,6 @@ const nullifyItem = (key: number, parent: any[]): void => {
   parent.splice(key, 1, null);
 };
 
-export const withMissingNodes = createDeconstructor(deleteKey, removeItem);
+export const withMissingNodes = (collection: Collection) => deconstruct(deleteKey, removeItem, [undefined], collection);
 
-export const withNulledNodes = createDeconstructor(nullifyKey, nullifyItem);
+export const withNulledNodes = (collection: Collection) => deconstruct(nullifyKey, nullifyItem, [null], collection);
