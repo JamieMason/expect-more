@@ -1,30 +1,39 @@
 import { isArray, isObject, isWalkable } from 'expect-more';
-import { ArrayMutator, Collection, DeepReducer, Locator, ObjectMutator } from '../typings';
+import {
+  ArrayLocator,
+  ArrayMutator,
+  Collection,
+  Deconstructor,
+  DeepReducer,
+  Locator,
+  ObjectLocator,
+  ObjectMutator,
+  PropName
+} from '../typings';
 import { deepReduce } from './deep-reduce';
 import { getIn } from './get-in';
 
-const locateDescendant = (path: Locator[], clone: Collection) => {
+const locateDescendant = (path: PropName[], clone: Collection): Locator => {
   const key = path[path.length - 1];
   const pathToParent = path.length > 1 ? path.slice(0, path.length - 1) : [];
-  const parent = pathToParent.length ? getIn(pathToParent, clone) : clone;
-  return { key, parent };
+  const owner = pathToParent.length ? getIn(pathToParent, clone) : clone;
+  return { key, owner };
 };
 
-const deconstruct = (
+const createDeconstructor = (
   mutateObject: ObjectMutator,
   mutateArray: ArrayMutator,
-  initialValue: any[],
-  collection: Collection
-): any[] => {
+  getInitialValue: () => any
+): Deconstructor => (collection: Collection): any[] => {
   const original = JSON.stringify(collection);
-  const mutateDescendant = (memo: any[], path: Locator[]): any[] => {
+  const mutateDescendant = (memo: any[], path: PropName[]): any[] => {
     if (path.length) {
       const clone = JSON.parse(original);
-      const { key, parent } = locateDescendant(path, clone);
-      if (isObject(parent)) {
-        mutateObject(key, parent);
-      } else if (isArray(parent)) {
-        mutateArray(key, parent);
+      const locator = locateDescendant(path, clone);
+      if (isObject(locator.owner)) {
+        mutateObject(locator as ObjectLocator);
+      } else if (isArray(locator.owner)) {
+        mutateArray(locator as ArrayLocator);
       }
       if (JSON.stringify(clone) !== original) {
         memo.push(clone);
@@ -32,91 +41,42 @@ const deconstruct = (
     }
     return memo;
   };
-  return deepReduce<any[]>(collection, mutateDescendant, initialValue);
+  return deepReduce<any[]>(collection, mutateDescendant, getInitialValue());
 };
 
-const deleteKey = (key: string, parent: object): void => {
-  delete parent[key];
+const removeFromObject: ObjectMutator = (locator) => {
+  delete locator.owner[locator.key];
 };
 
-const removeItem = (key: number, parent: any[]): void => {
-  parent.splice(key, 1);
+const removeFromArray: ArrayMutator = (locator) => {
+  locator.owner.splice(locator.key, 1);
 };
 
-const nullifyKey = (key: string, parent: object): void => {
-  parent[key] = null;
+const nullifyFromObject: ObjectMutator = (locator) => {
+  locator.owner[locator.key] = null;
 };
 
-const nullifyItem = (key: number, parent: any[]): void => {
-  parent.splice(key, 1, null);
+const nullifyFromArray: ArrayMutator = (locator) => {
+  locator.owner.splice(locator.key, 1, null);
 };
 
-const isBranch = (value: any): boolean => isObject(value) || isArray(value);
+const not = (fn) => (...args) => !fn(...args);
+const createMutator = (isEligible, mutate) => (locator) => [locator].filter(isEligible).map(mutate);
+const unwrap = (locator: Locator) => locator.owner[locator.key];
+const isBranch = (locator: Locator): boolean => isObject(unwrap(locator)) || isArray(unwrap(locator));
 
-export const withMissingBranches = (collection: Collection) =>
-  deconstruct(
-    (key: string, parent: object) => {
-      if (isBranch(parent[key])) {
-        deleteKey(key, parent);
-      }
-    },
-    (key: number, parent: any[]) => {
-      if (isBranch(parent[key])) {
-        removeItem(key, parent);
-      }
-    },
-    [undefined],
-    collection
-  );
+const deleteBranch: ObjectMutator = createMutator(isBranch, removeFromObject);
+const deleteLeaf: ObjectMutator = createMutator(not(isBranch), removeFromObject);
+const nullifyBranchInArray: ArrayMutator = createMutator(isBranch, nullifyFromArray);
+const nullifyBranchInObject: ObjectMutator = createMutator(isBranch, nullifyFromObject);
+const nullifyLeafInArray: ArrayMutator = createMutator(not(isBranch), nullifyFromArray);
+const nullifyLeafInObject: ObjectMutator = createMutator(not(isBranch), nullifyFromObject);
+const removeBranch: ArrayMutator = createMutator(isBranch, removeFromArray);
+const removeLeaf: ArrayMutator = createMutator(not(isBranch), removeFromArray);
 
-export const withMissingLeaves = (collection: Collection) =>
-  deconstruct(
-    (key: string, parent: object) => {
-      if (!isBranch(parent[key])) {
-        deleteKey(key, parent);
-      }
-    },
-    (key: number, parent: any[]) => {
-      if (!isBranch(parent[key])) {
-        removeItem(key, parent);
-      }
-    },
-    [undefined],
-    collection
-  );
-
-export const withMissingNodes = (collection: Collection) => deconstruct(deleteKey, removeItem, [undefined], collection);
-
-export const withNulledBranches = (collection: Collection) =>
-  deconstruct(
-    (key: string, parent: object) => {
-      if (isBranch(parent[key])) {
-        nullifyKey(key, parent);
-      }
-    },
-    (key: number, parent: any[]) => {
-      if (isBranch(parent[key])) {
-        nullifyItem(key, parent);
-      }
-    },
-    [null],
-    collection
-  );
-
-export const withNulledLeaves = (collection: Collection) =>
-  deconstruct(
-    (key: string, parent: object) => {
-      if (!isBranch(parent[key])) {
-        nullifyKey(key, parent);
-      }
-    },
-    (key: number, parent: any[]) => {
-      if (!isBranch(parent[key])) {
-        nullifyItem(key, parent);
-      }
-    },
-    [null],
-    collection
-  );
-
-export const withNulledNodes = (collection: Collection) => deconstruct(nullifyKey, nullifyItem, [null], collection);
+export const withMissingBranches = createDeconstructor(deleteBranch, removeBranch, () => [undefined]);
+export const withMissingLeaves = createDeconstructor(deleteLeaf, removeLeaf, () => [undefined]);
+export const withMissingNodes = createDeconstructor(removeFromObject, removeFromArray, () => [undefined]);
+export const withNulledBranches = createDeconstructor(nullifyBranchInObject, nullifyBranchInArray, () => [null]);
+export const withNulledLeaves = createDeconstructor(nullifyLeafInObject, nullifyLeafInArray, () => [null]);
+export const withNulledNodes = createDeconstructor(nullifyFromObject, nullifyFromArray, () => [null]);

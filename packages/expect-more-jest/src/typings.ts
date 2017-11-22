@@ -1,10 +1,23 @@
 export type AsymmetricMatcher = (value: any) => { asymmetricMatch: (value: any) => boolean };
 
 export type Collection = object | any[];
-export type Locator = string | number;
-export type DeepReducer<T> = (memo: T, path: Locator[], value?: any) => T;
-export type ArrayMutator = (key: Locator, owner: any[]) => void;
-export type ObjectMutator = (key: Locator, owner: object) => void;
+export type PropName = string | number;
+export type DeepReducer<T> = (memo: T, path: PropName[], value?: any) => T;
+export interface Locator {
+  key: any;
+  owner: any;
+}
+export interface ArrayLocator extends Locator {
+  key: number;
+  owner: any[];
+}
+export interface ObjectLocator extends Locator {
+  key: string;
+  owner: object;
+}
+export type ArrayMutator = (locator: ArrayLocator) => void;
+export type ObjectMutator = (locator: ObjectLocator) => void;
+export type Deconstructor = (collection: Collection) => any[];
 
 export interface IBoilerplate {
   pass: boolean;

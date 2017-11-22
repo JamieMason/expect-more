@@ -1,8 +1,8 @@
 import { isArray, isObject } from 'expect-more';
-import { Collection, DeepReducer, Locator } from '../typings';
+import { Collection, DeepReducer, PropName } from '../typings';
 
 export const deepReduce = <T>(collection: Collection, fn: DeepReducer<T>, memo: T): T => {
-  const iterator = (value: any, path: Locator[]) => {
+  const iterator = (value: any, path: PropName[]) => {
     memo = fn(memo, path, value);
     if (isArray(value)) {
       for (let i = 0, len = value.length; i < len; i++) {
