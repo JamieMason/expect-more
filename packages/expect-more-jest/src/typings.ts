@@ -1,5 +1,6 @@
 export type AsymmetricMatcher = (value: any) => { asymmetricMatch: (value: any) => boolean };
 
+export type AnyFunction = (...args: any[]) => any;
 export type Collection = object | any[];
 export type PropName = string | number;
 export type DeepReducer<T> = (memo: T, path: PropName[], value?: any) => T;
@@ -18,6 +19,18 @@ export interface ObjectLocator extends Locator {
 export type ArrayMutator = (locator: ArrayLocator) => void;
 export type ObjectMutator = (locator: ObjectLocator) => void;
 export type Deconstructor = (collection: Collection) => any[];
+
+export interface DeconstructorResult {
+  error: Error | null;
+  pass: boolean;
+  permutation: Collection | null;
+}
+export interface WrappedDeconstructor {
+  assert: (fn: AnyFunction) => DeconstructorResult;
+  name: string;
+  permutations: Collection[];
+  shape: Collection;
+}
 
 export interface IBoilerplate {
   pass: boolean;
@@ -70,6 +83,7 @@ declare global {
       toBeWithinRange(floor: number, ceiling: number): R;
       toEndWith(other: string): R;
       toStartWith(other: string): R;
+      toSurvive(deconstructor: WrappedDeconstructor): R;
     }
     interface Expect {
       after(other: Date): AsymmetricMatcher;

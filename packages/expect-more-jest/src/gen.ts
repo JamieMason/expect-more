@@ -2,16 +2,24 @@ import { isArray, isObject, isWalkable } from 'expect-more';
 import { deepReduce } from './lib/deep-reduce';
 import { getIn } from './lib/get-in';
 import {
+  AnyFunction,
   ArrayLocator,
   ArrayMutator,
   Collection,
   Deconstructor,
+  DeconstructorResult,
   DeepReducer,
   Locator,
   ObjectLocator,
   ObjectMutator,
-  PropName
+  PropName,
+  WrappedDeconstructor
 } from './typings';
+
+const not = (fn) => (...args) => !fn(...args);
+const createMutator = (isEligible, mutate) => (locator) => [locator].filter(isEligible).map(mutate);
+const unwrap = (locator: Locator) => locator.owner[locator.key];
+const isBranch = (locator: Locator): boolean => isObject(unwrap(locator)) || isArray(unwrap(locator));
 
 const locateDescendant = (path: PropName[], clone: Collection): Locator => {
   const key = path[path.length - 1];
@@ -23,7 +31,7 @@ const locateDescendant = (path: PropName[], clone: Collection): Locator => {
 const createDeconstructor = (
   mutateObject: ObjectMutator,
   mutateArray: ArrayMutator,
-  getInitialValue: () => any
+  getInitialValue: AnyFunction
 ): Deconstructor => (collection: Collection): any[] => {
   const original = JSON.stringify(collection);
   const mutateDescendant = (memo: any[], path: PropName[]): any[] => {
@@ -60,11 +68,6 @@ const nullifyFromArray: ArrayMutator = (locator) => {
   locator.owner.splice(locator.key, 1, null);
 };
 
-const not = (fn) => (...args) => !fn(...args);
-const createMutator = (isEligible, mutate) => (locator) => [locator].filter(isEligible).map(mutate);
-const unwrap = (locator: Locator) => locator.owner[locator.key];
-const isBranch = (locator: Locator): boolean => isObject(unwrap(locator)) || isArray(unwrap(locator));
-
 const deleteBranch: ObjectMutator = createMutator(isBranch, removeFromObject);
 const deleteLeaf: ObjectMutator = createMutator(not(isBranch), removeFromObject);
 const nullifyBranchInArray: ArrayMutator = createMutator(isBranch, nullifyFromArray);
@@ -74,9 +77,61 @@ const nullifyLeafInObject: ObjectMutator = createMutator(not(isBranch), nullifyF
 const removeBranch: ArrayMutator = createMutator(isBranch, removeFromArray);
 const removeLeaf: ArrayMutator = createMutator(not(isBranch), removeFromArray);
 
-export const missingBranches = createDeconstructor(deleteBranch, removeBranch, () => [undefined]);
-export const missingLeaves = createDeconstructor(deleteLeaf, removeLeaf, () => [undefined]);
-export const missingNodes = createDeconstructor(removeFromObject, removeFromArray, () => [undefined]);
-export const nullBranches = createDeconstructor(nullifyBranchInObject, nullifyBranchInArray, () => [null]);
-export const nullLeaves = createDeconstructor(nullifyLeafInObject, nullifyLeafInArray, () => [null]);
-export const nullNodes = createDeconstructor(nullifyFromObject, nullifyFromArray, () => [null]);
+const createWrapper = (deconstructor: Deconstructor, name: string) => (
+  collection: Collection
+): WrappedDeconstructor => {
+  const permutations = deconstructor(collection);
+  return {
+    assert(fn: AnyFunction): DeconstructorResult {
+      for (let i = 0, len = permutations.length; i < len; i++) {
+        try {
+          fn(permutations[i]);
+        } catch (err) {
+          return {
+            error: err,
+            pass: false,
+            permutation: permutations[i]
+          };
+        }
+      }
+      return {
+        error: null,
+        pass: true,
+        permutation: null
+      };
+    },
+    name,
+    permutations,
+    shape: collection
+  };
+};
+
+export const missingBranches = createWrapper(
+  createDeconstructor(deleteBranch, removeBranch, () => [undefined]),
+  'Deconstructor<MissingBranches>'
+);
+
+export const missingLeaves = createWrapper(
+  createDeconstructor(deleteLeaf, removeLeaf, () => [undefined]),
+  'Deconstructor<MissingLeaves>'
+);
+
+export const missingNodes = createWrapper(
+  createDeconstructor(removeFromObject, removeFromArray, () => [undefined]),
+  'Deconstructor<MissingNodes>'
+);
+
+export const nullBranches = createWrapper(
+  createDeconstructor(nullifyBranchInObject, nullifyBranchInArray, () => [null]),
+  'Deconstructor<NullBranches>'
+);
+
+export const nullLeaves = createWrapper(
+  createDeconstructor(nullifyLeafInObject, nullifyLeafInArray, () => [null]),
+  'Deconstructor<NullLeaves>'
+);
+
+export const nullNodes = createWrapper(
+  createDeconstructor(nullifyFromObject, nullifyFromArray, () => [null]),
+  'Deconstructor<NullNodes>'
+);

@@ -1,9 +1,11 @@
 import * as api from 'expect-more';
 import { missingBranches, missingLeaves, missingNodes, nullBranches, nullLeaves, nullNodes } from './gen';
-import { AsymmetricMatcher, IBoilerplate } from './typings';
+import { AsymmetricMatcher, IBoilerplate, WrappedDeconstructor } from './typings';
+
+const trim = (fn: () => string): (() => string) => () => fn().trim();
 
 const boilerplate = ({ pass, message, notMessage }: IBoilerplate) => ({
-  message: pass ? notMessage : message,
+  message: trim(pass ? notMessage : message),
   pass
 });
 
@@ -347,6 +349,18 @@ export const matchers = {
       message: () => `expected ${received} to be a string which starts with ${other}`,
       notMessage: () => `expected ${received} not to be a string which starts with ${other}`,
       pass: api.startsWith(other, received)
+    });
+  },
+  toSurvive(received: any, deconstructor: WrappedDeconstructor) {
+    // @TODO: update README
+    const { printExpected, printReceived } = this.utils;
+    const result = deconstructor.assert(received);
+    const receivedLog = printReceived(received);
+    const expectedLog = printExpected(deconstructor.shape);
+    return boilerplate({
+      message: () => `expected ${receivedLog} to survive when called with ${deconstructor.name}: ${expectedLog}`,
+      notMessage: () => `expected ${receivedLog} not to survive when called with ${deconstructor.name}: ${expectedLog}`,
+      pass: result.pass
     });
   }
 };

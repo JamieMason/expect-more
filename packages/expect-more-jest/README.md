@@ -47,6 +47,7 @@ beforeEach(() => {
 ### Functions
 
 + `.toBeFunction()`
++ `.toSurvive(deconstructor)`
 
 ### Objects
 
