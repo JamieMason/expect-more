@@ -16,7 +16,7 @@
     "build": "npm run build:expect-more && npm run build:expect-more-jest",
     "build:expect-more": "tsc --project ./packages/expect-more",
     "build:expect-more-jest": "tsc --project ./packages/expect-more-jest",
-    "format": "prettier --write ./packages/**/*.ts",
+    "format": "prettier --write './packages/*/src/**/*.ts' './packages/*/test/**/*.ts'",
     "lint": "tslint --fix --project ./tsconfig.json",
     "postinstall": "lerna bootstrap",
     "prebuild": "rimraf ./packages/*/dist",
