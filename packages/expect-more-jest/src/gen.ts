@@ -1,4 +1,6 @@
 import { isArray, isObject, isWalkable } from 'expect-more';
+import { deepReduce } from './lib/deep-reduce';
+import { getIn } from './lib/get-in';
 import {
   ArrayLocator,
   ArrayMutator,
@@ -9,9 +11,7 @@ import {
   ObjectLocator,
   ObjectMutator,
   PropName
-} from '../typings';
-import { deepReduce } from './deep-reduce';
-import { getIn } from './get-in';
+} from './typings';
 
 const locateDescendant = (path: PropName[], clone: Collection): Locator => {
   const key = path[path.length - 1];
@@ -74,9 +74,9 @@ const nullifyLeafInObject: ObjectMutator = createMutator(not(isBranch), nullifyF
 const removeBranch: ArrayMutator = createMutator(isBranch, removeFromArray);
 const removeLeaf: ArrayMutator = createMutator(not(isBranch), removeFromArray);
 
-export const withMissingBranches = createDeconstructor(deleteBranch, removeBranch, () => [undefined]);
-export const withMissingLeaves = createDeconstructor(deleteLeaf, removeLeaf, () => [undefined]);
-export const withMissingNodes = createDeconstructor(removeFromObject, removeFromArray, () => [undefined]);
-export const withNulledBranches = createDeconstructor(nullifyBranchInObject, nullifyBranchInArray, () => [null]);
-export const withNulledLeaves = createDeconstructor(nullifyLeafInObject, nullifyLeafInArray, () => [null]);
-export const withNulledNodes = createDeconstructor(nullifyFromObject, nullifyFromArray, () => [null]);
+export const missingBranches = createDeconstructor(deleteBranch, removeBranch, () => [undefined]);
+export const missingLeaves = createDeconstructor(deleteLeaf, removeLeaf, () => [undefined]);
+export const missingNodes = createDeconstructor(removeFromObject, removeFromArray, () => [undefined]);
+export const nullBranches = createDeconstructor(nullifyBranchInObject, nullifyBranchInArray, () => [null]);
+export const nullLeaves = createDeconstructor(nullifyLeafInObject, nullifyLeafInArray, () => [null]);
+export const nullNodes = createDeconstructor(nullifyFromObject, nullifyFromArray, () => [null]);

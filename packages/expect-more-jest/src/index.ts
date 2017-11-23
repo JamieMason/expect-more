@@ -1,4 +1,5 @@
 import * as api from 'expect-more';
+import { missingBranches, missingLeaves, missingNodes, nullBranches, nullLeaves, nullNodes } from './gen';
 import { AsymmetricMatcher, IBoilerplate } from './typings';
 
 const boilerplate = ({ pass, message, notMessage }: IBoilerplate) => ({
@@ -42,6 +43,15 @@ export const asymmetric = {
   whitespace: asymmBoilerplate('Any<Whitespace>', api.isWhitespace),
   wholeNumber: asymmBoilerplate('Any<WholeNumber>', api.isWholeNumber),
   withinRange: asymmBoilerplate('Any<WithinRange<floor: number, ceiling: number>', api.isWithinRange)
+};
+
+export const gen = {
+  missingBranches,
+  missingLeaves,
+  missingNodes,
+  nullBranches,
+  nullLeaves,
+  nullNodes
 };
 
 export const matchers = {
