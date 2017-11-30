@@ -4,29 +4,29 @@ export type AnyFunction = (...args: any[]) => any;
 export type Collection = object | any[];
 export type PropName = string | number;
 export type DeepReducer<T> = (memo: T, path: PropName[], value?: any) => T;
-export interface Locator {
+export interface ILocator {
   key: any;
   owner: any;
 }
-export interface ArrayLocator extends Locator {
+export interface IArrayLocator extends ILocator {
   key: number;
   owner: any[];
 }
-export interface ObjectLocator extends Locator {
+export interface IObjectLocator extends ILocator {
   key: string;
   owner: object;
 }
-export type ArrayMutator = (locator: ArrayLocator) => void;
-export type ObjectMutator = (locator: ObjectLocator) => void;
+export type ArrayMutator = (locator: IArrayLocator) => void;
+export type ObjectMutator = (locator: IObjectLocator) => void;
 export type Deconstructor = (collection: Collection) => any[];
 
-export interface DeconstructorResult {
+export interface IDeconstructorResult {
   error: Error | null;
   pass: boolean;
   permutation: Collection | null;
 }
-export interface WrappedDeconstructor {
-  assert: (fn: AnyFunction) => DeconstructorResult;
+export interface IGenerator {
+  assert: (fn: AnyFunction) => IDeconstructorResult;
   name: string;
   permutations: Collection[];
   shape: Collection;
@@ -40,6 +40,7 @@ export interface IBoilerplate {
 
 declare global {
   namespace jest {
+    // tslint:disable-next-line
     interface Matchers<R> {
       toBeAfter(other: Date): R;
       toBeArray(): R;
@@ -83,8 +84,9 @@ declare global {
       toBeWithinRange(floor: number, ceiling: number): R;
       toEndWith(other: string): R;
       toStartWith(other: string): R;
-      toSurvive(deconstructor: WrappedDeconstructor): R;
+      toSurvive(deconstructor: IGenerator): R;
     }
+    // tslint:disable-next-line
     interface Expect {
       after(other: Date): AsymmetricMatcher;
       arrayOfBooleans(): AsymmetricMatcher;

@@ -1,6 +1,6 @@
 import * as api from 'expect-more';
 import { missingBranches, missingLeaves, missingNodes, nullBranches, nullLeaves, nullNodes } from './gen';
-import { AsymmetricMatcher, IBoilerplate, WrappedDeconstructor } from './typings';
+import { AsymmetricMatcher, IBoilerplate, IGenerator } from './typings';
 
 const trim = (fn: () => string): (() => string) => () => fn().trim();
 
@@ -351,7 +351,7 @@ export const matchers = {
       pass: api.startsWith(other, received)
     });
   },
-  toSurvive(received: any, deconstructor: WrappedDeconstructor) {
+  toSurvive(received: any, deconstructor: IGenerator) {
     // @TODO: update README
     const { printExpected, printReceived } = this.utils;
     const result = deconstructor.assert(received);

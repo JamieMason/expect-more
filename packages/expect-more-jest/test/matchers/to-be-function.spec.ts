@@ -1,9 +1,9 @@
 it('provides toBeFunction', () => {
-  expect(() => {}).toBeFunction();
+  expect((_) => _).toBeFunction();
   expect(() => {
     expect(null).toBeFunction();
   }).toThrow();
   expect(() => {
-    expect(() => {}).not.toBeFunction();
+    expect((_) => _).not.toBeFunction();
   }).toThrow();
 });

@@ -3,25 +3,25 @@ import { deepReduce } from './lib/deep-reduce';
 import { getIn } from './lib/get-in';
 import {
   AnyFunction,
-  ArrayLocator,
   ArrayMutator,
   Collection,
   Deconstructor,
-  DeconstructorResult,
   DeepReducer,
-  Locator,
-  ObjectLocator,
+  IArrayLocator,
+  IDeconstructorResult,
+  IGenerator,
+  ILocator,
+  IObjectLocator,
   ObjectMutator,
-  PropName,
-  WrappedDeconstructor
+  PropName
 } from './typings';
 
 const not = (fn) => (...args) => !fn(...args);
 const createMutator = (isEligible, mutate) => (locator) => [locator].filter(isEligible).map(mutate);
-const unwrap = (locator: Locator) => locator.owner[locator.key];
-const isBranch = (locator: Locator): boolean => isObject(unwrap(locator)) || isArray(unwrap(locator));
+const unwrap = (locator: ILocator) => locator.owner[locator.key];
+const isBranch = (locator: ILocator): boolean => isObject(unwrap(locator)) || isArray(unwrap(locator));
 
-const locateDescendant = (path: PropName[], clone: Collection): Locator => {
+const locateDescendant = (path: PropName[], clone: Collection): ILocator => {
   const key = path[path.length - 1];
   const pathToParent = path.length > 1 ? path.slice(0, path.length - 1) : [];
   const owner = pathToParent.length ? getIn(pathToParent, clone) : clone;
@@ -39,9 +39,9 @@ const createDeconstructor = (
       const clone = JSON.parse(original);
       const locator = locateDescendant(path, clone);
       if (isObject(locator.owner)) {
-        mutateObject(locator as ObjectLocator);
+        mutateObject(locator as IObjectLocator);
       } else if (isArray(locator.owner)) {
-        mutateArray(locator as ArrayLocator);
+        mutateArray(locator as IArrayLocator);
       }
       if (JSON.stringify(clone) !== original) {
         memo.push(clone);
@@ -77,12 +77,10 @@ const nullifyLeafInObject: ObjectMutator = createMutator(not(isBranch), nullifyF
 const removeBranch: ArrayMutator = createMutator(isBranch, removeFromArray);
 const removeLeaf: ArrayMutator = createMutator(not(isBranch), removeFromArray);
 
-const createWrapper = (deconstructor: Deconstructor, name: string) => (
-  collection: Collection
-): WrappedDeconstructor => {
+const createWrapper = (deconstructor: Deconstructor, name: string) => (collection: Collection): IGenerator => {
   const permutations = deconstructor(collection);
   return {
-    assert(fn: AnyFunction): DeconstructorResult {
+    assert(fn: AnyFunction): IDeconstructorResult {
       for (let i = 0, len = permutations.length; i < len; i++) {
         try {
           fn(permutations[i]);

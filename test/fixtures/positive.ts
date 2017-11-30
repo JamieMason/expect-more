@@ -1,3 +1,4 @@
+/* tslint:disable:no-construct */
 import { gen, Generator } from 'testcheck';
 
 const midnight = () => new Date('2013-01-01T00:00:00.000Z');
@@ -38,7 +39,7 @@ export const dates = gen.oneOf([
   new Date(1985, 11, 18, 8, 22, 0)
 ]);
 export const falses = gen.oneOf([false, new Boolean(false)]);
-export const functions = gen.oneOf([() => {}]);
+export const functions = gen.oneOf([(_) => _]);
 export const errorConstructors = gen.oneOf([
   Error,
   EvalError,
