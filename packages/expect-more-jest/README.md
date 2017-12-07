@@ -14,6 +14,14 @@ Write Beautiful Specs with Custom Matchers for Jest
 [![Follow JamieMason on GitHub](https://img.shields.io/github/followers/JamieMason.svg?style=social&label=Follow)](https://github.com/JamieMason)
 [![Follow fold_left on Twitter](https://img.shields.io/twitter/follow/fold_left.svg?style=social&label=Follow)](https://twitter.com/fold_left)
 
+## Status
+
+This is a new project which needs a lot of work on documentation. It is under active development so there will likely be
+changes, but at its core it is a rewrite of [jasmine-expect](https://github.com/JamieMason/Jasmine-Matchers#readme)
+which is a mature, well-tested library.
+
+Contributors welcome, please get in touch.
+
 ## Installation
 
 ```
@@ -35,90 +43,6 @@ beforeEach(() => {
 
 ### General
 
-+ `.toBeBoolean()`
-+ `.toBeFalse()`
-+ `.toBeNull()`
-+ `.toBeRegExp()`
-+ `.toBeTrue()`
-+ `.toBeUndefined()`
-+ `.toBeWalkable()`
-+ `expect.walkable()`
-
-### Functions
-
-+ `.toBeFunction()`
-+ `.toSurvive(deconstructor)`
-
-### Objects
-
-+ `.toBeEmptyObject()`
-+ `.toBeNonEmptyObject()`
-+ `.toBeObject()`
-+ `expect.nonEmptyObject()`
-
-### Arrays
-
-+ `.toBeArray()`
-+ `.toBeArrayOfBooleans()`
-+ `.toBeArrayOfNumbers()`
-+ `.toBeArrayOfObjects()`
-+ `.toBeArrayOfStrings()`
-+ `.toBeEmptyArray()`
-+ `.toBeNonEmptyArray()`
-+ `expect.arrayOfBooleans()`
-+ `expect.arrayOfNumbers()`
-+ `expect.arrayOfObjects()`
-+ `expect.arrayOfSize(number)`
-+ `expect.arrayOfStrings()`
-+ `expect.nonEmptyArray()`
-
-### Dates
-
-+ `.toBeAfter(date)`
-+ `.toBeBefore(date)`
-+ `.toBeDate()`
-+ `.toBeIso8601()`
-+ `.toBeValidDate()`
-+ `expect.after(date)`
-+ `expect.before(date)`
-+ `expect.iso8601()`
-+ `expect.validDate()`
-
-### Numbers
-
-+ `.toBeArrayOfSize(number)`
-+ `.toBeCalculable()`
-+ `.toBeEvenNumber()`
-+ `.toBeNear(epsilon: number; number: number)`
-+ `.toBeNumber()`
-+ `.toBeOddNumber()`
-+ `.toBeWholeNumber()`
-+ `.toBeWithinRange(floor: number, ceiling: number)`
-+ `expect.calculable()`
-+ `expect.divisibleBy(number)`
-+ `expect.evenNumber()`
-+ `expect.near(other: number, epsilon: number)`
-+ `expect.oddNumber()`
-+ `expect.wholeNumber()`
-+ `expect.withinRange(floor: number, ceiling: number)`
-
-### Strings
-
-+ `.toBeEmptyString()`
-+ `.toBeJsonString()`
-+ `.toBeLongerThan(string)`
-+ `.toBeNonEmptyString()`
-+ `.toBeSameLengthAs(string)`
-+ `.toBeShorterThan(string)`
-+ `.toBeString()`
-+ `.toBeWhitespace()`
-+ `.toEndWith(string)`
-+ `.toStartWith(string)`
-+ `expect.endingWith(string)`
-+ `expect.jsonString()`
-+ `expect.longerThan(string)`
-+ `expect.nonEmptyString()`
-+ `expect.sameLengthAs(string)`
-+ `expect.shorterThan(string)`
-+ `expect.startingWith(string)`
-+ `expect.whitespace()`
+* [Asymmetric Matchers](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/api.md#asymmetric-matchers)
+* [Generators](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/api.md#generators)
+* [Matchers](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/api.md#matchers)
