@@ -17,10 +17,15 @@ Write Beautiful Specs with Custom Matchers for Jest
 ## Status
 
 This is a new project which needs a lot of work on documentation. It is under active development so there will likely be
-changes, but at its core it is a rewrite of [jasmine-expect](https://github.com/JamieMason/Jasmine-Matchers#readme)
-which is a mature, well-tested library.
+changes, but at its core it is a rewrite of [jasmine-expect][jasmine-expect] which is a mature, well-tested library.
 
 Contributors welcome, please get in touch.
+
+## API
+
+* [Asymmetric Matchers][asymmetric-matchers]
+* [Generators][generators]
+* [Matchers][matchers]
 
 ## Installation
 
@@ -28,21 +33,35 @@ Contributors welcome, please get in touch.
 npm install expect-more-jest --save-dev
 ```
 
-## Usage
+## Setup
+
+Add a [`setupTestFrameworkScriptFile`][setup-test-framework-script-file] entry to your [Jest Configuration][jest-config]
+which points to a JavaScript file somewhere in your project.
+
+```json
+{
+  "setupTestFrameworkScriptFile": "<rootDir>/test/setup-test-framework-script-file.js"
+}
+```
+
+In that file (in this example we have chosen `./test/setup-test-framework-script-file.js`) include the following:
 
 ```js
 import { asymmetric, matchers } from 'expect-more-jest';
 
 beforeEach(() => {
+  // register asymmetric matchers such as expect.nonEmptyArray()
   Object.assign(expect, asymmetric);
+  // register test matchers such as expect().toBeArray()
   expect.extend(matchers);
 });
 ```
 
-## API
+<!-- Links -->
 
-### General
-
-* [Asymmetric Matchers](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/api.md#asymmetric-matchers)
-* [Generators](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/api.md#generators)
-* [Matchers](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/api.md#matchers)
+[asymmetric-matchers]: https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/api.md#asymmetric-matchers
+[generators]: https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/api.md#generators
+[jasmine-expect]: https://github.com/JamieMason/Jasmine-Matchers#readme
+[jest-config]: https://facebook.github.io/jest/docs/en/configuration.html
+[matchers]: https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/api.md#matchers
+[setup-test-framework-script-file]: https://facebook.github.io/jest/docs/en/configuration.html#setuptestframeworkscriptfile-string
