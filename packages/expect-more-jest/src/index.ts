@@ -41,7 +41,6 @@ export const asymmetric = {
   shorterThan: asymmBoilerplate('Any<ShorterThan(other: string)>', api.isShorterThan),
   startingWith: asymmBoilerplate('Any<StartingWith(other: string)>', api.startsWith),
   validDate: asymmBoilerplate('Any<ValidDate>', api.isValidDate),
-  walkable: asymmBoilerplate('Any<Walkable>', api.isWalkable),
   whitespace: asymmBoilerplate('Any<Whitespace>', api.isWhitespace),
   wholeNumber: asymmBoilerplate('Any<WholeNumber>', api.isWholeNumber),
   withinRange: asymmBoilerplate('Any<WithinRange<floor: number, ceiling: number>', api.isWithinRange)
@@ -307,13 +306,6 @@ export const matchers = {
       message: () => `expected ${received} to be an instance of Date with a valid value`,
       notMessage: () => `expected ${received} not to be an instance of Date with a valid value`,
       pass: api.isValidDate(received)
-    });
-  },
-  toBeWalkable(received: any) {
-    return boilerplate({
-      message: () => `expected ${received} to be walkable`,
-      notMessage: () => `expected ${received} not to be walkable`,
-      pass: api.isWalkable(received)
     });
   },
   toBeWhitespace(received: any) {

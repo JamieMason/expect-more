@@ -1,4 +1,4 @@
-import { isArray, isObject, isWalkable } from 'expect-more';
+import { isArray, isObject } from 'expect-more';
 import { deepReduce } from './lib/deep-reduce';
 import { getIn } from './lib/get-in';
 import {

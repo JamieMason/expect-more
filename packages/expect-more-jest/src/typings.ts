@@ -78,7 +78,6 @@ declare global {
       toBeTrue(): R;
       toBeUndefined(): R;
       toBeValidDate(): R;
-      toBeWalkable(): R;
       toBeWhitespace(): R;
       toBeWholeNumber(): R;
       toBeWithinRange(floor: number, ceiling: number): R;
@@ -111,7 +110,6 @@ declare global {
       shorterThan(other: string): AsymmetricMatcher;
       startingWith(other: string): AsymmetricMatcher;
       validDate(): AsymmetricMatcher;
-      walkable(): AsymmetricMatcher;
       whitespace(): AsymmetricMatcher;
       wholeNumber(): AsymmetricMatcher;
       withinRange(floor: number, ceiling: number): AsymmetricMatcher;
