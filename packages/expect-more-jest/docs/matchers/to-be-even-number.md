@@ -1,1 +1,9 @@
-# expect().toBeEvenNumber
+# expect().toBeEvenNumber()
+
+Asserts that a value is an even `Number`.
+
+## Examples
+
+```js
+expect(parallelogram.sides).toBeEvenNumber();
+```
