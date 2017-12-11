@@ -1,6 +1,6 @@
-# expect().toBeLongerThan(other: string)
+# expect().toBeLongerThan(other: string | any[])
 
-Asserts that a value is a `String` whose length is greater than `other` string.
+Asserts that a value is a `String` or `Array` whose length is greater than `other`.
 
 ## Examples
 

@@ -1,6 +1,6 @@
-# expect().toBeSameLengthAs(other: string)
+# expect().toBeSameLengthAs(other: string | any[])
 
-Asserts that a value is a `String` whose length is the same as `other` string.
+Asserts that a value is a `String` or `Array` whose length is the same as `other`.
 
 ## Examples
 

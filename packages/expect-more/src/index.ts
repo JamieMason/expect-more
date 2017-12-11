@@ -39,6 +39,8 @@ const keys = (object: object): string[] => {
 const getType = (value: any): string => Object.prototype.toString.call(value);
 const hasType = (type: string) => (value: any): boolean => getType(value) === `[object ${type}]`;
 
+const isIndexedList = (value: any) => isString(value) || isArray(value);
+
 export const isArray = hasType('Array');
 export const isBoolean = hasType('Boolean');
 export const isDate = hasType('Date');
@@ -112,15 +114,18 @@ export const isNonEmptyObject = (value: any) => isObject(value) && keys(value).l
 export const isNonEmptyString = (value: any) => isString(value) && value.length > 0;
 
 export const isSameLengthAs = curry<string, any, boolean>(
-  (otherString: string, value: any) => isString(value) && isString(otherString) && value.length === otherString.length
+  (otherString: string, value: any) =>
+    isIndexedList(value) && isIndexedList(otherString) && value.length === otherString.length
 );
 
 export const isShorterThan = curry<string, any, boolean>(
-  (otherString: string, value: any) => isString(value) && isString(otherString) && value.length < otherString.length
+  (otherString: string, value: any) =>
+    isIndexedList(value) && isIndexedList(otherString) && value.length < otherString.length
 );
 
 export const isLongerThan = curry<string, any, boolean>(
-  (otherString: string, value: any) => isString(value) && isString(otherString) && value.length > otherString.length
+  (otherString: string, value: any) =>
+    isIndexedList(value) && isIndexedList(otherString) && value.length > otherString.length
 );
 
 export const hasMember = curry<string, any, boolean>(
