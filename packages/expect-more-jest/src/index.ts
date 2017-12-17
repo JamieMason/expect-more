@@ -288,18 +288,6 @@ matchers.toBeLongerThan = (util, customEqualityTesters) => ({
   compare: toBeLongerThanCompare
 });
 
-// const toBeNearCompare = (received: any, epsilon: number, other: number) => {
-//   return createResult({
-//     message: () => `expected ${received} to be no more than ${epsilon} greater or smaller than ${other}`,
-//     notMessage: () => `expected ${received} not to be no more than ${epsilon} greater or smaller than ${other}`,
-//     pass: api.isNear(other, epsilon, received)
-//   });
-// };
-
-// matchers.toBeNear = (util, customEqualityTesters) => ({
-//   compare: toBeNearCompare
-// });
-
 const toBeNonEmptyArrayCompare = (received: any) =>
   createResult({
     message: () => `expected ${received} to be an array with at least one item`,

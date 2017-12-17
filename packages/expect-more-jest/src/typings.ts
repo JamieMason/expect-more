@@ -69,7 +69,6 @@ declare global {
       toBeIso8601(): R;
       toBeJsonString(): R;
       toBeLongerThan(other: string): R;
-      // toBeNear(epsilon: number, other: number): R;
       toBeNonEmptyArray(): R;
       toBeNonEmptyObject(): R;
       toBeNonEmptyString(): R;

@@ -114,7 +114,6 @@ beforeEach(() => {
 * [expect().toBeIso8601](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-iso8601.md)
 * [expect().toBeJsonString](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-json-string.md)
 * [expect().toBeLongerThan](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-longer-than.md)
-* [expect().toBeNear](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-near.md)
 * [expect().toBeNonEmptyArray](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-non-empty-array.md)
 * [expect().toBeNonEmptyObject](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-non-empty-object.md)
 * [expect().toBeNonEmptyString](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-non-empty-string.md)
