@@ -6,7 +6,8 @@
   "bugs": "https://github.com/JamieMason/expect-more/issues",
   "dependencies": {
     "chalk": "2.3.0",
-    "expect-more": "0.0.0"
+    "expect-more": "0.0.0",
+    "jest-matcher-utils": "21.2.1"
   },
   "files": [
     "dist"
@@ -19,5 +20,5 @@
   "license": "MIT",
   "main": "dist/typings.js",
   "repository": "JamieMason/expect-more",
-  "types": "./dist/index.d.ts"
+  "types": "./dist/typings.d.ts"
 }
