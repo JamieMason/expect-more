@@ -321,17 +321,6 @@ matchers.toBeNonEmptyString = (util, customEqualityTesters) => ({
   compare: toBeNonEmptyStringCompare
 });
 
-const toBeNullCompare = (received: any) =>
-  createResult({
-    message: () => `expected ${received} to be null`,
-    notMessage: () => `expected ${received} not to be null`,
-    pass: api.isNull(received)
-  });
-
-matchers.toBeNull = (util, customEqualityTesters) => ({
-  compare: toBeNullCompare
-});
-
 const toBeNumberCompare = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a valid number`,

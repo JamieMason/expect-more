@@ -117,7 +117,6 @@ beforeEach(() => {
 * [expect().toBeNonEmptyArray](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-non-empty-array.md)
 * [expect().toBeNonEmptyObject](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-non-empty-object.md)
 * [expect().toBeNonEmptyString](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-non-empty-string.md)
-* [expect().toBeNull](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-null.md)
 * [expect().toBeNumber](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-number.md)
 * [expect().toBeObject](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-object.md)
 * [expect().toBeOddNumber](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-odd-number.md)

@@ -72,7 +72,6 @@ declare global {
       toBeNonEmptyArray(): R;
       toBeNonEmptyObject(): R;
       toBeNonEmptyString(): R;
-      toBeNull(): R;
       toBeNumber(): R;
       toBeObject(): R;
       toBeOddNumber(): R;
