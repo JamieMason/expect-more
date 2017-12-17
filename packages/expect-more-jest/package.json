@@ -16,7 +16,7 @@
   "homepage": "https://github.com/JamieMason/expect-more#readme",
   "keywords": [],
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "dist/typings.js",
   "repository": "JamieMason/expect-more",
   "types": "./dist/index.d.ts"
 }
