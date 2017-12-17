@@ -6,7 +6,6 @@ import {
   ArrayMutator,
   Collection,
   Deconstructor,
-  DeepReducer,
   IArrayLocator,
   IDeconstructorResult,
   IGenerator,

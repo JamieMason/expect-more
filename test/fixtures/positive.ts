@@ -1,5 +1,5 @@
 /* tslint:disable:no-construct */
-import { gen, Generator } from 'testcheck';
+import { gen } from 'testcheck';
 
 const midnight = () => new Date('2013-01-01T00:00:00.000Z');
 const oneAm = () => new Date('2013-01-01T01:00:00.000Z');

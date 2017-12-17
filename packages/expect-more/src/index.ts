@@ -1,15 +1,4 @@
-import {
-  Collection,
-  ICurry,
-  ICurry1Arg,
-  ICurry2Args,
-  ICurry3Args,
-  ICurry4Args,
-  ICurry5Args,
-  Reducer,
-  UnaryBoolFn,
-  VoidFn
-} from './typings';
+import { ICurry, ICurry2Args, ICurry3Args, UnaryBoolFn, VoidFn } from './typings';
 
 const curryFn = (f: (...ys: any[]) => any, xs: any[], ctx: any) =>
   f.length <= xs.length ? f.apply(ctx, xs.slice(0, f.length)) : (...ys: any[]) => curryFn(f, xs.concat(ys), ctx);
