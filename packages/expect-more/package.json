@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "prepublish": "cd ../ && npm run build:expect-more"
+    "prepublish": "cd ../../ && npm run build:expect-more"
   },
   "homepage": "https://github.com/JamieMason/expect-more#readme",
   "keywords": [],

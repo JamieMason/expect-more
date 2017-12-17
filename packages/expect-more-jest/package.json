@@ -13,12 +13,12 @@
     "dist"
   ],
   "scripts": {
-    "prepublish": "cd ../ && npm run build:expect-more-jest"
+    "prepublish": "cd ../../ && npm run build:expect-more-jest"
   },
   "homepage": "https://github.com/JamieMason/expect-more#readme",
   "keywords": [],
   "license": "MIT",
-  "main": "dist/typings.js",
+  "main": "dist/index.js",
   "repository": "JamieMason/expect-more",
   "types": "./dist/typings.d.ts"
 }
