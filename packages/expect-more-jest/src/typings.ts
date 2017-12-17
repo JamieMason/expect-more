@@ -1,3 +1,6 @@
+export type MatcherFactory = jasmine.CustomMatcherFactory;
+export type Result = jasmine.CustomMatcherResult;
+
 export type AsymmetricMatcher = (value: any) => { asymmetricMatch: (value: any) => boolean };
 
 export type AnyFunction = (...args: any[]) => any;
@@ -32,11 +35,13 @@ export interface IGenerator {
   shape: Collection;
 }
 
-export interface IBoilerplate {
+export type StringCreator = () => string;
+export interface IResultOptions {
   pass: boolean;
-  message: () => string;
-  notMessage: () => string;
+  message: StringCreator;
+  notMessage: StringCreator;
 }
+export type ResultCreator = (options: IResultOptions) => Result;
 
 declare global {
   namespace jest {
