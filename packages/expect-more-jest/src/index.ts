@@ -288,17 +288,17 @@ matchers.toBeLongerThan = (util, customEqualityTesters) => ({
   compare: toBeLongerThanCompare
 });
 
-const toBeNearCompare = (received: any, epsilon: number, other: number) => {
-  return createResult({
-    message: () => `expected ${received} to be no more than ${epsilon} greater or smaller than ${other}`,
-    notMessage: () => `expected ${received} not to be no more than ${epsilon} greater or smaller than ${other}`,
-    pass: api.isNear(other, epsilon, received)
-  });
-};
+// const toBeNearCompare = (received: any, epsilon: number, other: number) => {
+//   return createResult({
+//     message: () => `expected ${received} to be no more than ${epsilon} greater or smaller than ${other}`,
+//     notMessage: () => `expected ${received} not to be no more than ${epsilon} greater or smaller than ${other}`,
+//     pass: api.isNear(other, epsilon, received)
+//   });
+// };
 
-matchers.toBeNear = (util, customEqualityTesters) => ({
-  compare: toBeNearCompare
-});
+// matchers.toBeNear = (util, customEqualityTesters) => ({
+//   compare: toBeNearCompare
+// });
 
 const toBeNonEmptyArrayCompare = (received: any) =>
   createResult({
@@ -476,17 +476,17 @@ matchers.toBeWholeNumber = (util, customEqualityTesters) => ({
   compare: toBeWholeNumberCompare
 });
 
-const toBeWithinRangeCompare = (received: any, floor: number, ceiling: number) => {
-  return createResult({
-    message: () => `expected ${received} to be within range ${floor} - ${ceiling} (inclusive}`,
-    notMessage: () => `expected ${received} not to be within range ${floor} - ${ceiling} (inclusive}`,
-    pass: api.isWithinRange(floor, ceiling, received)
-  });
-};
+// const toBeWithinRangeCompare = (received: any, floor: number, ceiling: number) => {
+//   return createResult({
+//     message: () => `expected ${received} to be within range ${floor} - ${ceiling} (inclusive}`,
+//     notMessage: () => `expected ${received} not to be within range ${floor} - ${ceiling} (inclusive}`,
+//     pass: api.isWithinRange(floor, ceiling, received)
+//   });
+// };
 
-matchers.toBeWithinRange = (util, customEqualityTesters) => ({
-  compare: toBeWithinRangeCompare
-});
+// matchers.toBeWithinRange = (util, customEqualityTesters) => ({
+//   compare: toBeWithinRangeCompare
+// });
 
 const toEndWithCompare = (received: any, other: string) =>
   createResult({

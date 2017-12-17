@@ -69,7 +69,7 @@ declare global {
       toBeIso8601(): R;
       toBeJsonString(): R;
       toBeLongerThan(other: string): R;
-      toBeNear(epsilon: number, other: number): R;
+      // toBeNear(epsilon: number, other: number): R;
       toBeNonEmptyArray(): R;
       toBeNonEmptyObject(): R;
       toBeNonEmptyString(): R;
@@ -86,7 +86,7 @@ declare global {
       toBeValidDate(): R;
       toBeWhitespace(): R;
       toBeWholeNumber(): R;
-      toBeWithinRange(floor: number, ceiling: number): R;
+      // toBeWithinRange(floor: number, ceiling: number): R;
       toEndWith(other: string): R;
       toStartWith(other: string): R;
       toSurvive(deconstructor: IGenerator): R;
