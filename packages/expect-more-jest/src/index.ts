@@ -409,17 +409,6 @@ matchers.toBeTrue = (util, customEqualityTesters) => ({
   compare: toBeTrueCompare
 });
 
-const toBeUndefinedCompare = (received: any) =>
-  createResult({
-    message: () => `expected ${received} to be undefined`,
-    notMessage: () => `expected ${received} not to be undefined`,
-    pass: api.isUndefined(received)
-  });
-
-matchers.toBeUndefined = (util, customEqualityTesters) => ({
-  compare: toBeUndefinedCompare
-});
-
 const toBeValidDateCompare = (received: any) =>
   createResult({
     message: () => `expected ${received} to be an instance of Date with a valid value`,

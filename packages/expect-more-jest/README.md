@@ -125,7 +125,6 @@ beforeEach(() => {
 * [expect().toBeShorterThan](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-shorter-than.md)
 * [expect().toBeString](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-string.md)
 * [expect().toBeTrue](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-true.md)
-* [expect().toBeUndefined](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-undefined.md)
 * [expect().toBeValidDate](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-valid-date.md)
 * [expect().toBeWhitespace](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-whitespace.md)
 * [expect().toBeWholeNumber](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-whole-number.md)

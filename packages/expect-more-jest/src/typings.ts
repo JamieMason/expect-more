@@ -80,7 +80,6 @@ declare global {
       toBeShorterThan(other: string): R;
       toBeString(): R;
       toBeTrue(): R;
-      toBeUndefined(): R;
       toBeValidDate(): R;
       toBeWhitespace(): R;
       toBeWholeNumber(): R;
