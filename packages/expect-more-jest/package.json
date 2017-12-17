@@ -5,6 +5,7 @@
   "author": "Jamie Mason <jamie@foldleft.io> (https://github.com/JamieMason)",
   "bugs": "https://github.com/JamieMason/expect-more/issues",
   "dependencies": {
+    "chalk": "2.3.0",
     "expect-more": "0.0.0"
   },
   "files": [

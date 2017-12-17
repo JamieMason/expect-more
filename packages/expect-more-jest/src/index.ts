@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import * as api from 'expect-more';
 import { missingBranches, missingLeaves, missingNodes, nullBranches, nullLeaves, nullNodes } from './gen';
 import { AsymmetricMatcher, IBoilerplate, IGenerator } from './typings';
@@ -344,14 +345,35 @@ export const matchers = {
     });
   },
   toSurvive(received: any, deconstructor: IGenerator) {
-    // @TODO: update README
-    const { printExpected, printReceived } = this.utils;
+    const { matcherHint, printExpected } = this.utils;
     const result = deconstructor.assert(received);
-    const receivedLog = printReceived(received);
-    const expectedLog = printExpected(deconstructor.shape);
+    const message = (hint, permutation, error) => `
+    ${hint}
+
+    When called with:
+      ${permutation}
+
+    Throws:
+      ${error}
+    `;
+
+    const notMessage = (hint, msg) => `
+    ${hint}
+
+    ${msg}
+    `;
     return boilerplate({
-      message: () => `expected ${receivedLog} to survive when called with ${deconstructor.name}: ${expectedLog}`,
-      notMessage: () => `expected ${receivedLog} not to survive when called with ${deconstructor.name}: ${expectedLog}`,
+      message: () =>
+        message(
+          matcherHint('.toSurvive', `Function ${received.name}`, deconstructor.name),
+          printExpected(result.permutation),
+          chalk.red(result.error.message)
+        ),
+      notMessage: () =>
+        notMessage(
+          matcherHint('.not.toSurvive', `Function ${received.name}`, deconstructor.name),
+          chalk.red('No Error was thrown')
+        ),
       pass: result.pass
     });
   }
