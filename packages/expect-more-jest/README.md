@@ -14,12 +14,25 @@ Write Beautiful Specs with Custom Matchers for Jest
 [![Follow JamieMason on GitHub](https://img.shields.io/github/followers/JamieMason.svg?style=social&label=Follow)](https://github.com/JamieMason)
 [![Follow fold_left on Twitter](https://img.shields.io/twitter/follow/fold_left.svg?style=social&label=Follow)](https://twitter.com/fold_left)
 
+## What
+
+A huge library of test matchers a range of common use-cases.
+
+## Why
+
+Custom Matchers make tests easier to read and produce relevant and useful messages when they fail.
+
+## How
+
+By avoiding vague messages such as _"expected false to be true"_ in favour of useful cues such as _"expected 3 to be
+even number"_ and avoiding implementation noise such as `expect(paws.length % 2 === 0).toEqual(true)` in favour of
+simply stating that you `expect(paws.length).toBeEvenNumber()`.
+
 ## Status
 
-This is a new project which needs a lot of work on documentation. It is under active development so there will likely be
-changes, but at its core it is a rewrite of [jasmine-expect][jasmine-expect] which is a mature, well-tested library.
-
-Contributors welcome, please get in touch.
+expect-more-jest is a recent TypeScript rewrite of [jasmine-expect][jasmine-expect]
+[![NPM downloads for jasmine-expect](http://img.shields.io/npm/dm/jasmine-expect.svg?style=flat-square)](https://www.npmjs.com/package/jasmine-expect).
+Most effort is required on [documentation][documentation] and any contributions in this area would be really welcome.
 
 ## Installation
 
@@ -29,26 +42,40 @@ npm install expect-more-jest --save-dev
 
 ## Setup
 
-Add a [`setupTestFrameworkScriptFile`][setup-test-framework-script-file] entry to your [Jest Configuration][jest-config]
-which points to a JavaScript file somewhere in your project.
-
-```json
-{
-  "setupTestFrameworkScriptFile": "<rootDir>/test/setup-test-framework-script-file.js"
-}
-```
-
-In that file (in this example we have chosen `./test/setup-test-framework-script-file.js`) include the following:
+The simplest way to integrate is to include the following in your [jest.config.js][jest-config]:
 
 ```js
-import { asymmetric, matchers } from 'expect-more-jest';
+module.exports = {
+  // ...
+  setupTestFrameworkScriptFile: require.resolve('expect-more-jest')
+  // ...
+};
+```
 
-beforeEach(() => {
-  // register asymmetric matchers such as expect.nonEmptyArray()
-  Object.assign(expect, asymmetric);
-  // register test matchers such as expect().toBeArray()
-  expect.extend(matchers);
-});
+If your project requires more setup than just these matchers, point your
+[`setupTestFrameworkScriptFile`][setup-test-framework-script-file] entry to a JavaScript file somewhere in your project
+like so:
+
+```js
+module.exports = {
+  // ...
+  setupTestFrameworkScriptFile: '<rootDir>/test/setup-test-framework-script-file.js'
+  // ...
+};
+```
+
+In that file (in this example we have chosen `./test/setup-test-framework-script-file.js`) include:
+
+```js
+import 'expect-more-jest';
+// ...then your other setup code
+```
+
+or:
+
+```js
+require('expect-more-jest');
+// ...then your other setup code
 ```
 
 ## API
@@ -135,6 +162,8 @@ beforeEach(() => {
 
 <!-- Links -->
 
+[documentation]: https://github.com/JamieMason/expect-more/tree/master/packages/expect-more-jest/docs
 [jasmine-expect]: https://github.com/JamieMason/Jasmine-Matchers#readme
 [jest-config]: https://facebook.github.io/jest/docs/en/configuration.html
+[jest]: http://facebook.github.io/jest
 [setup-test-framework-script-file]: https://facebook.github.io/jest/docs/en/configuration.html#setuptestframeworkscriptfile-string
