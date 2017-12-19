@@ -1,4 +1,4 @@
-import { gen } from '../../src';
+import * as gen from '../../../src/lib/gen';
 
 it('returns incomplete copies of basic arrays', () => {
   expect(gen.missingLeaves([1, 2, 3]).permutations).toEqual([undefined, [2, 3], [1, 3], [1, 2]]);

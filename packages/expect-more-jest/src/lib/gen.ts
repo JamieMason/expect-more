@@ -1,6 +1,4 @@
 import { isArray, isObject } from 'expect-more';
-import { deepReduce } from './lib/deep-reduce';
-import { getIn } from './lib/get-in';
 import {
   AnyFunction,
   ArrayMutator,
@@ -13,7 +11,9 @@ import {
   IObjectLocator,
   ObjectMutator,
   PropName
-} from './typings';
+} from '../typings';
+import { deepReduce } from './deep-reduce';
+import { getIn } from './get-in';
 
 const not = (fn) => (...args) => !fn(...args);
 const createMutator = (isEligible, mutate) => (locator) => [locator].filter(isEligible).map(mutate);

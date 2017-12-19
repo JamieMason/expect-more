@@ -109,24 +109,15 @@ require('expect-more-jest');
 * [expect.wholeNumber](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/asymmetric/whole-number.md)
 * [expect.withinRange](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/asymmetric/within-range.md)
 
-### Generators
-
-* [gen.missingBranches](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/gen/missing-branches.md)
-* [gen.missingLeaves](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/gen/missing-leaves.md)
-* [gen.missingNodes](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/gen/missing-nodes.md)
-* [gen.nullBranches](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/gen/null-branches.md)
-* [gen.nullLeaves](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/gen/null-leaves.md)
-* [gen.nullNodes](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/gen/null-nodes.md)
-
 ### Matchers
 
 * [expect().toBeAfter](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-after.md)
+* [expect().toBeArray](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-array.md)
 * [expect().toBeArrayOfBooleans](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-array-of-booleans.md)
 * [expect().toBeArrayOfNumbers](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-array-of-numbers.md)
 * [expect().toBeArrayOfObjects](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-array-of-objects.md)
 * [expect().toBeArrayOfSize](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-array-of-size.md)
 * [expect().toBeArrayOfStrings](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-array-of-strings.md)
-* [expect().toBeArray](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-array.md)
 * [expect().toBeBefore](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-before.md)
 * [expect().toBeBoolean](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-boolean.md)
 * [expect().toBeCalculable](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-calculable.md)
@@ -158,7 +149,12 @@ require('expect-more-jest');
 * [expect().toBeWithinRange](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-be-within-range.md)
 * [expect().toEndWith](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-end-with.md)
 * [expect().toStartWith](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-start-with.md)
-* [expect().toSurvive](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-survive.md)
+* [expect(fn).toHandleMissingBranches(shape)](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-handle-missing-branches.md)
+* [expect(fn).toHandleMissingLeaves(shape)](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-handle-missing-leaves.md)
+* [expect(fn).toHandleMissingNodes(shape)](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-handle-missing-nodes.md)
+* [expect(fn).toHandleNullBranches(shape)](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-handle-null-branches.md)
+* [expect(fn).toHandleNullLeaves(shape)](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-handle-null-leaves.md)
+* [expect(fn).toHandleNullNodes(shape)](https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/docs/matchers/to-handle-null-nodes.md)
 
 <!-- Links -->
 

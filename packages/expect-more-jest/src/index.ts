@@ -1,8 +1,8 @@
 import chalk from 'chalk';
 import * as api from 'expect-more';
 import { matcherHint, printExpected } from 'jest-matcher-utils';
-import { missingBranches, missingLeaves, missingNodes, nullBranches, nullLeaves, nullNodes } from './gen';
-import { AsymmetricMatcher, IGenerator, MatcherFactories, MatcherFactory, ResultCreator } from './typings';
+import { missingBranches, missingLeaves, missingNodes, nullBranches, nullLeaves, nullNodes } from './lib/gen';
+import { AsymmetricMatcher, Collection, IGenerator, MatcherFactories, MatcherFactory, ResultCreator } from './typings';
 
 const createResult: ResultCreator = ({ pass, message, notMessage }) => ({
   message: () => (pass ? notMessage() : message()).trim(),
@@ -44,15 +44,6 @@ const asymmetric = {
   whitespace: asymmBoilerplate('Any<Whitespace>', api.isWhitespace),
   wholeNumber: asymmBoilerplate('Any<WholeNumber>', api.isWholeNumber),
   withinRange: asymmBoilerplate('Any<WithinRange<floor: number, ceiling: number>', api.isWithinRange)
-};
-
-export const gen = {
-  missingBranches,
-  missingLeaves,
-  missingNodes,
-  nullBranches,
-  nullLeaves,
-  nullNodes
 };
 
 const matchers: MatcherFactories = {};
@@ -476,7 +467,10 @@ matchers.toStartWith = (util, customEqualityTesters) => ({
   compare: toStartWithCompare
 });
 
-const toSurviveCompare = (received: any, deconstructor: IGenerator) => {
+type deconstructorCreator = (collection: Collection) => IGenerator;
+
+const createToHandleComparer = (matcherName: string, createDeconstructor: deconstructorCreator) => (received: any) => {
+  const deconstructor: IGenerator = createDeconstructor(received);
   const result = deconstructor.assert(received);
   const message = (hint, permutation, error) => `
   ${hint}
@@ -496,21 +490,38 @@ const toSurviveCompare = (received: any, deconstructor: IGenerator) => {
   return createResult({
     message: () =>
       message(
-        matcherHint('.toSurvive', `Function ${received.name}`, deconstructor.name),
+        matcherHint(`.${matcherName}`, `Function ${received.name}`),
         printExpected(result.permutation),
         chalk.red(result.error.message)
       ),
     notMessage: () =>
-      notMessage(
-        matcherHint('.not.toSurvive', `Function ${received.name}`, deconstructor.name),
-        chalk.red('No Error was thrown')
-      ),
+      notMessage(matcherHint(`.not.${matcherName}`, `Function ${received.name}`), chalk.red('No Error was thrown')),
     pass: result.pass
   });
 };
 
-matchers.toSurvive = (util, customEqualityTesters) => ({
-  compare: toSurviveCompare
+matchers.toHandleMissingBranches = (util, customEqualityTesters) => ({
+  compare: createToHandleComparer('toHandleMissingBranches', missingBranches)
+});
+
+matchers.toHandleMissingLeaves = (util, customEqualityTesters) => ({
+  compare: createToHandleComparer('toHandleMissingLeaves', missingLeaves)
+});
+
+matchers.toHandleMissingNodes = (util, customEqualityTesters) => ({
+  compare: createToHandleComparer('toHandleMissingNodes', missingNodes)
+});
+
+matchers.toHandleNullBranches = (util, customEqualityTesters) => ({
+  compare: createToHandleComparer('toHandleNullBranches', nullBranches)
+});
+
+matchers.toHandleNullLeaves = (util, customEqualityTesters) => ({
+  compare: createToHandleComparer('toHandleNullLeaves', nullLeaves)
+});
+
+matchers.toHandleNullNodes = (util, customEqualityTesters) => ({
+  compare: createToHandleComparer('toHandleNullNodes', nullNodes)
 });
 
 jasmine.addMatchers(matchers);

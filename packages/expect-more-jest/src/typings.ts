@@ -85,8 +85,13 @@ declare global {
       toBeWholeNumber(): R;
       // toBeWithinRange(floor: number, ceiling: number): R;
       toEndWith(other: string): R;
+      toHandleMissingBranches(shape: object | any[]): R;
+      toHandleMissingLeaves(shape: object | any[]): R;
+      toHandleMissingNodes(shape: object | any[]): R;
+      toHandleNullBranches(shape: object | any[]): R;
+      toHandleNullLeaves(shape: object | any[]): R;
+      toHandleNullNodes(shape: object | any[]): R;
       toStartWith(other: string): R;
-      toSurvive(deconstructor: IGenerator): R;
     }
     // tslint:disable-next-line
     interface Expect {
