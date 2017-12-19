@@ -1,4 +1,4 @@
-# expect().toBeOddNumber()
+# expect(value: any).toBeOddNumber()
 
 Asserts that a value is an odd `Number`.
 

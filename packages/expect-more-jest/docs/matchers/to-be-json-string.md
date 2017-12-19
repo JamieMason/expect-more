@@ -1,4 +1,4 @@
-# expect().toBeJsonString()
+# expect(value: any).toBeJsonString()
 
 Asserts that a value is a `String` of valid [JSON][json].
 

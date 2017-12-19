@@ -1,4 +1,4 @@
-# expect().toEndWith(other: string)
+# expect(value: any).toEndWith(other: string)
 
 Asserts that a value is a `String` whose trailing characters are `other` string.
 

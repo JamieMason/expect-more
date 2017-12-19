@@ -1,4 +1,4 @@
-# expect().toBeRegExp()
+# expect(value: any).toBeRegExp()
 
 Asserts that a value is a regular expression.
 

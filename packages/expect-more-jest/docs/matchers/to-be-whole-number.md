@@ -1,4 +1,4 @@
-# expect().toBeWholeNumber()
+# expect(value: any).toBeWholeNumber()
 
 Asserts that a value is a `Number` with no positive decimal places.
 

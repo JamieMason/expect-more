@@ -68,7 +68,7 @@ declare global {
       toBeFunction(): R;
       toBeIso8601(): R;
       toBeJsonString(): R;
-      toBeLongerThan(other: string): R;
+      toBeLongerThan(other: string | any[]): R;
       toBeNonEmptyArray(): R;
       toBeNonEmptyObject(): R;
       toBeNonEmptyString(): R;
@@ -76,8 +76,8 @@ declare global {
       toBeObject(): R;
       toBeOddNumber(): R;
       toBeRegExp(): R;
-      toBeSameLengthAs(other: string): R;
-      toBeShorterThan(other: string): R;
+      toBeSameLengthAs(other: string | any[]): R;
+      toBeShorterThan(other: string | any[]): R;
       toBeString(): R;
       toBeTrue(): R;
       toBeValidDate(): R;
@@ -108,14 +108,14 @@ declare global {
       evenNumber(): AsymmetricMatcher;
       iso8601(): AsymmetricMatcher;
       jsonString(): AsymmetricMatcher;
-      longerThan(other: string): AsymmetricMatcher;
+      longerThan(other: string | any[]): AsymmetricMatcher;
       near(other: number, epsilon: number): AsymmetricMatcher;
       nonEmptyArray(): AsymmetricMatcher;
       nonEmptyObject(): AsymmetricMatcher;
       nonEmptyString(): AsymmetricMatcher;
       oddNumber(): AsymmetricMatcher;
-      sameLengthAs(other: string): AsymmetricMatcher;
-      shorterThan(other: string): AsymmetricMatcher;
+      sameLengthAs(other: string | any[]): AsymmetricMatcher;
+      shorterThan(other: string | any[]): AsymmetricMatcher;
       startingWith(other: string): AsymmetricMatcher;
       validDate(): AsymmetricMatcher;
       whitespace(): AsymmetricMatcher;

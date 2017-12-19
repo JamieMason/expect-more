@@ -1,4 +1,4 @@
-# expect().toBeNonEmptyArray()
+# expect(value: any).toBeNonEmptyArray()
 
 Asserts that a value is an `Array` containing at least 1 value.
 

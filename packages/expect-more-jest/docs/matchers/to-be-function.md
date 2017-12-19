@@ -1,4 +1,4 @@
-# expect().toBeFunction()
+# expect(value: any).toBeFunction()
 
 Asserts that a value is a `Function`.
 

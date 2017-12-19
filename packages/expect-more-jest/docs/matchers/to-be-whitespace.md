@@ -1,4 +1,4 @@
-# expect().toBeWhitespace()
+# expect(value: any).toBeWhitespace()
 
 Asserts that a value is a `String` containing only whitespace characters.
 

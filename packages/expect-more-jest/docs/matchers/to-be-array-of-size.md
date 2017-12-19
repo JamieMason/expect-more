@@ -1,4 +1,4 @@
-# expect().toBeArrayOfSize(size: number)
+# expect(value: any).toBeArrayOfSize(size: number)
 
 Asserts that a value is an `Array` containing `size` number of values.
 

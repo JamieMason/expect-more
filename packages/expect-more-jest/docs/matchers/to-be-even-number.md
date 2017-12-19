@@ -1,4 +1,4 @@
-# expect().toBeEvenNumber()
+# expect(value: any).toBeEvenNumber()
 
 Asserts that a value is an even `Number`.
 

@@ -1,4 +1,4 @@
-# expect().toBeString()
+# expect(value: any).toBeString()
 
 Asserts that a value is a `String`.
 

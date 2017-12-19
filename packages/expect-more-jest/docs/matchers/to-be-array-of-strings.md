@@ -1,4 +1,4 @@
-# expect().toBeArrayOfStrings()
+# expect(value: any).toBeArrayOfStrings()
 
 Asserts that a value is an `Array` containing only `String` values.
 

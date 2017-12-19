@@ -1,4 +1,4 @@
-# expect().toBeNonEmptyString()
+# expect(value: any).toBeNonEmptyString()
 
 Asserts that a value is a valid `String` containing at least one character.
 

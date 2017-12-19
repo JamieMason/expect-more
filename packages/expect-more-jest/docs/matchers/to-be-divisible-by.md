@@ -1,4 +1,4 @@
-# expect().toBeDivisibleBy(other: number)
+# expect(value: any).toBeDivisibleBy(other: number)
 
 Asserts that a value is a `Number` divisible by `other` number.
 

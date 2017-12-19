@@ -1,4 +1,4 @@
-# expect().toBeObject()
+# expect(value: any).toBeObject()
 
 Asserts that a value is an `Object`.
 

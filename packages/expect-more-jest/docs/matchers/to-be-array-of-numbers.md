@@ -1,4 +1,4 @@
-# expect().toBeArrayOfNumbers()
+# expect(value: any).toBeArrayOfNumbers()
 
 Asserts that a value is an `Array` containing only `Number` values.
 

@@ -1,4 +1,4 @@
-# expect().toBeNumber()
+# expect(value: any).toBeNumber()
 
 Asserts that a value is a valid `Number` and not `NaN`.
 

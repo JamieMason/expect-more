@@ -1,4 +1,4 @@
-# expect().toBeAfter(other: date)
+# expect(date: Date).toBeAfter(other: Date)
 
 Asserts that a value is a valid instance of `Date` whose value occurs after that of `other` Date.
 

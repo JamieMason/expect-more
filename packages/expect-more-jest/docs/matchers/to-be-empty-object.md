@@ -1,4 +1,4 @@
-# expect().toBeEmptyObject()
+# expect(value: any).toBeEmptyObject()
 
 Asserts that a value is a valid `Object` containing no members.
 

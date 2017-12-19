@@ -1,4 +1,4 @@
-# expect().toBeNonEmptyObject()
+# expect(value: any).toBeNonEmptyObject()
 
 Asserts that a value is an `Object` containing at least 1 member.
 

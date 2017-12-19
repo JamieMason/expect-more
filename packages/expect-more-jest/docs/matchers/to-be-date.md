@@ -1,4 +1,4 @@
-# expect().toBeDate()
+# expect(value: any).toBeDate()
 
 Asserts that a value is an instance of `Date`.
 

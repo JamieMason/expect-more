@@ -1,4 +1,4 @@
-# expect().toBeBefore(other: date)
+# expect(value: any).toBeBefore(other: Date)
 
 Asserts that a value is a valid instance of `Date` whose value occurs before that of `other` Date.
 
