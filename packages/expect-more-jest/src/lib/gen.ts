@@ -3,10 +3,10 @@ import {
   AnyFunction,
   ArrayMutator,
   Collection,
-  Deconstructor,
+  Generator,
   IArrayLocator,
-  IDeconstructorResult,
   IGenerator,
+  IGeneratorResult,
   ILocator,
   IObjectLocator,
   ObjectMutator,
@@ -27,11 +27,11 @@ const locateDescendant = (path: PropName[], clone: Collection): ILocator => {
   return { key, owner };
 };
 
-const createDeconstructor = (
+const createGenerator = (
   mutateObject: ObjectMutator,
   mutateArray: ArrayMutator,
   getInitialValue: AnyFunction
-): Deconstructor => (collection: Collection): any[] => {
+): Generator => (collection: Collection): any[] => {
   const original = JSON.stringify(collection);
   const mutateDescendant = (memo: any[], path: PropName[]): any[] => {
     if (path.length) {
@@ -76,10 +76,10 @@ const nullifyLeafInObject: ObjectMutator = createMutator(not(isBranch), nullifyF
 const removeBranch: ArrayMutator = createMutator(isBranch, removeFromArray);
 const removeLeaf: ArrayMutator = createMutator(not(isBranch), removeFromArray);
 
-const createWrapper = (deconstructor: Deconstructor, name: string) => (collection: Collection): IGenerator => {
-  const permutations = deconstructor(collection);
+const createWrapper = (generator: Generator, name: string) => (collection: Collection): IGenerator => {
+  const permutations = generator(collection);
   return {
-    assert(fn: AnyFunction): IDeconstructorResult {
+    assert(fn: AnyFunction): IGeneratorResult {
       for (let i = 0, len = permutations.length; i < len; i++) {
         try {
           fn(permutations[i]);
@@ -104,31 +104,31 @@ const createWrapper = (deconstructor: Deconstructor, name: string) => (collectio
 };
 
 export const missingBranches = createWrapper(
-  createDeconstructor(deleteBranch, removeBranch, () => [undefined]),
-  'Deconstructor<MissingBranches>'
+  createGenerator(deleteBranch, removeBranch, () => [undefined]),
+  'Generator<MissingBranches>'
 );
 
 export const missingLeaves = createWrapper(
-  createDeconstructor(deleteLeaf, removeLeaf, () => [undefined]),
-  'Deconstructor<MissingLeaves>'
+  createGenerator(deleteLeaf, removeLeaf, () => [undefined]),
+  'Generator<MissingLeaves>'
 );
 
 export const missingNodes = createWrapper(
-  createDeconstructor(removeFromObject, removeFromArray, () => [undefined]),
-  'Deconstructor<MissingNodes>'
+  createGenerator(removeFromObject, removeFromArray, () => [undefined]),
+  'Generator<MissingNodes>'
 );
 
 export const nullBranches = createWrapper(
-  createDeconstructor(nullifyBranchInObject, nullifyBranchInArray, () => [null]),
-  'Deconstructor<NullBranches>'
+  createGenerator(nullifyBranchInObject, nullifyBranchInArray, () => [null]),
+  'Generator<NullBranches>'
 );
 
 export const nullLeaves = createWrapper(
-  createDeconstructor(nullifyLeafInObject, nullifyLeafInArray, () => [null]),
-  'Deconstructor<NullLeaves>'
+  createGenerator(nullifyLeafInObject, nullifyLeafInArray, () => [null]),
+  'Generator<NullLeaves>'
 );
 
 export const nullNodes = createWrapper(
-  createDeconstructor(nullifyFromObject, nullifyFromArray, () => [null]),
-  'Deconstructor<NullNodes>'
+  createGenerator(nullifyFromObject, nullifyFromArray, () => [null]),
+  'Generator<NullNodes>'
 );

@@ -467,11 +467,11 @@ matchers.toStartWith = (util, customEqualityTesters) => ({
   compare: toStartWithCompare
 });
 
-type deconstructorCreator = (collection: Collection) => IGenerator;
+type generatorCreator = (collection: Collection) => IGenerator;
 
-const createToHandleComparer = (matcherName: string, createDeconstructor: deconstructorCreator) => (received: any) => {
-  const deconstructor: IGenerator = createDeconstructor(received);
-  const result = deconstructor.assert(received);
+const createToHandleComparer = (matcherName: string, createGenerator: generatorCreator) => (received: any) => {
+  const generator: IGenerator = createGenerator(received);
+  const result = generator.assert(received);
   const message = (hint, permutation, error) => `
   ${hint}
 

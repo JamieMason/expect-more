@@ -22,15 +22,15 @@ export interface IObjectLocator extends ILocator {
 }
 export type ArrayMutator = (locator: IArrayLocator) => void;
 export type ObjectMutator = (locator: IObjectLocator) => void;
-export type Deconstructor = (collection: Collection) => any[];
+export type Generator = (collection: Collection) => any[];
 
-export interface IDeconstructorResult {
+export interface IGeneratorResult {
   error: Error | null;
   pass: boolean;
   permutation: Collection | null;
 }
 export interface IGenerator {
-  assert: (fn: AnyFunction) => IDeconstructorResult;
+  assert: (fn: AnyFunction) => IGeneratorResult;
   name: string;
   permutations: Collection[];
   shape: Collection;
