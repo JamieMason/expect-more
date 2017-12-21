@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "author": "Jamie Mason <jamie@foldleft.io> (https://github.com/JamieMason)",
   "bugs": "https://github.com/JamieMason/expect-more/issues",
+  "contributors": [
+    "Haroen Viaene (https://github.com/Haroenv)"
+  ],
   "dependencies": {
     "chalk": "2.3.0",
     "expect-more": "0.4.0",
@@ -12,13 +15,13 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "prepublish": "cd ../../ && npm run build:expect-more-jest"
-  },
   "homepage": "https://github.com/JamieMason/expect-more#readme",
   "keywords": [],
   "license": "MIT",
   "main": "dist/index.js",
   "repository": "JamieMason/expect-more",
+  "scripts": {
+    "prepublish": "cd ../../ && npm run build:expect-more-jest"
+  },
   "types": "./dist/typings.d.ts"
 }
