@@ -6,6 +6,7 @@ export type AsymmetricMatcher = (value: any) => { asymmetricMatch: (value: any) 
 
 export type AnyFunction = (...args: any[]) => any;
 export type Collection = object | any[];
+export type GeneratorCreator = (collection: Collection) => IGenerator;
 export type PropName = string | number;
 export type DeepReducer<T> = (memo: T, path: PropName[], value?: any) => T;
 export interface ILocator {

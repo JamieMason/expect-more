@@ -2,7 +2,16 @@ import chalk from 'chalk';
 import * as api from 'expect-more';
 import { matcherHint, printExpected } from 'jest-matcher-utils';
 import { missingBranches, missingLeaves, missingNodes, nullBranches, nullLeaves, nullNodes } from './lib/gen';
-import { AsymmetricMatcher, Collection, IGenerator, MatcherFactories, MatcherFactory, ResultCreator } from './typings';
+import {
+  AnyFunction,
+  AsymmetricMatcher,
+  Collection,
+  GeneratorCreator,
+  IGenerator,
+  MatcherFactories,
+  MatcherFactory,
+  ResultCreator
+} from './typings';
 
 const createResult: ResultCreator = ({ pass, message, notMessage }) => ({
   message: () => (pass ? notMessage() : message()).trim(),
@@ -467,11 +476,12 @@ matchers.toStartWith = (util, customEqualityTesters) => ({
   compare: toStartWithCompare
 });
 
-type generatorCreator = (collection: Collection) => IGenerator;
-
-const createToHandleComparer = (matcherName: string, createGenerator: generatorCreator) => (received: any) => {
-  const generator: IGenerator = createGenerator(received);
-  const result = generator.assert(received);
+const createToHandleComparer = (matcherName: string, createGenerator: GeneratorCreator) => (
+  fn: AnyFunction,
+  shape: Collection
+) => {
+  const generator: IGenerator = createGenerator(shape);
+  const result = generator.assert(fn);
   const message = (hint, permutation, error) => `
   ${hint}
 
@@ -490,12 +500,12 @@ const createToHandleComparer = (matcherName: string, createGenerator: generatorC
   return createResult({
     message: () =>
       message(
-        matcherHint(`.${matcherName}`, `Function ${received.name}`),
+        matcherHint(`.${matcherName}`, `Function ${fn.name}`),
         printExpected(result.permutation),
-        chalk.red(result.error.message)
+        chalk.red(result.error.stack)
       ),
     notMessage: () =>
-      notMessage(matcherHint(`.not.${matcherName}`, `Function ${received.name}`), chalk.red('No Error was thrown')),
+      notMessage(matcherHint(`.not.${matcherName}`, `Function ${fn.name}`), chalk.red('No Error was thrown')),
     pass: result.pass
   });
 };
