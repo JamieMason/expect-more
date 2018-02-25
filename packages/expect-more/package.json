@@ -7,13 +7,13 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "prepublish": "cd ../../ && npm run build:expect-more"
-  },
   "homepage": "https://github.com/JamieMason/expect-more#readme",
   "keywords": [],
   "license": "MIT",
   "main": "dist/index.js",
   "repository": "JamieMason/expect-more",
-  "types": "./dist/index.d.ts"
+  "scripts": {
+    "prepublish": "cd ../../ && npm run build:expect-more"
+  },
+  "typings": "./dist/index.d.ts"
 }

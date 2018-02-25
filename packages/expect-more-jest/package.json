@@ -23,5 +23,5 @@
   "scripts": {
     "prepublish": "cd ../../ && npm run build:expect-more-jest"
   },
-  "types": "./dist/typings.d.ts"
+  "typings": "./dist/typings.d.ts"
 }
