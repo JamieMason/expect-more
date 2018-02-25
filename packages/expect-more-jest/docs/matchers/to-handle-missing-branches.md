@@ -28,7 +28,7 @@ const shape = {
 
 // This test would pass
 it('asserts if your function safely reads nested values without throwing', () => {
-  const safe = data => get('deeply.dippy.bout.the.way.you.0', data);
+  const safe = (data) => get('deeply.dippy.bout.the.way.you.0', data);
   expect(safe).toHandleMissingBranches(shape);
 });
 
