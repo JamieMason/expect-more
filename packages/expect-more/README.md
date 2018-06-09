@@ -49,68 +49,68 @@ isWithinRange(10, 20, 21);
 
 ### General
 
-* `isBoolean: (value: any) => boolean`
-* `isFalse: (value: any) => boolean`
-* `isNull: (value: any) => boolean`
-* `isRegExp: (value: any) => boolean`
-* `isTrue: (value: any) => boolean`
-* `isUndefined: (value: any) => boolean`
+- `isBoolean: (value: any) => boolean`
+- `isFalse: (value: any) => boolean`
+- `isNull: (value: any) => boolean`
+- `isRegExp: (value: any) => boolean`
+- `isTrue: (value: any) => boolean`
+- `isUndefined: (value: any) => boolean`
 
 ### Functions
 
-* `isFunction: (value: any) => boolean`
-* `throwsAnyError: (value: () => void) => boolean`
-* `throwsErrorOfType: (typeName: string, value: () => void) => boolean`
+- `isFunction: (value: any) => boolean`
+- `throwsAnyError: (value: () => void) => boolean`
+- `throwsErrorOfType: (typeName: string, value: () => void) => boolean`
 
 ### Objects
 
-* `hasMember: (memberName: string, value: any) => boolean`
-* `isEmptyObject: (value: any) => boolean`
-* `isNonEmptyObject: (value: any) => boolean`
-* `isObject: (value: any) => boolean`
-* `isWalkable: (value: any) => boolean`
+- `hasMember: (memberName: string, value: any) => boolean`
+- `isEmptyObject: (value: any) => boolean`
+- `isNonEmptyObject: (value: any) => boolean`
+- `isObject: (value: any) => boolean`
+- `isWalkable: (value: any) => boolean`
 
 ### Arrays
 
-* `isArray: (value: any) => boolean`
-* `isArrayOfBooleans: (value: any) => boolean`
-* `isArrayOfNumbers: (value: any) => boolean`
-* `isArrayOfObjects: (value: any) => boolean`
-* `isArrayOfSize: (size: number, value: any) => boolean`
-* `isArrayOfStrings: (value: any) => boolean`
-* `isEmptyArray: (any) => boolean`
-* `isNonEmptyArray: (value: any) => boolean`
+- `isArray: (value: any) => boolean`
+- `isArrayOfBooleans: (value: any) => boolean`
+- `isArrayOfNumbers: (value: any) => boolean`
+- `isArrayOfObjects: (value: any) => boolean`
+- `isArrayOfSize: (size: number, value: any) => boolean`
+- `isArrayOfStrings: (value: any) => boolean`
+- `isEmptyArray: (any) => boolean`
+- `isNonEmptyArray: (value: any) => boolean`
 
 ### Dates
 
-* `isAfter: (other: Date, value: any) => boolean`
-* `isBefore: (other: Date, value: any) => boolean`
-* `isDate: (value: any) => boolean`
-* `isIso8601: (value: any) => boolean`
-* `isValidDate: (value: any) => boolean`
+- `isAfter: (other: Date, value: any) => boolean`
+- `isBefore: (other: Date, value: any) => boolean`
+- `isDate: (value: any) => boolean`
+- `isIso8601: (value: any) => boolean`
+- `isValidDate: (value: any) => boolean`
 
 ### Numbers
 
-* `isCalculable: (value: any) => boolean`
-* `isDivisibleBy: (other: number, value: any) => boolean`
-* `isEvenNumber: (value: any) => boolean`
-* `isGreaterThanOrEqualTo: (other: number, value: any) => boolean`
-* `isLessThanOrEqualTo: (other: number, value: any) => boolean`
-* `isNear: (other: number, epsilon: number, value: any) => boolean`
-* `isNumber: (value: any) => boolean`
-* `isOddNumber: (value: any) => boolean`
-* `isWholeNumber: (value: any) => boolean`
-* `isWithinRange: (floor: number, ceiling: number, value: any) => boolean`
+- `isCalculable: (value: any) => boolean`
+- `isDivisibleBy: (other: number, value: any) => boolean`
+- `isEvenNumber: (value: any) => boolean`
+- `isGreaterThanOrEqualTo: (other: number, value: any) => boolean`
+- `isLessThanOrEqualTo: (other: number, value: any) => boolean`
+- `isNear: (other: number, epsilon: number, value: any) => boolean`
+- `isNumber: (value: any) => boolean`
+- `isOddNumber: (value: any) => boolean`
+- `isWholeNumber: (value: any) => boolean`
+- `isWithinRange: (floor: number, ceiling: number, value: any) => boolean`
 
 ### Strings
 
-* `endsWith: (other: string, value: any) => boolean`
-* `isEmptyString: (value: any) => boolean`
-* `isJsonString: (value: any) => boolean`
-* `isLongerThan: (other: string, value: any) => boolean`
-* `isNonEmptyString: (value: any) => boolean`
-* `isSameLengthAs: (other: string, value: any) => boolean`
-* `isShorterThan: (other: string, value: any) => boolean`
-* `isString: (value: any) => boolean`
-* `isWhitespace: (value: any) => boolean`
-* `startsWith: (other: string, value: any) => boolean`
+- `endsWith: (other: string, value: any) => boolean`
+- `isEmptyString: (value: any) => boolean`
+- `isJsonString: (value: any) => boolean`
+- `isLongerThan: (other: string, value: any) => boolean`
+- `isNonEmptyString: (value: any) => boolean`
+- `isSameLengthAs: (other: string, value: any) => boolean`
+- `isShorterThan: (other: string, value: any) => boolean`
+- `isString: (value: any) => boolean`
+- `isWhitespace: (value: any) => boolean`
+- `startsWith: (other: string, value: any) => boolean`

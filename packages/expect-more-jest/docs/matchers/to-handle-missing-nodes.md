@@ -34,9 +34,22 @@ it('asserts if your function safely reads nested values without throwing', () =>
 
 // Whereas this test would fail
 it('rejects if your function throws when attempting to read unreachable values', () => {
-  const unsafe = ({ deeply: { dippy: { bout: { the: { way: { you: [walk] } } } } } }) => walk;
+  const unsafe = ({
+    deeply: {
+      dippy: {
+        bout: {
+          the: {
+            way: {
+              you: [walk]
+            }
+          }
+        }
+      }
+    }
+  }) => walk;
   expect(unsafe).toHandleMissingNodes(shape);
 });
 ```
 
-[missing-nodes]: https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/test/gen/missing-nodes.spec.ts
+[missing-nodes]:
+  https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/test/gen/missing-nodes.spec.ts

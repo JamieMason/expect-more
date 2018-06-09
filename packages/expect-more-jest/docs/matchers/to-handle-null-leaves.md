@@ -12,4 +12,5 @@ expect(selectVenueNames).toHandleNullLeaves(upcomingEvents);
 
 See the [spec for gen.nullLeaves][null-leaves] for detail on how values are deconstructed.
 
-[null-leaves]: https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/test/gen/null-leaves.spec.ts
+[null-leaves]:
+  https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/test/gen/null-leaves.spec.ts

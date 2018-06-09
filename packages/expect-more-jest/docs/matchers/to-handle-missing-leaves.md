@@ -12,4 +12,5 @@ expect(selectVenueNames).toHandleMissingLeaves(upcomingEvents);
 
 See the [spec for gen.missingLeaves][missing-leaves] for detail on how values are deconstructed.
 
-[missing-leaves]: https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/test/gen/missing-leaves.spec.ts
+[missing-leaves]:
+  https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/test/gen/missing-leaves.spec.ts

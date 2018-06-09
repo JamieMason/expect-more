@@ -6,14 +6,16 @@ const curryFn = (f: (...ys: any[]) => any, xs: any[], ctx: any) =>
 const curry: ICurry = (<T>(f: () => T, ctx?: any) =>
   f.length === 0 ? () => f.call(ctx) : curryFn(f, [], ctx)) as ICurry;
 
-const every = curry<UnaryBoolFn, any[], boolean>((fn: UnaryBoolFn, array: any[]): boolean => {
-  for (let i = 0, len = array.length; i < len; i++) {
-    if (fn(array[i]) === false) {
-      return false;
+const every = curry<UnaryBoolFn, any[], boolean>(
+  (fn: UnaryBoolFn, array: any[]): boolean => {
+    for (let i = 0, len = array.length; i < len; i++) {
+      if (fn(array[i]) === false) {
+        return false;
+      }
     }
+    return array.length > 0;
   }
-  return array.length > 0;
-});
+);
 
 const keys = (object: object): string[] => {
   const returnValue = [];
