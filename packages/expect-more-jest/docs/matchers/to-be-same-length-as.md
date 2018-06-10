@@ -7,3 +7,23 @@ Asserts that a value is a `String` or `Array` whose length is the same as `other
 ```js
 expect(passwordField.value).toBeSameLengthAs(requirements.passwordLength);
 ```
+
+```js
+expect(passwordField.value).toEqual(expect.toBeSameLengthAs(requirements.passwordLength));
+```
+
+```js
+expect(passwordField).toEqual(
+  expect.objectContaining({
+    value: expect.toBeSameLengthAs(requirements.passwordLength)
+  })
+);
+```
+
+```js
+expect(onPress).toHaveBeenCalledWith(
+  expect.objectContaining({
+    value: expect.toBeSameLengthAs(requirements.passwordLength)
+  })
+);
+```

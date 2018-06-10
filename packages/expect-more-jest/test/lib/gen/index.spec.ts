@@ -5,8 +5,8 @@ import * as gen from '../../../src/lib/gen';
     it(`gen.${method} is a generator`, () => {
       expect(gen[method]([1, 2, 3])).toEqual({
         assert: expect.any(Function),
-        name: expect.nonEmptyString(),
-        permutations: expect.nonEmptyArray(),
+        name: expect.toBeNonEmptyString(),
+        permutations: expect.toBeNonEmptyArray(),
         shape: [1, 2, 3]
       });
     });

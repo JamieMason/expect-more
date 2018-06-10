@@ -1,9 +1,3 @@
-export type MatcherFactories = jasmine.CustomMatcherFactories;
-export type MatcherFactory = jasmine.CustomMatcherFactory;
-export type Result = jasmine.CustomMatcherResult;
-
-export type AsymmetricMatcher = (value: any) => { asymmetricMatch: (value: any) => boolean };
-
 export type AnyFunction = (...args: any[]) => any;
 export type Collection = object | any[];
 export type GeneratorCreator = (collection: Collection) => IGenerator;
@@ -43,7 +37,10 @@ export type ResultCreator = (
     message: () => string;
     notMessage: () => string;
   }
-) => Result;
+) => {
+  message: () => string;
+  pass: boolean;
+};
 
 declare global {
   namespace jest {
@@ -93,35 +90,6 @@ declare global {
       toHandleNullLeaves(shape: object | any[]): R;
       toHandleNullNodes(shape: object | any[]): R;
       toStartWith(other: string): R;
-    }
-    // tslint:disable-next-line
-    interface Expect {
-      after(other: Date): AsymmetricMatcher;
-      arrayOfBooleans(): AsymmetricMatcher;
-      arrayOfNumbers(): AsymmetricMatcher;
-      arrayOfObjects(): AsymmetricMatcher;
-      arrayOfSize(size: number): AsymmetricMatcher;
-      arrayOfStrings(): AsymmetricMatcher;
-      before(other: Date): AsymmetricMatcher;
-      calculable(): AsymmetricMatcher;
-      divisibleBy(divisor: number): AsymmetricMatcher;
-      endingWith(other: string): AsymmetricMatcher;
-      evenNumber(): AsymmetricMatcher;
-      iso8601(): AsymmetricMatcher;
-      jsonString(): AsymmetricMatcher;
-      longerThan(other: string | any[]): AsymmetricMatcher;
-      near(other: number, epsilon: number): AsymmetricMatcher;
-      nonEmptyArray(): AsymmetricMatcher;
-      nonEmptyObject(): AsymmetricMatcher;
-      nonEmptyString(): AsymmetricMatcher;
-      oddNumber(): AsymmetricMatcher;
-      sameLengthAs(other: string | any[]): AsymmetricMatcher;
-      shorterThan(other: string | any[]): AsymmetricMatcher;
-      startingWith(other: string): AsymmetricMatcher;
-      validDate(): AsymmetricMatcher;
-      whitespace(): AsymmetricMatcher;
-      wholeNumber(): AsymmetricMatcher;
-      withinRange(floor: number, ceiling: number): AsymmetricMatcher;
     }
   }
 }

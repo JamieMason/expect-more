@@ -8,3 +8,23 @@ whereas `"wut?" * 2 === NaN`.
 ```js
 expect(ageField.value).toBeCalculable();
 ```
+
+```js
+expect(ageField.value).toEqual(expect.toBeCalculable());
+```
+
+```js
+expect(team).toEqual(
+  expect.objectContaining({
+    ageField: expect.toBeCalculable()
+  })
+);
+```
+
+```js
+expect(onSubmit).toHaveBeenCalledWith(
+  expect.objectContaining({
+    ageField: expect.toBeCalculable()
+  })
+);
+```

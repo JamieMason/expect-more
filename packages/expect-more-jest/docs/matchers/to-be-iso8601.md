@@ -9,6 +9,26 @@ representation of dates and times.
 expect(log.timestamp).toBeIso8601();
 ```
 
+```js
+expect(log.timestamp).toEqual(expect.toBeIso8601());
+```
+
+```js
+expect(log).toEqual(
+  expect.objectContaining({
+    timestamp: expect.toBeIso8601()
+  })
+);
+```
+
+```js
+expect(onPress).toHaveBeenCalledWith(
+  expect.objectContaining({
+    timestamp: expect.toBeIso8601()
+  })
+);
+```
+
 \* To add support for less-used forms of the [ISO 8601][iso-8601] standard, [Pull Requests][pull-request] are welcome.
 
 [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601

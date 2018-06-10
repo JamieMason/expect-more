@@ -8,3 +8,23 @@ container for a value. `new Date('wut?')` for example, is a valid `Date` which w
 ```js
 expect(game.releaseDate).toBeValidDate();
 ```
+
+```js
+expect(game.releaseDate).toEqual(expect.toBeValidDate());
+```
+
+```js
+expect(game).toEqual(
+  expect.objectContaining({
+    releaseDate: expect.toBeValidDate()
+  })
+);
+```
+
+```js
+expect(onPress).toHaveBeenCalledWith(
+  expect.objectContaining({
+    releaseDate: expect.toBeValidDate()
+  })
+);
+```

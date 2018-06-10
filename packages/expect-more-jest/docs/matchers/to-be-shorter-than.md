@@ -7,3 +7,23 @@ Asserts that a value is a `String` or `Array` whose length is less than `other`.
 ```js
 expect(truncatedFile.contents).toBeShorterThan(file.contents);
 ```
+
+```js
+expect(truncatedFile.contents).toEqual(expect.toBeShorterThan(file.contents));
+```
+
+```js
+expect(truncatedFile).toEqual(
+  expect.objectContaining({
+    contents: expect.toBeShorterThan(file.contents)
+  })
+);
+```
+
+```js
+expect(onPress).toHaveBeenCalledWith(
+  expect.objectContaining({
+    contents: expect.toBeShorterThan(file.contents)
+  })
+);
+```
