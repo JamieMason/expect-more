@@ -11,7 +11,7 @@ import {
   IObjectLocator,
   ObjectMutator,
   PropName
-} from '../typings';
+} from '..';
 import { deepReduce } from './deep-reduce';
 import { getIn } from './get-in';
 
