@@ -1,12 +1,15 @@
 {
-  "lerna": "2.5.1",
-  "version": "independent",
-  "packages": [
-    "packages/*"
-  ],
-  "command": {
+  "commands": {
     "init": {
       "exact": true
+    },
+    "publish": {
+      "conventionalCommits": true,
+      "exact": true
     }
-  }
+  },
+  "independent": true,
+  "lerna": "2.11.0",
+  "packages": ["packages/*"],
+  "version": "independent"
 }
