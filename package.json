@@ -1,15 +1,15 @@
 {
   "version": "0.0.0",
   "devDependencies": {
-    "@types/jest": "23.1.0",
+    "@types/jest": "23.3.1",
     "jasmine-check": "1.0.0-rc.0",
-    "jest": "23.1.0",
-    "lerna": "2.11.0",
-    "prettier": "1.13.5",
+    "jest": "23.5.0",
+    "lerna": "3.1.4",
+    "prettier": "1.14.2",
     "rimraf": "2.6.2",
     "testcheck": "1.0.0-rc.2",
-    "tslint": "5.10.0",
-    "typescript": "2.9.2"
+    "tslint": "5.11.0",
+    "typescript": "3.0.1"
   },
   "private": true,
   "scripts": {
