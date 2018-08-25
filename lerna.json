@@ -9,7 +9,7 @@
     }
   },
   "independent": true,
-  "lerna": "2.11.0",
+  "lerna": "3.1.4",
   "packages": ["packages/*"],
   "version": "independent"
 }

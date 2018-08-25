@@ -11,6 +11,7 @@
     "tslint": "5.11.0",
     "typescript": "3.0.1"
   },
+  "manager": "yarn",
   "private": true,
   "scripts": {
     "build": "npm run build:expect-more && npm run build:expect-more-jest",
@@ -22,5 +23,8 @@
     "prebuild": "rimraf ./packages/*/dist",
     "prelint": "npm run format",
     "test": "jest"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
