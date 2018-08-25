@@ -49,7 +49,53 @@ export type ResultCreator = (
 
 declare global {
   namespace jest {
-    // tslint:disable-next-line
+    // tslint:disable-next-line interface-name
+    interface Expect {
+      toBeAfter<T>(other: Date): Matchers<T>;
+      toBeArray<T>(): Matchers<T>;
+      toBeArrayOfBooleans<T>(): Matchers<T>;
+      toBeArrayOfNumbers<T>(): Matchers<T>;
+      toBeArrayOfObjects<T>(): Matchers<T>;
+      toBeArrayOfSize<T>(size: number): Matchers<T>;
+      toBeArrayOfStrings<T>(): Matchers<T>;
+      toBeBefore<T>(other: Date): Matchers<T>;
+      toBeBoolean<T>(): Matchers<T>;
+      toBeCalculable<T>(): Matchers<T>;
+      toBeDate<T>(): Matchers<T>;
+      toBeDivisibleBy<T>(divisor: number): Matchers<T>;
+      toBeEmptyArray<T>(): Matchers<T>;
+      toBeEmptyObject<T>(): Matchers<T>;
+      toBeEmptyString<T>(): Matchers<T>;
+      toBeEvenNumber<T>(): Matchers<T>;
+      toBeFalse<T>(): Matchers<T>;
+      toBeFunction<T>(): Matchers<T>;
+      toBeIso8601<T>(): Matchers<T>;
+      toBeJsonString<T>(): Matchers<T>;
+      toBeLongerThan<T>(other: string | any[]): Matchers<T>;
+      toBeNonEmptyArray<T>(): Matchers<T>;
+      toBeNonEmptyObject<T>(): Matchers<T>;
+      toBeNonEmptyString<T>(): Matchers<T>;
+      toBeNumber<T>(): Matchers<T>;
+      toBeObject<T>(): Matchers<T>;
+      toBeOddNumber<T>(): Matchers<T>;
+      toBeRegExp<T>(): Matchers<T>;
+      toBeSameLengthAs<T>(other: string | any[]): Matchers<T>;
+      toBeShorterThan<T>(other: string | any[]): Matchers<T>;
+      toBeString<T>(): Matchers<T>;
+      toBeTrue<T>(): Matchers<T>;
+      toBeValidDate<T>(): Matchers<T>;
+      toBeWhitespace<T>(): Matchers<T>;
+      toBeWholeNumber<T>(): Matchers<T>;
+      toEndWith<T>(other: string): Matchers<T>;
+      toHandleMissingBranches<T>(shape: object | any[]): Matchers<T>;
+      toHandleMissingLeaves<T>(shape: object | any[]): Matchers<T>;
+      toHandleMissingNodes<T>(shape: object | any[]): Matchers<T>;
+      toHandleNullBranches<T>(shape: object | any[]): Matchers<T>;
+      toHandleNullLeaves<T>(shape: object | any[]): Matchers<T>;
+      toHandleNullNodes<T>(shape: object | any[]): Matchers<T>;
+      toStartWith<T>(other: string): Matchers<T>;
+    }
+    // tslint:disable-next-line interface-name
     interface Matchers<R> {
       toBeAfter(other: Date): R;
       toBeArray(): R;
