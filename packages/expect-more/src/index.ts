@@ -104,18 +104,18 @@ export const isNonEmptyArray = (value: any) => isArray(value) && value.length > 
 export const isNonEmptyObject = (value: any) => isObject(value) && keys(value).length > 0;
 export const isNonEmptyString = (value: any) => isString(value) && value.length > 0;
 
-export const isSameLengthAs = curry<string, any, boolean>(
-  (otherString: string, value: any) =>
+export const isSameLengthAs = curry<string | any[], any, boolean>(
+  (otherString: string | any[], value: any) =>
     isIndexedList(value) && isIndexedList(otherString) && value.length === otherString.length
 );
 
-export const isShorterThan = curry<string, any, boolean>(
-  (otherString: string, value: any) =>
+export const isShorterThan = curry<string | any[], any, boolean>(
+  (otherString: string | any[], value: any) =>
     isIndexedList(value) && isIndexedList(otherString) && value.length < otherString.length
 );
 
-export const isLongerThan = curry<string, any, boolean>(
-  (otherString: string, value: any) =>
+export const isLongerThan = curry<string | any[], any, boolean>(
+  (otherString: string | any[], value: any) =>
     isIndexedList(value) && isIndexedList(otherString) && value.length > otherString.length
 );
 
