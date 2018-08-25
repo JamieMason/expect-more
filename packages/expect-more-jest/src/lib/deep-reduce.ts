@@ -1,5 +1,5 @@
 import { isArray, isObject } from 'expect-more';
-import { Collection, DeepReducer, PropName } from '..';
+import { Collection, DeepReducer, PropName } from './gen';
 
 export const deepReduce = <T>(collection: Collection, fn: DeepReducer<T>, memo: T): T => {
   const iterator = (value: any, path: PropName[]) => {

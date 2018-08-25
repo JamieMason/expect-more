@@ -1,19 +1,44 @@
 import { isArray, isObject } from 'expect-more';
-import {
-  AnyFunction,
-  ArrayMutator,
-  Collection,
-  Generator,
-  IArrayLocator,
-  IGenerator,
-  IGeneratorResult,
-  ILocator,
-  IObjectLocator,
-  ObjectMutator,
-  PropName
-} from '..';
 import { deepReduce } from './deep-reduce';
 import { getIn } from './get-in';
+
+export type AnyFunction = (...args: any[]) => any;
+export type Collection = object | any[];
+export type GeneratorCreator = (collection: Collection) => IGenerator;
+export type PropName = string | number;
+export type DeepReducer<T> = (memo: T, path: PropName[], value?: any) => T;
+
+export interface ILocator {
+  key: any;
+  owner: any;
+}
+
+export interface IArrayLocator extends ILocator {
+  key: number;
+  owner: any[];
+}
+
+export interface IObjectLocator extends ILocator {
+  key: string;
+  owner: object;
+}
+
+export type ArrayMutator = (locator: IArrayLocator) => void;
+export type ObjectMutator = (locator: IObjectLocator) => void;
+export type Generator = (collection: Collection) => any[];
+
+export interface IGeneratorResult {
+  error: Error | null;
+  pass: boolean;
+  permutation: Collection | null;
+}
+
+export interface IGenerator {
+  assert: (fn: AnyFunction) => IGeneratorResult;
+  name: string;
+  permutations: Collection[];
+  shape: Collection;
+}
 
 const not = (fn) => (...args) => !fn(...args);
 const createMutator = (isEligible, mutate) => (locator) => [locator].filter(isEligible).map(mutate);
