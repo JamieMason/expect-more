@@ -1,5 +1,5 @@
 import { evenNumbers, notEvenNumbers } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is an even number', evenNumbers, (value) => {
   expect(api.isEvenNumber(value)).toEqual(true);

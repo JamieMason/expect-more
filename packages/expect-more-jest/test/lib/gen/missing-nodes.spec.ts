@@ -1,4 +1,4 @@
-import * as gen from '../../../src/lib/gen';
+import gen = require('../../../src/lib/gen');
 
 it('returns incomplete copies of basic arrays', () => {
   expect(gen.missingNodes([1, 2, 3]).permutations).toEqual([undefined, [2, 3], [1, 3], [1, 2]]);

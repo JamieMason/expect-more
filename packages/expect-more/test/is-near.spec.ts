@@ -1,4 +1,4 @@
-import * as api from '../src';
+import api = require('../src');
 
 it('accepts if value is no more than epsilion larger or smaller than another', () => {
   [[4, 0.25, 4.23223432434], [20, 2, 22], [-40, 2, -42]].forEach(([otherNumber, epsilon, value]) => {

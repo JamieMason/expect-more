@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import * as api from 'expect-more';
+import api = require('expect-more');
 import { matcherHint, printExpected } from 'jest-matcher-utils';
 import { missingBranches, missingLeaves, missingNodes, nullBranches, nullLeaves, nullNodes } from './lib/gen';
 

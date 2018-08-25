@@ -1,5 +1,5 @@
 import { booleans, notBooleans } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is a boolean', booleans, (value) => {
   expect(api.isBoolean(value)).toEqual(true);

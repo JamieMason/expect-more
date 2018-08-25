@@ -1,5 +1,5 @@
 import { notWholeNumbers, wholeNumbers } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is a number with no decimal places', wholeNumbers, (value) => {
   expect(api.isWholeNumber(value)).toEqual(true);

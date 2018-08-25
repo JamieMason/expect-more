@@ -1,5 +1,5 @@
 import { gen } from 'testcheck';
-import * as pos from './positive';
+import pos = require('./positive');
 
 const midnight = () => new Date('2013-01-01T00:00:00.000Z');
 const oneAm = () => new Date('2013-01-01T01:00:00.000Z');

@@ -1,5 +1,5 @@
 import { notStrings, strings } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is a string', strings, (value) => {
   expect(api.isString(value)).toEqual(true);

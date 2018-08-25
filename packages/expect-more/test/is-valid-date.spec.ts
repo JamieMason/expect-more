@@ -1,5 +1,5 @@
 import { dates, notValidDates } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is an instance of Date and its date is valid', dates, (value) => {
   expect(api.isValidDate(value)).toEqual(true);

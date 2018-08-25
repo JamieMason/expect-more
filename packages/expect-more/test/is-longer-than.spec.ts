@@ -1,4 +1,4 @@
-import * as api from '../src';
+import api = require('../src');
 
 it('accepts if value is a string with a greater length than the provided string', () => {
   [['ab', 'abc'], ['', 'a']].forEach(([other, value]) => {

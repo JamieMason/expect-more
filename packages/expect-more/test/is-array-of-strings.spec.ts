@@ -1,5 +1,5 @@
 import { arrayOfStrings, notArrayOfStrings } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is a non-empty array containing only strings', arrayOfStrings, (value) => {
   expect(api.isArrayOfStrings(value)).toEqual(true);

@@ -1,5 +1,5 @@
 import { dateAfter, notDateAfter } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is a date occurring after the date provided', dateAfter, ([otherDate, value]) => {
   expect(api.isAfter(otherDate)(value)).toEqual(true);

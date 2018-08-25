@@ -1,5 +1,5 @@
 import { jsonStrings, notJsonStrings } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is a valid JSON string', jsonStrings, (value) => {
   expect(api.isJsonString(value)).toEqual(true);

@@ -1,5 +1,5 @@
 import { gen } from 'testcheck';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is present (whether value is defined or not)', gen.primitive, (value) => {
   expect(api.hasMember('propName', { propName: value })).toEqual(true);

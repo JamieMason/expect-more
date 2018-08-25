@@ -1,5 +1,5 @@
 import { emptyObjects, notEmptyObjects } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is an empty object', emptyObjects, (value) => {
   expect(api.isEmptyObject(value)).toEqual(true);

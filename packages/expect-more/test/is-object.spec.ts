@@ -1,5 +1,5 @@
 import { notObjects, objects } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is an object', objects, (value) => {
   expect(api.isObject(value)).toEqual(true);

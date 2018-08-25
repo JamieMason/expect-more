@@ -1,4 +1,4 @@
-import * as gen from '../../../src/lib/gen';
+import gen = require('../../../src/lib/gen');
 
 ['missingBranches', 'missingLeaves', 'missingNodes', 'nullBranches', 'nullLeaves', 'nullNodes'].forEach(
   (method: string) => {

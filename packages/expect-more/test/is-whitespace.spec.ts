@@ -1,5 +1,5 @@
 import { notWhitespaceStrings, whitespaceStrings } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is a non-empty string containing only whitespace', whitespaceStrings, (value) => {
   expect(api.isWhitespace(value)).toEqual(true);

@@ -1,5 +1,5 @@
 import { dateBefore, notDateBefore } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is a date occurring before the date provided', dateBefore, ([otherDate, value]) => {
   expect(api.isBefore(otherDate)(value)).toEqual(true);

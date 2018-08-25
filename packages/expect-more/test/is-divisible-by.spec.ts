@@ -1,4 +1,4 @@
-import * as api from '../src';
+import api = require('../src');
 
 it('accepts if value is a number in the times table of another', () => {
   expect(api.isDivisibleBy(2, 6)).toEqual(true);

@@ -1,5 +1,5 @@
 import { errorConstructors } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if function throws error of the given type when called', errorConstructors, (Err) => {
   const neverGonna = () => {

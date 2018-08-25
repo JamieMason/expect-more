@@ -1,5 +1,5 @@
 import { endingWith, notEndingWith } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts case-sensitive string ending with another', endingWith, ([otherString, value]) => {
   expect(api.endsWith(otherString)(value)).toEqual(true);

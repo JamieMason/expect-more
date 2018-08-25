@@ -1,5 +1,5 @@
 import { notUndefineds, undefineds } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is undefined', undefineds, (value) => {
   expect(api.isUndefined(value)).toEqual(true);

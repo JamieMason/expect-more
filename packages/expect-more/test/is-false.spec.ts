@@ -1,5 +1,5 @@
 import { falses, notFalses } from '../../../test/fixtures';
-import * as api from '../src';
+import api = require('../src');
 
 check.it('accepts if value is false', falses, (value) => {
   expect(api.isFalse(value)).toEqual(true);
