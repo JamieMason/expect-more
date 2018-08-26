@@ -1,7 +1,19 @@
 # Change Log
 
-All notable changes to this project will be documented in this file. See
-[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.2.0...expect-more-jest@2.3.0) (2018-08-26)
+
+
+### Features
+
+* **jest:** improve asymmetric matcher intellisense documentation ([a818b20](https://github.com/JamieMason/expect-more/commit/a818b20))
+
+
+
+
 
 <a name="2.2.0"></a>
 
