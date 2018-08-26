@@ -4,6 +4,15 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is an `Object` containing at least 1 member.
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     byId: expect.toBeNonEmptyObject()
+       *   })
+       * );
+       */
       toBeNonEmptyObject<T>(): Matchers<T>;
     }
     interface Matchers<R> {
@@ -11,20 +20,6 @@ declare global {
        * Asserts that a value is an `Object` containing at least 1 member.
        * @example
        * expect(activeUsers.byId).toBeNonEmptyObject();
-       * @example
-       * expect(activeUsers.byId).toEqual(expect.toBeNonEmptyObject());
-       * @example
-       * expect(activeUsers).toEqual(
-       *   expect.objectContaining({
-       *     byId: expect.toBeNonEmptyObject()
-       *   })
-       * );
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     byId: expect.toBeNonEmptyObject()
-       *   })
-       * );
        */
       toBeNonEmptyObject(): R;
     }

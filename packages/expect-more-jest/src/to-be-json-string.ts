@@ -4,13 +4,8 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
-      toBeJsonString<T>(): Matchers<T>;
-    }
-    interface Matchers<R> {
       /**
-       * Asserts that a value is a `String` of valid [JSON][json].
-       * @example
-       * expect(response.body).toBeJsonString();
+       * Asserts that a value is a `String` of valid JSON.
        * @example
        * expect(response.body).toEqual(expect.toBeJsonString());
        * @example
@@ -25,7 +20,14 @@ declare global {
        *     body: expect.toBeJsonString()
        *   })
        * );
-       * [json]: https://en.wikipedia.org/wiki/JSON
+       */
+      toBeJsonString<T>(): Matchers<T>;
+    }
+    interface Matchers<R> {
+      /**
+       * Asserts that a value is a `String` of valid JSON.
+       * @example
+       * expect(response.body).toBeJsonString();
        */
       toBeJsonString(): R;
     }

@@ -4,6 +4,16 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is a `String` whose trailing characters are `other` string.
+       * @param other
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     name: expect.toEndWith(' HD')
+       *   })
+       * );
+       */
       toEndWith<T>(other: string): Matchers<T>;
     }
     interface Matchers<R> {
@@ -12,20 +22,6 @@ declare global {
        * @param other
        * @example
        * expect(tvChannel.name).toEndWith(' HD');
-       * @example
-       * expect(tvChannel.name).toEqual(expect.toEndWith(' HD'));
-       * @example
-       * expect(tvChannel).toEqual(
-       *   expect.objectContaining({
-       *     name: expect.toEndWith(' HD')
-       *   })
-       * );
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     name: expect.toEndWith(' HD')
-       *   })
-       * );
        */
       toEndWith(other: string): R;
     }

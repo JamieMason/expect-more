@@ -4,6 +4,15 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is a `Number` with no positive decimal places.
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     livesRemaining: expect.toBeWholeNumber()
+       *   })
+       * );
+       */
       toBeWholeNumber<T>(): Matchers<T>;
     }
     interface Matchers<R> {
@@ -11,20 +20,6 @@ declare global {
        * Asserts that a value is a `Number` with no positive decimal places.
        * @example
        * expect(player.livesRemaining).toBeWholeNumber();
-       * @example
-       * expect(player.livesRemaining).toEqual(expect.toBeWholeNumber());
-       * @example
-       * expect(player).toEqual(
-       *   expect.objectContaining({
-       *     livesRemaining: expect.toBeWholeNumber()
-       *   })
-       * );
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     livesRemaining: expect.toBeWholeNumber()
-       *   })
-       * );
        */
       toBeWholeNumber(): R;
     }

@@ -4,6 +4,16 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is an `Array` containing `size` number of values.
+       * @param size
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     paws: expect.toBeArrayOfSize(4)
+       *   })
+       * );
+       */
       toBeArrayOfSize<T>(size: number): Matchers<T>;
     }
     interface Matchers<R> {
@@ -12,20 +22,6 @@ declare global {
        * @param size
        * @example
        * expect(cat.paws).toBeArrayOfSize(4);
-       * @example
-       * expect(cat.paws).toEqual(expect.toBeArrayOfSize(4));
-       * @example
-       * expect(cat).toEqual(
-       *   expect.objectContaining({
-       *     paws: expect.toBeArrayOfSize(4)
-       *   })
-       * );
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     paws: expect.toBeArrayOfSize(4)
-       *   })
-       * );
        */
       toBeArrayOfSize(size: number): R;
     }

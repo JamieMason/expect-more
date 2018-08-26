@@ -4,13 +4,22 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is a valid `Object` containing no members.
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     byId: expect.toBeEmptyObject()
+       *   })
+       * );
+       */
       toBeEmptyObject<T>(): Matchers<T>;
     }
     interface Matchers<R> {
       /**
        * Asserts that a value is a valid `Object` containing no members.
        * @example
-       * expect(openIssues.ById).toBeEmptyObject();
+       * expect(openIssues.byId).toBeEmptyObject();
        */
       toBeEmptyObject(): R;
     }

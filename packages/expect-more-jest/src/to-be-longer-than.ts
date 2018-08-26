@@ -4,14 +4,9 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
-      toBeLongerThan<T>(other: string): Matchers<T>;
-    }
-    interface Matchers<R> {
       /**
        * Asserts that a value is a `String` or `Array` whose length is greater than `other`.
        * @param other
-       * @example
-       * expect(appendedFile.contents).toBeLongerThan(file.contents);
        * @example
        * expect(appendedFile.contents).toEqual(expect.toBeLongerThan(file.contents));
        * @example
@@ -26,6 +21,15 @@ declare global {
        *     contents: expect.toBeLongerThan(file.contents)
        *   })
        * );
+       */
+      toBeLongerThan<T>(other: string): Matchers<T>;
+    }
+    interface Matchers<R> {
+      /**
+       * Asserts that a value is a `String` or `Array` whose length is greater than `other`.
+       * @param other
+       * @example
+       * expect(appendedFile.contents).toBeLongerThan(file.contents);
        */
       toBeLongerThan(other: string): R;
     }

@@ -4,6 +4,16 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is a `String` whose leading characters are `other` string.
+       * @param other
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     postcode: expect.toStartWith('LS1')
+       *   })
+       * );
+       */
       toStartWith<T>(other: string): Matchers<T>;
     }
     interface Matchers<R> {
@@ -12,20 +22,6 @@ declare global {
        * @param other
        * @example
        * expect(location.postcode).toStartWith('LS1');
-       * @example
-       * expect(location.postcode).toEqual(expect.toStartWith('LS1'));
-       * @example
-       * expect(location).toEqual(
-       *   expect.objectContaining({
-       *     postcode: expect.toStartWith('LS1')
-       *   })
-       * );
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     postcode: expect.toStartWith('LS1')
-       *   })
-       * );
        */
       toStartWith(other: string): R;
     }

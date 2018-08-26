@@ -4,6 +4,16 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is a `Function`.
+       * @param other
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     shoot: expect.toBeFunction()
+       *   })
+       * );
+       */
       toBeFunction<T>(): Matchers<T>;
     }
     interface Matchers<R> {

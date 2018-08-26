@@ -4,6 +4,15 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is a valid `String` containing at least one character.
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     name: expect.toBeNonEmptyString()
+       *   })
+       * );
+       */
       toBeNonEmptyString<T>(): Matchers<T>;
     }
     interface Matchers<R> {
@@ -11,20 +20,6 @@ declare global {
        * Asserts that a value is a valid `String` containing at least one character.
        * @example
        * expect(passwordField.value).toBeNonEmptyString();
-       * @example
-       * expect(player.name).toEqual(expect.toBeNonEmptyString());
-       * @example
-       * expect(player).toEqual(
-       *   expect.objectContaining({
-       *     name: expect.toBeNonEmptyString()
-       *   })
-       * );
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     name: expect.toBeNonEmptyString()
-       *   })
-       * );
        */
       toBeNonEmptyString(): R;
     }

@@ -4,11 +4,21 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is a valid `Number` or `new Number()` and not `NaN`.
+       * @param other
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     age: expect.toBeNumber()
+       *   })
+       * );
+       */
       toBeNumber<T>(): Matchers<T>;
     }
     interface Matchers<R> {
       /**
-       * Asserts that a value is a valid `Number` and not `NaN`.
+       * Asserts that a value is a valid `Number` or `new Number()` and not `NaN`.
        * @example
        * expect(player.age).toBeNumber();
        */

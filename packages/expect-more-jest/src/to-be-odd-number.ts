@@ -4,6 +4,15 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is an odd `Number`.
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     sides: expect.toBeOddNumber()
+       *   })
+       * );
+       */
       toBeOddNumber<T>(): Matchers<T>;
     }
     interface Matchers<R> {
@@ -11,20 +20,6 @@ declare global {
        * Asserts that a value is an odd `Number`.
        * @example
        * expect(triangle.sides).toBeOddNumber();
-       * @example
-       * expect(triangle.sides).toEqual(expect.toBeOddNumber());
-       * @example
-       * expect(triangle).toEqual(
-       *   expect.objectContaining({
-       *     sides: expect.toBeOddNumber()
-       *   })
-       * );
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     sides: expect.toBeOddNumber()
-       *   })
-       * );
        */
       toBeOddNumber(): R;
     }

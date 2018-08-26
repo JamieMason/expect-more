@@ -4,14 +4,9 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
-      toBeIso8601<T>(): Matchers<T>;
-    }
-    interface Matchers<R> {
       /**
-       * Asserts that a value is a String which conforms to common use-cases of the ISO 8601 standard
-       * representation of dates and times.
-       * @example
-       * expect(log.timestamp).toBeIso8601();
+       * Asserts that a value is a String which conforms to common use-cases of the ISO 8601 standard representation of
+       * dates and times.
        * @example
        * expect(log.timestamp).toEqual(expect.toBeIso8601());
        * @example
@@ -26,6 +21,15 @@ declare global {
        *     timestamp: expect.toBeIso8601()
        *   })
        * );
+       */
+      toBeIso8601<T>(): Matchers<T>;
+    }
+    interface Matchers<R> {
+      /**
+       * Asserts that a value is a String which conforms to common use-cases of the ISO 8601 standard representation of
+       * dates and times.
+       * @example
+       * expect(log.timestamp).toBeIso8601();
        */
       toBeIso8601(): R;
     }

@@ -4,6 +4,15 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is an `Array` containing at least 1 value.
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     items: expect.toBeNonEmptyArray()
+       *   })
+       * );
+       */
       toBeNonEmptyArray<T>(): Matchers<T>;
     }
     interface Matchers<R> {
@@ -11,20 +20,6 @@ declare global {
        * Asserts that a value is an `Array` containing at least 1 value.
        * @example
        * expect(basket.items).toBeNonEmptyArray();
-       * @example
-       * expect(basket.items).toEqual(expect.toBeNonEmptyArray());
-       * @example
-       * expect(basket).toEqual(
-       *   expect.objectContaining({
-       *     items: expect.toBeNonEmptyArray()
-       *   })
-       * );
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     items: expect.toBeNonEmptyArray()
-       *   })
-       * );
        */
       toBeNonEmptyArray(): R;
     }

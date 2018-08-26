@@ -4,6 +4,15 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is an `Array` containing only `Object` values.
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     members: expect.toBeArrayOfObjects()
+       *   })
+       * );
+       */
       toBeArrayOfObjects<T>(): Matchers<T>;
     }
     interface Matchers<R> {
@@ -11,20 +20,6 @@ declare global {
        * Asserts that a value is an `Array` containing only `Object` values.
        * @example
        * expect(team.members).toBeArrayOfObjects();
-       * @example
-       * expect(team.members).toEqual(expect.toBeArrayOfObjects());
-       * @example
-       * expect(team).toEqual(
-       *   expect.objectContaining({
-       *     members: expect.toBeArrayOfObjects()
-       *   })
-       * );
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     members: expect.toBeArrayOfObjects()
-       *   })
-       * );
        */
       toBeArrayOfObjects(): R;
     }

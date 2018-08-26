@@ -4,6 +4,15 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is an `Array` containing only `Boolean` values.
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     attempts: expect.toBeArrayOfBooleans()
+       *   })
+       * );
+       */
       toBeArrayOfBooleans<T>(): Matchers<T>;
     }
     interface Matchers<R> {
@@ -11,20 +20,6 @@ declare global {
        * Asserts that a value is an `Array` containing only `Boolean` values.
        * @example
        * expect(player.attempts).toBeArrayOfBooleans();
-       * @example
-       * expect(player.attempts).toEqual(expect.toBeArrayOfBooleans());
-       * @example
-       * expect(player).toEqual(
-       *   expect.objectContaining({
-       *     attempts: expect.toBeArrayOfBooleans()
-       *   })
-       * );
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     attempts: expect.toBeArrayOfBooleans()
-       *   })
-       * );
        */
       toBeArrayOfBooleans(): R;
     }

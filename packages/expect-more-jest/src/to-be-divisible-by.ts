@@ -4,6 +4,16 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is a `Number` divisible by `other` number.
+       * @param divisor
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     paws: expect.toBeDivisibleBy(2)
+       *   })
+       * );
+       */
       toBeDivisibleBy<T>(ber, divisor: any): Matchers<T>;
     }
     interface Matchers<R> {
@@ -12,20 +22,6 @@ declare global {
        * @param divisor
        * @example
        * expect(cat.paws).toBeDivisibleBy(2);
-       * @example
-       * expect(cat.paws).toEqual(expect.toBeDivisibleBy(2));
-       * @example
-       * expect(cat).toEqual(
-       *   expect.objectContaining({
-       *     paws: expect.toBeDivisibleBy(2)
-       *   })
-       * );
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     paws: expect.toBeDivisibleBy(2)
-       *   })
-       * );
        */
       toBeDivisibleBy(ber, divisor: any): R;
     }

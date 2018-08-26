@@ -4,6 +4,15 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is a valid `String` containing no characters.
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     nickname: expect.toBeEmptyString()
+       *   })
+       * );
+       */
       toBeEmptyString<T>(): Matchers<T>;
     }
     interface Matchers<R> {

@@ -4,6 +4,15 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is a valid `Array` containing no items.
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     messages: expect.toBeEmptyArray()
+       *   })
+       * );
+       */
       toBeEmptyArray<T>(): Matchers<T>;
     }
     interface Matchers<R> {

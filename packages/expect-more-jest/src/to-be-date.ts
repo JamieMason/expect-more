@@ -4,6 +4,15 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is an instance of `Date`.
+       * @example
+       * expect(onSubmit).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     releaseDate: expect.toBeDate()
+       *   })
+       * );
+       */
       toBeDate<T>(): Matchers<T>;
     }
     interface Matchers<R> {

@@ -4,6 +4,16 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is a `String` or `Array` whose length is less than `other`.
+       * @param other
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     contents: expect.toBeShorterThan(file.contents)
+       *   })
+       * );
+       */
       toBeShorterThan<T>(other: string): Matchers<T>;
     }
     interface Matchers<R> {
@@ -12,20 +22,6 @@ declare global {
        * @param other
        * @example
        * expect(truncatedFile.contents).toBeShorterThan(file.contents);
-       * @example
-       * expect(truncatedFile.contents).toEqual(expect.toBeShorterThan(file.contents));
-       * @example
-       * expect(truncatedFile).toEqual(
-       *   expect.objectContaining({
-       *     contents: expect.toBeShorterThan(file.contents)
-       *   })
-       * );
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     contents: expect.toBeShorterThan(file.contents)
-       *   })
-       * );
        */
       toBeShorterThan(other: string): R;
     }

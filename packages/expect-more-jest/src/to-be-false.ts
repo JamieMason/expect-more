@@ -4,6 +4,15 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is a `false` or `new Boolean(false)`.
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     isActive: expect.toBeFalse()
+       *   })
+       * );
+       */
       toBeFalse<T>(): Matchers<T>;
     }
     interface Matchers<R> {

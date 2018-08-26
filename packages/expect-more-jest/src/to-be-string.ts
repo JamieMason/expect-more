@@ -4,11 +4,21 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is a `String` or `new String()`.
+       * @param other
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     name: expect.toBeString()
+       *   })
+       * );
+       */
       toBeString<T>(): Matchers<T>;
     }
     interface Matchers<R> {
       /**
-       * Asserts that a value is a `String`.
+       * Asserts that a value is a `String` or `new String()`.
        * @example
        * expect(player.name).toBeString();
        */

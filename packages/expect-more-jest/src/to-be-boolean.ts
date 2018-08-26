@@ -4,6 +4,16 @@ import { createResult } from './lib/create-result';
 declare global {
   namespace jest {
     interface Expect {
+      /**
+       * Asserts that a value is a `true`, `false`, `new Boolean(true)`, or `new Boolean(false)`.
+       * @param divisor
+       * @example
+       * expect(onPress).toHaveBeenCalledWith(
+       *   expect.objectContaining({
+       *     isActive: expect.toBeBoolean()
+       *   })
+       * );
+       */
       toBeBoolean<T>(): Matchers<T>;
     }
     interface Matchers<R> {
