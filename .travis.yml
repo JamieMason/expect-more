@@ -12,6 +12,6 @@ before_script:
   - ./codeclimate-test-reporter before-build
 script:
   - npm run lint
-  - npm run test
+  - npm run test -- --maxWorkers=4
 after_script:
   - ./codeclimate-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
