@@ -1,31 +1,24 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 <a name="2.2.0"></a>
+
 # [2.2.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.1.0...expect-more-jest@2.2.0) (2018-08-26)
 
-
 ### Features
 
-* **jest:** display matcher documentation in intellisense ([6bae199](https://github.com/JamieMason/expect-more/commit/6bae199))
-
-
-
-
+- **jest:** display matcher documentation in intellisense
+  ([6bae199](https://github.com/JamieMason/expect-more/commit/6bae199))
 
 <a name="2.1.0"></a>
-# [2.1.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.0.0...expect-more-jest@2.1.0) (2018-08-25)
 
+# [2.1.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.0.0...expect-more-jest@2.1.0) (2018-08-25)
 
 ### Features
 
-* **jest:** add types for asymmetric matchers ([13fe78d](https://github.com/JamieMason/expect-more/commit/13fe78d))
-
-
-
-
+- **jest:** add types for asymmetric matchers ([13fe78d](https://github.com/JamieMason/expect-more/commit/13fe78d))
 
 <a name="2.0.0"></a>
 
