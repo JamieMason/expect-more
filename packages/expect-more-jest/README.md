@@ -41,49 +41,83 @@ import 'expect-more-jest';
 ## Matchers
 
 ```ts
-expect(date: Date).toBeAfter(other: Date)
-expect(value).toBeArray()
-expect(value).toBeArrayOfBooleans()
-expect(value).toBeArrayOfNumbers()
-expect(value).toBeArrayOfObjects()
-expect(value).toBeArrayOfSize(size: number)
-expect(value).toBeArrayOfStrings()
-expect(date: Date).toBeBefore(other: Date)
-expect(value).toBeBoolean()
-expect(value).toBeCalculable()
-expect(value).toBeDate()
-expect(value).toBeDivisibleBy(other: number)
-expect(value).toBeEmptyArray()
-expect(value).toBeEmptyObject()
-expect(value).toBeEmptyString()
-expect(value).toBeEvenNumber()
-expect(value).toBeFalse()
-expect(value).toBeFunction()
-expect(value).toBeIso8601()
-expect(value).toBeJsonString()
-expect(value: string | any[]).toBeLongerThan(other: string | any[])
-expect(value).toBeNonEmptyArray()
-expect(value).toBeNonEmptyObject()
-expect(value).toBeNonEmptyString()
-expect(value).toBeNumber()
-expect(value).toBeObject()
-expect(value).toBeOddNumber()
-expect(value).toBeRegExp()
-expect(value: string | any[]).toBeSameLengthAs(other: string | any[])
-expect(value: string | any[]).toBeShorterThan(other: string | any[])
-expect(value).toBeString()
-expect(value).toBeTrue()
-expect(value).toBeValidDate()
-expect(value).toBeWhitespace()
-expect(value).toBeWholeNumber()
-expect(value: string).toEndWith(other: string)
-expect(fn).toHandleMissingBranches(shape: object | any[])
-expect(fn).toHandleMissingLeaves(shape: object | any[])
-expect(fn).toHandleMissingNodes(shape: object | any[])
-expect(fn).toHandleNullBranches(shape: object | any[])
-expect(fn).toHandleNullLeaves(shape: object | any[])
-expect(fn).toHandleNullNodes(shape: object | any[])
-expect(value: string).toStartWith(other: string)
+expect(value).toBeAfter(other: Date);
+expect(value).toBeArray();
+expect(value).toBeArrayOfBooleans();
+expect(value).toBeArrayOfNumbers();
+expect(value).toBeArrayOfObjects();
+expect(value).toBeArrayOfSize(size: number);
+expect(value).toBeArrayOfStrings();
+expect(value).toBeBefore(other: Date);
+expect(value).toBeBoolean();
+expect(value).toBeCalculable();
+expect(value).toBeDate();
+expect(value).toBeDivisibleBy(ber, divisor: any);
+expect(value).toBeEmptyArray();
+expect(value).toBeEmptyObject();
+expect(value).toBeEmptyString();
+expect(value).toBeEvenNumber();
+expect(value).toBeFalse();
+expect(value).toBeFunction();
+expect(value).toBeIso8601();
+expect(value).toBeJsonString();
+expect(value).toBeLongerThan(other: string);
+expect(value).toBeNonEmptyArray();
+expect(value).toBeNonEmptyObject();
+expect(value).toBeNonEmptyString();
+expect(value).toBeNumber();
+expect(value).toBeObject();
+expect(value).toBeOddNumber();
+expect(value).toBeRegExp();
+expect(value).toBeSameLengthAs(other: string);
+expect(value).toBeShorterThan(other: string);
+expect(value).toBeString();
+expect(value).toBeTrue();
+expect(value).toBeValidDate();
+expect(value).toBeWhitespace();
+expect(value).toBeWholeNumber();
+expect(value).toBeWithinRange(other: Date);
+expect(value).toEndWith(other: string);
+expect(value).toHandleMissingBranches();
+expect(value).toHandleMissingLeaves();
+expect(value).toHandleMissingNodes();
+expect(value).toHandleNullBranches();
+expect(value).toHandleNullLeaves();
+expect(value).toHandleNullNodes();
+expect(value).toHaveArray(propPath: string);
+expect(value).toHaveArrayOfBooleans(propPath: string);
+expect(value).toHaveArrayOfNumbers(propPath: string);
+expect(value).toHaveArrayOfObjects(propPath: string);
+expect(value).toHaveArrayOfSize(propPath: string, size: number);
+expect(value).toHaveArrayOfStrings(propPath: string);
+expect(value).toHaveBoolean(propPath: string);
+expect(value).toHaveCalculable(propPath: string);
+expect(value).toHaveDate(propPath: string);
+expect(value).toHaveDateAfter(propPath: string, otherDate: Date);
+expect(value).toHaveDateBefore(propPath: string, otherDate: Date);
+expect(value).toHaveEmptyArray(propPath: string);
+expect(value).toHaveEmptyObject(propPath: string);
+expect(value).toHaveEmptyString(propPath: string);
+expect(value).toHaveEvenNumber(propPath: string);
+expect(value).toHaveFalse(propPath: string);
+expect(value).toHaveIso8601(propPath: string);
+expect(value).toHaveJsonString(propPath: string);
+expect(value).toHaveLongerThan(propPath: string, other: string | any[]);
+expect(value).toHaveMethod(propPath: string);
+expect(value).toHaveNonEmptyArray(propPath: string);
+expect(value).toHaveNonEmptyObject(propPath: string);
+expect(value).toHaveNonEmptyString(propPath: string);
+expect(value).toHaveNumber(propPath: string);
+expect(value).toHaveNumberWithinRange(propPath: string, floor: number, ceiling: number);
+expect(value).toHaveObject(propPath: string);
+expect(value).toHaveOddNumber(propPath: string);
+expect(value).toHaveSameLengthAs(propPath: string, other: string | any[]);
+expect(value).toHaveShorterThan(propPath: string, other: string | any[]);
+expect(value).toHaveString(propPath: string);
+expect(value).toHaveTrue(propPath: string);
+expect(value).toHaveWhitespace(propPath: string);
+expect(value).toHaveWholeNumber(propPath: string);
+expect(value).toStartWith(other: string);
 ```
 
 <!-- Links -->
