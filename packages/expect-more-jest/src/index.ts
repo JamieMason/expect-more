@@ -33,6 +33,7 @@ export { toBeTrueMatcher } from './to-be-true';
 export { toBeValidDateMatcher } from './to-be-valid-date';
 export { toBeWhitespaceMatcher } from './to-be-whitespace';
 export { toBeWholeNumberMatcher } from './to-be-whole-number';
+export { toBeWithinRangeMatcher } from './to-be-within-range';
 export { toEndWithMatcher } from './to-end-with';
 export { toHandleMissingBranchesMatcher } from './to-handle-missing-branches';
 export { toHandleMissingLeavesMatcher } from './to-handle-missing-leaves';
