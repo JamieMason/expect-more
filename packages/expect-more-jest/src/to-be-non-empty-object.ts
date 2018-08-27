@@ -7,11 +7,7 @@ declare global {
       /**
        * Asserts that a value is an `Object` containing at least 1 member.
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     byId: expect.toBeNonEmptyObject()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ byId: expect.toBeNonEmptyObject() }));
        */
       toBeNonEmptyObject<T>(): Matchers<T>;
     }

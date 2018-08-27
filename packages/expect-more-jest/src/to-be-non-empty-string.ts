@@ -7,11 +7,7 @@ declare global {
       /**
        * Asserts that a value is a valid `String` containing at least one character.
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     name: expect.toBeNonEmptyString()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ name: expect.toBeNonEmptyString() }));
        */
       toBeNonEmptyString<T>(): Matchers<T>;
     }

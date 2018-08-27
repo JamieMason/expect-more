@@ -8,11 +8,7 @@ declare global {
        * Asserts that a value is an `Object`.
        * @param other
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     player: expect.toBeObject()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ player: expect.toBeObject() }));
        */
       toBeObject<T>(): Matchers<T>;
     }

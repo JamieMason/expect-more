@@ -8,11 +8,7 @@ declare global {
        * Asserts that a value is a valid `Number` or `new Number()` and not `NaN`.
        * @param other
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     age: expect.toBeNumber()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ age: expect.toBeNumber() }));
        */
       toBeNumber<T>(): Matchers<T>;
     }

@@ -7,11 +7,7 @@ declare global {
       /**
        * Asserts that a value is an `Array` containing at least 1 value.
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     items: expect.toBeNonEmptyArray()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ items: expect.toBeNonEmptyArray() }));
        */
       toBeNonEmptyArray<T>(): Matchers<T>;
     }

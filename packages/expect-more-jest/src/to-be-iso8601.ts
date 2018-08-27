@@ -16,11 +16,7 @@ declare global {
        *   })
        * );
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     timestamp: expect.toBeIso8601()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ timestamp: expect.toBeIso8601() }));
        */
       toBeIso8601<T>(): Matchers<T>;
     }

@@ -7,11 +7,7 @@ declare global {
       /**
        * Asserts that a value is a `false` or `new Boolean(false)`.
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     isActive: expect.toBeFalse()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ isActive: expect.toBeFalse() }));
        */
       toBeFalse<T>(): Matchers<T>;
     }

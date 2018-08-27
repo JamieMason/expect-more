@@ -8,11 +8,7 @@ declare global {
        * Asserts that a value is a `String` or `new String()`.
        * @param other
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     name: expect.toBeString()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ name: expect.toBeString() }));
        */
       toBeString<T>(): Matchers<T>;
     }

@@ -9,11 +9,7 @@ declare global {
        * it is a container for a value. `new Date('wut?')` for example, is a valid `Date` which wraps a value which is
        * _not_ valid.
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     releaseDate: expect.toBeValidDate()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ releaseDate: expect.toBeValidDate() }));
        */
       toBeValidDate<T>(): Matchers<T>;
     }

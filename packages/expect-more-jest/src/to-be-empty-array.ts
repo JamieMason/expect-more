@@ -7,11 +7,7 @@ declare global {
       /**
        * Asserts that a value is a valid `Array` containing no items.
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     messages: expect.toBeEmptyArray()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ messages: expect.toBeEmptyArray() }));
        */
       toBeEmptyArray<T>(): Matchers<T>;
     }

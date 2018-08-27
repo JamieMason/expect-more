@@ -15,11 +15,7 @@ declare global {
        *   })
        * );
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     body: expect.toBeJsonString()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ body: expect.toBeJsonString() }));
        */
       toBeJsonString<T>(): Matchers<T>;
     }

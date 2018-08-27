@@ -8,11 +8,7 @@ declare global {
        * Asserts that a value is a regular expression.
        * @param other
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     pattern: expect.toBeRegExp()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ pattern: expect.toBeRegExp() }));
        */
       toBeRegExp<T>(): Matchers<T>;
     }

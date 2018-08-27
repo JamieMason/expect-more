@@ -8,11 +8,7 @@ declare global {
        * Asserts that a value is a `true`, `false`, `new Boolean(true)`, or `new Boolean(false)`.
        * @param divisor
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     isActive: expect.toBeBoolean()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ isActive: expect.toBeBoolean() }));
        */
       toBeBoolean<T>(): Matchers<T>;
     }

@@ -8,11 +8,7 @@ declare global {
        * Asserts that a value is a `true` or `new Boolean(true)`.
        * @param other
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     isActive: expect.toBeTrue()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ isActive: expect.toBeTrue() }));
        */
       toBeTrue<T>(): Matchers<T>;
     }

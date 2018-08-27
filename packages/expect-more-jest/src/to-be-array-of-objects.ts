@@ -7,11 +7,7 @@ declare global {
       /**
        * Asserts that a value is an `Array` containing only `Object` values.
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     members: expect.toBeArrayOfObjects()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ members: expect.toBeArrayOfObjects() }));
        */
       toBeArrayOfObjects<T>(): Matchers<T>;
     }

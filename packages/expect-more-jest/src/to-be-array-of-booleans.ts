@@ -7,11 +7,7 @@ declare global {
       /**
        * Asserts that a value is an `Array` containing only `Boolean` values.
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     attempts: expect.toBeArrayOfBooleans()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ attempts: expect.toBeArrayOfBooleans() }));
        */
       toBeArrayOfBooleans<T>(): Matchers<T>;
     }

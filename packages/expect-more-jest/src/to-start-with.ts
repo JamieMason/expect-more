@@ -8,11 +8,7 @@ declare global {
        * Asserts that a value is a `String` whose leading characters are `other` string.
        * @param other
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     postcode: expect.toStartWith('LS1')
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ postcode: expect.toStartWith('LS1') }));
        */
       toStartWith<T>(other: string): Matchers<T>;
     }

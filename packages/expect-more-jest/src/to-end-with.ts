@@ -8,11 +8,7 @@ declare global {
        * Asserts that a value is a `String` whose trailing characters are `other` string.
        * @param other
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     name: expect.toEndWith(' HD')
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ name: expect.toEndWith(' HD') }));
        */
       toEndWith<T>(other: string): Matchers<T>;
     }

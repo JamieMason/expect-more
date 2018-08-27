@@ -7,11 +7,7 @@ declare global {
       /**
        * Asserts that a value is an instance of `Date`.
        * @example
-       * expect(onSubmit).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     releaseDate: expect.toBeDate()
-       *   })
-       * );
+       * expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ releaseDate: expect.toBeDate() }));
        */
       toBeDate<T>(): Matchers<T>;
     }

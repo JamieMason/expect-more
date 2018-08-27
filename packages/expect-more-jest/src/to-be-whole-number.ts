@@ -7,11 +7,7 @@ declare global {
       /**
        * Asserts that a value is a `Number` with no positive decimal places.
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     livesRemaining: expect.toBeWholeNumber()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ livesRemaining: expect.toBeWholeNumber() }));
        */
       toBeWholeNumber<T>(): Matchers<T>;
     }

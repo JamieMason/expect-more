@@ -8,11 +8,7 @@ declare global {
        * Asserts that a value is a `Number` divisible by `other` number.
        * @param divisor
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     paws: expect.toBeDivisibleBy(2)
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ paws: expect.toBeDivisibleBy(2) }));
        */
       toBeDivisibleBy<T>(ber, divisor: any): Matchers<T>;
     }

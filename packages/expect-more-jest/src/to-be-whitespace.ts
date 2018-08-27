@@ -7,11 +7,7 @@ declare global {
       /**
        * Asserts that a value is a `String` containing only whitespace characters.
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     dataRemoved: expect.toBeWhitespace()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ dataRemoved: expect.toBeWhitespace() }));
        */
       toBeWhitespace<T>(): Matchers<T>;
     }

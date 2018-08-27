@@ -7,11 +7,7 @@ declare global {
       /**
        * Asserts that a value is an even `Number`.
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     sides: expect.toBeEvenNumber()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ sides: expect.toBeEvenNumber() }));
        */
       toBeEvenNumber<T>(): Matchers<T>;
     }

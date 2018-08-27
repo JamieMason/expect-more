@@ -7,11 +7,7 @@ declare global {
       /**
        * Asserts that a value is a valid `Object` containing no members.
        * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     byId: expect.toBeEmptyObject()
-       *   })
-       * );
+       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ byId: expect.toBeEmptyObject() }));
        */
       toBeEmptyObject<T>(): Matchers<T>;
     }
