@@ -2,6 +2,7 @@
   "version": "0.0.0",
   "devDependencies": {
     "@types/jest": "23.3.1",
+    "inquirer": "6.2.0",
     "jasmine-check": "1.0.0-rc.0",
     "jest": "23.5.0",
     "lerna": "3.1.4",
@@ -20,6 +21,7 @@
     "format": "prettier --write '**/*.md' './packages/*/src/**/*.ts' './packages/*/test/**/*.ts'",
     "lint": "tslint --fix --project ./tsconfig.json",
     "postinstall": "lerna bootstrap",
+    "generate:matcher": "node ./scripts/generate-new-matcher.js",
     "prebuild": "rimraf ./packages/*/dist",
     "prelint": "npm run format",
     "test": "jest"
