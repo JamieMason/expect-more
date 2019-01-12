@@ -1,7 +1,7 @@
 {
   "name": "expect-more",
   "description": "Curried JavaScript Type Testing Library with Zero Dependencies",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "author": "Jamie Mason <jamie@foldleft.io> (https://github.com/JamieMason)",
   "bugs": "https://github.com/JamieMason/expect-more/issues",
   "files": [
