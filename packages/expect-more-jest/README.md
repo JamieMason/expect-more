@@ -78,7 +78,7 @@ expect(value).toBeTrue();
 expect(value).toBeValidDate();
 expect(value).toBeWhitespace();
 expect(value).toBeWholeNumber();
-expect(value).toBeWithinRange(other: Date);
+expect(value).toBeWithinRange(floor: number, ceiling: number);
 expect(value).toEndWith(other: string);
 expect(value).toHandleMissingBranches();
 expect(value).toHandleMissingLeaves();
