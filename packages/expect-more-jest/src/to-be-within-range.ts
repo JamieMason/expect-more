@@ -16,7 +16,7 @@ declare global {
        *   })
        * );
        */
-      toBeWithinRange<T>(other: Date): Matchers<T>;
+      toBeWithinRange<T>(floor: number, ceiling: number): Matchers<T>;
     }
     interface Matchers<R> {
       /**
@@ -27,7 +27,7 @@ declare global {
        * @example
        * expect(weapon.shotsRemaining).toBeWithinRange(0, weapon.capacity);
        */
-      toBeWithinRange(other: Date): R;
+      toBeWithinRange(floor: number, ceiling: number): R;
     }
   }
 }
