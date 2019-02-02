@@ -1,5 +1,5 @@
 {
-  "commands": {
+  "command": {
     "init": {
       "exact": true
     },
@@ -9,7 +9,7 @@
     }
   },
   "independent": true,
-  "lerna": "3.1.4",
+  "lerna": "3.10.8",
   "packages": ["packages/*"],
   "version": "independent"
 }
