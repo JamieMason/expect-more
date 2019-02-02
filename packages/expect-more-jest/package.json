@@ -1,7 +1,7 @@
 {
   "name": "expect-more-jest",
   "description": "Write Beautiful Specs with Custom Matchers",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "author": "Jamie Mason <jamie@foldleft.io> (https://github.com/JamieMason)",
   "bugs": "https://github.com/JamieMason/expect-more/issues",
   "contributors": [

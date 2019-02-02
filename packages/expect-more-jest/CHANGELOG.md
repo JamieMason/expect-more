@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.4.0...expect-more-jest@2.4.1) (2019-02-02)
+
+
+### Bug Fixes
+
+* **npm:** update dependencies ([44fe454](https://github.com/JamieMason/expect-more/commit/44fe454))
+* **typings:** correct typings for toBeWithinRange ([99038a8](https://github.com/JamieMason/expect-more/commit/99038a8)), closes [#22](https://github.com/JamieMason/expect-more/issues/22) [#23](https://github.com/JamieMason/expect-more/issues/23)
+
+
+
+
+
 # [2.4.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.3.0...expect-more-jest@2.4.0) (2019-01-12)
 
 
