@@ -8,9 +8,9 @@
     "Haroen Viaene (https://github.com/Haroenv)"
   ],
   "dependencies": {
-    "chalk": "2.4.1",
+    "chalk": "2.4.2",
     "expect-more": "0.5.4",
-    "jest-matcher-utils": "23.5.0"
+    "jest-matcher-utils": "24.0.0"
   },
   "files": [
     "dist"

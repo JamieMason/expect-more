@@ -28,10 +28,8 @@ npm install expect-more-jest --save-dev
 
 ## Configuration
 
-The simplest way to integrate is to set the [`setupTestFrameworkScriptFile`][setup-test-framework-script-file] value of
-Jest's [jest.config.js][jest-config] to `require.resolve('expect-more-jest')`. If your project requires more setup than
-just registering these matchers, include `require('expect-more-jest');` or `import 'expect-more-jest';` somewhere in the
-file you have pointed your `setupTestFrameworkScriptFile` at.
+The simplest way to integrate is to set the [`setupFilesAfterEnv`][setup-files-after-env] array of Jest's
+[jest.config.js][jest-config] to include `require.resolve('expect-more-jest')`.
 
 Note: If your Editor does not recognise that you are using custom matchers, add a `global.d.ts` file at the root of your
 project containing:
@@ -124,6 +122,6 @@ expect(value).toStartWith(other: string);
 
 <!-- Links -->
 
-[jest-config]: https://facebook.github.io/jest/docs/en/configuration.html
-[jest]: http://facebook.github.io/jest
-[setup-test-framework-script-file]: https://facebook.github.io/jest/docs/en/configuration.html
+[jest-config]: https://jestjs.io/docs/en/configuration
+[jest]: https://jestjs.io
+[setup-files-after-env]: https://jestjs.io/docs/en/configuration#setupfilesafterenv-array
