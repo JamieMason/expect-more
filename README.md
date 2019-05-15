@@ -1,5 +1,7 @@
 # expect-more
 
+[![Join the chat at https://gitter.im/JamieMason/expect-more](https://badges.gitter.im/JamieMason/expect-more.svg)](https://gitter.im/JamieMason/expect-more?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Packages
 
 | Package                                    | Version                                                                               | Description                                  |
