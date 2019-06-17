@@ -10,7 +10,7 @@
     "rimraf": "2.6.3",
     "testcheck": "1.0.0-rc.2",
     "tslint": "5.12.1",
-    "typescript": "3.3.1"
+    "typescript": "3.5.2"
   },
   "manager": "yarn",
   "private": true,
