@@ -4,7 +4,7 @@
     "@types/jest": "23.3.13",
     "inquirer": "6.2.2",
     "jasmine-check": "1.0.0-rc.0",
-    "jest": "24.0.0",
+    "jest": "24.8.0",
     "lerna": "3.10.8",
     "prettier": "1.16.3",
     "rimraf": "2.6.3",
