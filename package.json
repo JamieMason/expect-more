@@ -6,7 +6,7 @@
     "jasmine-check": "1.0.0-rc.0",
     "jest": "24.0.0",
     "lerna": "3.10.8",
-    "prettier": "1.16.3",
+    "prettier": "1.18.2",
     "rimraf": "2.6.3",
     "testcheck": "1.0.0-rc.2",
     "tslint": "5.12.1",
