@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.2](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.4.1...expect-more-jest@2.4.2) (2019-06-17)
+
+
+### Bug Fixes
+
+* **npm:** update dependencies ([69c2ada](https://github.com/JamieMason/expect-more/commit/69c2ada)), closes [#25](https://github.com/JamieMason/expect-more/issues/25) [#26](https://github.com/JamieMason/expect-more/issues/26) [#27](https://github.com/JamieMason/expect-more/issues/27) [#28](https://github.com/JamieMason/expect-more/issues/28) [#29](https://github.com/JamieMason/expect-more/issues/29) [#30](https://github.com/JamieMason/expect-more/issues/30)
+
+
+
+
+
 ## [2.4.1](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.4.0...expect-more-jest@2.4.1) (2019-02-02)
 
 
