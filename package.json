@@ -5,7 +5,7 @@
     "inquirer": "6.2.2",
     "jasmine-check": "1.0.0-rc.0",
     "jest": "24.0.0",
-    "lerna": "3.10.8",
+    "lerna": "3.15.0",
     "prettier": "1.16.3",
     "rimraf": "2.6.3",
     "testcheck": "1.0.0-rc.2",
