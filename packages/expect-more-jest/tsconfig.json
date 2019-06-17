@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "files": ["./src/index.ts"],
   "compilerOptions": {
+    "esModuleInterop": true,
     "outDir": "./dist"
   }
 }
