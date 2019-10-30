@@ -33,7 +33,7 @@ const isIndexedList = (value: any) => isString(value) || isArray(value);
 export const isArray = hasType('Array');
 export const isBoolean = hasType('Boolean');
 export const isDate = hasType('Date');
-export const isFunction = hasType('Function');
+export const isFunction = (value: any) => typeof value === 'function';
 export const isNull = hasType('Null');
 export const isObject = hasType('Object');
 export const isRegExp = hasType('RegExp');

@@ -1,4 +1,4 @@
-/* tslint:disable:no-construct */
+/* tslint:disable */
 import { gen } from 'testcheck';
 
 const midnight = () => new Date('2013-01-01T00:00:00.000Z');
@@ -39,7 +39,17 @@ export const dates = gen.oneOf([
   new Date(1985, 11, 18, 8, 22, 0)
 ]);
 export const falses = gen.oneOf([false, new Boolean(false)]);
-export const functions = gen.oneOf([(_) => _]);
+
+export const functions = gen.oneOf([
+  (_) => _,
+  function name() {},
+  function() {},
+  // ↓↓ workaround for typescript converting async to non-async ↓↓
+  eval('(async (_) => _)'),
+  eval('(async function name() {})'),
+  eval('(async function() {})')
+]);
+
 export const errorConstructors = gen.oneOf([
   Error,
   EvalError,
