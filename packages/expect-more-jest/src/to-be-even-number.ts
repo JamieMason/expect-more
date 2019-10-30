@@ -9,9 +9,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ sides: expect.toBeEvenNumber() }));
        */
-      toBeEvenNumber<T>(): Matchers<T>;
+      toBeEvenNumber<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is an even `Number`.
        * @example

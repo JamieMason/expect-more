@@ -4,9 +4,9 @@ import { nullLeaves } from './lib/gen';
 declare global {
   namespace jest {
     interface Expect {
-      toHandleNullLeaves<T>(): Matchers<T>;
+      toHandleNullLeaves<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * When given a JSON-serialisable data structure, invokes your function multiple
        * for each copy of `shape` where a single nested leaf value has been set to

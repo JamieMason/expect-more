@@ -10,9 +10,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ name: expect.toBeString() }));
        */
-      toBeString<T>(): Matchers<T>;
+      toBeString<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a `String` or `new String()`.
        * @example

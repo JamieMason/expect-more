@@ -14,9 +14,9 @@ declare global {
        *   })
        * );
        */
-      toBeSameLengthAs<T>(other: string): Matchers<T>;
+      toBeSameLengthAs<T>(other: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a `String` or `Array` whose length is the same as `other`.
        * @param other

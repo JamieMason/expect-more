@@ -22,9 +22,9 @@ declare global {
        *   })
        * );
        */
-      toBeLongerThan<T>(other: string): Matchers<T>;
+      toBeLongerThan<T>(other: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a `String` or `Array` whose length is greater than `other`.
        * @param other

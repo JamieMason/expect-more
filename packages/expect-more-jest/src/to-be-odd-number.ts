@@ -9,9 +9,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ sides: expect.toBeOddNumber() }));
        */
-      toBeOddNumber<T>(): Matchers<T>;
+      toBeOddNumber<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is an odd `Number`.
        * @example

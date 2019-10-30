@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveEmptyArray('foo.bar')
        * );
        */
-      toHaveEmptyArray<T>(propPath: string): Matchers<T>;
+      toHaveEmptyArray<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is an empty array.
        * @example

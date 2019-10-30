@@ -10,9 +10,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ name: expect.toEndWith(' HD') }));
        */
-      toEndWith<T>(other: string): Matchers<T>;
+      toEndWith<T>(other: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a `String` whose trailing characters are `other` string.
        * @param other

@@ -4,9 +4,9 @@ import { missingLeaves } from './lib/gen';
 declare global {
   namespace jest {
     interface Expect {
-      toHandleMissingLeaves<T>(): Matchers<T>;
+      toHandleMissingLeaves<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * When given a JSON-serialisable data structure, invokes your function multiple
        * for each copy of `shape` where a single nested leaf value has been removed.

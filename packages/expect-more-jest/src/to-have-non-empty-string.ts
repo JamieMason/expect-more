@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveNonEmptyString('foo.bar')
        * );
        */
-      toHaveNonEmptyString<T>(propPath: string): Matchers<T>;
+      toHaveNonEmptyString<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is a string with at least one character.
        * @example

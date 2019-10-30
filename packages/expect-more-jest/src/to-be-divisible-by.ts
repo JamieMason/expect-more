@@ -10,9 +10,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ paws: expect.toBeDivisibleBy(2) }));
        */
-      toBeDivisibleBy<T>(ber, divisor: any): Matchers<T>;
+      toBeDivisibleBy<T>(ber, divisor: any): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a `Number` divisible by `other` number.
        * @param divisor

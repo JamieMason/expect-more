@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveWhitespace('foo.bar')
        * );
        */
-      toHaveWhitespace<T>(propPath: string): Matchers<T>;
+      toHaveWhitespace<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is a string containing only whitespace characters.
        * @example

@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveArrayOfObjects('friends')
        * );
        */
-      toHaveArrayOfObjects<T>(propPath: string): Matchers<T>;
+      toHaveArrayOfObjects<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts value has an own or nested named property which is an Array of objects.
        * @example

@@ -13,9 +13,9 @@ declare global {
        *   expect.toHaveSameLengthAs('foo.bar')
        * );
        */
-      toHaveSameLengthAs<T>(propPath: string, other: string | any[]): Matchers<T>;
+      toHaveSameLengthAs<T>(propPath: string, other: string | any[]): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is a string same or array length as the given
        * string or array.

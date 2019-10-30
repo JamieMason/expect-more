@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveDate('foo.bar')
        * );
        */
-      toHaveDate<T>(propPath: string): Matchers<T>;
+      toHaveDate<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is a date.
        * @example

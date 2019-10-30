@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveTrue('foo.bar')
        * );
        */
-      toHaveTrue<T>(propPath: string): Matchers<T>;
+      toHaveTrue<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is true.
        * @example

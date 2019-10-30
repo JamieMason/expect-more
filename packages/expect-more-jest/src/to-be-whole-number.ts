@@ -9,9 +9,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ livesRemaining: expect.toBeWholeNumber() }));
        */
-      toBeWholeNumber<T>(): Matchers<T>;
+      toBeWholeNumber<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a `Number` with no positive decimal places.
        * @example

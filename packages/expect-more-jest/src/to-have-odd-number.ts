@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveOddNumber('foo.bar')
        * );
        */
-      toHaveOddNumber<T>(propPath: string): Matchers<T>;
+      toHaveOddNumber<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is an odd number.
        * @example

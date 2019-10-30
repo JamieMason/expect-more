@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveDateAfter('foo.bar')
        * );
        */
-      toHaveDateAfter<T>(propPath: string, otherDate: Date): Matchers<T>;
+      toHaveDateAfter<T>(propPath: string, otherDate: Date): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is a date after the given date.
        * @example

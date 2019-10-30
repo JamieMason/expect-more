@@ -9,9 +9,9 @@ declare global {
        * @example
        * expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ releaseDate: expect.toBeDate() }));
        */
-      toBeDate<T>(): Matchers<T>;
+      toBeDate<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is an instance of `Date`.
        * @example

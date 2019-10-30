@@ -14,9 +14,9 @@ declare global {
        *   })
        * );
        */
-      toBeAfter<T>(other: Date): Matchers<T>;
+      toBeAfter<T>(other: Date): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a valid instance of `Date` whose value occurs after that of `other` Date.
        * @param other

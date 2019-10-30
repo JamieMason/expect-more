@@ -9,9 +9,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ name: expect.toBeNonEmptyString() }));
        */
-      toBeNonEmptyString<T>(): Matchers<T>;
+      toBeNonEmptyString<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a valid `String` containing at least one character.
        * @example

@@ -14,9 +14,9 @@ declare global {
        *   })
        * );
        */
-      toBeShorterThan<T>(other: string): Matchers<T>;
+      toBeShorterThan<T>(other: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a `String` or `Array` whose length is less than `other`.
        * @param other

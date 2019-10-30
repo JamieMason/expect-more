@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveBoolean('foo.bar')
        * );
        */
-      toHaveBoolean<T>(propPath: string): Matchers<T>;
+      toHaveBoolean<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is a boolean or `new Boolean`.
        * @example

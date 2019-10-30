@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveJsonString('foo.bar')
        * );
        */
-      toHaveJsonString<T>(propPath: string): Matchers<T>;
+      toHaveJsonString<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is a JSON string.
        * @example

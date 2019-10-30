@@ -9,9 +9,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ nickname: expect.toBeEmptyString() }));
        */
-      toBeEmptyString<T>(): Matchers<T>;
+      toBeEmptyString<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a valid `String` containing no characters.
        * @example

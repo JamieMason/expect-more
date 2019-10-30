@@ -13,9 +13,9 @@ declare global {
        *   expect.toHaveLongerThan('foo.bar')
        * );
        */
-      toHaveLongerThan<T>(propPath: string, other: string | any[]): Matchers<T>;
+      toHaveLongerThan<T>(propPath: string, other: string | any[]): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is a string or array longer than the given string
        * or array.

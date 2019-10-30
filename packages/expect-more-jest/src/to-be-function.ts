@@ -10,9 +10,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ shoot: expect.toBeFunction() }));
        */
-      toBeFunction<T>(): Matchers<T>;
+      toBeFunction<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a `Function`.
        * @example

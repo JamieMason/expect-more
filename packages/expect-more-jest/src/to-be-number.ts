@@ -10,9 +10,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ age: expect.toBeNumber() }));
        */
-      toBeNumber<T>(): Matchers<T>;
+      toBeNumber<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a valid `Number` or `new Number()` and not `NaN`.
        * @example

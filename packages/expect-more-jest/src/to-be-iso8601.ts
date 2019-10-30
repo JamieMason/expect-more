@@ -18,9 +18,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ timestamp: expect.toBeIso8601() }));
        */
-      toBeIso8601<T>(): Matchers<T>;
+      toBeIso8601<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a String which conforms to common use-cases of the ISO 8601 standard representation of
        * dates and times.

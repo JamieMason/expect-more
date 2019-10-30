@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveEmptyObject('foo.bar')
        * );
        */
-      toHaveEmptyObject<T>(propPath: string): Matchers<T>;
+      toHaveEmptyObject<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is an empty object.
        * @example

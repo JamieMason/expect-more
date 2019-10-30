@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveNumber('foo.bar')
        * );
        */
-      toHaveNumber<T>(propPath: string): Matchers<T>;
+      toHaveNumber<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is a number or `new Number`.
        * @example

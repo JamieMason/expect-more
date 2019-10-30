@@ -13,9 +13,9 @@ declare global {
        *   expect.toHaveShorterThan('foo.bar')
        * );
        */
-      toHaveShorterThan<T>(propPath: string, other: string | any[]): Matchers<T>;
+      toHaveShorterThan<T>(propPath: string, other: string | any[]): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is a string or array shorter than the given
        * string or array.

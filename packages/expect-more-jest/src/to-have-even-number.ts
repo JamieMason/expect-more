@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveEvenNumber('foo.bar')
        * );
        */
-      toHaveEvenNumber<T>(propPath: string): Matchers<T>;
+      toHaveEvenNumber<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is an even number or `new Number`.
        * @example

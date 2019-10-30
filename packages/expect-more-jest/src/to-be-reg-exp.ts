@@ -10,9 +10,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ pattern: expect.toBeRegExp() }));
        */
-      toBeRegExp<T>(): Matchers<T>;
+      toBeRegExp<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a regular expression.
        * @example

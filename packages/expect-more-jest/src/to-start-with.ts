@@ -10,9 +10,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ postcode: expect.toStartWith('LS1') }));
        */
-      toStartWith<T>(other: string): Matchers<T>;
+      toStartWith<T>(other: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a `String` whose leading characters are `other` string.
        * @param other

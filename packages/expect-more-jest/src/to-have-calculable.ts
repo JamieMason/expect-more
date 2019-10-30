@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveCalculable('foo.bar')
        * );
        */
-      toHaveCalculable<T>(propPath: string): Matchers<T>;
+      toHaveCalculable<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is calculable.
        * @example

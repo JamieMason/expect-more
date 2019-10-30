@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveArrayOfSize('friends', 0)
        * );
        */
-      toHaveArrayOfSize<T>(propPath: string, size: number): Matchers<T>;
+      toHaveArrayOfSize<T>(propPath: string, size: number): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts value has an own or nested named property which is an Array with the given number of members.
        * @example

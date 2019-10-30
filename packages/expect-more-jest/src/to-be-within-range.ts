@@ -16,9 +16,9 @@ declare global {
        *   })
        * );
        */
-      toBeWithinRange<T>(floor: number, ceiling: number): Matchers<T>;
+      toBeWithinRange<T>(floor: number, ceiling: number): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a `Number` which is both greater than or equal to `floor` and less than or equal to
        * `ceiling`.

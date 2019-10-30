@@ -9,9 +9,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ byId: expect.toBeEmptyObject() }));
        */
-      toBeEmptyObject<T>(): Matchers<T>;
+      toBeEmptyObject<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a valid `Object` containing no members.
        * @example

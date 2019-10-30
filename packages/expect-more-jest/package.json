@@ -10,7 +10,7 @@
   "dependencies": {
     "chalk": "2.4.2",
     "expect-more": "0.5.5",
-    "jest-matcher-utils": "24.8.0"
+    "jest-matcher-utils": "24.9.0"
   },
   "files": [
     "dist"

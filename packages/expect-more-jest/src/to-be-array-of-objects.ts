@@ -9,9 +9,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ members: expect.toBeArrayOfObjects() }));
        */
-      toBeArrayOfObjects<T>(): Matchers<T>;
+      toBeArrayOfObjects<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is an `Array` containing only `Object` values.
        * @example

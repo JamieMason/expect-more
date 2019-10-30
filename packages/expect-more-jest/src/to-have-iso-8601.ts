@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveIso8601('foo.bar')
        * );
        */
-      toHaveIso8601<T>(propPath: string): Matchers<T>;
+      toHaveIso8601<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is an ISO 8601 date string.
        * @example

@@ -13,9 +13,9 @@ declare global {
        *   expect.toHaveNumberWithinRange('foo.bar')
        * );
        */
-      toHaveNumberWithinRange<T>(propPath: string, floor: number, ceiling: number): Matchers<T>;
+      toHaveNumberWithinRange<T>(propPath: string, floor: number, ceiling: number): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is a number greater than or equal to floor and
        * less than or equal to ceiling.

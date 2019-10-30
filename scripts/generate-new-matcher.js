@@ -36,9 +36,9 @@ declare global {
        *   expect.${camelName}(ADD_ARGUMENTS_HERE_IF_APPLICABLE)
        * );
        */
-      ${camelName}<T>(): Matchers<T>;
+      ${camelName}<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that ${description}.
        * @example

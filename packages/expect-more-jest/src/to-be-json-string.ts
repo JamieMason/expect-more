@@ -17,9 +17,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ body: expect.toBeJsonString() }));
        */
-      toBeJsonString<T>(): Matchers<T>;
+      toBeJsonString<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a `String` of valid JSON.
        * @example

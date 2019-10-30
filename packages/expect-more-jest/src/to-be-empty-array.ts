@@ -9,9 +9,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ messages: expect.toBeEmptyArray() }));
        */
-      toBeEmptyArray<T>(): Matchers<T>;
+      toBeEmptyArray<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a valid `Array` containing no items.
        * @example

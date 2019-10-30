@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveDateBefore('foo.bar')
        * );
        */
-      toHaveDateBefore<T>(propPath: string, otherDate: Date): Matchers<T>;
+      toHaveDateBefore<T>(propPath: string, otherDate: Date): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is a date before the given date.
        * @example

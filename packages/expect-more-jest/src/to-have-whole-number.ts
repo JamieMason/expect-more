@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveWholeNumber('foo.bar')
        * );
        */
-      toHaveWholeNumber<T>(propPath: string): Matchers<T>;
+      toHaveWholeNumber<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is a number without any decimal places.
        * @example

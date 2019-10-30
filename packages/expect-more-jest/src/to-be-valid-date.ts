@@ -11,9 +11,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ releaseDate: expect.toBeValidDate() }));
        */
-      toBeValidDate<T>(): Matchers<T>;
+      toBeValidDate<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is an instance of `Date` whose _value_ is valid. `Date` is little like `Promise` in that
        * it is a container for a value. `new Date('wut?')` for example, is a valid `Date` which wraps a value which is

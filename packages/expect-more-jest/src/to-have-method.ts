@@ -12,9 +12,9 @@ declare global {
        *   expect.toHaveMethod('foo.bar')
        * );
        */
-      toHaveMethod<T>(propPath: string): Matchers<T>;
+      toHaveMethod<T>(propPath: string): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that value has an own or nested named property which is a method (function).
        * @example

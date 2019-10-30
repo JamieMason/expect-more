@@ -1,16 +1,16 @@
 {
   "version": "0.0.0",
   "devDependencies": {
-    "@types/jest": "24.0.15",
-    "inquirer": "6.5.0",
+    "@types/jest": "24.0.21",
+    "inquirer": "7.0.0",
     "jasmine-check": "1.0.0-rc.0",
-    "jest": "24.8.0",
-    "lerna": "3.16.1",
+    "jest": "24.9.0",
+    "lerna": "3.18.3",
     "prettier": "1.18.2",
-    "rimraf": "2.6.3",
+    "rimraf": "3.0.0",
     "testcheck": "1.0.0-rc.2",
-    "tslint": "5.18.0",
-    "typescript": "3.5.3"
+    "tslint": "5.20.0",
+    "typescript": "3.6.4"
   },
   "manager": "yarn",
   "private": true,
@@ -18,7 +18,7 @@
     "tar": ">2.2.1"
   },
   "scripts": {
-    "build": "npm run build:expect-more && npm run build:expect-more-jest",
+    "build": "yarn build:expect-more && yarn build:expect-more-jest",
     "build:expect-more": "tsc --project ./packages/expect-more",
     "build:expect-more-jest": "tsc --project ./packages/expect-more-jest",
     "format": "prettier --write '**/*.md' './packages/*/src/**/*.ts' './packages/*/test/**/*.ts'",
@@ -26,7 +26,7 @@
     "lint": "tslint --fix --project ./tsconfig.json",
     "postinstall": "lerna bootstrap",
     "prebuild": "rimraf ./packages/*/dist",
-    "prelint": "npm run format",
+    "prelint": "yarn format",
     "test": "jest"
   },
   "workspaces": [

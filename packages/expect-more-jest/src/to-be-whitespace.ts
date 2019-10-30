@@ -9,9 +9,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ dataRemoved: expect.toBeWhitespace() }));
        */
-      toBeWhitespace<T>(): Matchers<T>;
+      toBeWhitespace<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a `String` containing only whitespace characters.
        * @example

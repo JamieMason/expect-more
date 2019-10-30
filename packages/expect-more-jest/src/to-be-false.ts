@@ -9,9 +9,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ isActive: expect.toBeFalse() }));
        */
-      toBeFalse<T>(): Matchers<T>;
+      toBeFalse<T>(): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is a `false` or `new Boolean(false)`.
        * @example

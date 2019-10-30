@@ -10,9 +10,9 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ paws: expect.toBeArrayOfSize(4) }));
        */
-      toBeArrayOfSize<T>(size: number): Matchers<T>;
+      toBeArrayOfSize<T>(size: number): JestMatchers<T>;
     }
-    interface Matchers<R> {
+    interface Matchers<R, T> {
       /**
        * Asserts that a value is an `Array` containing `size` number of values.
        * @param size
