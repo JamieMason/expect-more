@@ -11,7 +11,7 @@
   "independent": true,
   "lerna": "3.18.3",
   "npmClient": "yarn",
-  "packages": ["packages/*"],
+  "packages": ["packages/*", "scripts/*"],
   "useWorkspaces": true,
   "version": "independent"
 }

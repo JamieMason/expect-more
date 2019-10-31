@@ -1,0 +1,13 @@
+it('provides <%- camelName %>', () => {
+  expect(/*@TODO*/).<%- camelName %>(/*@TODO*/);
+  expect(() => {
+    expect(/*@TODO*/).<%- camelName %>(/*@TODO*/);
+  }).toThrow();
+  expect(() => {
+    expect(/*@TODO*/).not.<%- camelName %>(/*@TODO*/);
+  }).toThrow();
+});
+
+it('provides expect.<%- camelName %>', () => {
+  expect(/*@TODO*/).toEqual(expect.<%- camelName %>(/*@TODO*/));
+});

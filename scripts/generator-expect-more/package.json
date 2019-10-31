@@ -1,0 +1,9 @@
+{
+  "name": "generator-expect-more",
+  "version": "0.0.0",
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "private": true
+}
