@@ -9,7 +9,9 @@
     }
   },
   "independent": true,
-  "lerna": "3.10.8",
+  "lerna": "3.18.3",
+  "npmClient": "yarn",
   "packages": ["packages/*"],
+  "useWorkspaces": true,
   "version": "independent"
 }
