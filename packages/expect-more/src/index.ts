@@ -20,6 +20,7 @@ export { isEmptyString } from './is-empty-string';
 export { isEvenNumber } from './is-even-number';
 export { isFalse } from './is-false';
 export { isFunction } from './is-function';
+export { isGeneratorFunction } from './is-generator-function';
 export { isGreaterThanOrEqualTo } from './is-greater-than-or-equal-to';
 export { isIso8601 } from './is-iso-8601';
 export { isJsonString } from './is-json-string';

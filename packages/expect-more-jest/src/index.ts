@@ -17,6 +17,7 @@ export { toBeEmptyStringMatcher } from './to-be-empty-string';
 export { toBeEvenNumberMatcher } from './to-be-even-number';
 export { toBeFalseMatcher } from './to-be-false';
 export { toBeFunctionMatcher } from './to-be-function';
+export { toBeGeneratorFunctionMatcher } from './to-be-generator-function';
 export { toBeIso8601Matcher } from './to-be-iso8601';
 export { toBeJsonStringMatcher } from './to-be-json-string';
 export { toBeLongerThanMatcher } from './to-be-longer-than';

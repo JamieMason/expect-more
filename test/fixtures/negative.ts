@@ -80,11 +80,13 @@ export const notEvenNumbers = allBut(
 );
 export const notFalses = gen.NaN;
 export const notUndefineds = allBut(pos.undefineds);
+export const notGeneratorFunctions = allBut(pos.generatorFunctions, pos.functions);
 export const notAsyncFunctions = allBut(pos.asyncFunctions, pos.functions);
 export const notSyncFunctions = allBut(pos.syncFunctions);
 export const notFunctions = allBut(
   pos.functions,
   pos.asyncFunctions,
+  pos.generatorFunctions,
   pos.syncFunctions,
   pos.errorConstructors,
   pos.walkables

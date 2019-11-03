@@ -55,6 +55,7 @@ isWithinRange(10, 20, 21);
 
 - `isAsyncFunction: (value: any) => boolean`
 - `isFunction: (value: any) => boolean`
+- `isGeneratorFunction: (value: any) => boolean`
 - `throwsAnyError: (value: () => void) => boolean`
 - `throwsErrorOfType: (typeName: string, value: () => void) => boolean`
 

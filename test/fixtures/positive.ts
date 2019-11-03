@@ -48,8 +48,11 @@ export const asyncFunctions = gen.oneOf([
   eval('(async function name() {})'),
   eval('(async function() {})')
 ]);
+
+// ↓↓ eval is workaround for typescript converting generator ↓↓
+export const generatorFunctions = gen.oneOf([eval('(function*() {yield 2;})'), eval('(function* name() {yield 2;})')]);
 export const syncFunctions = gen.oneOf([(_) => _, function name() {}, function() {}]);
-export const functions = gen.oneOf([syncFunctions, asyncFunctions]);
+export const functions = gen.oneOf([syncFunctions, asyncFunctions, generatorFunctions]);
 
 export const errorConstructors = gen.oneOf([
   Error,

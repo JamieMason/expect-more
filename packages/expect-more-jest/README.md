@@ -55,6 +55,7 @@ expect(value).toBeEmptyString();
 expect(value).toBeEvenNumber();
 expect(value).toBeFalse();
 expect(value).toBeFunction();
+expect(value).toBeGeneratorFunction();
 expect(value).toBeIso8601();
 expect(value).toBeJsonString();
 expect(value).toBeLongerThan(other: string);
