@@ -35,7 +35,7 @@ export const assertMemberComparisonMatcher = ({
     expect(() => expect({ nested: { property: passReceived } }).not[name]('nested.property', passOther)).toThrow();
   });
 
-  describe.skip('when Jest supports variadic asymmetric matchers', () => {
+  describe('when Jest supports variadic asymmetric matchers', () => {
     it(`provides expect.${name}`, () => {
       expect({ nested: { property: passReceived } }).toEqual(expect[name]('nested.property', passOther));
     });

@@ -8,7 +8,7 @@ it('provides toHaveNumberWithinRange', () => {
   }).toThrow();
 });
 
-describe.skip('when Jest supports variadic asymmetric matchers', () => {
+describe('when Jest supports variadic asymmetric matchers', () => {
   it('provides expect.toHaveNumberWithinRange', () => {
     expect({ foo: { bar: 2 } }).toEqual(expect.toHaveNumberWithinRange('foo.bar', 1, 3));
   });
