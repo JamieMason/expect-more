@@ -4,9 +4,11 @@ import { gen } from 'testcheck';
 const midnight = () => new Date('2013-01-01T00:00:00.000Z');
 const oneAm = () => new Date('2013-01-01T01:00:00.000Z');
 
-export function argsObject(..._) {
-  return arguments;
-}
+export const argsObject = gen.oneOf([
+  (function(..._) {
+    return arguments;
+  })(1, 2, 3)
+]);
 
 export const iso8601s = gen.oneOf([
   '2013-07-08T07:29:15.863Z',
@@ -40,15 +42,14 @@ export const dates = gen.oneOf([
 ]);
 export const falses = gen.oneOf([false, new Boolean(false)]);
 
-export const functions = gen.oneOf([
-  (_) => _,
-  function name() {},
-  function() {},
-  // ↓↓ workaround for typescript converting async to non-async ↓↓
+// ↓↓ eval is workaround for typescript converting async to non-async ↓↓
+export const asyncFunctions = gen.oneOf([
   eval('(async (_) => _)'),
   eval('(async function name() {})'),
   eval('(async function() {})')
 ]);
+export const syncFunctions = gen.oneOf([(_) => _, function name() {}, function() {}]);
+export const functions = gen.oneOf([syncFunctions, asyncFunctions]);
 
 export const errorConstructors = gen.oneOf([
   Error,

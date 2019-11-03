@@ -5,6 +5,7 @@ export { toBeArrayOfNumbersMatcher } from './to-be-array-of-numbers';
 export { toBeArrayOfObjectsMatcher } from './to-be-array-of-objects';
 export { toBeArrayOfSizeMatcher } from './to-be-array-of-size';
 export { toBeArrayOfStringsMatcher } from './to-be-array-of-strings';
+export { toBeAsyncFunctionMatcher } from './to-be-async-function';
 export { toBeBeforeMatcher } from './to-be-before';
 export { toBeBooleanMatcher } from './to-be-boolean';
 export { toBeCalculableMatcher } from './to-be-calculable';

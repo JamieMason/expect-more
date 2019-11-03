@@ -7,6 +7,7 @@ export { isArrayOfNumbers } from './is-array-of-numbers';
 export { isArrayOfObjects } from './is-array-of-objects';
 export { isArrayOfSize } from './is-array-of-size';
 export { isArrayOfStrings } from './is-array-of-strings';
+export { isAsyncFunction } from './is-async-function';
 export { isBefore } from './is-before';
 export { isBoolean } from './is-boolean';
 export { isCalculable } from './is-calculable';

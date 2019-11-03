@@ -43,6 +43,7 @@ expect(value).toBeArrayOfNumbers();
 expect(value).toBeArrayOfObjects();
 expect(value).toBeArrayOfSize(size: number);
 expect(value).toBeArrayOfStrings();
+expect(value).toBeAsyncFunction();
 expect(value).toBeBefore(other: Date);
 expect(value).toBeBoolean();
 expect(value).toBeCalculable();

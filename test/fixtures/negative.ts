@@ -80,7 +80,15 @@ export const notEvenNumbers = allBut(
 );
 export const notFalses = gen.NaN;
 export const notUndefineds = allBut(pos.undefineds);
-export const notFunctions = gen.NaN;
+export const notAsyncFunctions = allBut(pos.asyncFunctions, pos.functions);
+export const notSyncFunctions = allBut(pos.syncFunctions);
+export const notFunctions = allBut(
+  pos.functions,
+  pos.asyncFunctions,
+  pos.syncFunctions,
+  pos.errorConstructors,
+  pos.walkables
+);
 export const notJsonStrings = gen.oneOf(['[1,]', '<>', null, '', undefined]);
 export const notNonEmptyArrays = gen.NaN;
 export const notNonEmptyObjects = allBut(pos.nonEmptyObjects, pos.objects, pos.walkables);
