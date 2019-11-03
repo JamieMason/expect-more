@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.4.2...expect-more-jest@3.0.0) (2019-11-03)
+
+
+### Bug Fixes
+
+* **npm:** update dependencies ([1ecf9a0](https://github.com/JamieMason/expect-more/commit/1ecf9a04d914725c4aea904d809b2e0ca26c93ee)), closes [DefinitelyTyped/DefinitelyTyped#39243](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/39243)
+
+
+### Features
+
+* **jest:** add toBeAsyncFunction matcher ([1f49f77](https://github.com/JamieMason/expect-more/commit/1f49f771e8c0543b1e57e8435e9d69859574d913)), closes [#21](https://github.com/JamieMason/expect-more/issues/21)
+* **jest:** add toBeGeneratorFunction matcher ([4fde99e](https://github.com/JamieMason/expect-more/commit/4fde99e485a35403dd5c139c5b2a0b932a1833dd)), closes [#21](https://github.com/JamieMason/expect-more/issues/21)
+
+
+### BREAKING CHANGES
+
+* **npm:** https://github.com/DefinitelyTyped/DefinitelyTyped/pull/39243 introduced
+a breaking change which affects any TypeScript project that uses
+`expect.extend`. This may have a knock-on effect on projects using
+expect-more-jest.
+
+
+
+
+
 ## [2.4.2](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.4.1...expect-more-jest@2.4.2) (2019-06-17)
 
 

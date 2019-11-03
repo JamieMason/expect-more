@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/JamieMason/expect-more/compare/expect-more@0.5.5...expect-more@0.6.0) (2019-11-03)
+
+
+### Bug Fixes
+
+* **expect:** include async functions in isFunction ([8525ec0](https://github.com/JamieMason/expect-more/commit/8525ec0c423dd378b2f69784f6efbb435c6fa355)), closes [#21](https://github.com/JamieMason/expect-more/issues/21)
+
+
+### Features
+
+* **jest:** add toBeAsyncFunction matcher ([1f49f77](https://github.com/JamieMason/expect-more/commit/1f49f771e8c0543b1e57e8435e9d69859574d913)), closes [#21](https://github.com/JamieMason/expect-more/issues/21)
+* **jest:** add toBeGeneratorFunction matcher ([4fde99e](https://github.com/JamieMason/expect-more/commit/4fde99e485a35403dd5c139c5b2a0b932a1833dd)), closes [#21](https://github.com/JamieMason/expect-more/issues/21)
+
+
+
+
+
 ## [0.5.5](https://github.com/JamieMason/expect-more/compare/expect-more@0.5.4...expect-more@0.5.5) (2019-06-17)
 
 **Note:** Version bump only for package expect-more
