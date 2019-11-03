@@ -7,22 +7,21 @@ const yosay = require('yosay');
 const rootPath = path.resolve(__dirname, '../../../..');
 const paths = {
   root: rootPath,
-  expectMoreJest: path.resolve(rootPath, './packages/expect-more-jest'),
-  matcherIndex: path.resolve(rootPath, './packages/expect-more-jest/src/index.ts'),
+  expectMore: path.resolve(rootPath, './packages/expect-more'),
+  assertionIndex: path.resolve(rootPath, './packages/expect-more/src/index.ts'),
   generator: path.resolve(__dirname, './generators/app'),
-  matcherTemplate: path.resolve(__dirname, './templates/matcher.ejs'),
-  specTemplate: path.resolve(__dirname, './templates/matcher.spec.ejs')
+  assertionTemplate: path.resolve(__dirname, './templates/assertion.ejs'),
+  specTemplate: path.resolve(__dirname, './templates/assertion.spec.ejs')
 };
 
 const camelToKebab = (camelName) => camelName.replace(/[A-Z]/g, '-$&').toLowerCase();
 const camelToSentence = (camelName) => camelName.replace(/[A-Z]/g, ' $&').toLowerCase();
-const getMatcherPath = (camelName) => path.resolve(paths.expectMoreJest, `./src/${camelToKebab(camelName)}.ts`);
-const getMatcherSpecPath = (camelName) =>
-  path.resolve(paths.expectMoreJest, `./test/${camelToKebab(camelName)}.spec.ts`);
+const getAssertionPath = (camelName) => path.resolve(paths.expectMore, `./src/${camelToKebab(camelName)}.ts`);
+const getAssertionSpecPath = (camelName) => path.resolve(paths.expectMore, `./test/${camelToKebab(camelName)}.spec.ts`);
 
 class ExpectMoreGenerator extends Generator {
   async getConfiguration() {
-    const defaults = this.config.get('matcher');
+    const defaults = this.config.get('assertion');
     this.props = await this.prompt(
       [
         {
@@ -31,12 +30,7 @@ class ExpectMoreGenerator extends Generator {
           type: 'input'
         },
         {
-          message: 'Description',
-          name: 'description',
-          type: 'input'
-        },
-        {
-          message: 'Does the Matcher take Arguments?',
+          message: 'Does the Assertion take Arguments?',
           name: 'hasArguments',
           type: 'confirm'
         },
@@ -45,26 +39,6 @@ class ExpectMoreGenerator extends Generator {
           name: 'rawArguments',
           type: 'input',
           when: ({ hasArguments }) => hasArguments
-        },
-        {
-          message: 'Usage Example',
-          name: 'example',
-          type: 'input'
-        },
-        {
-          message: 'Asymmetric Usage Example',
-          name: 'asymmetricExample',
-          type: 'input'
-        },
-        {
-          message: ({ camelName }) => `Fail Message for expect().${camelName}`,
-          name: 'failMessage',
-          type: 'input'
-        },
-        {
-          message: ({ camelName }) => `Fail Message for expect().not.${camelName}`,
-          name: 'notFailMessage',
-          type: 'input'
         }
       ].map((question) => {
         question.default = defaults[question.name];
@@ -72,8 +46,8 @@ class ExpectMoreGenerator extends Generator {
       })
     );
     const { camelName, rawArguments = '' } = this.props;
-    this.props.matcherPath = getMatcherPath(camelName);
-    this.props.matcherSpecPath = getMatcherSpecPath(camelName);
+    this.props.assertionPath = getAssertionPath(camelName);
+    this.props.assertionSpecPath = getAssertionSpecPath(camelName);
     this.props.kebabName = camelToKebab(camelName);
     this.props.sentenceName = camelToSentence(camelName);
     this.props.argumentsList = rawArguments
@@ -86,29 +60,29 @@ class ExpectMoreGenerator extends Generator {
     console.log(this.props);
   }
 
-  addMatcherToIndex() {
+  addAssertionToIndex() {
     const { camelName, kebabName } = this.props;
     const imports = this.fs
-      .read(paths.matcherIndex)
+      .read(paths.assertionIndex)
       .split('\n')
-      .concat(`export { ${camelName}Matcher } from './${kebabName}';`)
+      .concat(`export { ${camelName} } from './${kebabName}';`)
       .filter(Boolean)
       .sort()
       .concat('');
     const uniqueImports = Array.from(new Set(imports));
-    this.fs.write(paths.matcherIndex, uniqueImports.join('\n'));
+    this.fs.write(paths.assertionIndex, uniqueImports.join('\n'));
   }
 
-  writeMatcher() {
-    this.fs.copyTpl(paths.matcherTemplate, this.props.matcherPath, this.props);
-    this.fs.copyTpl(paths.specTemplate, this.props.matcherSpecPath, this.props);
+  writeAssertion() {
+    this.fs.copyTpl(paths.assertionTemplate, this.props.assertionPath, this.props);
+    this.fs.copyTpl(paths.specTemplate, this.props.assertionSpecPath, this.props);
   }
 
   formatChanges() {
     const commit = this.fs.commit.bind(this.fs);
     this.fs.commit = (filters, done) => {
       return commit(filters, (...args) => {
-        const command = `yarn prettier --write ${this.props.matcherPath} ${this.props.matcherSpecPath} ${paths.matcherIndex}`;
+        const command = `yarn prettier --write ${this.props.assertionPath} ${this.props.assertionSpecPath} ${paths.assertionIndex}`;
         childProcess.execSync(command, { cwd: rootPath });
         return done(...args);
       });

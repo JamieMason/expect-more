@@ -1,12 +1,19 @@
 {
   "generator-expect-more": {
-    "camelName": "toBeWithinRange",
-    "description": "Asserts that a value is a `Number` which is both greater than or equal to `floor` and less than or equal to `ceiling`.",
-    "hasArguments": false,
-    "rawArguments": "floor: number, ceiling: number",
-    "example": "expect(6).toBeWithinRange(1, 10);",
-    "asymmetricExample": "expect(onPress).toHaveBeenCalledWith(expect.toBeWithinRange(1, 10))",
-    "failMessage": "expected ${received} to be within range ${floor} - ${ceiling} (inclusive)",
-    "notFailMessage": "expected ${received} not to be within range ${floor} - ${ceiling} (inclusive)"
+    "assertion": {
+      "camelName": "isWithinRange",
+      "hasArguments": false,
+      "rawArguments": "floor: number, ceiling: number"
+    },
+    "matcher": {
+      "camelName": "toBeWithinRange",
+      "description": "Asserts that a value is a `Number` which is both greater than or equal to `floor` and less than or equal to `ceiling`.",
+      "hasArguments": false,
+      "rawArguments": "floor: number, ceiling: number",
+      "example": "expect(6).toBeWithinRange(1, 10);",
+      "asymmetricExample": "expect(onPress).toHaveBeenCalledWith(expect.toBeWithinRange(1, 10))",
+      "failMessage": "expected ${received} to be within range ${floor} - ${ceiling} (inclusive)",
+      "notFailMessage": "expected ${received} not to be within range ${floor} - ${ceiling} (inclusive)"
+    }
   }
 }

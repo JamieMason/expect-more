@@ -1,0 +1,10 @@
+import { TODO, notTODO } from '../../../test/fixtures';
+import api = require('../src');
+
+check.it('accepts if value is @TODO', TODO, (value) => {
+  expect(api.<%- camelName %>(value)).toEqual(true);
+});
+
+check.it('rejects otherwise', notTODO, (value) => {
+  expect(api.<%- camelName %>(value)).toEqual(false);
+});
