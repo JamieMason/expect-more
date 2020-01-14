@@ -9,12 +9,6 @@
 [![Follow JamieMason on GitHub](https://img.shields.io/github/followers/JamieMason.svg?style=social&label=Follow)](https://github.com/JamieMason)
 [![Follow fold_left on Twitter](https://img.shields.io/twitter/follow/fold_left.svg?style=social&label=Follow)](https://twitter.com/fold_left)
 
-## Status
-
-This is a new project which needs a lot of work on documentation. It is under active development so there will likely be
-changes, but at its core it is a rewrite of the core logic behind the matchers in
-[jasmine-expect](https://github.com/JamieMason/Jasmine-Matchers#readme) which is a mature, well-tested library.
-
 ## Installation
 
 ```
@@ -40,7 +34,7 @@ isWithinRange(10, 20, 21);
 // => [5, 8, 13]
 ```
 
-## API
+## API: `expect-more`
 
 ### General
 
@@ -83,12 +77,12 @@ isWithinRange(10, 20, 21);
 - `isAfter: (other: Date, value: any) => boolean`
 - `isBefore: (other: Date, value: any) => boolean`
 - `isDate: (value: any) => boolean`
-- `isIso8601: (value: any) => boolean`
 - `isValidDate: (value: any) => boolean`
 
 ### Numbers
 
 - `isCalculable: (value: any) => boolean`
+- `isDecimalNumber: (value: any) => boolean`
 - `isDivisibleBy: (other: number, value: any) => boolean`
 - `isEvenNumber: (value: any) => boolean`
 - `isGreaterThanOrEqualTo: (other: number, value: any) => boolean`
@@ -103,6 +97,7 @@ isWithinRange(10, 20, 21);
 
 - `endsWith: (other: string, value: any) => boolean`
 - `isEmptyString: (value: any) => boolean`
+- `isIso8601: (value: any) => boolean`
 - `isJsonString: (value: any) => boolean`
 - `isLongerThan: (other: string, value: any) => boolean`
 - `isNonEmptyString: (value: any) => boolean`
@@ -111,3 +106,12 @@ isWithinRange(10, 20, 21);
 - `isString: (value: any) => boolean`
 - `isWhitespace: (value: any) => boolean`
 - `startsWith: (other: string, value: any) => boolean`
+
+## API: `expect-more/gen`
+
+- `withMissingBranches: (value: object | any[]) => Generator`
+- `withMissingLeaves: (value: object | any[]) => Generator`
+- `withMissingNodes: (value: object | any[]) => Generator`
+- `withNullBranches: (value: object | any[]) => Generator`
+- `withNullLeaves: (value: object | any[]) => Generator`
+- `withNullNodes: (value: object | any[]) => Generator`
