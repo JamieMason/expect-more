@@ -29,7 +29,7 @@ export const toHaveArrayOfBooleansMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be an array of booleans`,
     notMessage: () => `expected ${propPath} of ${received} not to be an array of booleans`,
-    pass: isArrayOfBooleans(getIn(propPath.split('.'), received))
+    pass: isArrayOfBooleans(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveArrayOfBooleans: toHaveArrayOfBooleansMatcher });

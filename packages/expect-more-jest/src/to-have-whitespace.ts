@@ -29,7 +29,7 @@ export const toHaveWhitespaceMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be a string of whitespace`,
     notMessage: () => `expected ${propPath} of ${received} not to be a string of whitespace`,
-    pass: isWhitespace(getIn(propPath.split('.'), received))
+    pass: isWhitespace(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveWhitespace: toHaveWhitespaceMatcher });

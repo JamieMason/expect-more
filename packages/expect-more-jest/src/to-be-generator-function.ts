@@ -26,7 +26,7 @@ export const toBeGeneratorFunctionMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a function using yield syntax`,
     notMessage: () => `expected ${received} not to be a function using yield syntax`,
-    pass: isGeneratorFunction(received)
+    pass: isGeneratorFunction(received),
   });
 
 expect.extend({ toBeGeneratorFunction: toBeGeneratorFunctionMatcher });

@@ -32,7 +32,7 @@ export const toBeShorterThanMatcher = (received: any, other: string) =>
   createResult({
     message: () => `expected ${received} to be a string which is shorter than ${other}`,
     notMessage: () => `expected ${received} not to be a string which is shorter than ${other}`,
-    pass: isShorterThan(other, received)
+    pass: isShorterThan(other, received),
   });
 
 expect.extend({ toBeShorterThan: toBeShorterThanMatcher });

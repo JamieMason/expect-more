@@ -31,7 +31,7 @@ export const toHaveSameLengthAsMatcher = (received: any, propPath: string, other
   createResult({
     message: () => `expected ${propPath} of ${received} to be a string or array same length as ${other}`,
     notMessage: () => `expected ${propPath} of ${received} not to be a string or array same length as ${other}`,
-    pass: isSameLengthAs(other, getIn(propPath.split('.'), received))
+    pass: isSameLengthAs(other, getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveSameLengthAs: toHaveSameLengthAsMatcher });

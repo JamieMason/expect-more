@@ -26,7 +26,7 @@ export const toBeEmptyStringMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be an empty string or empty instance of String`,
     notMessage: () => `expected ${received} not to be an empty string or empty instance of String`,
-    pass: isEmptyString(received)
+    pass: isEmptyString(received),
   });
 
 expect.extend({ toBeEmptyString: toBeEmptyStringMatcher });

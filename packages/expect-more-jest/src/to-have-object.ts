@@ -29,7 +29,7 @@ export const toHaveObjectMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be object`,
     notMessage: () => `expected ${propPath} of ${received} not to be object`,
-    pass: isObject(getIn(propPath.split('.'), received))
+    pass: isObject(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveObject: toHaveObjectMatcher });

@@ -29,7 +29,7 @@ export const toHaveNumberMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be number`,
     notMessage: () => `expected ${propPath} of ${received} not to be number`,
-    pass: isNumber(getIn(propPath.split('.'), received))
+    pass: isNumber(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveNumber: toHaveNumberMatcher });

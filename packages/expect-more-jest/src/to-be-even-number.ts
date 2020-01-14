@@ -26,7 +26,7 @@ export const toBeEvenNumberMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be an even number`,
     notMessage: () => `expected ${received} not to be an even number`,
-    pass: isEvenNumber(received)
+    pass: isEvenNumber(received),
   });
 
 expect.extend({ toBeEvenNumber: toBeEvenNumberMatcher });

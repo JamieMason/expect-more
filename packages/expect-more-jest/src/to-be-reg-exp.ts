@@ -28,7 +28,7 @@ export const toBeRegExpMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a regular expression`,
     notMessage: () => `expected ${received} not to be a regular expression`,
-    pass: isRegExp(received)
+    pass: isRegExp(received),
   });
 
 expect.extend({ toBeRegExp: toBeRegExpMatcher });

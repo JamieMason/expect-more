@@ -9,7 +9,7 @@ it('returns incomplete copies of basic objects', () => {
     undefined,
     { b: 2, c: 3 },
     { a: 1, c: 3 },
-    { a: 1, b: 2 }
+    { a: 1, b: 2 },
   ]);
 });
 
@@ -19,7 +19,7 @@ it('returns incomplete copies of arrays of objects', () => {
     [{ b: 2 }],
     [{}, { b: 2 }],
     [{ a: 1 }],
-    [{ a: 1 }, {}]
+    [{ a: 1 }, {}],
   ]);
 });
 
@@ -29,7 +29,7 @@ it('returns incomplete copies of indexes of arrays', () => {
     { b: [2] },
     { a: [], b: [2] },
     { a: [1] },
-    { a: [1], b: [] }
+    { a: [1], b: [] },
   ]);
 });
 
@@ -44,7 +44,7 @@ it('returns incomplete copies of nested objects containing arrays', () => {
     { a: {} },
     { a: { b: {} } },
     { a: { b: { c: [2] } } },
-    { a: { b: { c: [1] } } }
+    { a: { b: { c: [1] } } },
   ]);
 });
 
@@ -55,6 +55,6 @@ it('returns incomplete copies of nested arrays', () => {
     [1],
     [1, [[3]]],
     [1, [2]],
-    [1, [2, []]]
+    [1, [2, []]],
   ]);
 });

@@ -36,7 +36,7 @@ export const toBeWithinRangeMatcher = (received: any, floor: number, ceiling: nu
   return createResult({
     message: () => `expected ${received} to be within range ${floor} - ${ceiling} (inclusive}`,
     notMessage: () => `expected ${received} not to be within range ${floor} - ${ceiling} (inclusive}`,
-    pass: isWithinRange(floor, ceiling, received)
+    pass: isWithinRange(floor, ceiling, received),
   });
 };
 

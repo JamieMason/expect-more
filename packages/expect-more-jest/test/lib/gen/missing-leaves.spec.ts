@@ -9,7 +9,7 @@ it('returns incomplete copies of basic objects', () => {
     undefined,
     { b: 2, c: 3 },
     { a: 1, c: 3 },
-    { a: 1, b: 2 }
+    { a: 1, b: 2 },
   ]);
 });
 
@@ -29,7 +29,7 @@ it('returns incomplete copies of nested objects containing arrays', () => {
   expect(gen.missingLeaves({ a: { b: { c: [1, 2] } } }).permutations).toEqual([
     undefined,
     { a: { b: { c: [2] } } },
-    { a: { b: { c: [1] } } }
+    { a: { b: { c: [1] } } },
   ]);
 });
 

@@ -36,7 +36,7 @@ export const toBeIso8601Matcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a valid ISO 8601 date string`,
     notMessage: () => `expected ${received} not to be a valid ISO 8601 date string`,
-    pass: isIso8601(received)
+    pass: isIso8601(received),
   });
 
 expect.extend({ toBeIso8601: toBeIso8601Matcher });

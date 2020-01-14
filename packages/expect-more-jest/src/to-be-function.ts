@@ -27,7 +27,7 @@ export const toBeFunctionMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a function`,
     notMessage: () => `expected ${received} not to be a function`,
-    pass: isFunction(received)
+    pass: isFunction(received),
   });
 
 expect.extend({ toBeFunction: toBeFunctionMatcher });

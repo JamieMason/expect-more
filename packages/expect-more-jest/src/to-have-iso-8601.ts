@@ -29,7 +29,7 @@ export const toHaveIso8601Matcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be ISO 8601 date string`,
     notMessage: () => `expected ${propPath} of ${received} not to be ISO 8601 date string`,
-    pass: isIso8601(getIn(propPath.split('.'), received))
+    pass: isIso8601(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveIso8601: toHaveIso8601Matcher });

@@ -29,7 +29,7 @@ export const toHaveArrayMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be an array`,
     notMessage: () => `expected ${propPath} of ${received} not to be an array`,
-    pass: isArray(getIn(propPath.split('.'), received))
+    pass: isArray(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveArray: toHaveArrayMatcher });

@@ -29,7 +29,7 @@ export const toHaveEvenNumberMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be an even number`,
     notMessage: () => `expected ${propPath} of ${received} not to be an even number`,
-    pass: isEvenNumber(getIn(propPath.split('.'), received))
+    pass: isEvenNumber(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveEvenNumber: toHaveEvenNumberMatcher });

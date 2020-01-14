@@ -29,7 +29,7 @@ export const toHaveJsonStringMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be a string of JSON`,
     notMessage: () => `expected ${propPath} of ${received} not to be a string of JSON`,
-    pass: isJsonString(getIn(propPath.split('.'), received))
+    pass: isJsonString(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveJsonString: toHaveJsonStringMatcher });

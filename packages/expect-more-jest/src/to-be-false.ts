@@ -26,7 +26,7 @@ export const toBeFalseMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be false or Boolean(false)`,
     notMessage: () => `expected ${received} not to be false or Boolean(false)`,
-    pass: isFalse(received)
+    pass: isFalse(received),
   });
 
 expect.extend({ toBeFalse: toBeFalseMatcher });

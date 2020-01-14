@@ -26,7 +26,7 @@ export const toBeWhitespaceMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a string containing only whitespace characters`,
     notMessage: () => `expected ${received} not to be a string containing only whitespace characters`,
-    pass: isWhitespace(received)
+    pass: isWhitespace(received),
   });
 
 expect.extend({ toBeWhitespace: toBeWhitespaceMatcher });

@@ -34,7 +34,7 @@ export const toBeJsonStringMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a string of valid JSON`,
     notMessage: () => `expected ${received} not to be a string of valid JSON`,
-    pass: isJsonString(received)
+    pass: isJsonString(received),
   });
 
 expect.extend({ toBeJsonString: toBeJsonStringMatcher });

@@ -11,7 +11,7 @@ const visitFile = ({ filePath, gitHubUrl }) => {
 
   const api = {
     matcher: null,
-    asymmetricMatcher: null
+    asymmetricMatcher: null,
   };
 
   const visitNode = (node) => {
@@ -34,7 +34,7 @@ const visitFile = ({ filePath, gitHubUrl }) => {
             signature,
             description,
             examples,
-            gitHubUrl
+            gitHubUrl,
           };
         }
         break;
@@ -53,7 +53,7 @@ const files = fs
   .filter((filename) => filename.endsWith('.ts') && !filename.endsWith('index.ts'))
   .map((filename) => ({
     filePath: path.resolve(expectMorePath, filename),
-    gitHubUrl: `https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/src/${filename}`
+    gitHubUrl: `https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/src/${filename}`,
   }));
 
 files.forEach(visitFile);

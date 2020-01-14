@@ -21,7 +21,7 @@ export const assertMemberComparisonMatcher = ({
   failReceived,
   name,
   passOther,
-  passReceived
+  passReceived,
 }: {
   failOther: any;
   failReceived: any;

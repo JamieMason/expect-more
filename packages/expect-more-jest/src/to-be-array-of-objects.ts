@@ -26,7 +26,7 @@ export const toBeArrayOfObjectsMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a non-empty array, containing only objects`,
     notMessage: () => `expected ${received} not to be a non-empty array, containing only objects`,
-    pass: isArrayOfObjects(received)
+    pass: isArrayOfObjects(received),
   });
 
 expect.extend({ toBeArrayOfObjects: toBeArrayOfObjectsMatcher });

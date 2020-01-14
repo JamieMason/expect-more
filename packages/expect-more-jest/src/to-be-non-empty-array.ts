@@ -26,7 +26,7 @@ export const toBeNonEmptyArrayMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be an array with at least one item`,
     notMessage: () => `expected ${received} not to be an array with at least one item`,
-    pass: isNonEmptyArray(received)
+    pass: isNonEmptyArray(received),
   });
 
 expect.extend({ toBeNonEmptyArray: toBeNonEmptyArrayMatcher });

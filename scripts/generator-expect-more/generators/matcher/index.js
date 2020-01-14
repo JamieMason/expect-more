@@ -11,7 +11,7 @@ const paths = {
   matcherIndex: path.resolve(rootPath, './packages/expect-more-jest/src/index.ts'),
   generator: path.resolve(__dirname, './generators/app'),
   matcherTemplate: path.resolve(__dirname, './templates/matcher.ejs'),
-  specTemplate: path.resolve(__dirname, './templates/matcher.spec.ejs')
+  specTemplate: path.resolve(__dirname, './templates/matcher.spec.ejs'),
 };
 
 const camelToKebab = (camelName) => camelName.replace(/[A-Z]/g, '-$&').toLowerCase();
@@ -28,48 +28,48 @@ class ExpectMoreGenerator extends Generator {
         {
           message: 'Name',
           name: 'camelName',
-          type: 'input'
+          type: 'input',
         },
         {
           message: 'Description',
           name: 'description',
-          type: 'input'
+          type: 'input',
         },
         {
           message: 'Does the Matcher take Arguments?',
           name: 'hasArguments',
-          type: 'confirm'
+          type: 'confirm',
         },
         {
           message: 'List each Argument and its Type. Separate each argument with a comma',
           name: 'rawArguments',
           type: 'input',
-          when: ({ hasArguments }) => hasArguments
+          when: ({ hasArguments }) => hasArguments,
         },
         {
           message: 'Usage Example',
           name: 'example',
-          type: 'input'
+          type: 'input',
         },
         {
           message: 'Asymmetric Usage Example',
           name: 'asymmetricExample',
-          type: 'input'
+          type: 'input',
         },
         {
           message: ({ camelName }) => `Fail Message for expect().${camelName}`,
           name: 'failMessage',
-          type: 'input'
+          type: 'input',
         },
         {
           message: ({ camelName }) => `Fail Message for expect().not.${camelName}`,
           name: 'notFailMessage',
-          type: 'input'
-        }
+          type: 'input',
+        },
       ].map((question) => {
         question.default = defaults[question.name];
         return question;
-      })
+      }),
     );
     const { camelName, rawArguments = '' } = this.props;
     this.props.matcherPath = getMatcherPath(camelName);

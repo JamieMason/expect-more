@@ -26,7 +26,7 @@ export const toBeNonEmptyObjectMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be an object with at least one own member`,
     notMessage: () => `expected ${received} not to be an object with at least one own member`,
-    pass: isNonEmptyObject(received)
+    pass: isNonEmptyObject(received),
   });
 
 expect.extend({ toBeNonEmptyObject: toBeNonEmptyObjectMatcher });

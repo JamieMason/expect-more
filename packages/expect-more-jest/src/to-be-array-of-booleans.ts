@@ -26,7 +26,7 @@ export const toBeArrayOfBooleansMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a non-empty array, containing only boolean values`,
     notMessage: () => `expected ${received} not to be a non-empty array, containing only boolean values`,
-    pass: isArrayOfBooleans(received)
+    pass: isArrayOfBooleans(received),
   });
 
 expect.extend({ toBeArrayOfBooleans: toBeArrayOfBooleansMatcher });

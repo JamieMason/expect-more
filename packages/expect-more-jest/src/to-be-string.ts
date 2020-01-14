@@ -27,7 +27,7 @@ export const toBeStringMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a string`,
     notMessage: () => `expected ${received} not to be a string`,
-    pass: isString(received)
+    pass: isString(received),
   });
 
 expect.extend({ toBeString: toBeStringMatcher });

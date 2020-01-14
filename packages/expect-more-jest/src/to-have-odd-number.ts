@@ -29,7 +29,7 @@ export const toHaveOddNumberMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be odd number`,
     notMessage: () => `expected ${propPath} of ${received} not to be odd number`,
-    pass: isOddNumber(getIn(propPath.split('.'), received))
+    pass: isOddNumber(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveOddNumber: toHaveOddNumberMatcher });

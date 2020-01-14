@@ -26,7 +26,7 @@ export const toBeNonEmptyStringMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a string with at least one character`,
     notMessage: () => `expected ${received} not to be a string with at least one character`,
-    pass: isNonEmptyString(received)
+    pass: isNonEmptyString(received),
   });
 
 expect.extend({ toBeNonEmptyString: toBeNonEmptyStringMatcher });

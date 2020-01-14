@@ -26,7 +26,7 @@ export const toBeWholeNumberMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a whole number`,
     notMessage: () => `expected ${received} not to be a whole number`,
-    pass: isWholeNumber(received)
+    pass: isWholeNumber(received),
   });
 
 expect.extend({ toBeWholeNumber: toBeWholeNumberMatcher });

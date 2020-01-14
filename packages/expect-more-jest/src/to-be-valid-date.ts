@@ -30,7 +30,7 @@ export const toBeValidDateMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be an instance of Date with a valid value`,
     notMessage: () => `expected ${received} not to be an instance of Date with a valid value`,
-    pass: isValidDate(received)
+    pass: isValidDate(received),
   });
 
 expect.extend({ toBeValidDate: toBeValidDateMatcher });

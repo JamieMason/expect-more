@@ -28,7 +28,7 @@ export const toBeCalculableMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be coercible for use in mathemetical operations`,
     notMessage: () => `expected ${received} not to be coercible for use in mathemetical operations`,
-    pass: isCalculable(received)
+    pass: isCalculable(received),
   });
 
 expect.extend({ toBeCalculable: toBeCalculableMatcher });

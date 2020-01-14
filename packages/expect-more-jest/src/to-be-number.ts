@@ -27,7 +27,7 @@ export const toBeNumberMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a valid number`,
     notMessage: () => `expected ${received} not to be a valid number`,
-    pass: isNumber(received)
+    pass: isNumber(received),
   });
 
 expect.extend({ toBeNumber: toBeNumberMatcher });

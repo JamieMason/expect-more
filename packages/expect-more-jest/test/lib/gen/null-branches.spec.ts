@@ -25,7 +25,7 @@ it('returns incomplete copies of nested objects containing arrays', () => {
     null,
     { a: null },
     { a: { b: null } },
-    { a: { b: { c: null } } }
+    { a: { b: { c: null } } },
   ]);
 });
 

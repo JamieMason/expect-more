@@ -32,7 +32,7 @@ export const toBeSameLengthAsMatcher = (received: any, other: string) =>
   createResult({
     message: () => `expected ${received} to be a string which is the same length as ${other}`,
     notMessage: () => `expected ${received} not to be a string which is the same length as ${other}`,
-    pass: isSameLengthAs(other, received)
+    pass: isSameLengthAs(other, received),
   });
 
 expect.extend({ toBeSameLengthAs: toBeSameLengthAsMatcher });

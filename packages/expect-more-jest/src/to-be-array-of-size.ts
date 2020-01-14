@@ -28,7 +28,7 @@ export const toBeArrayOfSizeMatcher = (received: any, size: number) =>
   createResult({
     message: () => `expected ${received} to be an array containing exactly ${size} items`,
     notMessage: () => `expected ${received} not to be an array containing exactly ${size} items`,
-    pass: isArrayOfSize(size, received)
+    pass: isArrayOfSize(size, received),
   });
 
 expect.extend({ toBeArrayOfSize: toBeArrayOfSizeMatcher });

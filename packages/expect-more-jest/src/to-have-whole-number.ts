@@ -29,7 +29,7 @@ export const toHaveWholeNumberMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be a number without any decimal places`,
     notMessage: () => `expected ${propPath} of ${received} not to be a number without any decimal places`,
-    pass: isWholeNumber(getIn(propPath.split('.'), received))
+    pass: isWholeNumber(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveWholeNumber: toHaveWholeNumberMatcher });

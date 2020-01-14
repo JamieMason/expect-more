@@ -29,7 +29,7 @@ export const toHaveDateAfterMatcher = (received: any, propPath: string, otherDat
   createResult({
     message: () => `expected ${propPath} of ${received} to be date after ${otherDate}`,
     notMessage: () => `expected ${propPath} of ${received} not to be date after ${otherDate}`,
-    pass: isAfter(otherDate, getIn(propPath.split('.'), received))
+    pass: isAfter(otherDate, getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveDateAfter: toHaveDateAfterMatcher });

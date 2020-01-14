@@ -7,13 +7,13 @@ module.exports = {
       branches: 95,
       functions: 95,
       lines: 95,
-      statements: 95
-    }
+      statements: 95,
+    },
   },
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   setupFilesAfterEnv: ['<rootDir>/test/setup-test-framework-script-file.ts'],
   testMatch: ['<rootDir>/packages/*/test/**/*.spec.(ts|tsx|js)'],
   transform: {
-    '^.+\\.(ts|tsx)$': '<rootDir>/scripts/transpile-tests.js'
-  }
+    '^.+\\.(ts|tsx)$': '<rootDir>/scripts/transpile-tests.js',
+  },
 };

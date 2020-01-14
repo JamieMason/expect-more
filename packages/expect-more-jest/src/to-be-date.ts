@@ -26,7 +26,7 @@ export const toBeDateMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be an instance of Date`,
     notMessage: () => `expected ${received} not to be an instance of Date`,
-    pass: isDate(received)
+    pass: isDate(received),
   });
 
 expect.extend({ toBeDate: toBeDateMatcher });

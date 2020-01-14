@@ -10,7 +10,7 @@ declare global {
        * @example
        * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ paws: expect.toBeDivisibleBy(2) }));
        */
-      toBeDivisibleBy<T>(ber, divisor: any): JestMatchers<T>;
+      toBeDivisibleBy<T>(divisor: number): JestMatchers<T>;
     }
     interface Matchers<R, T> {
       /**
@@ -19,7 +19,7 @@ declare global {
        * @example
        * expect(cat.paws).toBeDivisibleBy(2);
        */
-      toBeDivisibleBy(ber, divisor: any): R;
+      toBeDivisibleBy(divisor: number): R;
     }
   }
 }
@@ -28,7 +28,7 @@ export const toBeDivisibleByMatcher = (received: number, divisor: any) =>
   createResult({
     message: () => `expected ${received} to be divisible by ${divisor}`,
     notMessage: () => `expected ${received} not to be divisible by ${divisor}`,
-    pass: isDivisibleBy(divisor, received)
+    pass: isDivisibleBy(divisor, received),
   });
 
 expect.extend({ toBeDivisibleBy: toBeDivisibleByMatcher });

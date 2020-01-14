@@ -5,5 +5,5 @@ assertMemberComparisonMatcher({
   failReceived: new Date('2018-08-27'),
   name: 'toHaveDateAfter',
   passOther: new Date('2018-08-27'),
-  passReceived: new Date('2018-08-28')
+  passReceived: new Date('2018-08-28'),
 });

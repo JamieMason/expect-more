@@ -7,8 +7,8 @@ import gen = require('../../../src/lib/gen');
         assert: expect.any(Function),
         name: expect.toBeNonEmptyString(),
         permutations: expect.toBeNonEmptyArray(),
-        shape: [1, 2, 3]
+        shape: [1, 2, 3],
       });
     });
-  }
+  },
 );

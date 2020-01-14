@@ -29,7 +29,7 @@ export const toHaveTrueMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be true`,
     notMessage: () => `expected ${propPath} of ${received} not to be true`,
-    pass: isTrue(getIn(propPath.split('.'), received))
+    pass: isTrue(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveTrue: toHaveTrueMatcher });

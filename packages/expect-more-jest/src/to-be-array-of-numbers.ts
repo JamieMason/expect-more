@@ -26,7 +26,7 @@ export const toBeArrayOfNumbersMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a non-empty array, containing only numbers`,
     notMessage: () => `expected ${received} not to be a non-empty array, containing only numbers`,
-    pass: isArrayOfNumbers(received)
+    pass: isArrayOfNumbers(received),
   });
 
 expect.extend({ toBeArrayOfNumbers: toBeArrayOfNumbersMatcher });

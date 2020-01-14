@@ -40,7 +40,7 @@ export const toBeLongerThanMatcher = (received: any, other: string) =>
   createResult({
     message: () => `expected ${received} to be a string which is longer than another string ${other}`,
     notMessage: () => `expected ${received} not to be a string which is longer than another string ${other}`,
-    pass: isLongerThan(other, received)
+    pass: isLongerThan(other, received),
   });
 
 expect.extend({ toBeLongerThan: toBeLongerThanMatcher });

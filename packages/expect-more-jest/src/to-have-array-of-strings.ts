@@ -29,7 +29,7 @@ export const toHaveArrayOfStringsMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be an array of strings`,
     notMessage: () => `expected ${propPath} of ${received} not to be an array of strings`,
-    pass: isArrayOfStrings(getIn(propPath.split('.'), received))
+    pass: isArrayOfStrings(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveArrayOfStrings: toHaveArrayOfStringsMatcher });

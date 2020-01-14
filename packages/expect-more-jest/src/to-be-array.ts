@@ -26,7 +26,7 @@ export const toBeArrayMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be an array`,
     notMessage: () => `expected ${received} not to be an array`,
-    pass: isArray(received)
+    pass: isArray(received),
   });
 
 expect.extend({ toBeArray: toBeArrayMatcher });

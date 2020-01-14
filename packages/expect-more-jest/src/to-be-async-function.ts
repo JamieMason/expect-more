@@ -26,7 +26,7 @@ export const toBeAsyncFunctionMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be a function using async/await syntax`,
     notMessage: () => `expected ${received} not to be a function using async/await syntax`,
-    pass: isAsyncFunction(received)
+    pass: isAsyncFunction(received),
   });
 
 expect.extend({ toBeAsyncFunction: toBeAsyncFunctionMatcher });

@@ -29,7 +29,7 @@ export const toHaveArrayOfSizeMatcher = (received: any, propPath: string, size: 
   createResult({
     message: () => `expected ${propPath} of ${received} to be an array containing ${size} members`,
     notMessage: () => `expected ${propPath} of ${received} not to be an array containing ${size} members`,
-    pass: isArrayOfSize(size, getIn(propPath.split('.'), received))
+    pass: isArrayOfSize(size, getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveArrayOfSize: toHaveArrayOfSizeMatcher });

@@ -26,7 +26,7 @@ export const toBeEmptyArrayMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be an array without any items`,
     notMessage: () => `expected ${received} not to be an array without any items`,
-    pass: isEmptyArray(received)
+    pass: isEmptyArray(received),
   });
 
 expect.extend({ toBeEmptyArray: toBeEmptyArrayMatcher });

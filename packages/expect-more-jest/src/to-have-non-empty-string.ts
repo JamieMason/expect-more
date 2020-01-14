@@ -29,7 +29,7 @@ export const toHaveNonEmptyStringMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be non empty string`,
     notMessage: () => `expected ${propPath} of ${received} not to be non empty string`,
-    pass: isNonEmptyString(getIn(propPath.split('.'), received))
+    pass: isNonEmptyString(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveNonEmptyString: toHaveNonEmptyStringMatcher });

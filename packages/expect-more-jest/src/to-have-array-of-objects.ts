@@ -29,7 +29,7 @@ export const toHaveArrayOfObjectsMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be an array of objects`,
     notMessage: () => `expected ${propPath} of ${received} not to be an array of objects`,
-    pass: isArrayOfObjects(getIn(propPath.split('.'), received))
+    pass: isArrayOfObjects(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveArrayOfObjects: toHaveArrayOfObjectsMatcher });

@@ -29,7 +29,7 @@ export const toHaveEmptyArrayMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be an empty array`,
     notMessage: () => `expected ${propPath} of ${received} not to be an empty array`,
-    pass: isEmptyArray(getIn(propPath.split('.'), received))
+    pass: isEmptyArray(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveEmptyArray: toHaveEmptyArrayMatcher });

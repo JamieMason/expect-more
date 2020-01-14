@@ -29,7 +29,7 @@ export const toHaveStringMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be string`,
     notMessage: () => `expected ${propPath} of ${received} not to be string`,
-    pass: isString(getIn(propPath.split('.'), received))
+    pass: isString(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveString: toHaveStringMatcher });

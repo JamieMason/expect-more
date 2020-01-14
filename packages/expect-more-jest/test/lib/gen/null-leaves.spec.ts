@@ -9,7 +9,7 @@ it('returns incomplete copies of basic objects', () => {
     null,
     { a: null, b: 2, c: 3 },
     { a: 1, b: null, c: 3 },
-    { a: 1, b: 2, c: null }
+    { a: 1, b: 2, c: null },
   ]);
 });
 
@@ -17,7 +17,7 @@ it('returns incomplete copies of arrays of objects', () => {
   expect(gen.nullLeaves([{ a: 1 }, { b: 2 }]).permutations).toEqual([
     null,
     [{ a: null }, { b: 2 }],
-    [{ a: 1 }, { b: null }]
+    [{ a: 1 }, { b: null }],
   ]);
 });
 
@@ -33,7 +33,7 @@ it('returns incomplete copies of nested objects containing arrays', () => {
   expect(gen.nullLeaves({ a: { b: { c: [1, 2] } } }).permutations).toEqual([
     null,
     { a: { b: { c: [null, 2] } } },
-    { a: { b: { c: [1, null] } } }
+    { a: { b: { c: [1, null] } } },
   ]);
 });
 
@@ -42,6 +42,6 @@ it('returns incomplete copies of nested arrays', () => {
     null,
     [null, [2, [3]]],
     [1, [null, [3]]],
-    [1, [2, [null]]]
+    [1, [2, [null]]],
   ]);
 });

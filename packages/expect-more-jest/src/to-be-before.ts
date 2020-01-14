@@ -32,7 +32,7 @@ export const toBeBeforeMatcher = (received: any, other: Date) =>
   createResult({
     message: () => `expected ${received} to be an instance of Date, occurring before ${other}`,
     notMessage: () => `expected ${received} not to be an instance of Date, occurring before ${other}`,
-    pass: isBefore(other, received)
+    pass: isBefore(other, received),
   });
 
 expect.extend({ toBeBefore: toBeBeforeMatcher });

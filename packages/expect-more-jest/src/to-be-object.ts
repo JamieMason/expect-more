@@ -27,7 +27,7 @@ export const toBeObjectMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be an object`,
     notMessage: () => `expected ${received} not to be an object`,
-    pass: isObject(received)
+    pass: isObject(received),
   });
 
 expect.extend({ toBeObject: toBeObjectMatcher });

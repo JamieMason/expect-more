@@ -29,7 +29,7 @@ export const toHaveDateBeforeMatcher = (received: any, propPath: string, otherDa
   createResult({
     message: () => `expected ${propPath} of ${received} to be date before ${otherDate}`,
     notMessage: () => `expected ${propPath} of ${received} not to be date before ${otherDate}`,
-    pass: isBefore(otherDate, getIn(propPath.split('.'), received))
+    pass: isBefore(otherDate, getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveDateBefore: toHaveDateBeforeMatcher });

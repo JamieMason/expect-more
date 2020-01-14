@@ -130,8 +130,8 @@ expect(game.releaseDate).toBeAfter(new Date('1990-10-15'));
 ```ts
 expect(onPress).toHaveBeenCalledWith(
   expect.objectContaining({
-    releaseDate: expect.toBeAfter(new Date('1990-10-15'))
-  })
+    releaseDate: expect.toBeAfter(new Date('1990-10-15')),
+  }),
 );
 ```
 
@@ -262,8 +262,8 @@ expect(game.releaseDate).toBeBefore(new Date('1990-10-15'));
 ```ts
 expect(onPress).toHaveBeenCalledWith(
   expect.objectContaining({
-    releaseDate: expect.toBeBefore(new Date('1990-10-15'))
-  })
+    releaseDate: expect.toBeBefore(new Date('1990-10-15')),
+  }),
 );
 ```
 
@@ -461,8 +461,8 @@ expect(log.timestamp).toBeIso8601();
 expect(log.timestamp).toEqual(expect.toBeIso8601());
 expect(log).toEqual(
   expect.objectContaining({
-    timestamp: expect.toBeIso8601()
-  })
+    timestamp: expect.toBeIso8601(),
+  }),
 );
 expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ timestamp: expect.toBeIso8601() }));
 ```
@@ -483,8 +483,8 @@ expect(response.body).toBeJsonString();
 expect(response.body).toEqual(expect.toBeJsonString());
 expect(response).toEqual(
   expect.objectContaining({
-    body: expect.toBeJsonString()
-  })
+    body: expect.toBeJsonString(),
+  }),
 );
 expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ body: expect.toBeJsonString() }));
 ```
@@ -505,13 +505,13 @@ expect(appendedFile.contents).toBeLongerThan(file.contents);
 expect(appendedFile.contents).toEqual(expect.toBeLongerThan(file.contents));
 expect(appendedFile).toEqual(
   expect.objectContaining({
-    contents: expect.toBeLongerThan(file.contents)
-  })
+    contents: expect.toBeLongerThan(file.contents),
+  }),
 );
 expect(onPress).toHaveBeenCalledWith(
   expect.objectContaining({
-    contents: expect.toBeLongerThan(file.contents)
-  })
+    contents: expect.toBeLongerThan(file.contents),
+  }),
 );
 ```
 
@@ -643,8 +643,8 @@ expect(passwordField.value).toBeSameLengthAs(requirements.passwordLength);
 ```ts
 expect(onPress).toHaveBeenCalledWith(
   expect.objectContaining({
-    value: expect.toBeSameLengthAs(requirements.passwordLength)
-  })
+    value: expect.toBeSameLengthAs(requirements.passwordLength),
+  }),
 );
 ```
 
@@ -663,8 +663,8 @@ expect(truncatedFile.contents).toBeShorterThan(file.contents);
 ```ts
 expect(onPress).toHaveBeenCalledWith(
   expect.objectContaining({
-    contents: expect.toBeShorterThan(file.contents)
-  })
+    contents: expect.toBeShorterThan(file.contents),
+  }),
 );
 ```
 
@@ -764,8 +764,8 @@ expect(weapon.shotsRemaining).toBeWithinRange(0, weapon.capacity);
 ```ts
 expect(onPress).toHaveBeenCalledWith(
   expect.objectContaining({
-    shotsRemaining: expect.toBeWithinRange(0, weapon.capacity)
-  })
+    shotsRemaining: expect.toBeWithinRange(0, weapon.capacity),
+  }),
 );
 ```
 
@@ -804,12 +804,12 @@ const shape = {
       bout: {
         the: {
           way: {
-            you: ['walk']
-          }
-        }
-      }
-    }
-  }
+            you: ['walk'],
+          },
+        },
+      },
+    },
+  },
 };
 // This test would pass
 it('asserts if your function safely reads nested values without throwing', () => {
@@ -824,12 +824,12 @@ it('rejects if your function throws when attempting to read unreachable values',
         bout: {
           the: {
             way: {
-              you: [walk]
-            }
-          }
-        }
-      }
-    }
+              you: [walk],
+            },
+          },
+        },
+      },
+    },
   }) => walk;
   expect(unsafe).toHandleMissingBranches(shape);
 });
@@ -878,12 +878,12 @@ const shape = {
       bout: {
         the: {
           way: {
-            you: ['walk']
-          }
-        }
-      }
-    }
-  }
+            you: ['walk'],
+          },
+        },
+      },
+    },
+  },
 };
 // This test would pass
 it('asserts if your function safely reads nested values without throwing', () => {
@@ -898,12 +898,12 @@ it('rejects if your function throws when attempting to read unreachable values',
         bout: {
           the: {
             way: {
-              you: [walk]
-            }
-          }
-        }
-      }
-    }
+              you: [walk],
+            },
+          },
+        },
+      },
+    },
   }) => walk;
   expect(unsafe).toHandleMissingNodes(shape);
 });
@@ -933,12 +933,12 @@ const shape = {
       bout: {
         the: {
           way: {
-            you: ['walk']
-          }
-        }
-      }
-    }
-  }
+            you: ['walk'],
+          },
+        },
+      },
+    },
+  },
 };
 // This test would pass
 it('asserts if your function safely reads nested values without throwing', () => {
@@ -953,12 +953,12 @@ it('rejects if your function throws when attempting to read unreachable values',
         bout: {
           the: {
             way: {
-              you: [walk]
-            }
-          }
-        }
-      }
-    }
+              you: [walk],
+            },
+          },
+        },
+      },
+    },
   }) => walk;
   expect(unsafe).toHandleNullBranches(shape);
 });
@@ -1007,12 +1007,12 @@ const shape = {
       bout: {
         the: {
           way: {
-            you: ['walk']
-          }
-        }
-      }
-    }
-  }
+            you: ['walk'],
+          },
+        },
+      },
+    },
+  },
 };
 // This test would pass
 it('asserts if your function safely reads nested values without throwing', () => {
@@ -1027,12 +1027,12 @@ it('rejects if your function throws when attempting to read unreachable values',
         bout: {
           the: {
             way: {
-              you: [walk]
-            }
-          }
-        }
-      }
-    }
+              you: [walk],
+            },
+          },
+        },
+      },
+    },
   }) => walk;
   expect(unsafe).toHandleNullNodes(shape);
 });

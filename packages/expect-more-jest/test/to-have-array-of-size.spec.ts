@@ -5,5 +5,5 @@ assertMemberComparisonMatcher({
   failReceived: [1, 2],
   name: 'toHaveArrayOfSize',
   passOther: 1,
-  passReceived: [null]
+  passReceived: [null],
 });

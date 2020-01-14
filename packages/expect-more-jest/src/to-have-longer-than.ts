@@ -31,7 +31,7 @@ export const toHaveLongerThanMatcher = (received: any, propPath: string, other: 
   createResult({
     message: () => `expected ${propPath} of ${received} to be a string or array longer than ${other}`,
     notMessage: () => `expected ${propPath} of ${received} not to be a string or array longer than ${other}`,
-    pass: isLongerThan(other, getIn(propPath.split('.'), received))
+    pass: isLongerThan(other, getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveLongerThan: toHaveLongerThanMatcher });

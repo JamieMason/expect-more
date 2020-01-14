@@ -29,7 +29,7 @@ export const toHaveMethodMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be a method (function)`,
     notMessage: () => `expected ${propPath} of ${received} not to be a method (function)`,
-    pass: isFunction(getIn(propPath.split('.'), received))
+    pass: isFunction(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveMethod: toHaveMethodMatcher });

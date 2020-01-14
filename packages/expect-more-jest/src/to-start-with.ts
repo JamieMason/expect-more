@@ -28,7 +28,7 @@ export const toStartWithMatcher = (received: any, other: string) =>
   createResult({
     message: () => `expected ${received} to be a string which starts with ${other}`,
     notMessage: () => `expected ${received} not to be a string which starts with ${other}`,
-    pass: startsWith(other, received)
+    pass: startsWith(other, received),
   });
 
 expect.extend({ toStartWith: toStartWithMatcher });

@@ -31,7 +31,7 @@ export const toHaveNumberWithinRangeMatcher = (received: any, propPath: string, 
   createResult({
     message: () => `expected ${propPath} of ${received} to be number within range ${floor} - ${ceiling}`,
     notMessage: () => `expected ${propPath} of ${received} not to be number within range ${floor} - ${ceiling}`,
-    pass: isWithinRange(floor, ceiling, getIn(propPath.split('.'), received))
+    pass: isWithinRange(floor, ceiling, getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveNumberWithinRange: toHaveNumberWithinRangeMatcher });

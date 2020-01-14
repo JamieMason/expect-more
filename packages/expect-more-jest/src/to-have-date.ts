@@ -29,7 +29,7 @@ export const toHaveDateMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be an instance of Date`,
     notMessage: () => `expected ${propPath} of ${received} not to be an instance of Date`,
-    pass: isDate(getIn(propPath.split('.'), received))
+    pass: isDate(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveDate: toHaveDateMatcher });

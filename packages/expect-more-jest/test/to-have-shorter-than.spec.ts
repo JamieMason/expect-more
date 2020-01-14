@@ -5,5 +5,5 @@ assertMemberComparisonMatcher({
   failReceived: 'abcdef',
   name: 'toHaveShorterThan',
   passOther: 'abcdef',
-  passReceived: 'abc'
+  passReceived: 'abc',
 });

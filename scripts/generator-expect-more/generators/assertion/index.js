@@ -11,7 +11,7 @@ const paths = {
   assertionIndex: path.resolve(rootPath, './packages/expect-more/src/index.ts'),
   generator: path.resolve(__dirname, './generators/app'),
   assertionTemplate: path.resolve(__dirname, './templates/assertion.ejs'),
-  specTemplate: path.resolve(__dirname, './templates/assertion.spec.ejs')
+  specTemplate: path.resolve(__dirname, './templates/assertion.spec.ejs'),
 };
 
 const camelToKebab = (camelName) => camelName.replace(/[A-Z]/g, '-$&').toLowerCase();
@@ -27,23 +27,23 @@ class ExpectMoreGenerator extends Generator {
         {
           message: 'Name',
           name: 'camelName',
-          type: 'input'
+          type: 'input',
         },
         {
           message: 'Does the Assertion take Arguments?',
           name: 'hasArguments',
-          type: 'confirm'
+          type: 'confirm',
         },
         {
           message: 'List each Argument and its Type. Separate each argument with a comma',
           name: 'rawArguments',
           type: 'input',
-          when: ({ hasArguments }) => hasArguments
-        }
+          when: ({ hasArguments }) => hasArguments,
+        },
       ].map((question) => {
         question.default = defaults[question.name];
         return question;
-      })
+      }),
     );
     const { camelName, rawArguments = '' } = this.props;
     this.props.assertionPath = getAssertionPath(camelName);

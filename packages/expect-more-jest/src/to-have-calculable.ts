@@ -29,7 +29,7 @@ export const toHaveCalculableMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be calculable`,
     notMessage: () => `expected ${propPath} of ${received} not to be calculable`,
-    pass: isCalculable(getIn(propPath.split('.'), received))
+    pass: isCalculable(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveCalculable: toHaveCalculableMatcher });

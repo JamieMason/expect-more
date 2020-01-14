@@ -31,7 +31,7 @@ export const toHaveShorterThanMatcher = (received: any, propPath: string, other:
   createResult({
     message: () => `expected ${propPath} of ${received} to be string or array shorter than ${other}`,
     notMessage: () => `expected ${propPath} of ${received} not to be string or array shorter than ${other}`,
-    pass: isShorterThan(other, getIn(propPath.split('.'), received))
+    pass: isShorterThan(other, getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveShorterThan: toHaveShorterThanMatcher });

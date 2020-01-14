@@ -29,7 +29,7 @@ export const toHaveEmptyObjectMatcher = (received: any, propPath: string) =>
   createResult({
     message: () => `expected ${propPath} of ${received} to be an empty object`,
     notMessage: () => `expected ${propPath} of ${received} not to be an empty object`,
-    pass: isEmptyObject(getIn(propPath.split('.'), received))
+    pass: isEmptyObject(getIn(propPath.split('.'), received)),
   });
 
 expect.extend({ toHaveEmptyObject: toHaveEmptyObjectMatcher });

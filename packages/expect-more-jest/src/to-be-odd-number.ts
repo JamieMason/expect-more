@@ -26,7 +26,7 @@ export const toBeOddNumberMatcher = (received: any) =>
   createResult({
     message: () => `expected ${received} to be an odd number`,
     notMessage: () => `expected ${received} not to be an odd number`,
-    pass: isOddNumber(received)
+    pass: isOddNumber(received),
   });
 
 expect.extend({ toBeOddNumber: toBeOddNumberMatcher });

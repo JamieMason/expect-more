@@ -32,7 +32,7 @@ export const toBeAfterMatcher = (received: any, other: Date) =>
   createResult({
     message: () => `expected ${received} to be an instance of Date, occurring after ${other}`,
     notMessage: () => `expected ${received} not to be an instance of Date, occurring after ${other}`,
-    pass: isAfter(other, received)
+    pass: isAfter(other, received),
   });
 
 expect.extend({ toBeAfter: toBeAfterMatcher });
