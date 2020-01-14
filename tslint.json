@@ -2,6 +2,7 @@
   "extends": "tslint:recommended",
   "rules": {
     "interface-name": [false],
+    "max-line-length": [false],
     "quotemark": [true, "single"],
     "trailing-comma": [false]
   }
