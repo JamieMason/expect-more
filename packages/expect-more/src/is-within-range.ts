@@ -5,6 +5,9 @@ import { curry } from './lib/curry';
 /**
  * Asserts that ${value} is a `Number` which is both greater than or equal to
  * ${floor} and less than or equal to ${ceiling}.
+ * @param floor 0
+ * @param ceiling 10
+ * @param value 7
  * @matcherName toBeWithinRange
  * @memberMatcherName toHaveNumberWithinRange
  * @matcherMessage expected ${value} to be greater than or equal to ${floor} and

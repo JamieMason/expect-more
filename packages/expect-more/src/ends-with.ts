@@ -3,6 +3,8 @@ import { curry } from './lib/curry';
 
 /**
  * Asserts that ${value} is a string whose trailing characters are equal to ${otherString}.
+ * @param otherString 'Script'
+ * @param value 'JavaScript'
  * @matcherName toEndWith
  * @memberMatcherName toHaveEndingWith
  * @matcherMessage expected ${value} to end with ${otherString}

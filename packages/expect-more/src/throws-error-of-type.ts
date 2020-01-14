@@ -4,6 +4,8 @@ import { VoidFn } from './typings';
 /**
  * Asserts that ${value} is a `Function` which throws an `Error` of the given
  * type.
+ * @param typeName 'TypeError'
+ * @param value () => thisValueIsUndefined.someProp
  * @matcherName toThrowErrorOfType
  * @memberMatcherName toHaveMethodThrowingErrorOfType
  * @matcherMessage expected ${value} to throw an error of type ${typeName}

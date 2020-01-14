@@ -4,6 +4,8 @@ import { curry } from './lib/curry';
 
 /**
  * Asserts that ${value} is an `Array` containing ${size} number of values.
+ * @param size 4
+ * @param value ['i', 'contain', 4, 'items']
  * @matcherName toBeArrayOfSize
  * @memberMatcherName toHaveArrayOfSize
  * @matcherMessage expected ${value} to be an array containing exactly ${size}

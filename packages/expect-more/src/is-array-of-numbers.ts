@@ -4,6 +4,7 @@ import { every } from './lib/every';
 
 /**
  * Asserts that ${value} is an `Array` containing only `Number` values.
+ * @param value [12, 0, 14]
  * @matcherName toBeArrayOfNumbers
  * @memberMatcherName toHaveArrayOfNumbers
  * @matcherMessage expected ${value} to be a non-empty array, containing only

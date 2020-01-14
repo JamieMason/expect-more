@@ -3,6 +3,7 @@ import { hasType } from './lib/has-type';
 /**
  * Asserts that ${value} is `true`, `false`, `new Boolean(true)`, or `new
  * Boolean(false)`.
+ * @param value false
  * @matcherName toBeBoolean
  * @memberMatcherName toHaveBoolean
  * @matcherMessage expected ${value} to be true, false, or an instance of

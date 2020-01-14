@@ -4,6 +4,7 @@ import { isValidDate } from './is-valid-date';
 /**
  * Asserts that ${value} is a String which conforms to common use-cases of the
  * ISO 8601 standard representation of dates and times.
+ * @param value '1999-12-31T23:59:59'
  * @matcherName toBeIso8601
  * @memberMatcherName toHaveIso8601
  * @matcherMessage expected ${value} to be a valid ISO 8601 date string

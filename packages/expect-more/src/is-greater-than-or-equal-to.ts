@@ -3,6 +3,8 @@ import { curry } from './lib/curry';
 
 /**
  * Asserts that ${value} is greater than or equal to ${otherNumber}.
+ * @param otherNumber 5
+ * @param value 10
  * @matcherName toBeGreaterThanOrEqualTo
  * @memberMatcherName toHaveGreaterThanOrEqualTo
  * @matcherMessage expected ${value} to be greater than or equal to

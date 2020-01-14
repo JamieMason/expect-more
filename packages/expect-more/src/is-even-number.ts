@@ -3,6 +3,7 @@ import { isNumber } from './is-number';
 
 /**
  * Asserts that ${value} is an even `Number`.
+ * @param value 2
  * @matcherName toBeEvenNumber
  * @memberMatcherName toHaveEvenNumber
  * @matcherMessage expected ${value} to be an even number

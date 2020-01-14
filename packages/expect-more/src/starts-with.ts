@@ -3,6 +3,8 @@ import { curry } from './lib/curry';
 
 /**
  * Assert value is a string whose leading characters are equal to `other`.
+ * @param otherString 'Java'
+ * @param value 'JavaScript'
  * @matcherName toStartWith
  * @memberMatcherName toHaveStartingWith
  * @matcherMessage expected ${value} to start with ${otherString}

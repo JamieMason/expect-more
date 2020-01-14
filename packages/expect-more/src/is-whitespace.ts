@@ -2,6 +2,7 @@ import { isString } from './is-string';
 
 /**
  * Asserts that ${value} is a `String` containing only whitespace characters.
+ * @param value ' '
  * @matcherName toBeWhitespace
  * @memberMatcherName toHaveWhitespace
  * @matcherMessage expected ${value} to be a string containing only whitespace

@@ -4,6 +4,7 @@ import { every } from './lib/every';
 
 /**
  * Asserts that ${value} is an `Array` containing only `Object` values.
+ * @param value [{}, new Object()]
  * @matcherName toBeArrayOfObjects
  * @memberMatcherName toHaveArrayOfObjects
  * @matcherMessage expected ${value} to be a non-empty array, containing only

@@ -4,6 +4,7 @@ import { every } from './lib/every';
 
 /**
  * Asserts that ${value} is an `Array` containing only `Boolean` values.
+ * @param value [true, false, new Boolean(true)]
  * @matcherName toBeArrayOfBooleans
  * @memberMatcherName toHaveArrayOfBooleans
  * @matcherMessage expected ${value} to be a non-empty array, containing only

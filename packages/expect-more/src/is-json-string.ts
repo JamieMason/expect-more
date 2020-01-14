@@ -1,5 +1,6 @@
 /**
  * Asserts that ${value} is a `String` of valid JSON.
+ * @param value '{"i":"am valid JSON"}'
  * @matcherName toBeJsonString
  * @memberMatcherName toHaveJsonString
  * @matcherMessage expected ${value} to be a string of valid JSON

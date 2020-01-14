@@ -1,5 +1,6 @@
 /**
  * Asserts that ${value} is a `Function` which throws when invoked.
+ * @param value () => { throw new Error("it wasn't me!") }
  * @matcherName toThrowAnyError
  * @memberMatcherName toHaveMethodThrowingAnyError
  * @matcherMessage expected ${value} to throw

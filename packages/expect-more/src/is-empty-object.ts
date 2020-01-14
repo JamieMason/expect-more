@@ -3,6 +3,7 @@ import { keys } from './lib/keys';
 
 /**
  * Asserts that ${value} is a valid `Object` containing no instance members.
+ * @param value {}
  * @matcherName toBeEmptyObject
  * @memberMatcherName toHaveEmptyObject
  * @matcherMessage expected ${value} to be an empty object

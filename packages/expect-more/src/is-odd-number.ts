@@ -3,6 +3,7 @@ import { isNumber } from './is-number';
 
 /**
  * Asserts that ${value} is an odd `Number`.
+ * @param value 5
  * @matcherName toBeOddNumber
  * @memberMatcherName toHaveOddNumber
  * @matcherMessage expected ${value} to be an odd number

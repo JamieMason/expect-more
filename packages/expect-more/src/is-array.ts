@@ -3,6 +3,7 @@ import { hasType } from './lib/has-type';
 /**
  * Asserts that ${value} is a valid `Array` containing none or any number of
  * items of any type.
+ * @param value [2, true, 'string']
  * @matcherName toBeArray
  * @memberMatcherName toHaveArray
  * @matcherMessage expected ${value} to be an array

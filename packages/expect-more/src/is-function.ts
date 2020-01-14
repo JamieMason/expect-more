@@ -1,5 +1,6 @@
 /**
  * Asserts that ${value} is a `Function`.
+ * @param value () => 'i am a function'
  * @matcherName toBeFunction
  * @memberMatcherName toHaveMethod
  * @matcherMessage expected ${value} to be a function or async function

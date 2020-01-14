@@ -5,6 +5,7 @@ import { isDate } from './is-date';
  * `Date` is little like `Promise` in that it is a container for a value. For
  * example, `new Date('wut?')` is a valid `Date` which wraps a value that is not
  * valid.
+ * @param value new Date('2020-01-01')
  * @matcherName toBeValidDate
  * @memberMatcherName toHaveValidDate
  * @matcherMessage expected ${value} to be an instance of Date with a valid
