@@ -1,3 +1,10 @@
 import { hasType } from './lib/has-type';
 
-export const isNull = hasType('Null');
+/**
+ * Asserts that ${value} is null
+ * @matcherName toBeNull
+ * @memberMatcherName toHaveNull
+ * @matcherMessage expected ${value} to be is null
+ * @matcherNotMessage expected ${value} not to be is null
+ */
+export const isNull = hasType<null>('Null');

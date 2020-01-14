@@ -1,3 +1,13 @@
 import { hasType } from './lib/has-type';
 
-export const isObject = hasType('Object');
+/**
+ * Asserts that ${value} is an `Object`.
+ * @matcherName toBeObject
+ * @memberMatcherName toHaveObject
+ * @matcherMessage expected ${value} to be an object
+ * @matcherNotMessage expected ${value} not to be an object
+ */
+export const isObject = hasType<{
+  [key: string]: any;
+  [key: number]: any;
+}>('Object');

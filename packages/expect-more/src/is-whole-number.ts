@@ -1,4 +1,11 @@
 import { isDivisibleBy } from './is-divisible-by';
 import { isNumber } from './is-number';
 
-export const isWholeNumber = (value) => isNumber(value) && (value === 0 || isDivisibleBy(1, value));
+/**
+ * Asserts that ${value} is a `Number` with no positive decimal places.
+ * @matcherName toBeWholeNumber
+ * @memberMatcherName toHaveWholeNumber
+ * @matcherMessage expected ${value} to be a whole number
+ * @matcherNotMessage expected ${value} not to be a whole number
+ */
+export const isWholeNumber = (value: any): boolean => isNumber(value) && (value === 0 || isDivisibleBy(1, value));

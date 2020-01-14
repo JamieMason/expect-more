@@ -1,7 +1,17 @@
 import { isNonEmptyString } from './index';
 import { curry } from './lib/curry';
 
-export const startsWith = curry<string, any, boolean>(
-  (otherString: string, value: any) =>
-    isNonEmptyString(value) && isNonEmptyString(otherString) && value.slice(0, otherString.length) === otherString
+/**
+ * Assert value is a string whose leading characters are equal to `other`.
+ * @matcherName toStartWith
+ * @memberMatcherName toHaveStartingWith
+ * @matcherMessage expected ${value} to start with ${otherString}
+ * @matcherNotMessage expected ${value} not to start with ${otherString}
+ */
+export const startsWith: {
+  (otherString: string, value: any): boolean;
+  (otherString: string): (value: any) => boolean;
+} = curry(
+  (otherString, value) =>
+    isNonEmptyString(value) && isNonEmptyString(otherString) && value.slice(0, otherString.length) === otherString,
 );

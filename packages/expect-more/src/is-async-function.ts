@@ -1,3 +1,11 @@
 import { hasType } from './lib/has-type';
 
-export const isAsyncFunction = hasType('AsyncFunction');
+/**
+ * Asserts that ${value} is a function using async/await syntax.
+ * @matcherName toBeAsyncFunction
+ * @memberMatcherName toHaveAsyncFunction
+ * @matcherMessage expected ${value} to be a `Function` using async/await syntax
+ * @matcherNotMessage expected ${value} not to be a function using async/await
+ * syntax
+ */
+export const isAsyncFunction = hasType<(...args: any[]) => Promise<any>>('AsyncFunction');

@@ -2,4 +2,13 @@ import { isArray } from './is-array';
 import { isNumber } from './is-number';
 import { every } from './lib/every';
 
-export const isArrayOfNumbers = (value) => isArray(value) && every(isNumber, value);
+/**
+ * Asserts that ${value} is an `Array` containing only `Number` values.
+ * @matcherName toBeArrayOfNumbers
+ * @memberMatcherName toHaveArrayOfNumbers
+ * @matcherMessage expected ${value} to be a non-empty array, containing only
+ * numbers
+ * @matcherNotMessage expected ${value} not to be a non-empty array, containing
+ * only numbers
+ */
+export const isArrayOfNumbers = (value: any): value is number[] => isArray(value) && every(isNumber, value);

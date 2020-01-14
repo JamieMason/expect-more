@@ -1,6 +1,16 @@
 import { isNumber } from './is-number';
 import { curry } from './lib/curry';
 
-export const isGreaterThanOrEqualTo = curry<number, any, boolean>(
-  (other, value) => isNumber(value) && isNumber(other) && value >= other
-);
+/**
+ * Asserts that ${value} is greater than or equal to ${otherNumber}.
+ * @matcherName toBeGreaterThanOrEqualTo
+ * @memberMatcherName toHaveGreaterThanOrEqualTo
+ * @matcherMessage expected ${value} to be greater than or equal to
+ * ${otherNumber}
+ * @matcherNotMessage expected ${value} not to be greater than or equal to
+ * ${otherNumber}
+ */
+export const isGreaterThanOrEqualTo: {
+  (otherNumber: number, value: any): boolean;
+  (otherNumber: number): (value: any) => boolean;
+} = curry((otherNumber, value) => isNumber(value) && isNumber(otherNumber) && value >= otherNumber);

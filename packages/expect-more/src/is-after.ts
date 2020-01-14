@@ -1,6 +1,17 @@
 import { isDate } from './is-date';
 import { curry } from './lib/curry';
 
-export const isAfter = curry<Date, any, boolean>(
-  (otherDate, value) => isDate(value) && isDate(otherDate) && value.getTime() > otherDate.getTime()
-);
+/**
+ * Asserts that ${value} is a valid instance of `Date` whose value occurs after
+ * that of ${otherDate}.
+ * @matcherName toBeAfter
+ * @memberMatcherName toHaveDateAfter
+ * @matcherMessage expected ${value} to be an instance of Date, occurring after
+ * ${otherDate}
+ * @matcherNotMessage expected ${value} not to be an instance of Date, occurring
+ * after ${otherDate}
+ */
+export const isAfter: {
+  (otherDate: Date, value: any): boolean;
+  (otherDate: Date): (value: any) => boolean;
+} = curry((otherDate, value) => isDate(value) && isDate(otherDate) && value.getTime() > otherDate.getTime());
