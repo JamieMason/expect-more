@@ -55,7 +55,7 @@ const locateDescendant = (path: PropName[], clone: Collection): ILocator => {
 const createGenerator = (
   mutateObject: ObjectMutator,
   mutateArray: ArrayMutator,
-  getInitialValue: AnyFunction
+  getInitialValue: AnyFunction,
 ): Generator => (collection: Collection): any[] => {
   const original = JSON.stringify(collection);
   const mutateDescendant = (memo: any[], path: PropName[]): any[] => {
@@ -112,48 +112,48 @@ const createWrapper = (generator: Generator, name: string) => (collection: Colle
           return {
             error: err,
             pass: false,
-            permutation: permutations[i]
+            permutation: permutations[i],
           };
         }
       }
       return {
         error: null,
         pass: true,
-        permutation: null
+        permutation: null,
       };
     },
     name,
     permutations,
-    shape: collection
+    shape: collection,
   };
 };
 
 export const missingBranches = createWrapper(
   createGenerator(deleteBranch, removeBranch, () => [undefined]),
-  'Generator<MissingBranches>'
+  'Generator<MissingBranches>',
 );
 
 export const missingLeaves = createWrapper(
   createGenerator(deleteLeaf, removeLeaf, () => [undefined]),
-  'Generator<MissingLeaves>'
+  'Generator<MissingLeaves>',
 );
 
 export const missingNodes = createWrapper(
   createGenerator(removeFromObject, removeFromArray, () => [undefined]),
-  'Generator<MissingNodes>'
+  'Generator<MissingNodes>',
 );
 
 export const nullBranches = createWrapper(
   createGenerator(nullifyBranchInObject, nullifyBranchInArray, () => [null]),
-  'Generator<NullBranches>'
+  'Generator<NullBranches>',
 );
 
 export const nullLeaves = createWrapper(
   createGenerator(nullifyLeafInObject, nullifyLeafInArray, () => [null]),
-  'Generator<NullLeaves>'
+  'Generator<NullLeaves>',
 );
 
 export const nullNodes = createWrapper(
   createGenerator(nullifyFromObject, nullifyFromArray, () => [null]),
-  'Generator<NullNodes>'
+  'Generator<NullNodes>',
 );
