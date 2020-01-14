@@ -1,9 +1,3 @@
-// : {
-//   failReceived: any;
-//   name: string;
-//   passReceived: any;
-// }
-
 export const assertMemberMatcher = ({ failReceived, name, passReceived }) => {
   it(`provides ${name}`, () => {
     expect({ nested: { property: passReceived } })[name]('nested.property');
