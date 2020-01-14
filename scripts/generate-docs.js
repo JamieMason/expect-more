@@ -58,15 +58,14 @@ const files = fs
 
 files.forEach(visitFile);
 
-fullApi.forEach(({ matcher, asymmetricMatcher }) => {
-  console.log(`### ${matcher.name}`);
-  console.log(`${matcher.description}`);
-  console.log(`##### \`${matcher.signature}\``);
-  console.log('```ts');
-  matcher.examples.forEach((example) => console.log(`${example}`));
-  console.log('```');
-  console.log(`##### \`${asymmetricMatcher.signature}\``);
-  console.log('```ts');
-  asymmetricMatcher.examples.forEach((example) => console.log(`${example}`));
-  console.log('```');
-});
+console.log('```ts');
+
+fullApi.forEach(({ matcher }) => console.log(`${matcher.examples.join('\n')}`));
+
+console.log('```');
+
+// console.log('```ts');
+
+// fullApi.forEach(({ asymmetricMatcher }) => console.log(`${asymmetricMatcher.examples.join('\n')}`));
+
+// console.log('```');
