@@ -25,8 +25,10 @@ declare global {
 
 export const toHaveArrayOfSizeMatcher = (value: any, propPath: string, size: number) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be an array containing exactly ${size} items`,
-    notMessage: () => `expected value at '${propPath}' not to be an array containing exactly ${size} items`,
+    message: () =>
+      `expected value at '${propPath}' to be an array containing exactly ${size} items`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be an array containing exactly ${size} items`,
     pass: isArrayOfSize(size, getIn(propPath.split('.'), value)),
   });
 

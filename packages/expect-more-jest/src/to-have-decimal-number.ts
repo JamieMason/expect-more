@@ -26,7 +26,8 @@ declare global {
 export const toHaveDecimalNumberMatcher = (value: any, propPath: string) =>
   createResult({
     message: () => `expected value at '${propPath}' to be a number with positive decimal places`,
-    notMessage: () => `expected value at '${propPath}' not to be a number with positive decimal places`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be a number with positive decimal places`,
     pass: isDecimalNumber(getIn(propPath.split('.'), value)),
   });
 

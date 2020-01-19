@@ -3,7 +3,9 @@ it('provides expect().toHaveNull()', () => {
 });
 
 it('provides expect().not.toHaveNull()', () => {
-  expect(() => expect({ child: { grandchild: null } }).not.toHaveNull('child.grandchild')).toThrow();
+  expect(() =>
+    expect({ child: { grandchild: null } }).not.toHaveNull('child.grandchild'),
+  ).toThrow();
 });
 
 it('provides expect.toHaveNull()', () => {

@@ -14,7 +14,11 @@ it('returns incomplete copies of basic objects', () => {
 });
 
 it('returns incomplete copies of arrays of objects', () => {
-  expect(Array.from(gen.withMissingLeaves([{ a: 1 }, { b: 2 }]))).toEqual([undefined, [{}, { b: 2 }], [{ a: 1 }, {}]]);
+  expect(Array.from(gen.withMissingLeaves([{ a: 1 }, { b: 2 }]))).toEqual([
+    undefined,
+    [{}, { b: 2 }],
+    [{ a: 1 }, {}],
+  ]);
 });
 
 it('returns incomplete copies of indexes of arrays', () => {
@@ -26,7 +30,10 @@ it('returns incomplete copies of indexes of arrays', () => {
 });
 
 it('returns incomplete copies of nested objects', () => {
-  expect(Array.from(gen.withMissingLeaves({ a: { b: { c: 1 } } }))).toEqual([undefined, { a: { b: {} } }]);
+  expect(Array.from(gen.withMissingLeaves({ a: { b: { c: 1 } } }))).toEqual([
+    undefined,
+    { a: { b: {} } },
+  ]);
 });
 
 it('returns incomplete copies of nested objects containing arrays', () => {
@@ -38,5 +45,10 @@ it('returns incomplete copies of nested objects containing arrays', () => {
 });
 
 it('returns incomplete copies of nested arrays', () => {
-  expect(Array.from(gen.withMissingLeaves([1, [2, [3]]]))).toEqual([undefined, [[2, [3]]], [1, [[3]]], [1, [2, []]]]);
+  expect(Array.from(gen.withMissingLeaves([1, [2, [3]]]))).toEqual([
+    undefined,
+    [[2, [3]]],
+    [1, [[3]]],
+    [1, [2, []]],
+  ]);
 });

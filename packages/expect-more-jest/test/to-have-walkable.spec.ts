@@ -3,7 +3,9 @@ it('provides expect().toHaveWalkable()', () => {
 });
 
 it('provides expect().not.toHaveWalkable()', () => {
-  expect(() => expect({ child: { grandchild: {} } }).not.toHaveWalkable('child.grandchild')).toThrow();
+  expect(() =>
+    expect({ child: { grandchild: {} } }).not.toHaveWalkable('child.grandchild'),
+  ).toThrow();
 });
 
 it('provides expect.toHaveWalkable()', () => {

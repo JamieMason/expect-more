@@ -23,10 +23,15 @@ declare global {
   }
 }
 
-export const toHaveGreaterThanOrEqualToMatcher = (value: any, propPath: string, otherNumber: number) =>
+export const toHaveGreaterThanOrEqualToMatcher = (
+  value: any,
+  propPath: string,
+  otherNumber: number,
+) =>
   createResult({
     message: () => `expected value at '${propPath}' to be greater than or equal to ${otherNumber}`,
-    notMessage: () => `expected value at '${propPath}' not to be greater than or equal to ${otherNumber}`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be greater than or equal to ${otherNumber}`,
     pass: isGreaterThanOrEqualTo(otherNumber, getIn(propPath.split('.'), value)),
   });
 

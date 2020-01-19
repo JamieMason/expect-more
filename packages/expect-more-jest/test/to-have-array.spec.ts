@@ -3,9 +3,13 @@ it('provides expect().toHaveArray()', () => {
 });
 
 it('provides expect().not.toHaveArray()', () => {
-  expect(() => expect({ child: { grandchild: [2, true, 'string'] } }).not.toHaveArray('child.grandchild')).toThrow();
+  expect(() =>
+    expect({ child: { grandchild: [2, true, 'string'] } }).not.toHaveArray('child.grandchild'),
+  ).toThrow();
 });
 
 it('provides expect.toHaveArray()', () => {
-  expect({ child: { grandchild: [2, true, 'string'] } }).toEqual(expect.toHaveArray('child.grandchild'));
+  expect({ child: { grandchild: [2, true, 'string'] } }).toEqual(
+    expect.toHaveArray('child.grandchild'),
+  );
 });

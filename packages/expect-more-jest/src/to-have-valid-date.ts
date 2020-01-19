@@ -26,7 +26,8 @@ declare global {
 export const toHaveValidDateMatcher = (value: any, propPath: string) =>
   createResult({
     message: () => `expected value at '${propPath}' to be an instance of Date with a valid value`,
-    notMessage: () => `expected value at '${propPath}' not to be an instance of Date with a valid value`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be an instance of Date with a valid value`,
     pass: isValidDate(getIn(propPath.split('.'), value)),
   });
 

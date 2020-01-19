@@ -18,4 +18,6 @@ export const isNear: {
   (otherNumber: number, epsilon: number, value: any): boolean;
   (otherNumber: number, epsilon: number): (value: any) => boolean;
   (otherNumber: number): (epsilon: number, value: any) => boolean;
-} = curry((otherNumber, epsilon, value) => isWithinRange(otherNumber - epsilon, otherNumber + epsilon, value));
+} = curry((otherNumber, epsilon, value) =>
+  isWithinRange(otherNumber - epsilon, otherNumber + epsilon, value),
+);

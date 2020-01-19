@@ -3,7 +3,9 @@ it('provides expect().toBeSameLengthAs()', () => {
 });
 
 it('provides expect().not.toBeSameLengthAs()', () => {
-  expect(() => expect(['i also have', '2 items']).not.toBeSameLengthAs(['i have', '2 items'])).toThrow();
+  expect(() =>
+    expect(['i also have', '2 items']).not.toBeSameLengthAs(['i have', '2 items']),
+  ).toThrow();
 });
 
 it('provides expect.toBeSameLengthAs()', () => {

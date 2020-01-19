@@ -18,5 +18,7 @@ export const isShorterThan: {
   (otherStringOrArray: string | any[]): (value: any) => boolean;
 } = curry(
   (otherStringOrArray, value) =>
-    isIndexedList(value) && isIndexedList(otherStringOrArray) && value.length < otherStringOrArray.length,
+    isIndexedList(value) &&
+    isIndexedList(otherStringOrArray) &&
+    value.length < otherStringOrArray.length,
 );

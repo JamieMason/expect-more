@@ -3,7 +3,9 @@ it('provides expect().toHaveObject()', () => {
 });
 
 it('provides expect().not.toHaveObject()', () => {
-  expect(() => expect({ child: { grandchild: {} } }).not.toHaveObject('child.grandchild')).toThrow();
+  expect(() =>
+    expect({ child: { grandchild: {} } }).not.toHaveObject('child.grandchild'),
+  ).toThrow();
 });
 
 it('provides expect.toHaveObject()', () => {

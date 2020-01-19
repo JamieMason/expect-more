@@ -25,8 +25,10 @@ declare global {
 
 export const toHaveWhitespaceMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be a string containing only whitespace characters`,
-    notMessage: () => `expected value at '${propPath}' not to be a string containing only whitespace characters`,
+    message: () =>
+      `expected value at '${propPath}' to be a string containing only whitespace characters`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be a string containing only whitespace characters`,
     pass: isWhitespace(getIn(propPath.split('.'), value)),
   });
 

@@ -4,10 +4,14 @@ it('provides expect().toHaveJsonString()', () => {
 
 it('provides expect().not.toHaveJsonString()', () => {
   expect(() =>
-    expect({ child: { grandchild: '{"i":"am valid JSON"}' } }).not.toHaveJsonString('child.grandchild'),
+    expect({ child: { grandchild: '{"i":"am valid JSON"}' } }).not.toHaveJsonString(
+      'child.grandchild',
+    ),
   ).toThrow();
 });
 
 it('provides expect.toHaveJsonString()', () => {
-  expect({ child: { grandchild: '{"i":"am valid JSON"}' } }).toEqual(expect.toHaveJsonString('child.grandchild'));
+  expect({ child: { grandchild: '{"i":"am valid JSON"}' } }).toEqual(
+    expect.toHaveJsonString('child.grandchild'),
+  );
 });

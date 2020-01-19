@@ -26,7 +26,8 @@ declare global {
 
 export const toBeShorterThanMatcher = (value: any, otherStringOrArray: string | any[]) =>
   createResult({
-    message: () => `expected ${value} to be a string or array whose length is less than that of ${otherStringOrArray}`,
+    message: () =>
+      `expected ${value} to be a string or array whose length is less than that of ${otherStringOrArray}`,
     notMessage: () =>
       `expected ${value} not to be a string or array whose length is less than that of ${otherStringOrArray}`,
     pass: isShorterThan(otherStringOrArray, value),

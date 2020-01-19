@@ -3,7 +3,9 @@ it('provides expect().toHaveCalculable()', () => {
 });
 
 it('provides expect().not.toHaveCalculable()', () => {
-  expect(() => expect({ child: { grandchild: '100' } }).not.toHaveCalculable('child.grandchild')).toThrow();
+  expect(() =>
+    expect({ child: { grandchild: '100' } }).not.toHaveCalculable('child.grandchild'),
+  ).toThrow();
 });
 
 it('provides expect.toHaveCalculable()', () => {

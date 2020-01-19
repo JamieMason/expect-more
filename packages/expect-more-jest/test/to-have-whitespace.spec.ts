@@ -3,7 +3,9 @@ it('provides expect().toHaveWhitespace()', () => {
 });
 
 it('provides expect().not.toHaveWhitespace()', () => {
-  expect(() => expect({ child: { grandchild: ' ' } }).not.toHaveWhitespace('child.grandchild')).toThrow();
+  expect(() =>
+    expect({ child: { grandchild: ' ' } }).not.toHaveWhitespace('child.grandchild'),
+  ).toThrow();
 });
 
 it('provides expect.toHaveWhitespace()', () => {

@@ -27,7 +27,8 @@ declare global {
 export const toBeBeforeMatcher = (value: any, otherDate: Date) =>
   createResult({
     message: () => `expected ${value} to be an instance of Date, occurring before ${otherDate}`,
-    notMessage: () => `expected ${value} not to be an instance of Date, occurring before ${otherDate}`,
+    notMessage: () =>
+      `expected ${value} not to be an instance of Date, occurring before ${otherDate}`,
     pass: isBefore(otherDate, value),
   });
 

@@ -6,7 +6,10 @@ const getFiles = (dirPath) =>
   fs
     .readdirSync(dirPath)
     .filter(
-      (filename) => filename.endsWith('.ts') && !filename.endsWith('index.ts') && !filename.endsWith('typings.ts'),
+      (filename) =>
+        filename.endsWith('.ts') &&
+        !filename.endsWith('index.ts') &&
+        !filename.endsWith('typings.ts'),
     )
     .map((filename) => path.resolve(dirPath, filename));
 
@@ -46,7 +49,8 @@ const isCurriedFn = (variableDeclaration) =>
   variableDeclaration.type.members.length > 1;
 
 const isUnaryfunction = (variableDeclaration) =>
-  variableDeclaration.initializer && variableDeclaration.initializer.kind === ts.SyntaxKind.ArrowFunction;
+  variableDeclaration.initializer &&
+  variableDeclaration.initializer.kind === ts.SyntaxKind.ArrowFunction;
 
 const isHasTypeFunction = (variableDeclaration) =>
   variableDeclaration.initializer &&
@@ -75,7 +79,9 @@ const getSignature = (variableDeclaration) => {
 
 const getArgumentTypes = (variableDeclaration) => {
   if (isCurriedFn(variableDeclaration)) {
-    const signature = variableDeclaration.type.members[0].parameters.map((parameter) => parameter.getText());
+    const signature = variableDeclaration.type.members[0].parameters.map((parameter) =>
+      parameter.getText(),
+    );
     return signature;
   } else if (isUnaryfunction(variableDeclaration)) {
     const signature = variableDeclaration.initializer.parameters.map((param) => param.getText());
@@ -87,7 +93,8 @@ const getArgumentTypes = (variableDeclaration) => {
   }
 };
 
-const getJestMatcherPath = (matcherName) => path.resolve(expectMoreJestPath, `./${camelToKebab(matcherName)}.ts`);
+const getJestMatcherPath = (matcherName) =>
+  path.resolve(expectMoreJestPath, `./${camelToKebab(matcherName)}.ts`);
 const getJestMatcherTestPath = (matcherName) =>
   path.resolve(expectMoreJestPath, `../test/${camelToKebab(matcherName)}.spec.ts`);
 
@@ -123,8 +130,12 @@ const getMetadata = (filePath) => {
       result.matcherInputs = result.inputs.slice(0, result.inputs.length - 1);
       result.memberMatcherInputs = ['propPath: string'].concat(result.matcherInputs);
       result.inputsWithoutTypes = result.inputs.map((withType) => withType.split(':')[0]);
-      result.matcherInputsWithoutTypes = result.matcherInputs.map((withType) => withType.split(':')[0]);
-      result.memberMatcherInputsWithoutTypes = result.memberMatcherInputs.map((withType) => withType.split(':')[0]);
+      result.matcherInputsWithoutTypes = result.matcherInputs.map(
+        (withType) => withType.split(':')[0],
+      );
+      result.memberMatcherInputsWithoutTypes = result.memberMatcherInputs.map(
+        (withType) => withType.split(':')[0],
+      );
     }
     ts.forEachChild(node, visitNode);
   };
@@ -149,7 +160,9 @@ const generateJestMatcher = (file) => {
     const argsForAssertFunction = matcherInputsWithoutTypes.concat('value').join(', ');
 
     const valueExample = params.find(({ name }) => name === 'value').exampleValue;
-    const argsExamples = params.filter(({ name }) => name !== 'value').map(({ exampleValue }) => exampleValue);
+    const argsExamples = params
+      .filter(({ name }) => name !== 'value')
+      .map(({ exampleValue }) => exampleValue);
     const argsExamplesSource = argsExamples.join(', ');
 
     const source = `
@@ -210,7 +223,9 @@ const generateJestMatcherTest = (file) => {
     valueExample = "eval('(function*() {yield 2;})')";
   }
 
-  const argsExamples = params.filter(({ name }) => name !== 'value').map(({ exampleValue }) => exampleValue);
+  const argsExamples = params
+    .filter(({ name }) => name !== 'value')
+    .map(({ exampleValue }) => exampleValue);
   const argsExamplesSource = argsExamples.join(', ');
 
   const source = `
@@ -238,13 +253,25 @@ const generateJestMemberMatcher = (file) => {
     const { description, matcherMessage, memberMatcherName, matcherNotMessage, params } = jsDoc;
 
     const argsForMatcherInterface = ['propPath: string'].concat(matcherInputs).join(', ');
-    const typedArgsForMatcherFunction = ['value: any', 'propPath: string'].concat(matcherInputs).join(', ');
-    const argsForAssertFunction = matcherInputsWithoutTypes.concat(`getIn(propPath.split('.'), value)`).join(', ');
-    const memberMatcherMessage = matcherMessage.replace('expected ${value}', "expected value at '${propPath}'");
-    const memberMatcherNotMessage = matcherNotMessage.replace('expected ${value}', "expected value at '${propPath}'");
+    const typedArgsForMatcherFunction = ['value: any', 'propPath: string']
+      .concat(matcherInputs)
+      .join(', ');
+    const argsForAssertFunction = matcherInputsWithoutTypes
+      .concat(`getIn(propPath.split('.'), value)`)
+      .join(', ');
+    const memberMatcherMessage = matcherMessage.replace(
+      'expected ${value}',
+      "expected value at '${propPath}'",
+    );
+    const memberMatcherNotMessage = matcherNotMessage.replace(
+      'expected ${value}',
+      "expected value at '${propPath}'",
+    );
 
     const valueExample = params.find(({ name }) => name === 'value').exampleValue;
-    const argsExamples = params.filter(({ name }) => name !== 'value').map(({ exampleValue }) => exampleValue);
+    const argsExamples = params
+      .filter(({ name }) => name !== 'value')
+      .map(({ exampleValue }) => exampleValue);
     const argsExamplesSource = ["'child.grandchild'"].concat(argsExamples).join(', ');
 
     const source = `
@@ -305,7 +332,9 @@ const generateJestMemberMatcherTest = (file) => {
   }
 
   const valueExampleSource = `{ child: { grandchild: ${valueExample} } }`;
-  const argsExamples = params.filter(({ name }) => name !== 'value').map(({ exampleValue }) => exampleValue);
+  const argsExamples = params
+    .filter(({ name }) => name !== 'value')
+    .map(({ exampleValue }) => exampleValue);
   const argsExamplesSource = ["'child.grandchild'"].concat(argsExamples).join(', ');
 
   const source = `

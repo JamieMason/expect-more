@@ -3,7 +3,9 @@ it('provides expect().toBeShorterThan()', () => {
 });
 
 it('provides expect().not.toBeShorterThan()', () => {
-  expect(() => expect(['i have one item']).not.toBeShorterThan(['i', 'have', 4, 'items'])).toThrow();
+  expect(() =>
+    expect(['i have one item']).not.toBeShorterThan(['i', 'have', 4, 'items']),
+  ).toThrow();
 });
 
 it('provides expect.toBeShorterThan()', () => {

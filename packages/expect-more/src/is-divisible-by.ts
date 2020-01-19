@@ -14,4 +14,6 @@ import { curry } from './lib/curry';
 export const isDivisibleBy: {
   (otherNumber: number, value: any): boolean;
   (otherNumber: number): (value: any) => boolean;
-} = curry((otherNumber, value) => isNumber(value) && isNumber(otherNumber) && value % otherNumber === 0);
+} = curry(
+  (otherNumber, value) => isNumber(value) && isNumber(otherNumber) && value % otherNumber === 0,
+);

@@ -23,7 +23,11 @@ declare global {
   }
 }
 
-export const toHaveLongerThanMatcher = (value: any, propPath: string, otherStringOrArray: string | any[]) =>
+export const toHaveLongerThanMatcher = (
+  value: any,
+  propPath: string,
+  otherStringOrArray: string | any[],
+) =>
   createResult({
     message: () =>
       `expected value at '${propPath}' to be a string or array whose length is greater than that of ${otherStringOrArray}`,

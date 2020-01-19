@@ -26,7 +26,8 @@ declare global {
 export const toHaveAsyncFunctionMatcher = (value: any, propPath: string) =>
   createResult({
     message: () => `expected value at '${propPath}' to be a \`Function\` using async/await syntax`,
-    notMessage: () => `expected value at '${propPath}' not to be a function using async/await syntax`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be a function using async/await syntax`,
     pass: isAsyncFunction(getIn(propPath.split('.'), value)),
   });
 

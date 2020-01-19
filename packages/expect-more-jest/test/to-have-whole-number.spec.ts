@@ -3,7 +3,9 @@ it('provides expect().toHaveWholeNumber()', () => {
 });
 
 it('provides expect().not.toHaveWholeNumber()', () => {
-  expect(() => expect({ child: { grandchild: 8 } }).not.toHaveWholeNumber('child.grandchild')).toThrow();
+  expect(() =>
+    expect({ child: { grandchild: 8 } }).not.toHaveWholeNumber('child.grandchild'),
+  ).toThrow();
 });
 
 it('provides expect.toHaveWholeNumber()', () => {

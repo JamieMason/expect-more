@@ -4,10 +4,14 @@ it('provides expect().toHaveNonEmptyArray()', () => {
 
 it('provides expect().not.toHaveNonEmptyArray()', () => {
   expect(() =>
-    expect({ child: { grandchild: ['i', 'am not empty'] } }).not.toHaveNonEmptyArray('child.grandchild'),
+    expect({ child: { grandchild: ['i', 'am not empty'] } }).not.toHaveNonEmptyArray(
+      'child.grandchild',
+    ),
   ).toThrow();
 });
 
 it('provides expect.toHaveNonEmptyArray()', () => {
-  expect({ child: { grandchild: ['i', 'am not empty'] } }).toEqual(expect.toHaveNonEmptyArray('child.grandchild'));
+  expect({ child: { grandchild: ['i', 'am not empty'] } }).toEqual(
+    expect.toHaveNonEmptyArray('child.grandchild'),
+  );
 });

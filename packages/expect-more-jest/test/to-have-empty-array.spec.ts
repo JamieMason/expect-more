@@ -3,7 +3,9 @@ it('provides expect().toHaveEmptyArray()', () => {
 });
 
 it('provides expect().not.toHaveEmptyArray()', () => {
-  expect(() => expect({ child: { grandchild: [] } }).not.toHaveEmptyArray('child.grandchild')).toThrow();
+  expect(() =>
+    expect({ child: { grandchild: [] } }).not.toHaveEmptyArray('child.grandchild'),
+  ).toThrow();
 });
 
 it('provides expect.toHaveEmptyArray()', () => {

@@ -9,12 +9,10 @@ it('provides expect().toHaveShorterThan()', () => {
 
 it('provides expect().not.toHaveShorterThan()', () => {
   expect(() =>
-    expect({ child: { grandchild: ['i have one item'] } }).not.toHaveShorterThan('child.grandchild', [
-      'i',
-      'have',
-      4,
-      'items',
-    ]),
+    expect({ child: { grandchild: ['i have one item'] } }).not.toHaveShorterThan(
+      'child.grandchild',
+      ['i', 'have', 4, 'items'],
+    ),
   ).toThrow();
 });
 

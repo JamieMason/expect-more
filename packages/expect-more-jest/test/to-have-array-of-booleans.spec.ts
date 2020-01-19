@@ -1,10 +1,14 @@
 it('provides expect().toHaveArrayOfBooleans()', () => {
-  expect({ child: { grandchild: [true, false, new Boolean(true)] } }).toHaveArrayOfBooleans('child.grandchild');
+  expect({ child: { grandchild: [true, false, new Boolean(true)] } }).toHaveArrayOfBooleans(
+    'child.grandchild',
+  );
 });
 
 it('provides expect().not.toHaveArrayOfBooleans()', () => {
   expect(() =>
-    expect({ child: { grandchild: [true, false, new Boolean(true)] } }).not.toHaveArrayOfBooleans('child.grandchild'),
+    expect({ child: { grandchild: [true, false, new Boolean(true)] } }).not.toHaveArrayOfBooleans(
+      'child.grandchild',
+    ),
   ).toThrow();
 });
 

@@ -28,7 +28,9 @@ const visitFile = ({ filePath, gitHubUrl }) => {
             ? `expect(value: any).${methodSignature.getText()}`
             : `expect.${methodSignature.getText()}`;
           const description = jsDoc.comment;
-          const examples = jsDoc.tags.filter((tag) => tag.tagName.text === 'example').map((tag) => tag.comment);
+          const examples = jsDoc.tags
+            .filter((tag) => tag.tagName.text === 'example')
+            .map((tag) => tag.comment);
           api[isAsymmetricMatcher ? 'asymmetricMatcher' : 'matcher'] = {
             name,
             signature,

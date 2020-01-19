@@ -3,7 +3,9 @@ it('provides expect().toHaveBoolean()', () => {
 });
 
 it('provides expect().not.toHaveBoolean()', () => {
-  expect(() => expect({ child: { grandchild: false } }).not.toHaveBoolean('child.grandchild')).toThrow();
+  expect(() =>
+    expect({ child: { grandchild: false } }).not.toHaveBoolean('child.grandchild'),
+  ).toThrow();
 });
 
 it('provides expect.toHaveBoolean()', () => {

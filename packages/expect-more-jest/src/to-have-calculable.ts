@@ -25,8 +25,10 @@ declare global {
 
 export const toHaveCalculableMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be coercible for use in mathemetical operations`,
-    notMessage: () => `expected value at '${propPath}' not to be coercible for use in mathemetical operations`,
+    message: () =>
+      `expected value at '${propPath}' to be coercible for use in mathemetical operations`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be coercible for use in mathemetical operations`,
     pass: isCalculable(getIn(propPath.split('.'), value)),
   });
 

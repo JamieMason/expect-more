@@ -16,8 +16,10 @@ const paths = {
 
 const camelToKebab = (camelName) => camelName.replace(/[A-Z]/g, '-$&').toLowerCase();
 const camelToSentence = (camelName) => camelName.replace(/[A-Z]/g, ' $&').toLowerCase();
-const getAssertionPath = (camelName) => path.resolve(paths.expectMore, `./src/${camelToKebab(camelName)}.ts`);
-const getAssertionSpecPath = (camelName) => path.resolve(paths.expectMore, `./test/${camelToKebab(camelName)}.spec.ts`);
+const getAssertionPath = (camelName) =>
+  path.resolve(paths.expectMore, `./src/${camelToKebab(camelName)}.ts`);
+const getAssertionSpecPath = (camelName) =>
+  path.resolve(paths.expectMore, `./test/${camelToKebab(camelName)}.spec.ts`);
 
 class ExpectMoreGenerator extends Generator {
   async getConfiguration() {

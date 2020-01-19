@@ -12,4 +12,5 @@ import { every } from './lib/every';
  * @matcherNotMessage expected ${value} not to be a non-empty array, containing
  * only strings
  */
-export const isArrayOfStrings = (value: any): value is string[] => isArray(value) && every(isString, value);
+export const isArrayOfStrings = (value: any): value is string[] =>
+  isArray(value) && every(isString, value);

@@ -3,7 +3,9 @@ it('provides expect().toHaveUndefined()', () => {
 });
 
 it('provides expect().not.toHaveUndefined()', () => {
-  expect(() => expect({ child: { grandchild: undefined } }).not.toHaveUndefined('child.grandchild')).toThrow();
+  expect(() =>
+    expect({ child: { grandchild: undefined } }).not.toHaveUndefined('child.grandchild'),
+  ).toThrow();
 });
 
 it('provides expect.toHaveUndefined()', () => {

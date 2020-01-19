@@ -25,8 +25,10 @@ declare global {
 
 export const toHaveArrayOfBooleansMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be a non-empty array, containing only boolean values`,
-    notMessage: () => `expected value at '${propPath}' not to be a non-empty array, containing only boolean values`,
+    message: () =>
+      `expected value at '${propPath}' to be a non-empty array, containing only boolean values`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be a non-empty array, containing only boolean values`,
     pass: isArrayOfBooleans(getIn(propPath.split('.'), value)),
   });
 

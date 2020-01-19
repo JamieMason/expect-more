@@ -25,8 +25,10 @@ declare global {
 
 export const toHaveArrayOfObjectsMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be a non-empty array, containing only objects`,
-    notMessage: () => `expected value at '${propPath}' not to be a non-empty array, containing only objects`,
+    message: () =>
+      `expected value at '${propPath}' to be a non-empty array, containing only objects`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be a non-empty array, containing only objects`,
     pass: isArrayOfObjects(getIn(propPath.split('.'), value)),
   });
 

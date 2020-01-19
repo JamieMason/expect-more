@@ -15,5 +15,7 @@ export const startsWith: {
   (otherString: string): (value: any) => boolean;
 } = curry(
   (otherString, value) =>
-    isNonEmptyString(value) && isNonEmptyString(otherString) && value.slice(0, otherString.length) === otherString,
+    isNonEmptyString(value) &&
+    isNonEmptyString(otherString) &&
+    value.slice(0, otherString.length) === otherString,
 );

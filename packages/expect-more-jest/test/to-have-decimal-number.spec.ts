@@ -3,7 +3,9 @@ it('provides expect().toHaveDecimalNumber()', () => {
 });
 
 it('provides expect().not.toHaveDecimalNumber()', () => {
-  expect(() => expect({ child: { grandchild: 12.55 } }).not.toHaveDecimalNumber('child.grandchild')).toThrow();
+  expect(() =>
+    expect({ child: { grandchild: 12.55 } }).not.toHaveDecimalNumber('child.grandchild'),
+  ).toThrow();
 });
 
 it('provides expect.toHaveDecimalNumber()', () => {

@@ -3,7 +3,9 @@ it('provides expect().toHaveOddNumber()', () => {
 });
 
 it('provides expect().not.toHaveOddNumber()', () => {
-  expect(() => expect({ child: { grandchild: 5 } }).not.toHaveOddNumber('child.grandchild')).toThrow();
+  expect(() =>
+    expect({ child: { grandchild: 5 } }).not.toHaveOddNumber('child.grandchild'),
+  ).toThrow();
 });
 
 it('provides expect.toHaveOddNumber()', () => {

@@ -1,7 +1,12 @@
 import gen = require('../../src/gen');
 
 it('returns incomplete copies of basic arrays', () => {
-  expect(Array.from(gen.withNullNodes([1, 2, 3]))).toEqual([null, [null, 2, 3], [1, null, 3], [1, 2, null]]);
+  expect(Array.from(gen.withNullNodes([1, 2, 3]))).toEqual([
+    null,
+    [null, 2, 3],
+    [1, null, 3],
+    [1, 2, null],
+  ]);
 });
 
 it('returns incomplete copies of basic objects', () => {

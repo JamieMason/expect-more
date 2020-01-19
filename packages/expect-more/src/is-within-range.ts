@@ -19,4 +19,7 @@ export const isWithinRange: {
   (floor: number, ceiling: number, value: any): boolean;
   (floor: number, ceiling: number): (value: any) => boolean;
   (floor: number): (ceiling: number, value: any) => boolean;
-} = curry((floor, ceiling, value) => isLessThanOrEqualTo(ceiling, value) && isGreaterThanOrEqualTo(floor, value));
+} = curry(
+  (floor, ceiling, value) =>
+    isLessThanOrEqualTo(ceiling, value) && isGreaterThanOrEqualTo(floor, value),
+);

@@ -16,7 +16,8 @@ const paths = {
 
 const camelToKebab = (camelName) => camelName.replace(/[A-Z]/g, '-$&').toLowerCase();
 const camelToSentence = (camelName) => camelName.replace(/[A-Z]/g, ' $&').toLowerCase();
-const getMatcherPath = (camelName) => path.resolve(paths.expectMoreJest, `./src/${camelToKebab(camelName)}.ts`);
+const getMatcherPath = (camelName) =>
+  path.resolve(paths.expectMoreJest, `./src/${camelToKebab(camelName)}.ts`);
 const getMatcherSpecPath = (camelName) =>
   path.resolve(paths.expectMoreJest, `./test/${camelToKebab(camelName)}.spec.ts`);
 

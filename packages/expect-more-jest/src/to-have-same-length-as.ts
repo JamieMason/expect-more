@@ -23,7 +23,11 @@ declare global {
   }
 }
 
-export const toHaveSameLengthAsMatcher = (value: any, propPath: string, otherStringOrArray: string | any[]) =>
+export const toHaveSameLengthAsMatcher = (
+  value: any,
+  propPath: string,
+  otherStringOrArray: string | any[],
+) =>
   createResult({
     message: () =>
       `expected value at '${propPath}' to be a string or array whose length is the same as that of ${otherStringOrArray}`,

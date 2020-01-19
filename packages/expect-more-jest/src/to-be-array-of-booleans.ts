@@ -27,7 +27,8 @@ declare global {
 export const toBeArrayOfBooleansMatcher = (value: any) =>
   createResult({
     message: () => `expected ${value} to be a non-empty array, containing only boolean values`,
-    notMessage: () => `expected ${value} not to be a non-empty array, containing only boolean values`,
+    notMessage: () =>
+      `expected ${value} not to be a non-empty array, containing only boolean values`,
     pass: isArrayOfBooleans(value),
   });
 

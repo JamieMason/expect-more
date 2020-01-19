@@ -1,7 +1,12 @@
 import gen = require('../../src/gen');
 
 it('returns incomplete copies of basic arrays', () => {
-  expect(Array.from(gen.withNullLeaves([1, 2, 3]))).toEqual([null, [null, 2, 3], [1, null, 3], [1, 2, null]]);
+  expect(Array.from(gen.withNullLeaves([1, 2, 3]))).toEqual([
+    null,
+    [null, 2, 3],
+    [1, null, 3],
+    [1, 2, null],
+  ]);
 });
 
 it('returns incomplete copies of basic objects', () => {
@@ -30,7 +35,10 @@ it('returns incomplete copies of indexes of arrays', () => {
 });
 
 it('returns incomplete copies of nested objects', () => {
-  expect(Array.from(gen.withNullLeaves({ a: { b: { c: 1 } } }))).toEqual([null, { a: { b: { c: null } } }]);
+  expect(Array.from(gen.withNullLeaves({ a: { b: { c: 1 } } }))).toEqual([
+    null,
+    { a: { b: { c: null } } },
+  ]);
 });
 
 it('returns incomplete copies of nested objects containing arrays', () => {

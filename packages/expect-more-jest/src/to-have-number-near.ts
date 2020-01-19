@@ -23,10 +23,17 @@ declare global {
   }
 }
 
-export const toHaveNumberNearMatcher = (value: any, propPath: string, otherNumber: number, epsilon: number) =>
+export const toHaveNumberNearMatcher = (
+  value: any,
+  propPath: string,
+  otherNumber: number,
+  epsilon: number,
+) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be within ${epsilon} greater or less than ${otherNumber}`,
-    notMessage: () => `expected value at '${propPath}' not to be within ${epsilon} greater or less than ${otherNumber}`,
+    message: () =>
+      `expected value at '${propPath}' to be within ${epsilon} greater or less than ${otherNumber}`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be within ${epsilon} greater or less than ${otherNumber}`,
     pass: isNear(otherNumber, epsilon, getIn(propPath.split('.'), value)),
   });
 

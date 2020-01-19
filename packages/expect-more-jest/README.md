@@ -9,12 +9,13 @@
 [![Follow JamieMason on GitHub](https://img.shields.io/github/followers/JamieMason.svg?style=social&label=Follow)](https://github.com/JamieMason)
 [![Follow fold_left on Twitter](https://img.shields.io/twitter/follow/fold_left.svg?style=social&label=Follow)](https://twitter.com/fold_left)
 
-expect-more-jest is a huge library of test matchers for a range of common use-cases, to make tests easier to read and
-produce relevant and useful messages when they fail.
+expect-more-jest is a huge library of test matchers for a range of common use-cases, to make tests
+easier to read and produce relevant and useful messages when they fail.
 
-Avoid vague messages such as _"expected false to be true"_ in favour of useful cues like _"expected 3 to be even
-number"_, and avoid implementation noise such as `expect(paws.length % 2 === 0).toEqual(true)` in favour of simply
-stating that you `expect(paws.length).toBeEvenNumber()`.
+Avoid vague messages such as _"expected false to be true"_ in favour of useful cues like _"expected
+3 to be even number"_, and avoid implementation noise such as
+`expect(paws.length % 2 === 0).toEqual(true)` in favour of simply stating that you
+`expect(paws.length).toBeEvenNumber()`.
 
 ## 🌩 Installation
 
@@ -24,11 +25,11 @@ npm install expect-more-jest --save-dev
 
 ## 🕹 Configuration
 
-The simplest way to integrate is to set the [`setupFilesAfterEnv`][setup-files-after-env] array of Jest's
-[jest.config.js][jest-config] to include `require.resolve('expect-more-jest')`.
+The simplest way to integrate is to set the [`setupFilesAfterEnv`][setup-files-after-env] array of
+Jest's [jest.config.js][jest-config] to include `require.resolve('expect-more-jest')`.
 
-Note: If your Editor does not recognise that you are using custom matchers, add a `global.d.ts` file at the root of your
-project containing:
+Note: If your Editor does not recognise that you are using custom matchers, add a `global.d.ts` file
+at the root of your project containing:
 
 ```ts
 import 'expect-more-jest';
@@ -82,11 +83,18 @@ expect(' ').toBeWhitespace();
 expect(8).toBeWholeNumber();
 expect(7).toBeWithinRange(0, 10);
 expect('JavaScript').toEndWith('Script');
-expect({ child: { grandchild: [true, false, new Boolean(true)] } }).toHaveArrayOfBooleans('child.grandchild');
+expect({ child: { grandchild: [true, false, new Boolean(true)] } }).toHaveArrayOfBooleans(
+  'child.grandchild',
+);
 expect({ child: { grandchild: [12, 0, 14] } }).toHaveArrayOfNumbers('child.grandchild');
 expect({ child: { grandchild: [{}, new Object()] } }).toHaveArrayOfObjects('child.grandchild');
-expect({ child: { grandchild: ['i', 'contain', 4, 'items'] } }).toHaveArrayOfSize('child.grandchild', 4);
-expect({ child: { grandchild: ['we', 'are', 'all', 'strings'] } }).toHaveArrayOfStrings('child.grandchild');
+expect({ child: { grandchild: ['i', 'contain', 4, 'items'] } }).toHaveArrayOfSize(
+  'child.grandchild',
+  4,
+);
+expect({ child: { grandchild: ['we', 'are', 'all', 'strings'] } }).toHaveArrayOfStrings(
+  'child.grandchild',
+);
 expect({ child: { grandchild: [2, true, 'string'] } }).toHaveArray('child.grandchild');
 expect({
   child: {
@@ -97,8 +105,14 @@ expect({
 }).toHaveAsyncFunction('child.grandchild');
 expect({ child: { grandchild: false } }).toHaveBoolean('child.grandchild');
 expect({ child: { grandchild: '100' } }).toHaveCalculable('child.grandchild');
-expect({ child: { grandchild: new Date('2020-01-01') } }).toHaveDateAfter('child.grandchild', new Date('2019-12-31'));
-expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDateBefore('child.grandchild', new Date('2020-01-01'));
+expect({ child: { grandchild: new Date('2020-01-01') } }).toHaveDateAfter(
+  'child.grandchild',
+  new Date('2019-12-31'),
+);
+expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDateBefore(
+  'child.grandchild',
+  new Date('2020-01-01'),
+);
 expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDate('child.grandchild');
 expect({ child: { grandchild: 12.55 } }).toHaveDecimalNumber('child.grandchild');
 expect({ child: { grandchild: 12 } }).toHaveDivisibleBy('child.grandchild', 2);
@@ -119,7 +133,10 @@ expect({ child: { grandchild: 10 } }).toHaveGreaterThanOrEqualTo('child.grandchi
 expect({ child: { grandchild: '1999-12-31T23:59:59' } }).toHaveIso8601('child.grandchild');
 expect({ child: { grandchild: '{"i":"am valid JSON"}' } }).toHaveJsonString('child.grandchild');
 expect({ child: { grandchild: 8 } }).toHaveLessThanOrEqualTo('child.grandchild', 12);
-expect({ child: { grandchild: ['i', 'have', 3] } }).toHaveLongerThan('child.grandchild', [2, 'items']);
+expect({ child: { grandchild: ['i', 'have', 3] } }).toHaveLongerThan('child.grandchild', [
+  2,
+  'items',
+]);
 expect({ child: { grandchild: () => 'i am a function' } }).toHaveMethod('child.grandchild');
 expect({ child: { grandchild: ['i', 'am not empty'] } }).toHaveNonEmptyArray('child.grandchild');
 expect({ child: { grandchild: { i: 'am not empty' } } }).toHaveNonEmptyObject('child.grandchild');
@@ -130,12 +147,19 @@ expect({ child: { grandchild: 7 } }).toHaveNumberWithinRange('child.grandchild',
 expect({ child: { grandchild: 8 } }).toHaveNumber('child.grandchild');
 expect({ child: { grandchild: {} } }).toHaveObject('child.grandchild');
 expect({ child: { grandchild: 5 } }).toHaveOddNumber('child.grandchild');
-expect({ child: { grandchild: new RegExp('i am a regular expression') } }).toHaveRegExp('child.grandchild');
-expect({ child: { grandchild: ['i also have', '2 items'] } }).toHaveSameLengthAs('child.grandchild', [
-  'i have',
-  '2 items',
+expect({ child: { grandchild: new RegExp('i am a regular expression') } }).toHaveRegExp(
+  'child.grandchild',
+);
+expect({ child: { grandchild: ['i also have', '2 items'] } }).toHaveSameLengthAs(
+  'child.grandchild',
+  ['i have', '2 items'],
+);
+expect({ child: { grandchild: ['i have one item'] } }).toHaveShorterThan('child.grandchild', [
+  'i',
+  'have',
+  4,
+  'items',
 ]);
-expect({ child: { grandchild: ['i have one item'] } }).toHaveShorterThan('child.grandchild', ['i', 'have', 4, 'items']);
 expect({ child: { grandchild: 'JavaScript' } }).toHaveStartingWith('child.grandchild', 'Java');
 expect({ child: { grandchild: 'i am a string' } }).toHaveString('child.grandchild');
 expect({ child: { grandchild: true } }).toHaveTrue('child.grandchild');
@@ -151,32 +175,35 @@ expect('JavaScript').toStartWith('Java');
 
 If you find my Open Source projects useful, please share them ❤️
 
-- [**eslint-formatter-git-log**](https://github.com/JamieMason/eslint-formatter-git-log)<br>ESLint Formatter featuring
-  Git Author, Date, and Hash
-- [**eslint-plugin-move-files**](https://github.com/JamieMason/eslint-plugin-move-files)<br>Move and rename files while
-  keeping imports up to date
+- [**eslint-formatter-git-log**](https://github.com/JamieMason/eslint-formatter-git-log)<br>ESLint
+  Formatter featuring Git Author, Date, and Hash
+- [**eslint-plugin-move-files**](https://github.com/JamieMason/eslint-plugin-move-files)<br>Move and
+  rename files while keeping imports up to date
 - [**eslint-plugin-prefer-arrow-functions**](https://github.com/JamieMason/eslint-plugin-prefer-arrow-functions)<br>Convert
   functions to arrow functions
-- [**ImageOptim-CLI**](https://github.com/JamieMason/ImageOptim-CLI)<br>Automates ImageOptim, ImageAlpha, and JPEGmini
-  for Mac to make batch optimisation of images part of your automated build process.
-- [**karma-benchmark**](https://github.com/JamieMason/karma-benchmark)<br>Run Benchmark.js over multiple Browsers, with
-  CI compatible output
-- [**self-help**](https://github.com/JamieMason/self-help#readme)<br>Interactive Q&A Guides for Web and the Command Line
-- [**syncpack**](https://github.com/JamieMason/syncpack#readme)<br>Manage multiple package.json files, such as in Lerna
-  Monorepos and Yarn Workspaces
+- [**ImageOptim-CLI**](https://github.com/JamieMason/ImageOptim-CLI)<br>Automates ImageOptim,
+  ImageAlpha, and JPEGmini for Mac to make batch optimisation of images part of your automated build
+  process.
+- [**karma-benchmark**](https://github.com/JamieMason/karma-benchmark)<br>Run Benchmark.js over
+  multiple Browsers, with CI compatible output
+- [**self-help**](https://github.com/JamieMason/self-help#readme)<br>Interactive Q&A Guides for Web
+  and the Command Line
+- [**syncpack**](https://github.com/JamieMason/syncpack#readme)<br>Manage multiple package.json
+  files, such as in Lerna Monorepos and Yarn Workspaces
 
 ## 🤓 Author
 
 <img src="https://www.gravatar.com/avatar/acdf106ce071806278438d8c354adec8?s=100" align="left">
 
-I'm [Jamie Mason] from [Leeds] in England, I began Web Design and Development in 1999 and have been Contracting and
-offering Consultancy as Fold Left Ltd since 2012. Who I've worked with includes [Sky Sports], [Sky Bet], [Sky Poker],
-The [Premier League], [William Hill], [Shell], [Betfair], and Football Clubs including [Leeds United], [Spurs], [West
-Ham], [Arsenal], and more.
+I'm [Jamie Mason] from [Leeds] in England, I began Web Design and Development in 1999 and have been
+Contracting and offering Consultancy as Fold Left Ltd since 2012. Who I've worked with includes [Sky
+Sports], [Sky Bet], [Sky Poker], The [Premier League], [William Hill], [Shell], [Betfair], and
+Football Clubs including [Leeds United], [Spurs], [West Ham], [Arsenal], and more.
 
 <div align="center">
 
-[![Follow JamieMason on GitHub][github badge]][github] [![Follow fold_left on Twitter][twitter badge]][twitter]
+[![Follow JamieMason on GitHub][github badge]][github]
+[![Follow fold_left on Twitter][twitter badge]][twitter]
 
 </div>
 

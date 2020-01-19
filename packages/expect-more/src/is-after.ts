@@ -16,4 +16,6 @@ import { curry } from './lib/curry';
 export const isAfter: {
   (otherDate: Date, value: any): boolean;
   (otherDate: Date): (value: any) => boolean;
-} = curry((otherDate, value) => isDate(value) && isDate(otherDate) && value.getTime() > otherDate.getTime());
+} = curry(
+  (otherDate, value) => isDate(value) && isDate(otherDate) && value.getTime() > otherDate.getTime(),
+);

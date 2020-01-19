@@ -9,5 +9,7 @@ it('provides expect().not.toHaveMethod()', () => {
 });
 
 it('provides expect.toHaveMethod()', () => {
-  expect({ child: { grandchild: () => 'i am a function' } }).toEqual(expect.toHaveMethod('child.grandchild'));
+  expect({ child: { grandchild: () => 'i am a function' } }).toEqual(
+    expect.toHaveMethod('child.grandchild'),
+  );
 });

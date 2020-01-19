@@ -9,15 +9,27 @@ it('returns incomplete copies of basic objects', () => {
 });
 
 it('returns incomplete copies of arrays of objects', () => {
-  expect(Array.from(gen.withMissingBranches([{ a: 1 }, { b: 2 }]))).toEqual([undefined, [{ b: 2 }], [{ a: 1 }]]);
+  expect(Array.from(gen.withMissingBranches([{ a: 1 }, { b: 2 }]))).toEqual([
+    undefined,
+    [{ b: 2 }],
+    [{ a: 1 }],
+  ]);
 });
 
 it('returns incomplete copies of indexes of arrays', () => {
-  expect(Array.from(gen.withMissingBranches({ a: [1], b: [2] }))).toEqual([undefined, { b: [2] }, { a: [1] }]);
+  expect(Array.from(gen.withMissingBranches({ a: [1], b: [2] }))).toEqual([
+    undefined,
+    { b: [2] },
+    { a: [1] },
+  ]);
 });
 
 it('returns incomplete copies of nested objects', () => {
-  expect(Array.from(gen.withMissingBranches({ a: { b: { c: 1 } } }))).toEqual([undefined, {}, { a: {} }]);
+  expect(Array.from(gen.withMissingBranches({ a: { b: { c: 1 } } }))).toEqual([
+    undefined,
+    {},
+    { a: {} },
+  ]);
 });
 
 it('returns incomplete copies of nested objects containing arrays', () => {

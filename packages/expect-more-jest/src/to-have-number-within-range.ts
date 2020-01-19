@@ -23,7 +23,12 @@ declare global {
   }
 }
 
-export const toHaveNumberWithinRangeMatcher = (value: any, propPath: string, floor: number, ceiling: number) =>
+export const toHaveNumberWithinRangeMatcher = (
+  value: any,
+  propPath: string,
+  floor: number,
+  ceiling: number,
+) =>
   createResult({
     message: () =>
       `expected value at '${propPath}' to be greater than or equal to ${floor} and less than or equal to ${ceiling}`,

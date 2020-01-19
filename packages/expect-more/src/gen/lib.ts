@@ -25,7 +25,8 @@ export interface DeepNode {
 
 type TreeNode = RootNode | DeepNode;
 
-const isDeepNode = (node: TreeNode): node is DeepNode => node.key !== null && node.parentNode !== null;
+const isDeepNode = (node: TreeNode): node is DeepNode =>
+  node.key !== null && node.parentNode !== null;
 
 export type DeepNodeVisitor = (
   node: DeepNode,

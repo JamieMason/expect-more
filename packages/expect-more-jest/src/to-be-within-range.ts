@@ -26,7 +26,8 @@ declare global {
 
 export const toBeWithinRangeMatcher = (value: any, floor: number, ceiling: number) =>
   createResult({
-    message: () => `expected ${value} to be greater than or equal to ${floor} and less than or equal to ${ceiling}`,
+    message: () =>
+      `expected ${value} to be greater than or equal to ${floor} and less than or equal to ${ceiling}`,
     notMessage: () =>
       `expected ${value} not to be greater than or equal to ${floor} and less than or equal to ${ceiling}`,
     pass: isWithinRange(floor, ceiling, value),

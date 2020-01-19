@@ -25,8 +25,10 @@ declare global {
 
 export const toHaveArrayOfStringsMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be a non-empty array, containing only strings`,
-    notMessage: () => `expected value at '${propPath}' not to be a non-empty array, containing only strings`,
+    message: () =>
+      `expected value at '${propPath}' to be a non-empty array, containing only strings`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be a non-empty array, containing only strings`,
     pass: isArrayOfStrings(getIn(propPath.split('.'), value)),
   });
 

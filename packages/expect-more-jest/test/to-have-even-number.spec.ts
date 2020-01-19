@@ -3,7 +3,9 @@ it('provides expect().toHaveEvenNumber()', () => {
 });
 
 it('provides expect().not.toHaveEvenNumber()', () => {
-  expect(() => expect({ child: { grandchild: 2 } }).not.toHaveEvenNumber('child.grandchild')).toThrow();
+  expect(() =>
+    expect({ child: { grandchild: 2 } }).not.toHaveEvenNumber('child.grandchild'),
+  ).toThrow();
 });
 
 it('provides expect.toHaveEvenNumber()', () => {

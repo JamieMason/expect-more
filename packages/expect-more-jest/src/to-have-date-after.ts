@@ -25,8 +25,10 @@ declare global {
 
 export const toHaveDateAfterMatcher = (value: any, propPath: string, otherDate: Date) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be an instance of Date, occurring after ${otherDate}`,
-    notMessage: () => `expected value at '${propPath}' not to be an instance of Date, occurring after ${otherDate}`,
+    message: () =>
+      `expected value at '${propPath}' to be an instance of Date, occurring after ${otherDate}`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be an instance of Date, occurring after ${otherDate}`,
     pass: isAfter(otherDate, getIn(propPath.split('.'), value)),
   });
 
