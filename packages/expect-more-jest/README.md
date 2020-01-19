@@ -9,6 +9,19 @@
 [![Follow JamieMason on GitHub](https://img.shields.io/github/followers/JamieMason.svg?style=social&label=Follow)](https://github.com/JamieMason)
 [![Follow fold_left on Twitter](https://img.shields.io/twitter/follow/fold_left.svg?style=social&label=Follow)](https://twitter.com/fold_left)
 
+## Table of Contents
+
+- [Overview](#overview)
+- [🌩 Installation](#-installation)
+- [🕹 Configuration](#-configuration)
+- [🧪 Generators](#-generators)
+- [🔬 Matchers](#-matchers)
+- [🙋🏽‍♂️ Getting Help](#%EF%B8%8F-getting-help)
+- [👀 Other Projects](#-other-projects)
+- [🤓 Author](#-author)
+
+## Overview
+
 expect-more-jest is a huge library of test matchers for a range of common use-cases, to make tests
 easier to read and produce relevant and useful messages when they fail.
 
@@ -33,6 +46,22 @@ at the root of your project containing:
 
 ```ts
 import 'expect-more-jest';
+```
+
+## 🧪 Generators
+
+[expect-more/gen](https://github.com/JamieMason/expect-more/tree/master/packages/expect-more#api-expect-moregen)
+helps you assert how your application under test behaves when parts of its input data are missing or
+`null`.
+
+```ts
+import { withMissingNodes } from 'expect-more/gen';
+
+it('should return null if any part of the API contract is broken', () => {
+  for (let brokenContract of withMissingNodes(contract)) {
+    expect(fn(brokenContract)).toBeNull();
+  }
+});
 ```
 
 ## 🔬 Matchers
@@ -170,6 +199,13 @@ expect({ child: { grandchild: ' ' } }).toHaveWhitespace('child.grandchild');
 expect({ child: { grandchild: 8 } }).toHaveWholeNumber('child.grandchild');
 expect('JavaScript').toStartWith('Java');
 ```
+
+## 🙋🏽‍♂️ Getting Help
+
+Get help with issues by creating a [Bug Report] or discuss ideas by opening a [Feature Request].
+
+[bug report]: https://github.com/JamieMason/expect-more/issues/new?template=bug_report.md
+[feature request]: https://github.com/JamieMason/expect-more/issues/new?template=feature_request.md
 
 ## 👀 Other Projects
 
