@@ -4,34 +4,32 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is a number greater than or equal to floor and
-       * less than or equal to ceiling.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveNumberWithinRange('foo.bar')
-       * );
-       */
-      toHaveNumberWithinRange<T>(propPath: string, floor: number, ceiling: number): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is a number greater than or equal to floor and
-       * less than or equal to ceiling.
+       * Asserts that ${value} is a `Number` which is both greater than or equal to ${floor} and less than or equal to ${ceiling}.
        * @example
-       * expect({ foo: { bar: X } }).toHaveNumberWithinRange('foo.bar');
+       * expect({ child: { grandchild: 7 } }).toHaveNumberWithinRange('child.grandchild', 0, 10);
        */
       toHaveNumberWithinRange(propPath: string, floor: number, ceiling: number): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `Number` which is both greater than or equal to ${floor} and less than or equal to ${ceiling}.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveNumberWithinRange('child.grandchild', 0, 10));
+       */
+      toHaveNumberWithinRange<T>(propPath: string, floor: number, ceiling: number): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveNumberWithinRangeMatcher = (received: any, propPath: string, floor: number, ceiling: number) =>
+export const toHaveNumberWithinRangeMatcher = (value: any, propPath: string, floor: number, ceiling: number) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be number within range ${floor} - ${ceiling}`,
-    notMessage: () => `expected ${propPath} of ${received} not to be number within range ${floor} - ${ceiling}`,
-    pass: isWithinRange(floor, ceiling, getIn(propPath.split('.'), received)),
+    message: () =>
+      `expected value at '${propPath}' to be greater than or equal to ${floor} and less than or equal to ${ceiling}`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be greater than or equal to ${floor} and less than or equal to ${ceiling}`,
+    pass: isWithinRange(floor, ceiling, getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveNumberWithinRange: toHaveNumberWithinRangeMatcher });

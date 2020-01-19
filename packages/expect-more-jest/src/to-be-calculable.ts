@@ -3,32 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Assert subject can be used in Mathemetic calculations despite not being a `Number`,
-       * for example `"1" * "2" === 2` whereas `"wut?" * 2 === NaN`.
-       * @example
-       * expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ ageField: expect.toBeCalculable() }));
-       */
-      toBeCalculable<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Assert subject can be used in Mathemetic calculations despite not being a `Number`,
-       * for example `"1" * "2" === 2` whereas `"wut?" * 2 === NaN`.
+       * Assert value can be used in Mathemetic calculations despite not being a `Number`, for example `'1' * '2' === 2` whereas `'wut?' * 2 === NaN`.
        * @example
-       * expect(ageField.value).toBeCalculable();
+       * expect('100').toBeCalculable();
        */
       toBeCalculable(): R;
+    }
+    interface Expect {
+      /**
+       * Assert value can be used in Mathemetic calculations despite not being a `Number`, for example `'1' * '2' === 2` whereas `'wut?' * 2 === NaN`.
+       * @example
+       * expect('100').toEqual(
+       *   expect.toBeCalculable()
+       * );
+       */
+      toBeCalculable<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeCalculableMatcher = (received: any) =>
+export const toBeCalculableMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be coercible for use in mathemetical operations`,
-    notMessage: () => `expected ${received} not to be coercible for use in mathemetical operations`,
-    pass: isCalculable(received),
+    message: () => `expected ${value} to be coercible for use in mathemetical operations`,
+    notMessage: () => `expected ${value} not to be coercible for use in mathemetical operations`,
+    pass: isCalculable(value),
   });
 
 expect.extend({ toBeCalculable: toBeCalculableMatcher });

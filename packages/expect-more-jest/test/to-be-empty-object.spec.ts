@@ -1,9 +1,11 @@
-it('provides toBeEmptyObject', () => {
+it('provides expect().toBeEmptyObject()', () => {
   expect({}).toBeEmptyObject();
-  expect(() => {
-    expect(null).toBeEmptyObject();
-  }).toThrow();
-  expect(() => {
-    expect({}).not.toBeEmptyObject();
-  }).toThrow();
+});
+
+it('provides expect().not.toBeEmptyObject()', () => {
+  expect(() => expect({}).not.toBeEmptyObject()).toThrow();
+});
+
+it('provides expect.toBeEmptyObject()', () => {
+  expect({}).toEqual(expect.toBeEmptyObject());
 });

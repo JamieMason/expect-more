@@ -1,13 +1,11 @@
-it('provides toBeWhitespace', () => {
+it('provides expect().toBeWhitespace()', () => {
   expect(' ').toBeWhitespace();
-  expect(() => {
-    expect('a').toBeWhitespace();
-  }).toThrow();
-  expect(() => {
-    expect(' ').not.toBeWhitespace();
-  }).toThrow();
 });
 
-it('provides expect.toBeWhitespace', () => {
+it('provides expect().not.toBeWhitespace()', () => {
+  expect(() => expect(' ').not.toBeWhitespace()).toThrow();
+});
+
+it('provides expect.toBeWhitespace()', () => {
   expect(' ').toEqual(expect.toBeWhitespace());
 });

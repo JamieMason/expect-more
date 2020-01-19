@@ -1,13 +1,11 @@
-it('provides toBeArrayOfObjects', () => {
-  expect([{}]).toBeArrayOfObjects();
-  expect(() => {
-    expect([null]).toBeArrayOfObjects();
-  }).toThrow();
-  expect(() => {
-    expect([{}]).not.toBeArrayOfObjects();
-  }).toThrow();
+it('provides expect().toBeArrayOfObjects()', () => {
+  expect([{}, new Object()]).toBeArrayOfObjects();
 });
 
-it('provides expect.toBeArrayOfObjects', () => {
-  expect([{}]).toEqual(expect.toBeArrayOfObjects());
+it('provides expect().not.toBeArrayOfObjects()', () => {
+  expect(() => expect([{}, new Object()]).not.toBeArrayOfObjects()).toThrow();
+});
+
+it('provides expect.toBeArrayOfObjects()', () => {
+  expect([{}, new Object()]).toEqual(expect.toBeArrayOfObjects());
 });

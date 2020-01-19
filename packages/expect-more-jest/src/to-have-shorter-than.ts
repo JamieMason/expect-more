@@ -4,34 +4,32 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is a string or array shorter than the given
-       * string or array.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveShorterThan('foo.bar')
-       * );
-       */
-      toHaveShorterThan<T>(propPath: string, other: string | any[]): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is a string or array shorter than the given
-       * string or array.
+       * Asserts that ${value} is a `String` or `Array` whose length is less than that of ${otherStringOrArray}.
        * @example
-       * expect({ foo: { bar: X } }).toHaveShorterThan('foo.bar');
+       * expect({ child: { grandchild: ['i have one item'] } }).toHaveShorterThan('child.grandchild', ['i', 'have', 4, 'items']);
        */
-      toHaveShorterThan(propPath: string, other: string | any[]): R;
+      toHaveShorterThan(propPath: string, otherStringOrArray: string | any[]): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `String` or `Array` whose length is less than that of ${otherStringOrArray}.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveShorterThan('child.grandchild', ['i', 'have', 4, 'items']));
+       */
+      toHaveShorterThan<T>(propPath: string, otherStringOrArray: string | any[]): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveShorterThanMatcher = (received: any, propPath: string, other: string | any[]) =>
+export const toHaveShorterThanMatcher = (value: any, propPath: string, otherStringOrArray: string | any[]) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be string or array shorter than ${other}`,
-    notMessage: () => `expected ${propPath} of ${received} not to be string or array shorter than ${other}`,
-    pass: isShorterThan(other, getIn(propPath.split('.'), received)),
+    message: () =>
+      `expected value at '${propPath}' to be a string or array whose length is less than that of ${otherStringOrArray}`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be a string or array whose length is less than that of ${otherStringOrArray}`,
+    pass: isShorterThan(otherStringOrArray, getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveShorterThan: toHaveShorterThanMatcher });

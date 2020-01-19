@@ -1,13 +1,11 @@
-it('provides toBeArrayOfNumbers', () => {
-  expect([1]).toBeArrayOfNumbers();
-  expect(() => {
-    expect([null]).toBeArrayOfNumbers();
-  }).toThrow();
-  expect(() => {
-    expect([1]).not.toBeArrayOfNumbers();
-  }).toThrow();
+it('provides expect().toBeArrayOfNumbers()', () => {
+  expect([12, 0, 14]).toBeArrayOfNumbers();
 });
 
-it('provides expect.toBeArrayOfNumbers', () => {
-  expect([1]).toEqual(expect.toBeArrayOfNumbers());
+it('provides expect().not.toBeArrayOfNumbers()', () => {
+  expect(() => expect([12, 0, 14]).not.toBeArrayOfNumbers()).toThrow();
+});
+
+it('provides expect.toBeArrayOfNumbers()', () => {
+  expect([12, 0, 14]).toEqual(expect.toBeArrayOfNumbers());
 });

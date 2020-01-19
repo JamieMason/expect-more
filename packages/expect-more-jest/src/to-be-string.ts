@@ -3,31 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a `String` or `new String()`.
-       * @param other
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ name: expect.toBeString() }));
-       */
-      toBeString<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a `String` or `new String()`.
+       * Asserts that ${value} is a `String` or `new String()`.
        * @example
-       * expect(player.name).toBeString();
+       * expect('i am a string').toBeString();
        */
       toBeString(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `String` or `new String()`.
+       * @example
+       * expect('i am a string').toEqual(
+       *   expect.toBeString()
+       * );
+       */
+      toBeString<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeStringMatcher = (received: any) =>
+export const toBeStringMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be a string`,
-    notMessage: () => `expected ${received} not to be a string`,
-    pass: isString(received),
+    message: () => `expected ${value} to be a string`,
+    notMessage: () => `expected ${value} not to be a string`,
+    pass: isString(value),
   });
 
 expect.extend({ toBeString: toBeStringMatcher });

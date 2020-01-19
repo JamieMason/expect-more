@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is a JSON string.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveJsonString('foo.bar')
-       * );
-       */
-      toHaveJsonString<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is a JSON string.
+       * Asserts that ${value} is a `String` of valid JSON.
        * @example
-       * expect({ foo: { bar: '{}' } }).toHaveJsonString('foo.bar');
+       * expect({ child: { grandchild: '{"i":"am valid JSON"}' } }).toHaveJsonString('child.grandchild');
        */
       toHaveJsonString(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `String` of valid JSON.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveJsonString('child.grandchild'));
+       */
+      toHaveJsonString<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveJsonStringMatcher = (received: any, propPath: string) =>
+export const toHaveJsonStringMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be a string of JSON`,
-    notMessage: () => `expected ${propPath} of ${received} not to be a string of JSON`,
-    pass: isJsonString(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be a string of valid JSON`,
+    notMessage: () => `expected value at '${propPath}' not to be a string of valid JSON`,
+    pass: isJsonString(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveJsonString: toHaveJsonStringMatcher });

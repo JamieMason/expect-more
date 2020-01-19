@@ -3,30 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is an `Array` containing only `Object` values.
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ members: expect.toBeArrayOfObjects() }));
-       */
-      toBeArrayOfObjects<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is an `Array` containing only `Object` values.
+       * Asserts that ${value} is an `Array` containing only `Object` values.
        * @example
-       * expect(team.members).toBeArrayOfObjects();
+       * expect([{}, new Object()]).toBeArrayOfObjects();
        */
       toBeArrayOfObjects(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an `Array` containing only `Object` values.
+       * @example
+       * expect([{}, new Object()]).toEqual(
+       *   expect.toBeArrayOfObjects()
+       * );
+       */
+      toBeArrayOfObjects<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeArrayOfObjectsMatcher = (received: any) =>
+export const toBeArrayOfObjectsMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be a non-empty array, containing only objects`,
-    notMessage: () => `expected ${received} not to be a non-empty array, containing only objects`,
-    pass: isArrayOfObjects(received),
+    message: () => `expected ${value} to be a non-empty array, containing only objects`,
+    notMessage: () => `expected ${value} not to be a non-empty array, containing only objects`,
+    pass: isArrayOfObjects(value),
   });
 
 expect.extend({ toBeArrayOfObjects: toBeArrayOfObjectsMatcher });

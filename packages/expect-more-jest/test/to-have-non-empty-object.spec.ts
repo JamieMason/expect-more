@@ -1,7 +1,13 @@
-import { assertMemberMatcher } from './lib/member-assertions';
+it('provides expect().toHaveNonEmptyObject()', () => {
+  expect({ child: { grandchild: { i: 'am not empty' } } }).toHaveNonEmptyObject('child.grandchild');
+});
 
-assertMemberMatcher({
-  failReceived: null,
-  name: 'toHaveNonEmptyObject',
-  passReceived: { a: 1 },
+it('provides expect().not.toHaveNonEmptyObject()', () => {
+  expect(() =>
+    expect({ child: { grandchild: { i: 'am not empty' } } }).not.toHaveNonEmptyObject('child.grandchild'),
+  ).toThrow();
+});
+
+it('provides expect.toHaveNonEmptyObject()', () => {
+  expect({ child: { grandchild: { i: 'am not empty' } } }).toEqual(expect.toHaveNonEmptyObject('child.grandchild'));
 });

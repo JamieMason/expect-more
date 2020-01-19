@@ -3,31 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is an `Object`.
-       * @param other
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ player: expect.toBeObject() }));
-       */
-      toBeObject<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is an `Object`.
+       * Asserts that ${value} is an `Object`.
        * @example
-       * expect(player).toBeObject();
+       * expect({}).toBeObject();
        */
       toBeObject(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an `Object`.
+       * @example
+       * expect({}).toEqual(
+       *   expect.toBeObject()
+       * );
+       */
+      toBeObject<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeObjectMatcher = (received: any) =>
+export const toBeObjectMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be an object`,
-    notMessage: () => `expected ${received} not to be an object`,
-    pass: isObject(received),
+    message: () => `expected ${value} to be an object`,
+    notMessage: () => `expected ${value} not to be an object`,
+    pass: isObject(value),
   });
 
 expect.extend({ toBeObject: toBeObjectMatcher });

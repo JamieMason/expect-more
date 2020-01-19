@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is an empty array.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveEmptyArray('foo.bar')
-       * );
-       */
-      toHaveEmptyArray<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is an empty array.
+       * Asserts that ${value} is a valid `Array` containing no items.
        * @example
-       * expect({ foo: { bar: [] } }).toHaveEmptyArray('foo.bar');
+       * expect({ child: { grandchild: [] } }).toHaveEmptyArray('child.grandchild');
        */
       toHaveEmptyArray(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a valid `Array` containing no items.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveEmptyArray('child.grandchild'));
+       */
+      toHaveEmptyArray<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveEmptyArrayMatcher = (received: any, propPath: string) =>
+export const toHaveEmptyArrayMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be an empty array`,
-    notMessage: () => `expected ${propPath} of ${received} not to be an empty array`,
-    pass: isEmptyArray(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be an array containing no items`,
+    notMessage: () => `expected value at '${propPath}' not to be an array containing no items`,
+    pass: isEmptyArray(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveEmptyArray: toHaveEmptyArrayMatcher });

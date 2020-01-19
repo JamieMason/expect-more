@@ -3,7 +3,7 @@ import { keys } from './lib/keys';
 
 /**
  * Asserts that ${value} is an `Object` containing at least one own member.
- * @param value { i: 'am not empty' }
+ * @param value {} { i: 'am not empty' }
  * @matcherName toBeNonEmptyObject
  * @memberMatcherName toHaveNonEmptyObject
  * @matcherMessage expected ${value} to be an object with at least one own

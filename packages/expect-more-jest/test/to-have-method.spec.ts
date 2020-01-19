@@ -1,7 +1,13 @@
-import { assertMemberMatcher } from './lib/member-assertions';
+it('provides expect().toHaveMethod()', () => {
+  expect({ child: { grandchild: () => 'i am a function' } }).toHaveMethod('child.grandchild');
+});
 
-assertMemberMatcher({
-  failReceived: null,
-  name: 'toHaveMethod',
-  passReceived: () => null,
+it('provides expect().not.toHaveMethod()', () => {
+  expect(() =>
+    expect({ child: { grandchild: () => 'i am a function' } }).not.toHaveMethod('child.grandchild'),
+  ).toThrow();
+});
+
+it('provides expect.toHaveMethod()', () => {
+  expect({ child: { grandchild: () => 'i am a function' } }).toEqual(expect.toHaveMethod('child.grandchild'));
 });

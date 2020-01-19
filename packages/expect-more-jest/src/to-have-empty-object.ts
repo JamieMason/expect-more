@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is an empty object.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveEmptyObject('foo.bar')
-       * );
-       */
-      toHaveEmptyObject<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is an empty object.
+       * Asserts that ${value} is a valid `Object` containing no instance members.
        * @example
-       * expect({ foo: { bar: X } }).toHaveEmptyObject('foo.bar');
+       * expect({ child: { grandchild: {} } }).toHaveEmptyObject('child.grandchild');
        */
       toHaveEmptyObject(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a valid `Object` containing no instance members.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveEmptyObject('child.grandchild'));
+       */
+      toHaveEmptyObject<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveEmptyObjectMatcher = (received: any, propPath: string) =>
+export const toHaveEmptyObjectMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be an empty object`,
-    notMessage: () => `expected ${propPath} of ${received} not to be an empty object`,
-    pass: isEmptyObject(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be an empty object`,
+    notMessage: () => `expected value at '${propPath}' not to be an empty object`,
+    pass: isEmptyObject(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveEmptyObject: toHaveEmptyObjectMatcher });

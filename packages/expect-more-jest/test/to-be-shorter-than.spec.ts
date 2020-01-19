@@ -1,21 +1,11 @@
-it('provides toBeShorterThan', () => {
-  expect('ab').toBeShorterThan('abc');
-  expect([2, 3]).toBeShorterThan([3, 6, 1]);
-  expect(() => {
-    expect('abc').toBeShorterThan('ab');
-  }).toThrow();
-  expect(() => {
-    expect([1, 2]).toBeShorterThan([1]);
-  }).toThrow();
-  expect(() => {
-    expect('ab').not.toBeShorterThan('abc');
-  }).toThrow();
-  expect(() => {
-    expect([1]).not.toBeShorterThan([0, 1]);
-  }).toThrow();
+it('provides expect().toBeShorterThan()', () => {
+  expect(['i have one item']).toBeShorterThan(['i', 'have', 4, 'items']);
 });
 
-it('provides expect.toBeShorterThan', () => {
-  expect('ab').toEqual(expect.toBeShorterThan('abc'));
-  expect([2, 3]).toEqual(expect.toBeShorterThan([3, 7, 2]));
+it('provides expect().not.toBeShorterThan()', () => {
+  expect(() => expect(['i have one item']).not.toBeShorterThan(['i', 'have', 4, 'items'])).toThrow();
+});
+
+it('provides expect.toBeShorterThan()', () => {
+  expect(['i have one item']).toEqual(expect.toBeShorterThan(['i', 'have', 4, 'items']));
 });

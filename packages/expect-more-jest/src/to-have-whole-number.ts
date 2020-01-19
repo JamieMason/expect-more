@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is a number without any decimal places.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveWholeNumber('foo.bar')
-       * );
-       */
-      toHaveWholeNumber<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is a number without any decimal places.
+       * Asserts that ${value} is a `Number` with no positive decimal places.
        * @example
-       * expect({ foo: { bar: X } }).toHaveWholeNumber('foo.bar');
+       * expect({ child: { grandchild: 8 } }).toHaveWholeNumber('child.grandchild');
        */
       toHaveWholeNumber(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `Number` with no positive decimal places.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveWholeNumber('child.grandchild'));
+       */
+      toHaveWholeNumber<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveWholeNumberMatcher = (received: any, propPath: string) =>
+export const toHaveWholeNumberMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be a number without any decimal places`,
-    notMessage: () => `expected ${propPath} of ${received} not to be a number without any decimal places`,
-    pass: isWholeNumber(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be a whole number`,
+    notMessage: () => `expected value at '${propPath}' not to be a whole number`,
+    pass: isWholeNumber(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveWholeNumber: toHaveWholeNumberMatcher });

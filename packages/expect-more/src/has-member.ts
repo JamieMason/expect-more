@@ -8,7 +8,7 @@ import { curry } from './lib/curry';
  * value. For example, value.prop is `undefined` in both of the following
  * scenarios, but `{ prop: undefined }` and `{ }` do not have the same shape.
  * @param ownKeyName 'name'
- * @param value { name: 'Guybrush Threepwood' }
+ * @param value {} { name: 'Guybrush Threepwood' }
  * @matcherName toHaveMember
  * @memberMatcherName toHaveNestedMember
  * @matcherMessage expected ${value} to have a property at ${ownKeyName}

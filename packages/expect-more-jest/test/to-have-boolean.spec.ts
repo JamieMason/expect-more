@@ -1,7 +1,11 @@
-import { assertMemberMatcher } from './lib/member-assertions';
+it('provides expect().toHaveBoolean()', () => {
+  expect({ child: { grandchild: false } }).toHaveBoolean('child.grandchild');
+});
 
-assertMemberMatcher({
-  failReceived: null,
-  name: 'toHaveBoolean',
-  passReceived: true,
+it('provides expect().not.toHaveBoolean()', () => {
+  expect(() => expect({ child: { grandchild: false } }).not.toHaveBoolean('child.grandchild')).toThrow();
+});
+
+it('provides expect.toHaveBoolean()', () => {
+  expect({ child: { grandchild: false } }).toEqual(expect.toHaveBoolean('child.grandchild'));
 });

@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is a string with at least one character.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveNonEmptyString('foo.bar')
-       * );
-       */
-      toHaveNonEmptyString<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is a string with at least one character.
+       * Asserts that ${value} is a valid `String` containing at least one character.
        * @example
-       * expect({ foo: { bar: X } }).toHaveNonEmptyString('foo.bar');
+       * expect({ child: { grandchild: 'i am not empty' } }).toHaveNonEmptyString('child.grandchild');
        */
       toHaveNonEmptyString(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a valid `String` containing at least one character.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveNonEmptyString('child.grandchild'));
+       */
+      toHaveNonEmptyString<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveNonEmptyStringMatcher = (received: any, propPath: string) =>
+export const toHaveNonEmptyStringMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be non empty string`,
-    notMessage: () => `expected ${propPath} of ${received} not to be non empty string`,
-    pass: isNonEmptyString(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be a string with at least one character`,
+    notMessage: () => `expected value at '${propPath}' not to be a string with at least one character`,
+    pass: isNonEmptyString(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveNonEmptyString: toHaveNonEmptyStringMatcher });

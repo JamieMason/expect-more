@@ -3,30 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a function using yield syntax.
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.toBeGeneratorFunction())
-       */
-      toBeGeneratorFunction<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a function using yield syntax.
+       * Asserts that ${value} is a `Function` using yield syntax.
        * @example
-       * expect(async function(){}).toBeGeneratorFunction();
+       * expect(function* gen() { yield 'i am a generator' }).toBeGeneratorFunction();
        */
       toBeGeneratorFunction(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `Function` using yield syntax.
+       * @example
+       * expect(function* gen() { yield 'i am a generator' }).toEqual(
+       *   expect.toBeGeneratorFunction()
+       * );
+       */
+      toBeGeneratorFunction<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeGeneratorFunctionMatcher = (received: any) =>
+export const toBeGeneratorFunctionMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be a function using yield syntax`,
-    notMessage: () => `expected ${received} not to be a function using yield syntax`,
-    pass: isGeneratorFunction(received),
+    message: () => `expected ${value} to be a function using yield syntax.`,
+    notMessage: () => `expected ${value} not to be a function using yield syntax.`,
+    pass: isGeneratorFunction(value),
   });
 
 expect.extend({ toBeGeneratorFunction: toBeGeneratorFunctionMatcher });

@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts value has an own or nested named property which is an Array of strings.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveArrayOfStrings('messages')
-       * );
-       */
-      toHaveArrayOfStrings<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts value has an own or nested named property which is an Array of strings.
+       * Asserts that ${value} is an `Array` containing only `String` values.
        * @example
-       * expect({ foo: { bar: ['hello', new String()] } }).toHaveArrayOfStrings('foo.bar');
+       * expect({ child: { grandchild: ['we', 'are', 'all', 'strings'] } }).toHaveArrayOfStrings('child.grandchild');
        */
       toHaveArrayOfStrings(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an `Array` containing only `String` values.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveArrayOfStrings('child.grandchild'));
+       */
+      toHaveArrayOfStrings<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveArrayOfStringsMatcher = (received: any, propPath: string) =>
+export const toHaveArrayOfStringsMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be an array of strings`,
-    notMessage: () => `expected ${propPath} of ${received} not to be an array of strings`,
-    pass: isArrayOfStrings(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be a non-empty array, containing only strings`,
+    notMessage: () => `expected value at '${propPath}' not to be a non-empty array, containing only strings`,
+    pass: isArrayOfStrings(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveArrayOfStrings: toHaveArrayOfStringsMatcher });

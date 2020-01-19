@@ -3,31 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a `true` or `new Boolean(true)`.
-       * @param other
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ isActive: expect.toBeTrue() }));
-       */
-      toBeTrue<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a `true` or `new Boolean(true)`.
+       * Asserts that ${value} is `true` or `new Boolean(true)`.
        * @example
-       * expect(player.isActive).toBeTrue();
+       * expect(true).toBeTrue();
        */
       toBeTrue(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is `true` or `new Boolean(true)`.
+       * @example
+       * expect(true).toEqual(
+       *   expect.toBeTrue()
+       * );
+       */
+      toBeTrue<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeTrueMatcher = (received: any) =>
+export const toBeTrueMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be true or Boolean(true)`,
-    notMessage: () => `expected ${received} not to be true or Boolean(true)`,
-    pass: isTrue(received),
+    message: () => `expected ${value} to be true or Boolean(true)`,
+    notMessage: () => `expected ${value} not to be true or Boolean(true)`,
+    pass: isTrue(value),
   });
 
 expect.extend({ toBeTrue: toBeTrueMatcher });

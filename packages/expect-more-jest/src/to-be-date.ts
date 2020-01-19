@@ -3,30 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is an instance of `Date`.
-       * @example
-       * expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ releaseDate: expect.toBeDate() }));
-       */
-      toBeDate<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is an instance of `Date`.
+       * Asserts that ${value} is an instance of `Date`.
        * @example
-       * expect(game.releaseDate).toBeDate();
+       * expect(new Date('2019-12-31')).toBeDate();
        */
       toBeDate(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an instance of `Date`.
+       * @example
+       * expect(new Date('2019-12-31')).toEqual(
+       *   expect.toBeDate()
+       * );
+       */
+      toBeDate<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeDateMatcher = (received: any) =>
+export const toBeDateMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be an instance of Date`,
-    notMessage: () => `expected ${received} not to be an instance of Date`,
-    pass: isDate(received),
+    message: () => `expected ${value} to be an instance of Date`,
+    notMessage: () => `expected ${value} not to be an instance of Date`,
+    pass: isDate(value),
   });
 
 expect.extend({ toBeDate: toBeDateMatcher });

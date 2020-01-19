@@ -3,30 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a `false` or `new Boolean(false)`.
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ isActive: expect.toBeFalse() }));
-       */
-      toBeFalse<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a `false` or `new Boolean(false)`.
+       * Asserts that ${value} is `false` or `new Boolean(false)`.
        * @example
-       * expect(player.isActive).toBeFalse();
+       * expect(false).toBeFalse();
        */
       toBeFalse(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is `false` or `new Boolean(false)`.
+       * @example
+       * expect(false).toEqual(
+       *   expect.toBeFalse()
+       * );
+       */
+      toBeFalse<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeFalseMatcher = (received: any) =>
+export const toBeFalseMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be false or Boolean(false)`,
-    notMessage: () => `expected ${received} not to be false or Boolean(false)`,
-    pass: isFalse(received),
+    message: () => `expected ${value} to be false or Boolean(false)`,
+    notMessage: () => `expected ${value} not to be false or Boolean(false)`,
+    pass: isFalse(value),
   });
 
 expect.extend({ toBeFalse: toBeFalseMatcher });

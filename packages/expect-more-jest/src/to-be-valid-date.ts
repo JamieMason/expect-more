@@ -3,34 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is an instance of `Date` whose _value_ is valid. `Date` is little like `Promise` in that
-       * it is a container for a value. `new Date('wut?')` for example, is a valid `Date` which wraps a value which is
-       * _not_ valid.
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ releaseDate: expect.toBeValidDate() }));
-       */
-      toBeValidDate<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is an instance of `Date` whose _value_ is valid. `Date` is little like `Promise` in that
-       * it is a container for a value. `new Date('wut?')` for example, is a valid `Date` which wraps a value which is
-       * _not_ valid.
+       * Asserts that ${value} is an instance of `Date` whose internal value is valid. `Date` is little like `Promise` in that it is a container for a value. For example, `new Date('wut?')` is a valid `Date` which wraps a value that is not valid.
        * @example
-       * expect(game.releaseDate).toBeValidDate();
+       * expect(new Date('2020-01-01')).toBeValidDate();
        */
       toBeValidDate(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an instance of `Date` whose internal value is valid. `Date` is little like `Promise` in that it is a container for a value. For example, `new Date('wut?')` is a valid `Date` which wraps a value that is not valid.
+       * @example
+       * expect(new Date('2020-01-01')).toEqual(
+       *   expect.toBeValidDate()
+       * );
+       */
+      toBeValidDate<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeValidDateMatcher = (received: any) =>
+export const toBeValidDateMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be an instance of Date with a valid value`,
-    notMessage: () => `expected ${received} not to be an instance of Date with a valid value`,
-    pass: isValidDate(received),
+    message: () => `expected ${value} to be an instance of Date with a valid value`,
+    notMessage: () => `expected ${value} not to be an instance of Date with a valid value`,
+    pass: isValidDate(value),
   });
 
 expect.extend({ toBeValidDate: toBeValidDateMatcher });

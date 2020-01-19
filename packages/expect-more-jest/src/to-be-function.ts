@@ -3,31 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a `Function`.
-       * @param other
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ shoot: expect.toBeFunction() }));
-       */
-      toBeFunction<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a `Function`.
+       * Asserts that ${value} is a `Function`.
        * @example
-       * expect(player.shoot).toBeFunction();
+       * expect(() => 'i am a function').toBeFunction();
        */
       toBeFunction(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `Function`.
+       * @example
+       * expect(() => 'i am a function').toEqual(
+       *   expect.toBeFunction()
+       * );
+       */
+      toBeFunction<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeFunctionMatcher = (received: any) =>
+export const toBeFunctionMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be a function`,
-    notMessage: () => `expected ${received} not to be a function`,
-    pass: isFunction(received),
+    message: () => `expected ${value} to be a function or async function`,
+    notMessage: () => `expected ${value} not to be a function or async function`,
+    pass: isFunction(value),
   });
 
 expect.extend({ toBeFunction: toBeFunctionMatcher });

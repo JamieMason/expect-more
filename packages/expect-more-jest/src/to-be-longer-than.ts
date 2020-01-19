@@ -3,44 +3,34 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a `String` or `Array` whose length is greater than `other`.
-       * @param other
-       * @example
-       * expect(appendedFile.contents).toEqual(expect.toBeLongerThan(file.contents));
-       * @example
-       * expect(appendedFile).toEqual(
-       *   expect.objectContaining({
-       *     contents: expect.toBeLongerThan(file.contents)
-       *   })
-       * );
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     contents: expect.toBeLongerThan(file.contents)
-       *   })
-       * );
-       */
-      toBeLongerThan<T>(other: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a `String` or `Array` whose length is greater than `other`.
-       * @param other
+       * Asserts that ${value} is a `String` or `Array` whose length is greater than that of ${otherStringOrArray}.
        * @example
-       * expect(appendedFile.contents).toBeLongerThan(file.contents);
+       * expect(['i', 'have', 3]).toBeLongerThan([2, 'items']);
        */
-      toBeLongerThan(other: string): R;
+      toBeLongerThan(otherStringOrArray: string | any[]): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `String` or `Array` whose length is greater than that of ${otherStringOrArray}.
+       * @example
+       * expect(['i', 'have', 3]).toEqual(
+       *   expect.toBeLongerThan([2, 'items'])
+       * );
+       */
+      toBeLongerThan<T>(otherStringOrArray: string | any[]): JestMatchers<T>;
     }
   }
 }
 
-export const toBeLongerThanMatcher = (received: any, other: string) =>
+export const toBeLongerThanMatcher = (value: any, otherStringOrArray: string | any[]) =>
   createResult({
-    message: () => `expected ${received} to be a string which is longer than another string ${other}`,
-    notMessage: () => `expected ${received} not to be a string which is longer than another string ${other}`,
-    pass: isLongerThan(other, received),
+    message: () =>
+      `expected ${value} to be a string or array whose length is greater than that of ${otherStringOrArray}`,
+    notMessage: () =>
+      `expected ${value} not to be a string or array whose length is greater than that of ${otherStringOrArray}`,
+    pass: isLongerThan(otherStringOrArray, value),
   });
 
 expect.extend({ toBeLongerThan: toBeLongerThanMatcher });

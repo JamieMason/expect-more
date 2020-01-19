@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is a string containing only whitespace characters.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveWhitespace('foo.bar')
-       * );
-       */
-      toHaveWhitespace<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is a string containing only whitespace characters.
+       * Asserts that ${value} is a `String` containing only whitespace characters.
        * @example
-       * expect({ foo: { bar: ' ' } }).toHaveWhitespace('foo.bar');
+       * expect({ child: { grandchild: ' ' } }).toHaveWhitespace('child.grandchild');
        */
       toHaveWhitespace(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `String` containing only whitespace characters.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveWhitespace('child.grandchild'));
+       */
+      toHaveWhitespace<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveWhitespaceMatcher = (received: any, propPath: string) =>
+export const toHaveWhitespaceMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be a string of whitespace`,
-    notMessage: () => `expected ${propPath} of ${received} not to be a string of whitespace`,
-    pass: isWhitespace(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be a string containing only whitespace characters`,
+    notMessage: () => `expected value at '${propPath}' not to be a string containing only whitespace characters`,
+    pass: isWhitespace(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveWhitespace: toHaveWhitespaceMatcher });

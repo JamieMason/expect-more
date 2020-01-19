@@ -1,9 +1,11 @@
-it('provides toBeNumber', () => {
-  expect(1).toBeNumber();
-  expect(() => {
-    expect(null).toBeNumber();
-  }).toThrow();
-  expect(() => {
-    expect(1).not.toBeNumber();
-  }).toThrow();
+it('provides expect().toBeNumber()', () => {
+  expect(8).toBeNumber();
+});
+
+it('provides expect().not.toBeNumber()', () => {
+  expect(() => expect(8).not.toBeNumber()).toThrow();
+});
+
+it('provides expect.toBeNumber()', () => {
+  expect(8).toEqual(expect.toBeNumber());
 });

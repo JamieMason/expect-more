@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is a date after the given date.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveDateAfter('foo.bar')
-       * );
-       */
-      toHaveDateAfter<T>(propPath: string, otherDate: Date): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is a date after the given date.
+       * Asserts that ${value} is a valid instance of `Date` whose value occurs after that of ${otherDate}.
        * @example
-       * expect({ foo: { bar: X } }).toHaveDateAfter('foo.bar');
+       * expect({ child: { grandchild: new Date('2020-01-01') } }).toHaveDateAfter('child.grandchild', new Date('2019-12-31'));
        */
       toHaveDateAfter(propPath: string, otherDate: Date): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a valid instance of `Date` whose value occurs after that of ${otherDate}.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveDateAfter('child.grandchild', new Date('2019-12-31')));
+       */
+      toHaveDateAfter<T>(propPath: string, otherDate: Date): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveDateAfterMatcher = (received: any, propPath: string, otherDate: Date) =>
+export const toHaveDateAfterMatcher = (value: any, propPath: string, otherDate: Date) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be date after ${otherDate}`,
-    notMessage: () => `expected ${propPath} of ${received} not to be date after ${otherDate}`,
-    pass: isAfter(otherDate, getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be an instance of Date, occurring after ${otherDate}`,
+    notMessage: () => `expected value at '${propPath}' not to be an instance of Date, occurring after ${otherDate}`,
+    pass: isAfter(otherDate, getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveDateAfter: toHaveDateAfterMatcher });

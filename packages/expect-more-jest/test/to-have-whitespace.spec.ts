@@ -1,7 +1,11 @@
-import { assertMemberMatcher } from './lib/member-assertions';
+it('provides expect().toHaveWhitespace()', () => {
+  expect({ child: { grandchild: ' ' } }).toHaveWhitespace('child.grandchild');
+});
 
-assertMemberMatcher({
-  failReceived: null,
-  name: 'toHaveWhitespace',
-  passReceived: ' ',
+it('provides expect().not.toHaveWhitespace()', () => {
+  expect(() => expect({ child: { grandchild: ' ' } }).not.toHaveWhitespace('child.grandchild')).toThrow();
+});
+
+it('provides expect.toHaveWhitespace()', () => {
+  expect({ child: { grandchild: ' ' } }).toEqual(expect.toHaveWhitespace('child.grandchild'));
 });

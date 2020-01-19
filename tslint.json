@@ -3,6 +3,8 @@
   "rules": {
     "interface-name": [false],
     "max-line-length": [false],
+    "no-construct": [false],
+    "no-eval": [false],
     "quotemark": [true, "single"],
     "trailing-comma": [false]
   }

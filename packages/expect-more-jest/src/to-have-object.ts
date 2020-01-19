@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is an object.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveObject('foo.bar')
-       * );
-       */
-      toHaveObject<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is an object.
+       * Asserts that ${value} is an `Object`.
        * @example
-       * expect({ foo: { bar: X } }).toHaveObject('foo.bar');
+       * expect({ child: { grandchild: {} } }).toHaveObject('child.grandchild');
        */
       toHaveObject(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an `Object`.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveObject('child.grandchild'));
+       */
+      toHaveObject<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveObjectMatcher = (received: any, propPath: string) =>
+export const toHaveObjectMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be object`,
-    notMessage: () => `expected ${propPath} of ${received} not to be object`,
-    pass: isObject(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be an object`,
+    notMessage: () => `expected value at '${propPath}' not to be an object`,
+    pass: isObject(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveObject: toHaveObjectMatcher });

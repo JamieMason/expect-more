@@ -3,30 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a `Number` with no positive decimal places.
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ livesRemaining: expect.toBeWholeNumber() }));
-       */
-      toBeWholeNumber<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a `Number` with no positive decimal places.
+       * Asserts that ${value} is a `Number` with no positive decimal places.
        * @example
-       * expect(player.livesRemaining).toBeWholeNumber();
+       * expect(8).toBeWholeNumber();
        */
       toBeWholeNumber(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `Number` with no positive decimal places.
+       * @example
+       * expect(8).toEqual(
+       *   expect.toBeWholeNumber()
+       * );
+       */
+      toBeWholeNumber<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeWholeNumberMatcher = (received: any) =>
+export const toBeWholeNumberMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be a whole number`,
-    notMessage: () => `expected ${received} not to be a whole number`,
-    pass: isWholeNumber(received),
+    message: () => `expected ${value} to be a whole number`,
+    notMessage: () => `expected ${value} not to be a whole number`,
+    pass: isWholeNumber(value),
   });
 
 expect.extend({ toBeWholeNumber: toBeWholeNumberMatcher });

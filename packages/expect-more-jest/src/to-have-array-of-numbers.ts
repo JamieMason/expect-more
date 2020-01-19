@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts value has an own or nested named property which is an Array of numbers.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveArrayOfNumbers('scores')
-       * );
-       */
-      toHaveArrayOfNumbers<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts value has an own or nested named property which is an Array of numbers.
+       * Asserts that ${value} is an `Array` containing only `Number` values.
        * @example
-       * expect({ foo: { bar: [1, new Number(8)] } }).toHaveArrayOfNumbers('foo.bar');
+       * expect({ child: { grandchild: [12, 0, 14] } }).toHaveArrayOfNumbers('child.grandchild');
        */
       toHaveArrayOfNumbers(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an `Array` containing only `Number` values.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveArrayOfNumbers('child.grandchild'));
+       */
+      toHaveArrayOfNumbers<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveArrayOfNumbersMatcher = (received: any, propPath: string) =>
+export const toHaveArrayOfNumbersMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be an array of numbers`,
-    notMessage: () => `expected ${propPath} of ${received} not to be an array of numbers`,
-    pass: isArrayOfNumbers(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be a non-empty array, containing only numbers`,
+    notMessage: () => `expected value at '${propPath}' not to be a non-empty array, containing only numbers`,
+    pass: isArrayOfNumbers(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveArrayOfNumbers: toHaveArrayOfNumbersMatcher });

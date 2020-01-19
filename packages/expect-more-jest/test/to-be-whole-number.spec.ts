@@ -1,13 +1,11 @@
-it('provides toBeWholeNumber', () => {
-  expect(1).toBeWholeNumber();
-  expect(() => {
-    expect(1.25).toBeWholeNumber();
-  }).toThrow();
-  expect(() => {
-    expect(1).not.toBeWholeNumber();
-  }).toThrow();
+it('provides expect().toBeWholeNumber()', () => {
+  expect(8).toBeWholeNumber();
 });
 
-it('provides expect.toBeWholeNumber', () => {
-  expect(1).toEqual(expect.toBeWholeNumber());
+it('provides expect().not.toBeWholeNumber()', () => {
+  expect(() => expect(8).not.toBeWholeNumber()).toThrow();
+});
+
+it('provides expect.toBeWholeNumber()', () => {
+  expect(8).toEqual(expect.toBeWholeNumber());
 });

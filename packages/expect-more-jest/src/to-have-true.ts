@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is true.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveTrue('foo.bar')
-       * );
-       */
-      toHaveTrue<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is true.
+       * Asserts that ${value} is `true` or `new Boolean(true)`.
        * @example
-       * expect({ foo: { bar: X } }).toHaveTrue('foo.bar');
+       * expect({ child: { grandchild: true } }).toHaveTrue('child.grandchild');
        */
       toHaveTrue(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is `true` or `new Boolean(true)`.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveTrue('child.grandchild'));
+       */
+      toHaveTrue<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveTrueMatcher = (received: any, propPath: string) =>
+export const toHaveTrueMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be true`,
-    notMessage: () => `expected ${propPath} of ${received} not to be true`,
-    pass: isTrue(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be true or Boolean(true)`,
+    notMessage: () => `expected value at '${propPath}' not to be true or Boolean(true)`,
+    pass: isTrue(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveTrue: toHaveTrueMatcher });

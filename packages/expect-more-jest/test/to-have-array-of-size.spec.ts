@@ -1,9 +1,15 @@
-import { assertMemberComparisonMatcher } from './lib/member-assertions';
+it('provides expect().toHaveArrayOfSize()', () => {
+  expect({ child: { grandchild: ['i', 'contain', 4, 'items'] } }).toHaveArrayOfSize('child.grandchild', 4);
+});
 
-assertMemberComparisonMatcher({
-  failOther: 1,
-  failReceived: [1, 2],
-  name: 'toHaveArrayOfSize',
-  passOther: 1,
-  passReceived: [null],
+it('provides expect().not.toHaveArrayOfSize()', () => {
+  expect(() =>
+    expect({ child: { grandchild: ['i', 'contain', 4, 'items'] } }).not.toHaveArrayOfSize('child.grandchild', 4),
+  ).toThrow();
+});
+
+it('provides expect.toHaveArrayOfSize()', () => {
+  expect({ child: { grandchild: ['i', 'contain', 4, 'items'] } }).toEqual(
+    expect.toHaveArrayOfSize('child.grandchild', 4),
+  );
 });

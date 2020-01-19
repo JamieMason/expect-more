@@ -1,7 +1,13 @@
-import { assertMemberMatcher } from './lib/member-assertions';
+it('provides expect().toHaveNonEmptyArray()', () => {
+  expect({ child: { grandchild: ['i', 'am not empty'] } }).toHaveNonEmptyArray('child.grandchild');
+});
 
-assertMemberMatcher({
-  failReceived: null,
-  name: 'toHaveNonEmptyArray',
-  passReceived: [3, 2, 1],
+it('provides expect().not.toHaveNonEmptyArray()', () => {
+  expect(() =>
+    expect({ child: { grandchild: ['i', 'am not empty'] } }).not.toHaveNonEmptyArray('child.grandchild'),
+  ).toThrow();
+});
+
+it('provides expect.toHaveNonEmptyArray()', () => {
+  expect({ child: { grandchild: ['i', 'am not empty'] } }).toEqual(expect.toHaveNonEmptyArray('child.grandchild'));
 });

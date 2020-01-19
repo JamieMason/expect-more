@@ -1,13 +1,11 @@
-it('provides toBeIso8601', () => {
-  expect('2017-10-31T15:17:11').toBeIso8601();
-  expect(() => {
-    expect(null).toBeIso8601();
-  }).toThrow();
-  expect(() => {
-    expect('2017-10-31T15:17:11').not.toBeIso8601();
-  }).toThrow();
+it('provides expect().toBeIso8601()', () => {
+  expect('1999-12-31T23:59:59').toBeIso8601();
 });
 
-it('provides expect.toBeIso8601', () => {
-  expect('2017-10-31T15:17:11').toEqual(expect.toBeIso8601());
+it('provides expect().not.toBeIso8601()', () => {
+  expect(() => expect('1999-12-31T23:59:59').not.toBeIso8601()).toThrow();
+});
+
+it('provides expect.toBeIso8601()', () => {
+  expect('1999-12-31T23:59:59').toEqual(expect.toBeIso8601());
 });

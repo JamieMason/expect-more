@@ -3,36 +3,33 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a `String` or `Array` whose length is less than `other`.
-       * @param other
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     contents: expect.toBeShorterThan(file.contents)
-       *   })
-       * );
-       */
-      toBeShorterThan<T>(other: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a `String` or `Array` whose length is less than `other`.
-       * @param other
+       * Asserts that ${value} is a `String` or `Array` whose length is less than that of ${otherStringOrArray}.
        * @example
-       * expect(truncatedFile.contents).toBeShorterThan(file.contents);
+       * expect(['i have one item']).toBeShorterThan(['i', 'have', 4, 'items']);
        */
-      toBeShorterThan(other: string): R;
+      toBeShorterThan(otherStringOrArray: string | any[]): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `String` or `Array` whose length is less than that of ${otherStringOrArray}.
+       * @example
+       * expect(['i have one item']).toEqual(
+       *   expect.toBeShorterThan(['i', 'have', 4, 'items'])
+       * );
+       */
+      toBeShorterThan<T>(otherStringOrArray: string | any[]): JestMatchers<T>;
     }
   }
 }
 
-export const toBeShorterThanMatcher = (received: any, other: string) =>
+export const toBeShorterThanMatcher = (value: any, otherStringOrArray: string | any[]) =>
   createResult({
-    message: () => `expected ${received} to be a string which is shorter than ${other}`,
-    notMessage: () => `expected ${received} not to be a string which is shorter than ${other}`,
-    pass: isShorterThan(other, received),
+    message: () => `expected ${value} to be a string or array whose length is less than that of ${otherStringOrArray}`,
+    notMessage: () =>
+      `expected ${value} not to be a string or array whose length is less than that of ${otherStringOrArray}`,
+    pass: isShorterThan(otherStringOrArray, value),
   });
 
 expect.extend({ toBeShorterThan: toBeShorterThanMatcher });

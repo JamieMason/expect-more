@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts value has an own or nested named property which is an Array of booleans.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveArrayOfBooleans('messages')
-       * );
-       */
-      toHaveArrayOfBooleans<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts value has an own or nested named property which is an Array of booleans.
+       * Asserts that ${value} is an `Array` containing only `Boolean` values.
        * @example
-       * expect({ foo: { bar: [true, new Boolean()] } }).toHaveArrayOfBooleans('foo.bar');
+       * expect({ child: { grandchild: [true, false, new Boolean(true)] } }).toHaveArrayOfBooleans('child.grandchild');
        */
       toHaveArrayOfBooleans(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an `Array` containing only `Boolean` values.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveArrayOfBooleans('child.grandchild'));
+       */
+      toHaveArrayOfBooleans<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveArrayOfBooleansMatcher = (received: any, propPath: string) =>
+export const toHaveArrayOfBooleansMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be an array of booleans`,
-    notMessage: () => `expected ${propPath} of ${received} not to be an array of booleans`,
-    pass: isArrayOfBooleans(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be a non-empty array, containing only boolean values`,
+    notMessage: () => `expected value at '${propPath}' not to be a non-empty array, containing only boolean values`,
+    pass: isArrayOfBooleans(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveArrayOfBooleans: toHaveArrayOfBooleansMatcher });

@@ -3,32 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a `Number` divisible by `other` number.
-       * @param divisor
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ paws: expect.toBeDivisibleBy(2) }));
-       */
-      toBeDivisibleBy<T>(divisor: number): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a `Number` divisible by `other` number.
-       * @param divisor
+       * Asserts that ${value} is a `Number` which results in a whole number when divided by ${otherNumber}.
        * @example
-       * expect(cat.paws).toBeDivisibleBy(2);
+       * expect(12).toBeDivisibleBy(2);
        */
-      toBeDivisibleBy(divisor: number): R;
+      toBeDivisibleBy(otherNumber: number): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `Number` which results in a whole number when divided by ${otherNumber}.
+       * @example
+       * expect(12).toEqual(
+       *   expect.toBeDivisibleBy(2)
+       * );
+       */
+      toBeDivisibleBy<T>(otherNumber: number): JestMatchers<T>;
     }
   }
 }
 
-export const toBeDivisibleByMatcher = (received: number, divisor: any) =>
+export const toBeDivisibleByMatcher = (value: any, otherNumber: number) =>
   createResult({
-    message: () => `expected ${received} to be divisible by ${divisor}`,
-    notMessage: () => `expected ${received} not to be divisible by ${divisor}`,
-    pass: isDivisibleBy(divisor, received),
+    message: () => `expected ${value} to be divisible by ${otherNumber}`,
+    notMessage: () => `expected ${value} not to be divisible by ${otherNumber}`,
+    pass: isDivisibleBy(otherNumber, value),
   });
 
 expect.extend({ toBeDivisibleBy: toBeDivisibleByMatcher });

@@ -3,30 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a valid `String` containing at least one character.
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ name: expect.toBeNonEmptyString() }));
-       */
-      toBeNonEmptyString<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a valid `String` containing at least one character.
+       * Asserts that ${value} is a valid `String` containing at least one character.
        * @example
-       * expect(passwordField.value).toBeNonEmptyString();
+       * expect('i am not empty').toBeNonEmptyString();
        */
       toBeNonEmptyString(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a valid `String` containing at least one character.
+       * @example
+       * expect('i am not empty').toEqual(
+       *   expect.toBeNonEmptyString()
+       * );
+       */
+      toBeNonEmptyString<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeNonEmptyStringMatcher = (received: any) =>
+export const toBeNonEmptyStringMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be a string with at least one character`,
-    notMessage: () => `expected ${received} not to be a string with at least one character`,
-    pass: isNonEmptyString(received),
+    message: () => `expected ${value} to be a string with at least one character`,
+    notMessage: () => `expected ${value} not to be a string with at least one character`,
+    pass: isNonEmptyString(value),
   });
 
 expect.extend({ toBeNonEmptyString: toBeNonEmptyStringMatcher });

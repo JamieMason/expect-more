@@ -3,32 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a `String` whose leading characters are `other` string.
-       * @param other
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ postcode: expect.toStartWith('LS1') }));
-       */
-      toStartWith<T>(other: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a `String` whose leading characters are `other` string.
-       * @param other
+       * Assert value is a string whose leading characters are equal to `other`.
        * @example
-       * expect(location.postcode).toStartWith('LS1');
+       * expect('JavaScript').toStartWith('Java');
        */
-      toStartWith(other: string): R;
+      toStartWith(otherString: string): R;
+    }
+    interface Expect {
+      /**
+       * Assert value is a string whose leading characters are equal to `other`.
+       * @example
+       * expect('JavaScript').toEqual(
+       *   expect.toStartWith('Java')
+       * );
+       */
+      toStartWith<T>(otherString: string): JestMatchers<T>;
     }
   }
 }
 
-export const toStartWithMatcher = (received: any, other: string) =>
+export const toStartWithMatcher = (value: any, otherString: string) =>
   createResult({
-    message: () => `expected ${received} to be a string which starts with ${other}`,
-    notMessage: () => `expected ${received} not to be a string which starts with ${other}`,
-    pass: startsWith(other, received),
+    message: () => `expected ${value} to start with ${otherString}`,
+    notMessage: () => `expected ${value} not to start with ${otherString}`,
+    pass: startsWith(otherString, value),
   });
 
 expect.extend({ toStartWith: toStartWithMatcher });

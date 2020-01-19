@@ -3,30 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a valid `Array` containing no items.
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ messages: expect.toBeEmptyArray() }));
-       */
-      toBeEmptyArray<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a valid `Array` containing no items.
+       * Asserts that ${value} is a valid `Array` containing no items.
        * @example
-       * expect(player.messages).toBeEmptyArray();
+       * expect([]).toBeEmptyArray();
        */
       toBeEmptyArray(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a valid `Array` containing no items.
+       * @example
+       * expect([]).toEqual(
+       *   expect.toBeEmptyArray()
+       * );
+       */
+      toBeEmptyArray<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeEmptyArrayMatcher = (received: any) =>
+export const toBeEmptyArrayMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be an array without any items`,
-    notMessage: () => `expected ${received} not to be an array without any items`,
-    pass: isEmptyArray(received),
+    message: () => `expected ${value} to be an array containing no items`,
+    notMessage: () => `expected ${value} not to be an array containing no items`,
+    pass: isEmptyArray(value),
   });
 
 expect.extend({ toBeEmptyArray: toBeEmptyArrayMatcher });

@@ -3,32 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a regular expression.
-       * @param other
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ pattern: expect.toBeRegExp() }));
-       */
-      toBeRegExp<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a regular expression.
+       * Asserts that ${value} is a `RegExp`.
        * @example
-       * expect(/abc/).toBeRegExp();
-       * expect(new RegExp('abc')).toBeRegExp();
+       * expect(new RegExp('i am a regular expression')).toBeRegExp();
        */
       toBeRegExp(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `RegExp`.
+       * @example
+       * expect(new RegExp('i am a regular expression')).toEqual(
+       *   expect.toBeRegExp()
+       * );
+       */
+      toBeRegExp<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeRegExpMatcher = (received: any) =>
+export const toBeRegExpMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be a regular expression`,
-    notMessage: () => `expected ${received} not to be a regular expression`,
-    pass: isRegExp(received),
+    message: () => `expected ${value} to be a regular expression`,
+    notMessage: () => `expected ${value} not to be a regular expression`,
+    pass: isRegExp(value),
   });
 
 expect.extend({ toBeRegExp: toBeRegExpMatcher });

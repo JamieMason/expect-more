@@ -1,9 +1,21 @@
-import { assertMemberComparisonMatcher } from './lib/member-assertions';
+it('provides expect().toHaveDateBefore()', () => {
+  expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDateBefore(
+    'child.grandchild',
+    new Date('2020-01-01'),
+  );
+});
 
-assertMemberComparisonMatcher({
-  failOther: new Date('2018-08-27'),
-  failReceived: new Date('2018-08-28'),
-  name: 'toHaveDateBefore',
-  passOther: new Date('2018-08-28'),
-  passReceived: new Date('2018-08-27'),
+it('provides expect().not.toHaveDateBefore()', () => {
+  expect(() =>
+    expect({ child: { grandchild: new Date('2019-12-31') } }).not.toHaveDateBefore(
+      'child.grandchild',
+      new Date('2020-01-01'),
+    ),
+  ).toThrow();
+});
+
+it('provides expect.toHaveDateBefore()', () => {
+  expect({ child: { grandchild: new Date('2019-12-31') } }).toEqual(
+    expect.toHaveDateBefore('child.grandchild', new Date('2020-01-01')),
+  );
 });

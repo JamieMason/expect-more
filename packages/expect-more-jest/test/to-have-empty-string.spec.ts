@@ -1,7 +1,11 @@
-import { assertMemberMatcher } from './lib/member-assertions';
+it('provides expect().toHaveEmptyString()', () => {
+  expect({ child: { grandchild: '' } }).toHaveEmptyString('child.grandchild');
+});
 
-assertMemberMatcher({
-  failReceived: null,
-  name: 'toHaveEmptyString',
-  passReceived: '',
+it('provides expect().not.toHaveEmptyString()', () => {
+  expect(() => expect({ child: { grandchild: '' } }).not.toHaveEmptyString('child.grandchild')).toThrow();
+});
+
+it('provides expect.toHaveEmptyString()', () => {
+  expect({ child: { grandchild: '' } }).toEqual(expect.toHaveEmptyString('child.grandchild'));
 });

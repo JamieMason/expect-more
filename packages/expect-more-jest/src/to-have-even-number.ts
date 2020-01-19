@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is an even number or `new Number`.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveEvenNumber('foo.bar')
-       * );
-       */
-      toHaveEvenNumber<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is an even number or `new Number`.
+       * Asserts that ${value} is an even `Number`.
        * @example
-       * expect({ foo: { bar: 4 } }).toHaveEvenNumber('foo.bar');
+       * expect({ child: { grandchild: 2 } }).toHaveEvenNumber('child.grandchild');
        */
       toHaveEvenNumber(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an even `Number`.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveEvenNumber('child.grandchild'));
+       */
+      toHaveEvenNumber<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveEvenNumberMatcher = (received: any, propPath: string) =>
+export const toHaveEvenNumberMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be an even number`,
-    notMessage: () => `expected ${propPath} of ${received} not to be an even number`,
-    pass: isEvenNumber(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be an even number`,
+    notMessage: () => `expected value at '${propPath}' not to be an even number`,
+    pass: isEvenNumber(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveEvenNumber: toHaveEvenNumberMatcher });

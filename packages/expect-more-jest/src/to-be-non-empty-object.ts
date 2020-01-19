@@ -3,30 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is an `Object` containing at least 1 member.
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ byId: expect.toBeNonEmptyObject() }));
-       */
-      toBeNonEmptyObject<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is an `Object` containing at least 1 member.
+       * Asserts that ${value} is an `Object` containing at least one own member.
        * @example
-       * expect(activeUsers.byId).toBeNonEmptyObject();
+       * expect({ i: 'am not empty' }).toBeNonEmptyObject();
        */
       toBeNonEmptyObject(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an `Object` containing at least one own member.
+       * @example
+       * expect({ i: 'am not empty' }).toEqual(
+       *   expect.toBeNonEmptyObject()
+       * );
+       */
+      toBeNonEmptyObject<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeNonEmptyObjectMatcher = (received: any) =>
+export const toBeNonEmptyObjectMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be an object with at least one own member`,
-    notMessage: () => `expected ${received} not to be an object with at least one own member`,
-    pass: isNonEmptyObject(received),
+    message: () => `expected ${value} to be an object with at least one own member`,
+    notMessage: () => `expected ${value} not to be an object with at least one own member`,
+    pass: isNonEmptyObject(value),
   });
 
 expect.extend({ toBeNonEmptyObject: toBeNonEmptyObjectMatcher });

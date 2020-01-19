@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts value has an own or nested named property which is an Array with the given number of members.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveArrayOfSize('friends', 0)
-       * );
-       */
-      toHaveArrayOfSize<T>(propPath: string, size: number): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts value has an own or nested named property which is an Array with the given number of members.
+       * Asserts that ${value} is an `Array` containing ${size} number of values.
        * @example
-       * expect({ foo: { bar: [true, 12] } }).toHaveArrayOfSize('foo.bar', 2);
+       * expect({ child: { grandchild: ['i', 'contain', 4, 'items'] } }).toHaveArrayOfSize('child.grandchild', 4);
        */
       toHaveArrayOfSize(propPath: string, size: number): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an `Array` containing ${size} number of values.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveArrayOfSize('child.grandchild', 4));
+       */
+      toHaveArrayOfSize<T>(propPath: string, size: number): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveArrayOfSizeMatcher = (received: any, propPath: string, size: number) =>
+export const toHaveArrayOfSizeMatcher = (value: any, propPath: string, size: number) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be an array containing ${size} members`,
-    notMessage: () => `expected ${propPath} of ${received} not to be an array containing ${size} members`,
-    pass: isArrayOfSize(size, getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be an array containing exactly ${size} items`,
+    notMessage: () => `expected value at '${propPath}' not to be an array containing exactly ${size} items`,
+    pass: isArrayOfSize(size, getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveArrayOfSize: toHaveArrayOfSizeMatcher });

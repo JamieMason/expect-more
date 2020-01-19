@@ -1,13 +1,11 @@
-it('provides toStartWith', () => {
-  expect('jamie').toStartWith('jam');
-  expect(() => {
-    expect('wut?').toStartWith('nah!');
-  }).toThrow();
-  expect(() => {
-    expect('jamie').not.toStartWith('jamie');
-  }).toThrow();
+it('provides expect().toStartWith()', () => {
+  expect('JavaScript').toStartWith('Java');
 });
 
-it('provides expect.toBeStartingWith', () => {
-  expect('jamie').toEqual(expect.toStartWith('jam'));
+it('provides expect().not.toStartWith()', () => {
+  expect(() => expect('JavaScript').not.toStartWith('Java')).toThrow();
+});
+
+it('provides expect.toStartWith()', () => {
+  expect('JavaScript').toEqual(expect.toStartWith('Java'));
 });

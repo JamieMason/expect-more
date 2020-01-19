@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is an odd number.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveOddNumber('foo.bar')
-       * );
-       */
-      toHaveOddNumber<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is an odd number.
+       * Asserts that ${value} is an odd `Number`.
        * @example
-       * expect({ foo: { bar: X } }).toHaveOddNumber('foo.bar');
+       * expect({ child: { grandchild: 5 } }).toHaveOddNumber('child.grandchild');
        */
       toHaveOddNumber(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an odd `Number`.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveOddNumber('child.grandchild'));
+       */
+      toHaveOddNumber<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveOddNumberMatcher = (received: any, propPath: string) =>
+export const toHaveOddNumberMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be odd number`,
-    notMessage: () => `expected ${propPath} of ${received} not to be odd number`,
-    pass: isOddNumber(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be an odd number`,
+    notMessage: () => `expected value at '${propPath}' not to be an odd number`,
+    pass: isOddNumber(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveOddNumber: toHaveOddNumberMatcher });

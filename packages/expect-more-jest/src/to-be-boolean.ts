@@ -3,31 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a `true`, `false`, `new Boolean(true)`, or `new Boolean(false)`.
-       * @param divisor
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ isActive: expect.toBeBoolean() }));
-       */
-      toBeBoolean<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a `true`, `false`, `new Boolean(true)`, or `new Boolean(false)`.
+       * Asserts that ${value} is `true`, `false`, `new Boolean(true)`, or `new Boolean(false)`.
        * @example
-       * expect(player.isActive).toBeBoolean();
+       * expect(false).toBeBoolean();
        */
       toBeBoolean(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is `true`, `false`, `new Boolean(true)`, or `new Boolean(false)`.
+       * @example
+       * expect(false).toEqual(
+       *   expect.toBeBoolean()
+       * );
+       */
+      toBeBoolean<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeBooleanMatcher = (received: any) =>
+export const toBeBooleanMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be true, false, or an instance of Boolean`,
-    notMessage: () => `expected ${received} not to be true, false, or an instance of Boolean`,
-    pass: isBoolean(received),
+    message: () => `expected ${value} to be true, false, or an instance of Boolean`,
+    notMessage: () => `expected ${value} not to be true, false, or an instance of Boolean`,
+    pass: isBoolean(value),
   });
 
 expect.extend({ toBeBoolean: toBeBooleanMatcher });

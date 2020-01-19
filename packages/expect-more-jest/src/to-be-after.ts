@@ -3,36 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a valid instance of `Date` whose value occurs after that of `other` Date.
-       * @param other
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(
-       *   expect.objectContaining({
-       *     releaseDate: expect.toBeAfter(new Date('1990-10-15'))
-       *   })
-       * );
-       */
-      toBeAfter<T>(other: Date): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a valid instance of `Date` whose value occurs after that of `other` Date.
-       * @param other
+       * Asserts that ${value} is a valid instance of `Date` whose value occurs after that of ${otherDate}.
        * @example
-       * expect(game.releaseDate).toBeAfter(new Date('1990-10-15'));
+       * expect(new Date('2020-01-01')).toBeAfter(new Date('2019-12-31'));
        */
-      toBeAfter(other: Date): R;
+      toBeAfter(otherDate: Date): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a valid instance of `Date` whose value occurs after that of ${otherDate}.
+       * @example
+       * expect(new Date('2020-01-01')).toEqual(
+       *   expect.toBeAfter(new Date('2019-12-31'))
+       * );
+       */
+      toBeAfter<T>(otherDate: Date): JestMatchers<T>;
     }
   }
 }
 
-export const toBeAfterMatcher = (received: any, other: Date) =>
+export const toBeAfterMatcher = (value: any, otherDate: Date) =>
   createResult({
-    message: () => `expected ${received} to be an instance of Date, occurring after ${other}`,
-    notMessage: () => `expected ${received} not to be an instance of Date, occurring after ${other}`,
-    pass: isAfter(other, received),
+    message: () => `expected ${value} to be an instance of Date, occurring after ${otherDate}`,
+    notMessage: () => `expected ${value} not to be an instance of Date, occurring after ${otherDate}`,
+    pass: isAfter(otherDate, value),
   });
 
 expect.extend({ toBeAfter: toBeAfterMatcher });

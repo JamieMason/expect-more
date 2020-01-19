@@ -1,7 +1,11 @@
-import { assertMemberMatcher } from './lib/member-assertions';
+it('provides expect().toHaveCalculable()', () => {
+  expect({ child: { grandchild: '100' } }).toHaveCalculable('child.grandchild');
+});
 
-assertMemberMatcher({
-  failReceived: 'x',
-  name: 'toHaveCalculable',
-  passReceived: '1',
+it('provides expect().not.toHaveCalculable()', () => {
+  expect(() => expect({ child: { grandchild: '100' } }).not.toHaveCalculable('child.grandchild')).toThrow();
+});
+
+it('provides expect.toHaveCalculable()', () => {
+  expect({ child: { grandchild: '100' } }).toEqual(expect.toHaveCalculable('child.grandchild'));
 });

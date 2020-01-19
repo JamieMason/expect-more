@@ -3,38 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a `String` of valid JSON.
-       * @example
-       * expect(response.body).toEqual(expect.toBeJsonString());
-       * @example
-       * expect(response).toEqual(
-       *   expect.objectContaining({
-       *     body: expect.toBeJsonString()
-       *   })
-       * );
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ body: expect.toBeJsonString() }));
-       */
-      toBeJsonString<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a `String` of valid JSON.
+       * Asserts that ${value} is a `String` of valid JSON.
        * @example
-       * expect(response.body).toBeJsonString();
+       * expect('{"i":"am valid JSON"}').toBeJsonString();
        */
       toBeJsonString(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `String` of valid JSON.
+       * @example
+       * expect('{"i":"am valid JSON"}').toEqual(
+       *   expect.toBeJsonString()
+       * );
+       */
+      toBeJsonString<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeJsonStringMatcher = (received: any) =>
+export const toBeJsonStringMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be a string of valid JSON`,
-    notMessage: () => `expected ${received} not to be a string of valid JSON`,
-    pass: isJsonString(received),
+    message: () => `expected ${value} to be a string of valid JSON`,
+    notMessage: () => `expected ${value} not to be a string of valid JSON`,
+    pass: isJsonString(value),
   });
 
 expect.extend({ toBeJsonString: toBeJsonStringMatcher });

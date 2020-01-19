@@ -1,9 +1,11 @@
-it('provides toBeDate', () => {
-  expect(new Date()).toBeDate();
-  expect(() => {
-    expect(null).toBeDate();
-  }).toThrow();
-  expect(() => {
-    expect(new Date()).not.toBeDate();
-  }).toThrow();
+it('provides expect().toBeDate()', () => {
+  expect(new Date('2019-12-31')).toBeDate();
+});
+
+it('provides expect().not.toBeDate()', () => {
+  expect(() => expect(new Date('2019-12-31')).not.toBeDate()).toThrow();
+});
+
+it('provides expect.toBeDate()', () => {
+  expect(new Date('2019-12-31')).toEqual(expect.toBeDate());
 });

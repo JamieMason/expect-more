@@ -4,34 +4,32 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is a string or array longer than the given string
-       * or array.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveLongerThan('foo.bar')
-       * );
-       */
-      toHaveLongerThan<T>(propPath: string, other: string | any[]): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is a string or array longer than the given string
-       * or array.
+       * Asserts that ${value} is a `String` or `Array` whose length is greater than that of ${otherStringOrArray}.
        * @example
-       * expect({ foo: { bar: X } }).toHaveLongerThan('foo.bar');
+       * expect({ child: { grandchild: ['i', 'have', 3] } }).toHaveLongerThan('child.grandchild', [2, 'items']);
        */
-      toHaveLongerThan(propPath: string, other: string | any[]): R;
+      toHaveLongerThan(propPath: string, otherStringOrArray: string | any[]): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `String` or `Array` whose length is greater than that of ${otherStringOrArray}.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveLongerThan('child.grandchild', [2, 'items']));
+       */
+      toHaveLongerThan<T>(propPath: string, otherStringOrArray: string | any[]): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveLongerThanMatcher = (received: any, propPath: string, other: string | any[]) =>
+export const toHaveLongerThanMatcher = (value: any, propPath: string, otherStringOrArray: string | any[]) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be a string or array longer than ${other}`,
-    notMessage: () => `expected ${propPath} of ${received} not to be a string or array longer than ${other}`,
-    pass: isLongerThan(other, getIn(propPath.split('.'), received)),
+    message: () =>
+      `expected value at '${propPath}' to be a string or array whose length is greater than that of ${otherStringOrArray}`,
+    notMessage: () =>
+      `expected value at '${propPath}' not to be a string or array whose length is greater than that of ${otherStringOrArray}`,
+    pass: isLongerThan(otherStringOrArray, getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveLongerThan: toHaveLongerThanMatcher });

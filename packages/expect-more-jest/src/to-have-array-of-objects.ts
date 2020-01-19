@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts value has an own or nested named property which is an Array of objects.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveArrayOfObjects('friends')
-       * );
-       */
-      toHaveArrayOfObjects<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts value has an own or nested named property which is an Array of objects.
+       * Asserts that ${value} is an `Array` containing only `Object` values.
        * @example
-       * expect({ foo: { bar: [{}, new Object()] } }).toHaveArrayOfObjects('foo.bar');
+       * expect({ child: { grandchild: [{}, new Object()] } }).toHaveArrayOfObjects('child.grandchild');
        */
       toHaveArrayOfObjects(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an `Array` containing only `Object` values.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveArrayOfObjects('child.grandchild'));
+       */
+      toHaveArrayOfObjects<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveArrayOfObjectsMatcher = (received: any, propPath: string) =>
+export const toHaveArrayOfObjectsMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be an array of objects`,
-    notMessage: () => `expected ${propPath} of ${received} not to be an array of objects`,
-    pass: isArrayOfObjects(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be a non-empty array, containing only objects`,
+    notMessage: () => `expected value at '${propPath}' not to be a non-empty array, containing only objects`,
+    pass: isArrayOfObjects(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveArrayOfObjects: toHaveArrayOfObjectsMatcher });

@@ -3,30 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is an `Array` containing only `Boolean` values.
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ attempts: expect.toBeArrayOfBooleans() }));
-       */
-      toBeArrayOfBooleans<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is an `Array` containing only `Boolean` values.
+       * Asserts that ${value} is an `Array` containing only `Boolean` values.
        * @example
-       * expect(player.attempts).toBeArrayOfBooleans();
+       * expect([true, false, new Boolean(true)]).toBeArrayOfBooleans();
        */
       toBeArrayOfBooleans(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an `Array` containing only `Boolean` values.
+       * @example
+       * expect([true, false, new Boolean(true)]).toEqual(
+       *   expect.toBeArrayOfBooleans()
+       * );
+       */
+      toBeArrayOfBooleans<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeArrayOfBooleansMatcher = (received: any) =>
+export const toBeArrayOfBooleansMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be a non-empty array, containing only boolean values`,
-    notMessage: () => `expected ${received} not to be a non-empty array, containing only boolean values`,
-    pass: isArrayOfBooleans(received),
+    message: () => `expected ${value} to be a non-empty array, containing only boolean values`,
+    notMessage: () => `expected ${value} not to be a non-empty array, containing only boolean values`,
+    pass: isArrayOfBooleans(value),
   });
 
 expect.extend({ toBeArrayOfBooleans: toBeArrayOfBooleansMatcher });

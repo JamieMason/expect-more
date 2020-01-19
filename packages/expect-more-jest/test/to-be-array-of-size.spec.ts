@@ -1,13 +1,11 @@
-it('provides toBeArrayOfSize', () => {
-  expect([1]).toBeArrayOfSize(1);
-  expect(() => {
-    expect([1]).toBeArrayOfSize(2);
-  }).toThrow();
-  expect(() => {
-    expect([1]).not.toBeArrayOfSize(1);
-  }).toThrow();
+it('provides expect().toBeArrayOfSize()', () => {
+  expect(['i', 'contain', 4, 'items']).toBeArrayOfSize(4);
 });
 
-it('provides expect.toBeArrayOfSize', () => {
-  expect([1]).toEqual(expect.toBeArrayOfSize(1));
+it('provides expect().not.toBeArrayOfSize()', () => {
+  expect(() => expect(['i', 'contain', 4, 'items']).not.toBeArrayOfSize(4)).toThrow();
+});
+
+it('provides expect.toBeArrayOfSize()', () => {
+  expect(['i', 'contain', 4, 'items']).toEqual(expect.toBeArrayOfSize(4));
 });

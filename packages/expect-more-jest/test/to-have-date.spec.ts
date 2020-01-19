@@ -1,7 +1,11 @@
-import { assertMemberMatcher } from './lib/member-assertions';
+it('provides expect().toHaveDate()', () => {
+  expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDate('child.grandchild');
+});
 
-assertMemberMatcher({
-  failReceived: null,
-  name: 'toHaveDate',
-  passReceived: new Date(),
+it('provides expect().not.toHaveDate()', () => {
+  expect(() => expect({ child: { grandchild: new Date('2019-12-31') } }).not.toHaveDate('child.grandchild')).toThrow();
+});
+
+it('provides expect.toHaveDate()', () => {
+  expect({ child: { grandchild: new Date('2019-12-31') } }).toEqual(expect.toHaveDate('child.grandchild'));
 });

@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is a method (function).
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveMethod('foo.bar')
-       * );
-       */
-      toHaveMethod<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is a method (function).
+       * Asserts that ${value} is a `Function`.
        * @example
-       * expect({ foo: { bar: X } }).toHaveMethod('foo.bar');
+       * expect({ child: { grandchild: () => 'i am a function' } }).toHaveMethod('child.grandchild');
        */
       toHaveMethod(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a `Function`.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveMethod('child.grandchild'));
+       */
+      toHaveMethod<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveMethodMatcher = (received: any, propPath: string) =>
+export const toHaveMethodMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be a method (function)`,
-    notMessage: () => `expected ${propPath} of ${received} not to be a method (function)`,
-    pass: isFunction(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be a function or async function`,
+    notMessage: () => `expected value at '${propPath}' not to be a function or async function`,
+    pass: isFunction(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveMethod: toHaveMethodMatcher });

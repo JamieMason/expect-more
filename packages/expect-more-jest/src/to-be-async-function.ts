@@ -3,30 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a function using async/await syntax.
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.toBeAsyncFunction())
-       */
-      toBeAsyncFunction<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a function using async/await syntax.
+       * Asserts that ${value} is a function using async/await syntax.
        * @example
-       * expect(async function(){}).toBeAsyncFunction();
+       * expect(async () => { await fetch('...') }).toBeAsyncFunction();
        */
       toBeAsyncFunction(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a function using async/await syntax.
+       * @example
+       * expect(async () => { await fetch('...') }).toEqual(
+       *   expect.toBeAsyncFunction()
+       * );
+       */
+      toBeAsyncFunction<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeAsyncFunctionMatcher = (received: any) =>
+export const toBeAsyncFunctionMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be a function using async/await syntax`,
-    notMessage: () => `expected ${received} not to be a function using async/await syntax`,
-    pass: isAsyncFunction(received),
+    message: () => `expected ${value} to be a \`Function\` using async/await syntax`,
+    notMessage: () => `expected ${value} not to be a function using async/await syntax`,
+    pass: isAsyncFunction(value),
   });
 
 expect.extend({ toBeAsyncFunction: toBeAsyncFunctionMatcher });

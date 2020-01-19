@@ -1,7 +1,13 @@
-import { assertMemberMatcher } from './lib/member-assertions';
+it('provides expect().toHaveJsonString()', () => {
+  expect({ child: { grandchild: '{"i":"am valid JSON"}' } }).toHaveJsonString('child.grandchild');
+});
 
-assertMemberMatcher({
-  failReceived: null,
-  name: 'toHaveJsonString',
-  passReceived: '{"a":1}',
+it('provides expect().not.toHaveJsonString()', () => {
+  expect(() =>
+    expect({ child: { grandchild: '{"i":"am valid JSON"}' } }).not.toHaveJsonString('child.grandchild'),
+  ).toThrow();
+});
+
+it('provides expect.toHaveJsonString()', () => {
+  expect({ child: { grandchild: '{"i":"am valid JSON"}' } }).toEqual(expect.toHaveJsonString('child.grandchild'));
 });

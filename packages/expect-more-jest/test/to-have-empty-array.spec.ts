@@ -1,7 +1,11 @@
-import { assertMemberMatcher } from './lib/member-assertions';
+it('provides expect().toHaveEmptyArray()', () => {
+  expect({ child: { grandchild: [] } }).toHaveEmptyArray('child.grandchild');
+});
 
-assertMemberMatcher({
-  failReceived: null,
-  name: 'toHaveEmptyArray',
-  passReceived: [],
+it('provides expect().not.toHaveEmptyArray()', () => {
+  expect(() => expect({ child: { grandchild: [] } }).not.toHaveEmptyArray('child.grandchild')).toThrow();
+});
+
+it('provides expect.toHaveEmptyArray()', () => {
+  expect({ child: { grandchild: [] } }).toEqual(expect.toHaveEmptyArray('child.grandchild'));
 });

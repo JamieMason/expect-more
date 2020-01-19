@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts value has an own or nested named property which is an Array.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveArray('messages')
-       * );
-       */
-      toHaveArray<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts value has an own or nested named property which is an Array.
+       * Asserts that ${value} is a valid `Array` containing none or any number of items of any type.
        * @example
-       * expect({ foo: { bar: [] } }).toHaveArray('foo.bar');
+       * expect({ child: { grandchild: [2, true, 'string'] } }).toHaveArray('child.grandchild');
        */
       toHaveArray(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a valid `Array` containing none or any number of items of any type.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveArray('child.grandchild'));
+       */
+      toHaveArray<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveArrayMatcher = (received: any, propPath: string) =>
+export const toHaveArrayMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be an array`,
-    notMessage: () => `expected ${propPath} of ${received} not to be an array`,
-    pass: isArray(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be an array`,
+    notMessage: () => `expected value at '${propPath}' not to be an array`,
+    pass: isArray(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveArray: toHaveArrayMatcher });

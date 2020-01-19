@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is calculable.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveCalculable('foo.bar')
-       * );
-       */
-      toHaveCalculable<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is calculable.
+       * Assert value can be used in Mathemetic calculations despite not being a `Number`, for example `'1' * '2' === 2` whereas `'wut?' * 2 === NaN`.
        * @example
-       * expect({ foo: { bar: X } }).toHaveCalculable('foo.bar');
+       * expect({ child: { grandchild: '100' } }).toHaveCalculable('child.grandchild');
        */
       toHaveCalculable(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Assert value can be used in Mathemetic calculations despite not being a `Number`, for example `'1' * '2' === 2` whereas `'wut?' * 2 === NaN`.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveCalculable('child.grandchild'));
+       */
+      toHaveCalculable<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveCalculableMatcher = (received: any, propPath: string) =>
+export const toHaveCalculableMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be calculable`,
-    notMessage: () => `expected ${propPath} of ${received} not to be calculable`,
-    pass: isCalculable(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be coercible for use in mathemetical operations`,
+    notMessage: () => `expected value at '${propPath}' not to be coercible for use in mathemetical operations`,
+    pass: isCalculable(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveCalculable: toHaveCalculableMatcher });

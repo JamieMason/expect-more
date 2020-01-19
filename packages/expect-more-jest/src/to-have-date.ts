@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is a date.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveDate('foo.bar')
-       * );
-       */
-      toHaveDate<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is a date.
+       * Asserts that ${value} is an instance of `Date`.
        * @example
-       * expect({ foo: { bar: new Date() } }).toHaveDate('foo.bar');
+       * expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDate('child.grandchild');
        */
       toHaveDate(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an instance of `Date`.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveDate('child.grandchild'));
+       */
+      toHaveDate<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveDateMatcher = (received: any, propPath: string) =>
+export const toHaveDateMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be an instance of Date`,
-    notMessage: () => `expected ${propPath} of ${received} not to be an instance of Date`,
-    pass: isDate(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be an instance of Date`,
+    notMessage: () => `expected value at '${propPath}' not to be an instance of Date`,
+    pass: isDate(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveDate: toHaveDateMatcher });

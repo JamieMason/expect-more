@@ -3,30 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a valid `Object` containing no members.
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ byId: expect.toBeEmptyObject() }));
-       */
-      toBeEmptyObject<T>(): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a valid `Object` containing no members.
+       * Asserts that ${value} is a valid `Object` containing no instance members.
        * @example
-       * expect(openIssues.byId).toBeEmptyObject();
+       * expect({}).toBeEmptyObject();
        */
       toBeEmptyObject(): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a valid `Object` containing no instance members.
+       * @example
+       * expect({}).toEqual(
+       *   expect.toBeEmptyObject()
+       * );
+       */
+      toBeEmptyObject<T>(): JestMatchers<T>;
     }
   }
 }
 
-export const toBeEmptyObjectMatcher = (received: any) =>
+export const toBeEmptyObjectMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${received} to be an object without any own members`,
-    notMessage: () => `expected ${received} not to be an object without any own members`,
-    pass: isEmptyObject(received),
+    message: () => `expected ${value} to be an empty object`,
+    notMessage: () => `expected ${value} not to be an empty object`,
+    pass: isEmptyObject(value),
   });
 
 expect.extend({ toBeEmptyObject: toBeEmptyObjectMatcher });

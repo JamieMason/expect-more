@@ -1,15 +1,11 @@
-it('provides toHaveNumberWithinRange', () => {
-  expect({ foo: { bar: 2 } }).toHaveNumberWithinRange('foo.bar', 1, 3);
-  expect(() => {
-    expect({ foo: { bar: 4 } }).toHaveNumberWithinRange('miss', 1, 3);
-  }).toThrow();
-  expect(() => {
-    expect({ foo: { bar: 2 } }).not.toHaveNumberWithinRange('foo.bar', 1, 3);
-  }).toThrow();
+it('provides expect().toHaveNumberWithinRange()', () => {
+  expect({ child: { grandchild: 7 } }).toHaveNumberWithinRange('child.grandchild', 0, 10);
 });
 
-describe('when Jest supports variadic asymmetric matchers', () => {
-  it('provides expect.toHaveNumberWithinRange', () => {
-    expect({ foo: { bar: 2 } }).toEqual(expect.toHaveNumberWithinRange('foo.bar', 1, 3));
-  });
+it('provides expect().not.toHaveNumberWithinRange()', () => {
+  expect(() => expect({ child: { grandchild: 7 } }).not.toHaveNumberWithinRange('child.grandchild', 0, 10)).toThrow();
+});
+
+it('provides expect.toHaveNumberWithinRange()', () => {
+  expect({ child: { grandchild: 7 } }).toEqual(expect.toHaveNumberWithinRange('child.grandchild', 0, 10));
 });

@@ -1,13 +1,11 @@
-it('provides toBeWithinRange', () => {
-  expect(2).toBeWithinRange(1, 3);
-  expect(() => {
-    expect(5).toBeWithinRange(1, 3);
-  }).toThrow();
-  expect(() => {
-    expect(2).not.toBeWithinRange(1, 3);
-  }).toThrow();
+it('provides expect().toBeWithinRange()', () => {
+  expect(7).toBeWithinRange(0, 10);
 });
 
-it('provides expect.toBeWithinRange', () => {
-  expect(2).toEqual(expect.toBeWithinRange(1, 3));
+it('provides expect().not.toBeWithinRange()', () => {
+  expect(() => expect(7).not.toBeWithinRange(0, 10)).toThrow();
+});
+
+it('provides expect.toBeWithinRange()', () => {
+  expect(7).toEqual(expect.toBeWithinRange(0, 10));
 });

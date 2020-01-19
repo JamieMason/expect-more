@@ -4,32 +4,30 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that value has an own or nested named property which is an object with at least one member.
-       * @example
-       * expect(received).toHaveBeenCalledWith(
-       *   expect.toHaveNonEmptyObject('foo.bar')
-       * );
-       */
-      toHaveNonEmptyObject<T>(propPath: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that value has an own or nested named property which is an object with at least one member.
+       * Asserts that ${value} is an `Object` containing at least one own member.
        * @example
-       * expect({ foo: { bar: X } }).toHaveNonEmptyObject('foo.bar');
+       * expect({ child: { grandchild: { i: 'am not empty' } } }).toHaveNonEmptyObject('child.grandchild');
        */
       toHaveNonEmptyObject(propPath: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is an `Object` containing at least one own member.
+       * @example
+       * expect(spyFunction).toHaveBeenCalledWith(expect.toHaveNonEmptyObject('child.grandchild'));
+       */
+      toHaveNonEmptyObject<T>(propPath: string): JestMatchers<T>;
     }
   }
 }
 
-export const toHaveNonEmptyObjectMatcher = (received: any, propPath: string) =>
+export const toHaveNonEmptyObjectMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected ${propPath} of ${received} to be non empty object`,
-    notMessage: () => `expected ${propPath} of ${received} not to be non empty object`,
-    pass: isNonEmptyObject(getIn(propPath.split('.'), received)),
+    message: () => `expected value at '${propPath}' to be an object with at least one own member`,
+    notMessage: () => `expected value at '${propPath}' not to be an object with at least one own member`,
+    pass: isNonEmptyObject(getIn(propPath.split('.'), value)),
   });
 
 expect.extend({ toHaveNonEmptyObject: toHaveNonEmptyObjectMatcher });

@@ -3,32 +3,32 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Expect {
-      /**
-       * Asserts that a value is a `String` whose trailing characters are `other` string.
-       * @param other
-       * @example
-       * expect(onPress).toHaveBeenCalledWith(expect.objectContaining({ name: expect.toEndWith(' HD') }));
-       */
-      toEndWith<T>(other: string): JestMatchers<T>;
-    }
     interface Matchers<R, T> {
       /**
-       * Asserts that a value is a `String` whose trailing characters are `other` string.
-       * @param other
+       * Asserts that ${value} is a string whose trailing characters are equal to ${otherString}.
        * @example
-       * expect(tvChannel.name).toEndWith(' HD');
+       * expect('JavaScript').toEndWith('Script');
        */
-      toEndWith(other: string): R;
+      toEndWith(otherString: string): R;
+    }
+    interface Expect {
+      /**
+       * Asserts that ${value} is a string whose trailing characters are equal to ${otherString}.
+       * @example
+       * expect('JavaScript').toEqual(
+       *   expect.toEndWith('Script')
+       * );
+       */
+      toEndWith<T>(otherString: string): JestMatchers<T>;
     }
   }
 }
 
-export const toEndWithMatcher = (received: any, other: string) =>
+export const toEndWithMatcher = (value: any, otherString: string) =>
   createResult({
-    message: () => `expected ${received} to be a string which ends with ${other}`,
-    notMessage: () => `expected ${received} not to be a string which ends with ${other}`,
-    pass: endsWith(other, received),
+    message: () => `expected ${value} to end with ${otherString}`,
+    notMessage: () => `expected ${value} not to end with ${otherString}`,
+    pass: endsWith(otherString, value),
   });
 
 expect.extend({ toEndWith: toEndWithMatcher });

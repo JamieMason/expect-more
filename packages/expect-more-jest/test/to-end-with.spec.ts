@@ -1,13 +1,11 @@
-it('provides toEndWith', () => {
-  expect('jamie').toEndWith('mie');
-  expect(() => {
-    expect('wut?').toEndWith('nah!');
-  }).toThrow();
-  expect(() => {
-    expect('jamie').not.toEndWith('mie');
-  }).toThrow();
+it('provides expect().toEndWith()', () => {
+  expect('JavaScript').toEndWith('Script');
 });
 
-it('provides expect.toEndWith', () => {
-  expect('jamie').toEqual(expect.toEndWith('mie'));
+it('provides expect().not.toEndWith()', () => {
+  expect(() => expect('JavaScript').not.toEndWith('Script')).toThrow();
+});
+
+it('provides expect.toEndWith()', () => {
+  expect('JavaScript').toEqual(expect.toEndWith('Script'));
 });
