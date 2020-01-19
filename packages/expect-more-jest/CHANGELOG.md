@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@3.0.0...expect-more-jest@4.0.0) (2020-01-19)
+
+
+### Features
+
+* **jest:** deprecate toHandle* matchers in favour of generators ([20137c7](https://github.com/JamieMason/expect-more/commit/20137c7de32ee3d93218e9dc1e057f946d05875b))
+* **jest:** generate expect-more-jest from expect-more ([3571d73](https://github.com/JamieMason/expect-more/commit/3571d733d87955351aa38140e6cd4bef1c7a8dc2))
+
+
+### BREAKING CHANGES
+
+* **jest:** This new approach is now available which is faster and supports more
+use-cases, including async. The deprecated test matchers could only
+assert whether your function under test throws when parts of its input
+data are missing or null.
+
+You can still test for just those scenarios, or test in more detail for
+what kind of Error your function throws, or otherwise (as below) for
+what the function should return under those conditions.
+
+```js
+import { withMissingNodes } from 'expect-more/gen';
+
+it('should return null if any part of the API contract is broken', () => {
+  for (let brokenContract of withMissingNodes(contract)) {
+    expect(fn(brokenContract)).toBeNull();
+  }
+});
+```
+
+
+
+
+
 # [3.0.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.4.2...expect-more-jest@3.0.0) (2019-11-03)
 
 

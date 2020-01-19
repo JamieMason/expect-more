@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/JamieMason/expect-more/compare/expect-more@0.6.0...expect-more@0.7.0) (2020-01-19)
+
+
+### Features
+
+* **expect:** add generators for property testing ([ef7b530](https://github.com/JamieMason/expect-more/commit/ef7b5307a15167f2bf3e017e6dae4d6c5ac9626e))
+* **jest:** generate expect-more-jest from expect-more ([3571d73](https://github.com/JamieMason/expect-more/commit/3571d733d87955351aa38140e6cd4bef1c7a8dc2))
+
+
+
+
+
 # [0.6.0](https://github.com/JamieMason/expect-more/compare/expect-more@0.5.5...expect-more@0.6.0) (2019-11-03)
 
 
