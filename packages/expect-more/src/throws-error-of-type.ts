@@ -1,5 +1,4 @@
 import { curry } from './lib/curry';
-import { VoidFn } from './typings';
 
 /**
  * Asserts that ${value} is a `Function` which throws an `Error` of the given

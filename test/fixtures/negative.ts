@@ -8,7 +8,7 @@ const allBut = (...gens) =>
   gen.oneOf(
     Object.keys(pos)
       .map((key) => pos[key])
-      .filter((val) => gens.indexOf(val) === -1)
+      .filter((val) => gens.indexOf(val) === -1),
   );
 
 export const notEndingWith = gen.oneOf([
@@ -17,7 +17,7 @@ export const notEndingWith = gen.oneOf([
   ['', ''],
   ['', undefined],
   ['undefined', undefined],
-  [undefined, 'undefined']
+  [undefined, 'undefined'],
 ]);
 
 export const notStartingWith = gen.oneOf([
@@ -26,7 +26,7 @@ export const notStartingWith = gen.oneOf([
   ['', ''],
   ['', undefined],
   ['undefined', undefined],
-  [undefined, 'undefined']
+  [undefined, 'undefined'],
 ]);
 
 export const notArrayOfBooleans = allBut(
@@ -34,10 +34,15 @@ export const notArrayOfBooleans = allBut(
   pos.booleans,
   pos.arrayOfFiveItems,
   pos.nonEmptyArrays,
-  pos.arrays
+  pos.arrays,
 );
 export const notArrayOfFiveItems = allBut(pos.arrayOfFiveItems, pos.arrays);
-export const notArrayOfNumbers = allBut(pos.arrayOfNumbers, pos.arrayOfFiveItems, pos.nonEmptyArrays, pos.arrays);
+export const notArrayOfNumbers = allBut(
+  pos.arrayOfNumbers,
+  pos.arrayOfFiveItems,
+  pos.nonEmptyArrays,
+  pos.arrays,
+);
 export const notArrayOfObjects = allBut(pos.arrayOfObjects, pos.arrayOfFiveItems, pos.arrays);
 export const notArrayOfStrings = allBut(
   pos.arrayOfFiveItems,
@@ -45,7 +50,7 @@ export const notArrayOfStrings = allBut(
   pos.endingWith,
   pos.nonEmptyArrays,
   pos.startingWith,
-  pos.arrays
+  pos.arrays,
 );
 export const notArrays = allBut(
   pos.endingWith,
@@ -59,24 +64,34 @@ export const notArrays = allBut(
   pos.arrayOfStrings,
   pos.arrays,
   pos.emptyArrays,
-  pos.nonEmptyArrays
+  pos.nonEmptyArrays,
 );
 export const notBooleans = gen.NaN; // allBut(pos.trues, pos.falses, pos.booleans, pos.walkables, pos.argsObject);
 export const notCalculables = gen.oneOf([{}, NaN]);
 export const notRegExs = allBut(pos.regExs);
 export const notDates = allBut(pos.dates);
-export const notDecimalNumbers = allBut(pos.decimalNumbers, pos.numbers, pos.numbersWithinRange, pos.walkables);
+export const notDecimalNumbers = allBut(
+  pos.decimalNumbers,
+  pos.numbers,
+  pos.numbersWithinRange,
+  pos.walkables,
+);
 export const notValidDates = gen.oneOf([new Date(''), new Date('invalid')]);
 export const notEmptyArrays = allBut(pos.emptyArrays, pos.arrays);
 export const notEmptyObjects = allBut(pos.emptyObjects, pos.objects);
-export const notEmptyStrings = allBut(pos.emptyStrings, pos.calculables, pos.walkables, pos.strings);
+export const notEmptyStrings = allBut(
+  pos.emptyStrings,
+  pos.calculables,
+  pos.walkables,
+  pos.strings,
+);
 export const notEvenNumbers = allBut(
   pos.decimalNumbers,
   pos.evenNumbers,
   pos.numbers,
   pos.numbersWithinRange,
   pos.walkables,
-  pos.wholeNumbers
+  pos.wholeNumbers,
 );
 export const notFalses = gen.NaN;
 export const notUndefineds = allBut(pos.undefineds);
@@ -89,7 +104,7 @@ export const notFunctions = allBut(
   pos.generatorFunctions,
   pos.syncFunctions,
   pos.errorConstructors,
-  pos.walkables
+  pos.walkables,
 );
 export const notJsonStrings = gen.oneOf(['[1,]', '<>', null, '', undefined]);
 export const notNonEmptyArrays = gen.NaN;
@@ -102,7 +117,7 @@ export const notNumbers = allBut(
   pos.numbersWithinRange,
   pos.oddNumbers,
   pos.walkables,
-  pos.wholeNumbers
+  pos.wholeNumbers,
 );
 export const notWhitespaceStrings = allBut(
   pos.calculables,
@@ -110,7 +125,7 @@ export const notWhitespaceStrings = allBut(
   pos.nonEmptyStrings,
   pos.strings,
   pos.walkables,
-  pos.whitespaceStrings
+  pos.whitespaceStrings,
 );
 export const notWalkables = gen.oneOf([gen.null, gen.undefined]);
 export const notWholeNumbers = gen.NaN;
@@ -119,8 +134,14 @@ export const notNumbersWithinRange = gen.numberWithin(-8, 7);
 export const notObjects = gen.NaN;
 export const notOddNumbers = gen.oneOf([2, 4, 6, null, 'arjen']);
 export const notTrues = gen.NaN;
-export const notDateAfter = gen.oneOf([[oneAm(), midnight()], [oneAm(), oneAm()]]);
-export const notDateBefore = gen.oneOf([[midnight(), oneAm()], [oneAm(), oneAm()]]);
+export const notDateAfter = gen.oneOf([
+  [oneAm(), midnight()],
+  [oneAm(), oneAm()],
+]);
+export const notDateBefore = gen.oneOf([
+  [midnight(), oneAm()],
+  [oneAm(), oneAm()],
+]);
 export const notIso8601s = gen.oneOf([
   '2013-99-12T00:00:00.000Z',
   '2013-12-99T00:00:00.000Z',
@@ -142,5 +163,5 @@ export const notIso8601s = gen.oneOf([
   '201',
   '20',
   '2',
-  ''
+  '',
 ]);
