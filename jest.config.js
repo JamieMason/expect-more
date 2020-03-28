@@ -10,10 +10,13 @@ module.exports = {
       statements: 95,
     },
   },
+  globals: {
+    'ts-jest': {
+      isolatedModules: true,
+    },
+  },
   moduleFileExtensions: ['ts', 'tsx', 'js'],
+  preset: 'ts-jest',
   setupFilesAfterEnv: ['<rootDir>/test/setup-test-framework-script-file.ts'],
   testMatch: ['<rootDir>/packages/*/test/**/*.spec.(ts|tsx|js)'],
-  transform: {
-    '^.+\\.(ts|tsx)$': '<rootDir>/scripts/transpile-tests.js',
-  },
 };
