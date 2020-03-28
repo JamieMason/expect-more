@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const ts = require('typescript');
+import fs from 'fs';
+import path from 'path';
+import ts from 'typescript';
 
 const fullApi = [];
 
@@ -29,8 +29,8 @@ const visitFile = ({ filePath, gitHubUrl }) => {
             : `expect.${methodSignature.getText()}`;
           const description = jsDoc.comment;
           const examples = jsDoc.tags
-            .filter((tag) => tag.tagName.text === 'example')
-            .map((tag) => tag.comment);
+            .filter(({ tagName }) => tagName.text === 'example')
+            .map(({ comment }) => comment);
           api[isAsymmetricMatcher ? 'asymmetricMatcher' : 'matcher'] = {
             name,
             signature,
