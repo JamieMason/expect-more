@@ -8,7 +8,7 @@ export interface RootNode {
   isObject?: true;
   key: null;
   parentNode: null;
-  path: Array<string | number>;
+  path: (string | number)[];
   value: any;
 }
 
@@ -19,7 +19,7 @@ export interface DeepNode {
   isObject?: true;
   key: string | number;
   parentNode: TreeNode;
-  path: Array<string | number>;
+  path: (string | number)[];
   value: any;
 }
 
@@ -98,7 +98,7 @@ function* permutingTreeWalker(rootNode: any, visitor: DeepNodeVisitor): Generato
 }
 
 export const createTreePermuter = (visitor: DeepNodeVisitor, initialValues: any[] = []) =>
-  function*(rootNode: any) {
+  function* (rootNode: any) {
     const traverser = permutingTreeWalker(rootNode, visitor);
     yield* initialValues;
     for (const permutation of traverser) {

@@ -1,15 +1,15 @@
 {
   "version": "0.0.0",
   "devDependencies": {
-    "@types/jest": "24.9.0",
+    "@types/jest": "25.1.4",
     "jasmine-check": "1.0.0-rc.0",
-    "jest": "24.9.0",
+    "jest": "25.2.3",
     "lerna": "3.20.2",
-    "prettier": "1.19.1",
-    "rimraf": "3.0.0",
+    "prettier": "2.0.2",
+    "rimraf": "3.0.2",
     "testcheck": "1.0.0-rc.2",
-    "tslint": "5.20.1",
-    "typescript": "3.7.5"
+    "tslint": "6.1.0",
+    "typescript": "3.8.3"
   },
   "engines": {
     "node": ">=10.0.0"
