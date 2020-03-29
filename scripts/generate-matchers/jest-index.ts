@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { camelToKebab, expectMoreJestPath } from './index';
+import { camelToKebab } from './index';
+import { expectMoreJestPath } from './paths';
 
 export const generateJestIndex = (matcherMetadata, memberMatcherMetadata) => {
   const toJestExport = (name) => `export { ${name}Matcher } from './${camelToKebab(name)}';`;

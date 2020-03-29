@@ -1,30 +1,11 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import { resolve } from 'path';
 import ts from 'typescript';
 import { generateJestIndex } from './jest-index';
-import { generateJestMemberMatcherTest } from './jest-member-matcher-test';
-import { generateJestMemberMatcher } from './jest-member-matcher';
-import { generateJestMatcherTest } from './jest-matcher-test';
 import { generateJestMatcher } from './jest-matcher';
-
-const getFiles = (dirPath) =>
-  fs
-    .readdirSync(dirPath)
-    .filter(
-      (filename) =>
-        filename.endsWith('.ts') &&
-        !filename.endsWith('index.ts') &&
-        !filename.endsWith('typings.ts'),
-    )
-    .map((filename) => path.resolve(dirPath, filename));
-
-const rootDir = path.resolve(__dirname, '../..');
-const expectMorePath = path.resolve(rootDir, './packages/expect-more/src');
-export const expectMoreJestPath = path.resolve(rootDir, './packages/expect-more-jest/src');
-const expectMoreLibPath = path.resolve(expectMorePath, './lib');
-const rootFilePaths = getFiles(expectMorePath);
-const libFilePaths = getFiles(expectMoreLibPath);
-const allFilePaths = [...rootFilePaths, ...libFilePaths];
+import { generateJestMatcherTest } from './jest-matcher-test';
+import { generateJestMemberMatcher } from './jest-member-matcher';
+import { generateJestMemberMatcherTest } from './jest-member-matcher-test';
+import { allFilePaths, expectMoreJestPath, rootFilePaths } from './paths';
 
 export const camelToKebab = (camel) => camel.replace(/[A-Z]/g, (a) => `-${a.toLowerCase()}`);
 
@@ -56,10 +37,10 @@ const isHasTypeFunction = ({ initializer }) =>
   initializer && initializer.expression && initializer.expression.text === 'hasType';
 
 const getJestMatcherPath = (matcherName) =>
-  path.resolve(expectMoreJestPath, `./${camelToKebab(matcherName)}.ts`);
+  resolve(expectMoreJestPath, `./${camelToKebab(matcherName)}.ts`);
 
 const getJestMatcherTestPath = (matcherName) =>
-  path.resolve(expectMoreJestPath, `../test/${camelToKebab(matcherName)}.spec.ts`);
+  resolve(expectMoreJestPath, `../test/${camelToKebab(matcherName)}.spec.ts`);
 
 const unwrap = (string) => (string ? string.replace(/\n/g, ' ') : '');
 
