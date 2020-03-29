@@ -7,6 +7,35 @@ import { generateJestMemberMatcher } from './jest-member-matcher';
 import { generateJestMemberMatcherTest } from './jest-member-matcher-test';
 import { allFilePaths, expectMoreJestPath, rootFilePaths } from './paths';
 
+export interface FileJsDoc {
+  description: string;
+  matcherMessage: string;
+  matcherName: string;
+  matcherNotMessage: string;
+  memberMatcherName: string;
+  params: Array<{
+    name: string;
+    exampleValue: string;
+  }>;
+}
+
+export interface FileMeta {
+  filePath: string;
+  inputs: string[];
+  inputsWithoutTypes: string[];
+  jestMatcherPath: string;
+  jestMatcherTestPath: string;
+  jestMemberMatcherPath: string;
+  jestMemberMatcherTestPath: string;
+  jsDoc: FileJsDoc;
+  matcherInputs: string[];
+  matcherInputsWithoutTypes: string[];
+  memberMatcherInputs: string[];
+  memberMatcherInputsWithoutTypes: string[];
+  name: string;
+  signature: string;
+}
+
 export const camelToKebab = (camel) => camel.replace(/[A-Z]/g, (a) => `-${a.toLowerCase()}`);
 
 const isAllowableJestMatcher = ({ jsDoc }) =>
@@ -44,9 +73,31 @@ const getJestMatcherTestPath = (matcherName) =>
 
 const unwrap = (string) => (string ? string.replace(/\n/g, ' ') : '');
 
-const getMetadata = (filePath) => {
-  const result: any = { filePath };
+const getMetadata = (filePath): FileMeta => {
   const sourceFile = program.getSourceFile(filePath);
+  const result: FileMeta = {
+    filePath,
+    inputs: [],
+    inputsWithoutTypes: [],
+    jestMatcherPath: '',
+    jestMatcherTestPath: '',
+    jestMemberMatcherPath: '',
+    jestMemberMatcherTestPath: '',
+    jsDoc: {
+      description: '',
+      matcherMessage: '',
+      matcherName: '',
+      matcherNotMessage: '',
+      memberMatcherName: '',
+      params: [],
+    },
+    matcherInputs: [],
+    matcherInputsWithoutTypes: [],
+    memberMatcherInputs: [],
+    memberMatcherInputsWithoutTypes: [],
+    name: '',
+    signature: '',
+  };
 
   const getSignature = (variableDeclaration) => {
     if (isCurriedFn(variableDeclaration)) {
@@ -89,7 +140,7 @@ const getMetadata = (filePath) => {
   const visitNode = (node) => {
     if (node.jsDoc) {
       const [jsDocComment] = node.jsDoc;
-      result.jsDoc = { description: unwrap(jsDocComment.comment), params: [] };
+      result.jsDoc.description = unwrap(jsDocComment.comment);
       jsDocComment.tags.forEach(({ comment, name, tagName }) => {
         if (tagName.text === 'param') {
           result.jsDoc.params.push({ name: name.text, exampleValue: unwrap(comment) });
@@ -133,9 +184,9 @@ const getMetadata = (filePath) => {
 };
 
 (() => {
-  const allMetadata = rootFilePaths.map(getMetadata);
-  const jestMatcherMetadata = allMetadata.filter(isAllowableJestMatcher);
-  const jestMemberMatcherMetadata = allMetadata.filter(isAllowableJestMemberMatcher);
+  const allMetadata: FileMeta[] = rootFilePaths.map(getMetadata);
+  const jestMatcherMetadata: FileMeta[] = allMetadata.filter(isAllowableJestMatcher);
+  const jestMemberMatcherMetadata: FileMeta[] = allMetadata.filter(isAllowableJestMemberMatcher);
 
   jestMatcherMetadata.forEach(generateJestMatcher);
   jestMatcherMetadata.forEach(generateJestMatcherTest);

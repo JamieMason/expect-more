@@ -1,6 +1,7 @@
 import * as fs from 'fs';
+import { FileMeta } from '.';
 
-export const generateJestMemberMatcher = (file) => {
+export const generateJestMemberMatcher = (file: FileMeta) => {
   try {
     const { jestMemberMatcherPath, jsDoc, matcherInputs, matcherInputsWithoutTypes, name } = file;
     const { description, matcherMessage, memberMatcherName, matcherNotMessage, params } = jsDoc;

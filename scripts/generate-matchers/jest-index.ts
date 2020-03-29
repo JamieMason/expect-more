@@ -1,9 +1,12 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { camelToKebab } from './index';
+import { camelToKebab, FileMeta } from './index';
 import { expectMoreJestPath } from './paths';
 
-export const generateJestIndex = (matcherMetadata, memberMatcherMetadata) => {
+export const generateJestIndex = (
+  matcherMetadata: FileMeta[],
+  memberMatcherMetadata: FileMeta[],
+) => {
   const toJestExport = (name) => `export { ${name}Matcher } from './${camelToKebab(name)}';`;
   const indexPath = path.resolve(expectMoreJestPath, './index.ts');
   const source = []
