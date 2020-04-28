@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/JamieMason/expect-more/compare/expect-more-jest@4.0.0...expect-more-jest@4.0.1) (2020-04-28)
+
+
+### Bug Fixes
+
+* **npm:** update dependencies ([e1b6808](https://github.com/JamieMason/expect-more/commit/e1b68088c06f9df88a7f100922c7b2449c5ce9c2))
+
+
+
+
+
 # [4.0.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@3.0.0...expect-more-jest@4.0.0) (2020-01-19)
 
 

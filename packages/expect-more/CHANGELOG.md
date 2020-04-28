@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/JamieMason/expect-more/compare/expect-more@0.7.0...expect-more@0.7.1) (2020-04-28)
+
+
+### Bug Fixes
+
+* **expect:** add missing expect-more/gen ([39a247c](https://github.com/JamieMason/expect-more/commit/39a247c4753d6009000817733d84fa32fe9d3c5c))
+* **npm:** update dependencies ([e1b6808](https://github.com/JamieMason/expect-more/commit/e1b68088c06f9df88a7f100922c7b2449c5ce9c2))
+
+
+
+
+
 # [0.7.0](https://github.com/JamieMason/expect-more/compare/expect-more@0.6.0...expect-more@0.7.0) (2020-01-19)
 
 
