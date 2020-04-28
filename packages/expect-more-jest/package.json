@@ -9,7 +9,7 @@
   ],
   "dependencies": {
     "expect-more": "0.7.0",
-    "jest-matcher-utils": "25.2.3"
+    "jest-matcher-utils": "25.4.0"
   },
   "files": [
     "dist"
