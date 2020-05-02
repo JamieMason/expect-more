@@ -1,4 +1,5 @@
 import { isArray } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,8 @@ declare global {
 
 export const toBeArrayMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be an array`,
-    notMessage: () => `expected ${value} not to be an array`,
+    message: () => `expected ${printReceived(value)} to be an array`,
+    notMessage: () => `expected ${printReceived(value)} not to be an array`,
     pass: isArray(value),
   });
 

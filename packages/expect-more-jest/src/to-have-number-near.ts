@@ -1,4 +1,5 @@
 import { isNear } from 'expect-more';
+import { printExpected } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 import { getIn } from './lib/get-in';
 
@@ -31,9 +32,13 @@ export const toHaveNumberNearMatcher = (
 ) =>
   createResult({
     message: () =>
-      `expected value at '${propPath}' to be within ${epsilon} greater or less than ${otherNumber}`,
+      `expected value at '${printExpected(propPath)}' to be within ${printExpected(
+        epsilon,
+      )} greater or less than ${printExpected(otherNumber)}`,
     notMessage: () =>
-      `expected value at '${propPath}' not to be within ${epsilon} greater or less than ${otherNumber}`,
+      `expected value at '${printExpected(propPath)}' not to be within ${printExpected(
+        epsilon,
+      )} greater or less than ${printExpected(otherNumber)}`,
     pass: isNear(otherNumber, epsilon, getIn(propPath.split('.'), value)),
   });
 

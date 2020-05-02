@@ -1,4 +1,5 @@
 import { isIso8601 } from 'expect-more';
+import { printExpected } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 import { getIn } from './lib/get-in';
 
@@ -25,8 +26,10 @@ declare global {
 
 export const toHaveIso8601Matcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be a valid ISO 8601 date string`,
-    notMessage: () => `expected value at '${propPath}' not to be a valid ISO 8601 date string`,
+    message: () =>
+      `expected value at '${printExpected(propPath)}' to be a valid ISO 8601 date string`,
+    notMessage: () =>
+      `expected value at '${printExpected(propPath)}' not to be a valid ISO 8601 date string`,
     pass: isIso8601(getIn(propPath.split('.'), value)),
   });
 

@@ -1,4 +1,5 @@
 import { isRegExp } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,8 @@ declare global {
 
 export const toBeRegExpMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be a regular expression`,
-    notMessage: () => `expected ${value} not to be a regular expression`,
+    message: () => `expected ${printReceived(value)} to be a regular expression`,
+    notMessage: () => `expected ${printReceived(value)} not to be a regular expression`,
     pass: isRegExp(value),
   });
 

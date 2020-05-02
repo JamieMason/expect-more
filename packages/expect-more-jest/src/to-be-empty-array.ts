@@ -1,4 +1,5 @@
 import { isEmptyArray } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,8 @@ declare global {
 
 export const toBeEmptyArrayMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be an array containing no items`,
-    notMessage: () => `expected ${value} not to be an array containing no items`,
+    message: () => `expected ${printReceived(value)} to be an array containing no items`,
+    notMessage: () => `expected ${printReceived(value)} not to be an array containing no items`,
     pass: isEmptyArray(value),
   });
 

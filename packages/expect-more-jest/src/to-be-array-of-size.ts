@@ -1,4 +1,5 @@
 import { isArrayOfSize } from 'expect-more';
+import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,14 @@ declare global {
 
 export const toBeArrayOfSizeMatcher = (value: any, size: number) =>
   createResult({
-    message: () => `expected ${value} to be an array containing exactly ${size} items`,
-    notMessage: () => `expected ${value} not to be an array containing exactly ${size} items`,
+    message: () =>
+      `expected ${printReceived(value)} to be an array containing exactly ${printExpected(
+        size,
+      )} items`,
+    notMessage: () =>
+      `expected ${printReceived(value)} not to be an array containing exactly ${printExpected(
+        size,
+      )} items`,
     pass: isArrayOfSize(size, value),
   });
 

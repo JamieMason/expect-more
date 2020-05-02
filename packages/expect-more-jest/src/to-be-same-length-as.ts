@@ -1,4 +1,5 @@
 import { isSameLengthAs } from 'expect-more';
+import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -27,9 +28,17 @@ declare global {
 export const toBeSameLengthAsMatcher = (value: any, otherStringOrArray: string | any[]) =>
   createResult({
     message: () =>
-      `expected ${value} to be a string or array whose length is the same as that of ${otherStringOrArray}`,
+      `expected ${printReceived(
+        value,
+      )} to be a string or array whose length is the same as that of ${printExpected(
+        otherStringOrArray,
+      )}`,
     notMessage: () =>
-      `expected ${value} not to be a string or array whose length is the same as that of ${otherStringOrArray}`,
+      `expected ${printReceived(
+        value,
+      )} not to be a string or array whose length is the same as that of ${printExpected(
+        otherStringOrArray,
+      )}`,
     pass: isSameLengthAs(otherStringOrArray, value),
   });
 

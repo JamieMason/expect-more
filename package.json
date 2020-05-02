@@ -32,7 +32,7 @@
     "build:expect-more": "tsc --project ./packages/expect-more",
     "build:expect-more-jest": "tsc --project ./packages/expect-more-jest",
     "generate:docs": "ts-node --project ./scripts/tsconfig.json ./scripts/generate-docs.ts",
-    "generate:matchers": "rm -f ./packages/expect-more-jest/src/*.ts ./packages/expect-more-jest/test/* && ts-node --project ./scripts/tsconfig.json ./scripts/generate-matchers/index.ts && yarn lint",
+    "generate:matchers": "rm -f ./packages/expect-more-jest/src/*.ts ./packages/expect-more-jest/test/to-* && ts-node --project ./scripts/tsconfig.json ./scripts/generate-matchers/index.ts && yarn lint",
     "lint": "eslint --fix --ext .ts .",
     "prebuild": "rimraf ./packages/*/dist",
     "test": "jest"

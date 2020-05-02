@@ -1,4 +1,5 @@
 import { isWhitespace } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,10 @@ declare global {
 
 export const toBeWhitespaceMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be a string containing only whitespace characters`,
-    notMessage: () => `expected ${value} not to be a string containing only whitespace characters`,
+    message: () =>
+      `expected ${printReceived(value)} to be a string containing only whitespace characters`,
+    notMessage: () =>
+      `expected ${printReceived(value)} not to be a string containing only whitespace characters`,
     pass: isWhitespace(value),
   });
 

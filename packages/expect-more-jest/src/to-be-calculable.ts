@@ -1,4 +1,5 @@
 import { isCalculable } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,10 @@ declare global {
 
 export const toBeCalculableMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be coercible for use in mathemetical operations`,
-    notMessage: () => `expected ${value} not to be coercible for use in mathemetical operations`,
+    message: () =>
+      `expected ${printReceived(value)} to be coercible for use in mathemetical operations`,
+    notMessage: () =>
+      `expected ${printReceived(value)} not to be coercible for use in mathemetical operations`,
     pass: isCalculable(value),
   });
 

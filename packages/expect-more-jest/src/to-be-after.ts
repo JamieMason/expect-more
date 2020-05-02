@@ -1,4 +1,5 @@
 import { isAfter } from 'expect-more';
+import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,9 +27,14 @@ declare global {
 
 export const toBeAfterMatcher = (value: any, otherDate: Date) =>
   createResult({
-    message: () => `expected ${value} to be an instance of Date, occurring after ${otherDate}`,
+    message: () =>
+      `expected ${printReceived(value)} to be an instance of Date, occurring after ${printExpected(
+        otherDate,
+      )}`,
     notMessage: () =>
-      `expected ${value} not to be an instance of Date, occurring after ${otherDate}`,
+      `expected ${printReceived(
+        value,
+      )} not to be an instance of Date, occurring after ${printExpected(otherDate)}`,
     pass: isAfter(otherDate, value),
   });
 

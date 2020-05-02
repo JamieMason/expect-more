@@ -1,4 +1,5 @@
 import { isFalse } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,8 @@ declare global {
 
 export const toBeFalseMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be false or Boolean(false)`,
-    notMessage: () => `expected ${value} not to be false or Boolean(false)`,
+    message: () => `expected ${printReceived(value)} to be false or Boolean(false)`,
+    notMessage: () => `expected ${printReceived(value)} not to be false or Boolean(false)`,
     pass: isFalse(value),
   });
 

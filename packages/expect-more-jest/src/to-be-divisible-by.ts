@@ -1,4 +1,5 @@
 import { isDivisibleBy } from 'expect-more';
+import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,10 @@ declare global {
 
 export const toBeDivisibleByMatcher = (value: any, otherNumber: number) =>
   createResult({
-    message: () => `expected ${value} to be divisible by ${otherNumber}`,
-    notMessage: () => `expected ${value} not to be divisible by ${otherNumber}`,
+    message: () =>
+      `expected ${printReceived(value)} to be divisible by ${printExpected(otherNumber)}`,
+    notMessage: () =>
+      `expected ${printReceived(value)} not to be divisible by ${printExpected(otherNumber)}`,
     pass: isDivisibleBy(otherNumber, value),
   });
 

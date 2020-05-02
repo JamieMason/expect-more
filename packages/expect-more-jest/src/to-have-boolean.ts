@@ -1,4 +1,5 @@
 import { isBoolean } from 'expect-more';
+import { printExpected } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 import { getIn } from './lib/get-in';
 
@@ -25,9 +26,12 @@ declare global {
 
 export const toHaveBooleanMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be true, false, or an instance of Boolean`,
+    message: () =>
+      `expected value at '${printExpected(propPath)}' to be true, false, or an instance of Boolean`,
     notMessage: () =>
-      `expected value at '${propPath}' not to be true, false, or an instance of Boolean`,
+      `expected value at '${printExpected(
+        propPath,
+      )}' not to be true, false, or an instance of Boolean`,
     pass: isBoolean(getIn(propPath.split('.'), value)),
   });
 

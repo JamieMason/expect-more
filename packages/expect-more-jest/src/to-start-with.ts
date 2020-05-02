@@ -1,4 +1,5 @@
 import { startsWith } from 'expect-more';
+import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,9 @@ declare global {
 
 export const toStartWithMatcher = (value: any, otherString: string) =>
   createResult({
-    message: () => `expected ${value} to start with ${otherString}`,
-    notMessage: () => `expected ${value} not to start with ${otherString}`,
+    message: () => `expected ${printReceived(value)} to start with ${printExpected(otherString)}`,
+    notMessage: () =>
+      `expected ${printReceived(value)} not to start with ${printExpected(otherString)}`,
     pass: startsWith(otherString, value),
   });
 

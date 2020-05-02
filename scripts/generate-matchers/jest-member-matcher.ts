@@ -1,6 +1,11 @@
 import * as fs from 'fs';
 import { FileMeta } from '.';
 
+const withUtil = (_, varName) => {
+  const methodName = varName === 'value' ? 'printReceived' : 'printExpected';
+  return '${methodName(varName)}'.replace('methodName', methodName).replace('varName', varName);
+};
+
 export const generateJestMemberMatcher = (file: FileMeta) => {
   try {
     const { jestMemberMatcherPath, jsDoc, matcherInputs, matcherInputsWithoutTypes, name } = file;
@@ -25,8 +30,13 @@ export const generateJestMemberMatcher = (file: FileMeta) => {
       .filter(({ name }) => name !== 'value')
       .map(({ exampleValue }) => exampleValue);
     const argsExamplesSource = ["'child.grandchild'"].concat(argsExamples).join(', ');
+
+    const jestMatcherMessage = memberMatcherMessage.replace(/\$\{([a-z]+)\}/gi, withUtil);
+    const jestMatcherNotMessage = memberMatcherNotMessage.replace(/\$\{([a-z]+)\}/gi, withUtil);
+
     const source = `
 import { ${name} } from 'expect-more';
+import { printExpected } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 import { getIn } from './lib/get-in';
 
@@ -52,8 +62,8 @@ declare global {
 }
 
 export const ${memberMatcherName}Matcher = (${typedArgsForMatcherFunction}) => createResult({
-  message: () => \`${memberMatcherMessage}\`,
-  notMessage: () => \`${memberMatcherNotMessage}\`,
+  message: () => \`${jestMatcherMessage}\`,
+  notMessage: () => \`${jestMatcherNotMessage}\`,
   pass: ${name}(${argsForAssertFunction})
 });
 

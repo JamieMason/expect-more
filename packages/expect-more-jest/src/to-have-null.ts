@@ -1,4 +1,5 @@
 import { isNull } from 'expect-more';
+import { printExpected } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 import { getIn } from './lib/get-in';
 
@@ -25,8 +26,8 @@ declare global {
 
 export const toHaveNullMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be is null`,
-    notMessage: () => `expected value at '${propPath}' not to be is null`,
+    message: () => `expected value at '${printExpected(propPath)}' to be is null`,
+    notMessage: () => `expected value at '${printExpected(propPath)}' not to be is null`,
     pass: isNull(getIn(propPath.split('.'), value)),
   });
 

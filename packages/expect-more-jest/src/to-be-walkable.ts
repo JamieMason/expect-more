@@ -1,4 +1,5 @@
 import { isWalkable } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,8 @@ declare global {
 
 export const toBeWalkableMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be walkable`,
-    notMessage: () => `expected ${value} not to be walkable`,
+    message: () => `expected ${printReceived(value)} to be walkable`,
+    notMessage: () => `expected ${printReceived(value)} not to be walkable`,
     pass: isWalkable(value),
   });
 

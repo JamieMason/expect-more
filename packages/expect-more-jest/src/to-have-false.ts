@@ -1,4 +1,5 @@
 import { isFalse } from 'expect-more';
+import { printExpected } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 import { getIn } from './lib/get-in';
 
@@ -25,8 +26,9 @@ declare global {
 
 export const toHaveFalseMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be false or Boolean(false)`,
-    notMessage: () => `expected value at '${propPath}' not to be false or Boolean(false)`,
+    message: () => `expected value at '${printExpected(propPath)}' to be false or Boolean(false)`,
+    notMessage: () =>
+      `expected value at '${printExpected(propPath)}' not to be false or Boolean(false)`,
     pass: isFalse(getIn(propPath.split('.'), value)),
   });
 

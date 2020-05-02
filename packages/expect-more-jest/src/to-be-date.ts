@@ -1,4 +1,5 @@
 import { isDate } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,8 @@ declare global {
 
 export const toBeDateMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be an instance of Date`,
-    notMessage: () => `expected ${value} not to be an instance of Date`,
+    message: () => `expected ${printReceived(value)} to be an instance of Date`,
+    notMessage: () => `expected ${printReceived(value)} not to be an instance of Date`,
     pass: isDate(value),
   });
 

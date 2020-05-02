@@ -1,4 +1,5 @@
 import { isWithinRange } from 'expect-more';
+import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -27,9 +28,13 @@ declare global {
 export const toBeWithinRangeMatcher = (value: any, floor: number, ceiling: number) =>
   createResult({
     message: () =>
-      `expected ${value} to be greater than or equal to ${floor} and less than or equal to ${ceiling}`,
+      `expected ${printReceived(value)} to be greater than or equal to ${printExpected(
+        floor,
+      )} and less than or equal to ${printExpected(ceiling)}`,
     notMessage: () =>
-      `expected ${value} not to be greater than or equal to ${floor} and less than or equal to ${ceiling}`,
+      `expected ${printReceived(value)} not to be greater than or equal to ${printExpected(
+        floor,
+      )} and less than or equal to ${printExpected(ceiling)}`,
     pass: isWithinRange(floor, ceiling, value),
   });
 

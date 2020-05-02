@@ -1,4 +1,5 @@
 import { isGreaterThanOrEqualTo } from 'expect-more';
+import { printExpected } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 import { getIn } from './lib/get-in';
 
@@ -29,9 +30,14 @@ export const toHaveGreaterThanOrEqualToMatcher = (
   otherNumber: number,
 ) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be greater than or equal to ${otherNumber}`,
+    message: () =>
+      `expected value at '${printExpected(
+        propPath,
+      )}' to be greater than or equal to ${printExpected(otherNumber)}`,
     notMessage: () =>
-      `expected value at '${propPath}' not to be greater than or equal to ${otherNumber}`,
+      `expected value at '${printExpected(
+        propPath,
+      )}' not to be greater than or equal to ${printExpected(otherNumber)}`,
     pass: isGreaterThanOrEqualTo(otherNumber, getIn(propPath.split('.'), value)),
   });
 

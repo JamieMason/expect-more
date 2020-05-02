@@ -1,4 +1,5 @@
 import { isArrayOfBooleans } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,9 +27,12 @@ declare global {
 
 export const toBeArrayOfBooleansMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be a non-empty array, containing only boolean values`,
+    message: () =>
+      `expected ${printReceived(value)} to be a non-empty array, containing only boolean values`,
     notMessage: () =>
-      `expected ${value} not to be a non-empty array, containing only boolean values`,
+      `expected ${printReceived(
+        value,
+      )} not to be a non-empty array, containing only boolean values`,
     pass: isArrayOfBooleans(value),
   });
 

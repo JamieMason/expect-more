@@ -1,4 +1,5 @@
 import { isEmptyObject } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,8 @@ declare global {
 
 export const toBeEmptyObjectMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be an empty object`,
-    notMessage: () => `expected ${value} not to be an empty object`,
+    message: () => `expected ${printReceived(value)} to be an empty object`,
+    notMessage: () => `expected ${printReceived(value)} not to be an empty object`,
     pass: isEmptyObject(value),
   });
 

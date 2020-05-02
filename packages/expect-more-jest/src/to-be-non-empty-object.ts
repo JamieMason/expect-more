@@ -1,4 +1,5 @@
 import { isNonEmptyObject } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,9 @@ declare global {
 
 export const toBeNonEmptyObjectMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be an object with at least one own member`,
-    notMessage: () => `expected ${value} not to be an object with at least one own member`,
+    message: () => `expected ${printReceived(value)} to be an object with at least one own member`,
+    notMessage: () =>
+      `expected ${printReceived(value)} not to be an object with at least one own member`,
     pass: isNonEmptyObject(value),
   });
 

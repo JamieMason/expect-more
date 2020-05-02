@@ -1,4 +1,5 @@
 import { isUndefined } from 'expect-more';
+import { printExpected } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 import { getIn } from './lib/get-in';
 
@@ -25,8 +26,8 @@ declare global {
 
 export const toHaveUndefinedMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be undefined`,
-    notMessage: () => `expected value at '${propPath}' not to be undefined`,
+    message: () => `expected value at '${printExpected(propPath)}' to be undefined`,
+    notMessage: () => `expected value at '${printExpected(propPath)}' not to be undefined`,
     pass: isUndefined(getIn(propPath.split('.'), value)),
   });
 

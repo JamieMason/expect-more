@@ -1,4 +1,5 @@
 import { isValidDate } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,9 @@ declare global {
 
 export const toBeValidDateMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be an instance of Date with a valid value`,
-    notMessage: () => `expected ${value} not to be an instance of Date with a valid value`,
+    message: () => `expected ${printReceived(value)} to be an instance of Date with a valid value`,
+    notMessage: () =>
+      `expected ${printReceived(value)} not to be an instance of Date with a valid value`,
     pass: isValidDate(value),
   });
 

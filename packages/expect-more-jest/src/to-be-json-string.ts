@@ -1,4 +1,5 @@
 import { isJsonString } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,8 @@ declare global {
 
 export const toBeJsonStringMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be a string of valid JSON`,
-    notMessage: () => `expected ${value} not to be a string of valid JSON`,
+    message: () => `expected ${printReceived(value)} to be a string of valid JSON`,
+    notMessage: () => `expected ${printReceived(value)} not to be a string of valid JSON`,
     pass: isJsonString(value),
   });
 

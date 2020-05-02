@@ -1,4 +1,5 @@
 import { endsWith } from 'expect-more';
+import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,9 @@ declare global {
 
 export const toEndWithMatcher = (value: any, otherString: string) =>
   createResult({
-    message: () => `expected ${value} to end with ${otherString}`,
-    notMessage: () => `expected ${value} not to end with ${otherString}`,
+    message: () => `expected ${printReceived(value)} to end with ${printExpected(otherString)}`,
+    notMessage: () =>
+      `expected ${printReceived(value)} not to end with ${printExpected(otherString)}`,
     pass: endsWith(otherString, value),
   });
 

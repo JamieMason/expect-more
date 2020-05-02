@@ -1,4 +1,5 @@
 import { isNonEmptyArray } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,8 @@ declare global {
 
 export const toBeNonEmptyArrayMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be an array with at least one item`,
-    notMessage: () => `expected ${value} not to be an array with at least one item`,
+    message: () => `expected ${printReceived(value)} to be an array with at least one item`,
+    notMessage: () => `expected ${printReceived(value)} not to be an array with at least one item`,
     pass: isNonEmptyArray(value),
   });
 

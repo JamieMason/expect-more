@@ -1,4 +1,5 @@
 import { isArray } from 'expect-more';
+import { printExpected } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 import { getIn } from './lib/get-in';
 
@@ -25,8 +26,8 @@ declare global {
 
 export const toHaveArrayMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be an array`,
-    notMessage: () => `expected value at '${propPath}' not to be an array`,
+    message: () => `expected value at '${printExpected(propPath)}' to be an array`,
+    notMessage: () => `expected value at '${printExpected(propPath)}' not to be an array`,
     pass: isArray(getIn(propPath.split('.'), value)),
   });
 

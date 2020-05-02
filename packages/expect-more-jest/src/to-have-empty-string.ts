@@ -1,4 +1,5 @@
 import { isEmptyString } from 'expect-more';
+import { printExpected } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 import { getIn } from './lib/get-in';
 
@@ -26,9 +27,13 @@ declare global {
 export const toHaveEmptyStringMatcher = (value: any, propPath: string) =>
   createResult({
     message: () =>
-      `expected value at '${propPath}' to be an empty string or empty instance of String`,
+      `expected value at '${printExpected(
+        propPath,
+      )}' to be an empty string or empty instance of String`,
     notMessage: () =>
-      `expected value at '${propPath}' not to be an empty string or empty instance of String`,
+      `expected value at '${printExpected(
+        propPath,
+      )}' not to be an empty string or empty instance of String`,
     pass: isEmptyString(getIn(propPath.split('.'), value)),
   });
 

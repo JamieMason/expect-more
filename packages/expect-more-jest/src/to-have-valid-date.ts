@@ -1,4 +1,5 @@
 import { isValidDate } from 'expect-more';
+import { printExpected } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 import { getIn } from './lib/get-in';
 
@@ -25,9 +26,12 @@ declare global {
 
 export const toHaveValidDateMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be an instance of Date with a valid value`,
+    message: () =>
+      `expected value at '${printExpected(propPath)}' to be an instance of Date with a valid value`,
     notMessage: () =>
-      `expected value at '${propPath}' not to be an instance of Date with a valid value`,
+      `expected value at '${printExpected(
+        propPath,
+      )}' not to be an instance of Date with a valid value`,
     pass: isValidDate(getIn(propPath.split('.'), value)),
   });
 

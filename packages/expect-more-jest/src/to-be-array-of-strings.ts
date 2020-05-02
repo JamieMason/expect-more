@@ -1,4 +1,5 @@
 import { isArrayOfStrings } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,10 @@ declare global {
 
 export const toBeArrayOfStringsMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be a non-empty array, containing only strings`,
-    notMessage: () => `expected ${value} not to be a non-empty array, containing only strings`,
+    message: () =>
+      `expected ${printReceived(value)} to be a non-empty array, containing only strings`,
+    notMessage: () =>
+      `expected ${printReceived(value)} not to be a non-empty array, containing only strings`,
     pass: isArrayOfStrings(value),
   });
 

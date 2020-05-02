@@ -1,4 +1,5 @@
 import { isNonEmptyString } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,9 @@ declare global {
 
 export const toBeNonEmptyStringMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be a string with at least one character`,
-    notMessage: () => `expected ${value} not to be a string with at least one character`,
+    message: () => `expected ${printReceived(value)} to be a string with at least one character`,
+    notMessage: () =>
+      `expected ${printReceived(value)} not to be a string with at least one character`,
     pass: isNonEmptyString(value),
   });
 

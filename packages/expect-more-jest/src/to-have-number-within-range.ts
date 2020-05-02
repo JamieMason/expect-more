@@ -1,4 +1,5 @@
 import { isWithinRange } from 'expect-more';
+import { printExpected } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 import { getIn } from './lib/get-in';
 
@@ -31,9 +32,17 @@ export const toHaveNumberWithinRangeMatcher = (
 ) =>
   createResult({
     message: () =>
-      `expected value at '${propPath}' to be greater than or equal to ${floor} and less than or equal to ${ceiling}`,
+      `expected value at '${printExpected(
+        propPath,
+      )}' to be greater than or equal to ${printExpected(
+        floor,
+      )} and less than or equal to ${printExpected(ceiling)}`,
     notMessage: () =>
-      `expected value at '${propPath}' not to be greater than or equal to ${floor} and less than or equal to ${ceiling}`,
+      `expected value at '${printExpected(
+        propPath,
+      )}' not to be greater than or equal to ${printExpected(
+        floor,
+      )} and less than or equal to ${printExpected(ceiling)}`,
     pass: isWithinRange(floor, ceiling, getIn(propPath.split('.'), value)),
   });
 

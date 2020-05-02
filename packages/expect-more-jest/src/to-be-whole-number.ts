@@ -1,4 +1,5 @@
 import { isWholeNumber } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,8 @@ declare global {
 
 export const toBeWholeNumberMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be a whole number`,
-    notMessage: () => `expected ${value} not to be a whole number`,
+    message: () => `expected ${printReceived(value)} to be a whole number`,
+    notMessage: () => `expected ${printReceived(value)} not to be a whole number`,
     pass: isWholeNumber(value),
   });
 

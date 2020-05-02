@@ -1,4 +1,5 @@
 import { isAsyncFunction } from 'expect-more';
+import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
 declare global {
@@ -26,8 +27,9 @@ declare global {
 
 export const toBeAsyncFunctionMatcher = (value: any) =>
   createResult({
-    message: () => `expected ${value} to be a \`Function\` using async/await syntax`,
-    notMessage: () => `expected ${value} not to be a function using async/await syntax`,
+    message: () => `expected ${printReceived(value)} to be a \`Function\` using async/await syntax`,
+    notMessage: () =>
+      `expected ${printReceived(value)} not to be a function using async/await syntax`,
     pass: isAsyncFunction(value),
   });
 

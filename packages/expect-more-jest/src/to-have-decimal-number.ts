@@ -1,4 +1,5 @@
 import { isDecimalNumber } from 'expect-more';
+import { printExpected } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 import { getIn } from './lib/get-in';
 
@@ -25,9 +26,12 @@ declare global {
 
 export const toHaveDecimalNumberMatcher = (value: any, propPath: string) =>
   createResult({
-    message: () => `expected value at '${propPath}' to be a number with positive decimal places`,
+    message: () =>
+      `expected value at '${printExpected(propPath)}' to be a number with positive decimal places`,
     notMessage: () =>
-      `expected value at '${propPath}' not to be a number with positive decimal places`,
+      `expected value at '${printExpected(
+        propPath,
+      )}' not to be a number with positive decimal places`,
     pass: isDecimalNumber(getIn(propPath.split('.'), value)),
   });
 
