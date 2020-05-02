@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.2](https://github.com/JamieMason/expect-more/compare/expect-more-jest@4.0.1...expect-more-jest@4.0.2) (2020-05-02)
+
+
+### Bug Fixes
+
+* **jest:** handle objects without prototypes ([3fc1ea2](https://github.com/JamieMason/expect-more/commit/3fc1ea2030df49d9a6bc8042f41bcaffc220aaa3)), closes [#35](https://github.com/JamieMason/expect-more/issues/35)
+* **npm:** update dependencies ([6eca1c1](https://github.com/JamieMason/expect-more/commit/6eca1c13ae6725658bf733ff932b5900e8ace334))
+
+
+
+
+
 ## [4.0.1](https://github.com/JamieMason/expect-more/compare/expect-more-jest@4.0.0...expect-more-jest@4.0.1) (2020-04-28)
 
 
