@@ -1,11 +1,40 @@
 {
   "name": "expect-more-jasmine",
-  "description": "Write Beautiful Specs with Custom Matchers",
+  "description": "Write Beautiful Specs with Custom Matchers for Jasmine",
   "version": "0.0.3",
   "author": "Jamie Mason <jamie@foldleft.io> (https://github.com/JamieMason)",
   "bugs": "https://github.com/JamieMason/expect-more/issues",
-  "homepage": "https://github.com/JamieMason/expect-more#readme",
-  "keywords": [],
+  "contributors": [],
+  "dependencies": {
+    "expect-more": "0.7.1",
+    "jest-matcher-utils": "25.5.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/JamieMason/expect-more/tree/master/packages/expect-more-jasmine/#readme",
+  "keywords": [
+    "assertions",
+    "ava",
+    "bdd",
+    "expect",
+    "jasmine",
+    "jest",
+    "matchers",
+    "mocha",
+    "mock",
+    "spy",
+    "tdd",
+    "test",
+    "test-matchers",
+    "testing",
+    "unit"
+  ],
   "license": "MIT",
-  "repository": "JamieMason/expect-more"
+  "main": "dist/index.js",
+  "repository": "JamieMason/expect-more",
+  "scripts": {
+    "prepublish": "cd ../../ && npm run build:expect-more-jasmine"
+  },
+  "typings": "./dist/index.d.ts"
 }

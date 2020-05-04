@@ -16,6 +16,7 @@ const expectMorePath = resolve(rootDir, './packages/expect-more/src');
 const expectMoreLibPath = resolve(expectMorePath, './lib');
 const libFilePaths = getFiles(expectMoreLibPath);
 
+export const expectMoreJasminePath = resolve(rootDir, './packages/expect-more-jasmine/src');
 export const expectMoreJestPath = resolve(rootDir, './packages/expect-more-jest/src');
 export const rootFilePaths = getFiles(expectMorePath);
 export const allFilePaths = [...rootFilePaths, ...libFilePaths];

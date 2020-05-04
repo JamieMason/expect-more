@@ -14,7 +14,6 @@
 - [Overview](#overview)
 - [🌩 Installation](#-installation)
 - [🕹 Configuration](#-configuration)
-- [🧪 Generators](#-generators)
 - [🔬 Matchers](#-matchers)
 - [🙋🏽‍♂️ Getting Help](#%EF%B8%8F-getting-help)
 - [👀 Other Projects](#-other-projects)
@@ -38,31 +37,7 @@ npm install expect-more-jest --save-dev
 
 ## 🕹 Configuration
 
-The simplest way to integrate is to set the [`setupFilesAfterEnv`][setup-files-after-env] array of
-Jest's [jest.config.js][jest-config] to include `require.resolve('expect-more-jest')`.
-
-Note: If your Editor does not recognise that you are using custom matchers, add a `global.d.ts` file
-at the root of your project containing:
-
-```ts
-import 'expect-more-jest';
-```
-
-## 🧪 Generators
-
-[expect-more/gen](https://github.com/JamieMason/expect-more/tree/master/packages/expect-more#api-expect-moregen)
-helps you assert how your application under test behaves when parts of its input data are missing or
-`null`.
-
-```ts
-import { withMissingNodes } from 'expect-more/gen';
-
-it('should return null if any part of the API contract is broken', () => {
-  for (let brokenContract of withMissingNodes(contract)) {
-    expect(fn(brokenContract)).toBeNull();
-  }
-});
-```
+`import 'expect-more-jest'` or `require('expect-more-jest')` at the top your test file.
 
 ## 🔬 Matchers
 

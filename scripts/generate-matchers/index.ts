@@ -1,11 +1,16 @@
 import { resolve } from 'path';
 import ts from 'typescript';
+import { generateJasmineIndex } from './jasmine-index';
+import { generateJasmineMatcher } from './jasmine-matcher';
+import { generateJasmineMemberMatcher } from './jasmine-member-matcher';
+import { generateJasmineMatcherTest } from './jasmine-matcher-test';
+import { generateJasmineMemberMatcherTest } from './jasmine-member-matcher-test';
 import { generateJestIndex } from './jest-index';
 import { generateJestMatcher } from './jest-matcher';
 import { generateJestMatcherTest } from './jest-matcher-test';
 import { generateJestMemberMatcher } from './jest-member-matcher';
 import { generateJestMemberMatcherTest } from './jest-member-matcher-test';
-import { allFilePaths, expectMoreJestPath, rootFilePaths } from './paths';
+import { allFilePaths, expectMoreJasminePath, expectMoreJestPath, rootFilePaths } from './paths';
 
 export interface FileJsDoc {
   description: string;
@@ -23,6 +28,10 @@ export interface FileMeta {
   filePath: string;
   inputs: string[];
   inputsWithoutTypes: string[];
+  jasmineMatcherPath: string;
+  jasmineMatcherTestPath: string;
+  jasmineMemberMatcherPath: string;
+  jasmineMemberMatcherTestPath: string;
   jestMatcherPath: string;
   jestMatcherTestPath: string;
   jestMemberMatcherPath: string;
@@ -37,6 +46,16 @@ export interface FileMeta {
 }
 
 export const camelToKebab = (camel) => camel.replace(/[A-Z]/g, (a) => `-${a.toLowerCase()}`);
+
+const isAllowableJasmineMatcher = ({ jsDoc }) =>
+  jsDoc.matcherName.search(
+    /^(toBeGreaterThanOrEqualTo|toBeLessThanOrEqualTo|toBeNear|toBeNull|toBeUndefined|toHaveMember|toThrowAnyError|toThrowErrorOfType|toBeTrue|toBeFalse)$/,
+  ) === -1;
+
+const isAllowableJasmineMemberMatcher = ({ jsDoc }) =>
+  jsDoc.memberMatcherName.search(
+    /^(toHaveMethodThrowingAnyError|toHaveMethodThrowingErrorOfType|toHaveNestedMember)$/,
+  ) === -1;
 
 const isAllowableJestMatcher = ({ jsDoc }) =>
   jsDoc.matcherName.search(
@@ -65,6 +84,12 @@ const isUnaryfunction = ({ initializer }) =>
 const isHasTypeFunction = ({ initializer }) =>
   initializer && initializer.expression && initializer.expression.text === 'hasType';
 
+const getJasmineMatcherPath = (matcherName) =>
+  resolve(expectMoreJasminePath, `./${camelToKebab(matcherName)}.ts`);
+
+const getJasmineMatcherTestPath = (matcherName) =>
+  resolve(expectMoreJasminePath, `../test/${camelToKebab(matcherName)}.spec.ts`);
+
 const getJestMatcherPath = (matcherName) =>
   resolve(expectMoreJestPath, `./${camelToKebab(matcherName)}.ts`);
 
@@ -79,6 +104,10 @@ const getMetadata = (filePath): FileMeta => {
     filePath,
     inputs: [],
     inputsWithoutTypes: [],
+    jasmineMatcherPath: '',
+    jasmineMatcherTestPath: '',
+    jasmineMemberMatcherPath: '',
+    jasmineMemberMatcherTestPath: '',
     jestMatcherPath: '',
     jestMatcherTestPath: '',
     jestMemberMatcherPath: '',
@@ -156,6 +185,12 @@ const getMetadata = (filePath): FileMeta => {
       result.name = variableDeclaration.name.text;
       result.signature = getSignature(variableDeclaration);
       result.inputs = getArgumentTypes(variableDeclaration);
+      result.jasmineMatcherPath = getJasmineMatcherPath(result.jsDoc.matcherName);
+      result.jasmineMatcherTestPath = getJasmineMatcherTestPath(result.jsDoc.matcherName);
+      result.jasmineMemberMatcherPath = getJasmineMatcherPath(result.jsDoc.memberMatcherName);
+      result.jasmineMemberMatcherTestPath = getJasmineMatcherTestPath(
+        result.jsDoc.memberMatcherName,
+      );
       result.jestMatcherPath = getJestMatcherPath(result.jsDoc.matcherName);
       result.jestMatcherTestPath = getJestMatcherTestPath(result.jsDoc.matcherName);
       result.jestMemberMatcherPath = getJestMatcherPath(result.jsDoc.memberMatcherName);
@@ -185,8 +220,18 @@ const getMetadata = (filePath): FileMeta => {
 
 (() => {
   const allMetadata: FileMeta[] = rootFilePaths.map(getMetadata);
+  const jasmineMatcherMetadata: FileMeta[] = allMetadata.filter(isAllowableJasmineMatcher);
+  const jasmineMemberMatcherMetadata: FileMeta[] = allMetadata.filter(
+    isAllowableJasmineMemberMatcher,
+  );
   const jestMatcherMetadata: FileMeta[] = allMetadata.filter(isAllowableJestMatcher);
   const jestMemberMatcherMetadata: FileMeta[] = allMetadata.filter(isAllowableJestMemberMatcher);
+
+  jasmineMatcherMetadata.forEach(generateJasmineMatcher);
+  jasmineMatcherMetadata.forEach(generateJasmineMatcherTest);
+  generateJasmineIndex(jasmineMatcherMetadata, jasmineMemberMatcherMetadata);
+  jasmineMemberMatcherMetadata.forEach(generateJasmineMemberMatcher);
+  jasmineMemberMatcherMetadata.forEach(generateJasmineMemberMatcherTest);
 
   jestMatcherMetadata.forEach(generateJestMatcher);
   jestMatcherMetadata.forEach(generateJestMatcherTest);

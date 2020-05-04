@@ -1,0 +1,7 @@
+{
+  "spec_dir": "packages/expect-more-jasmine/test",
+  "spec_files": ["**/*.spec.ts"],
+  "helpers": [],
+  "stopSpecOnExpectationFailure": false,
+  "random": true
+}
