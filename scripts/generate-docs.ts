@@ -63,11 +63,17 @@ const generateDocsForPackage = (name: string) => {
 
   console.log('#', name);
 
-  console.log('```ts');
+  fullApi.forEach(({ matcher }) => {
+    console.log(`
+<details><summary><code>${matcher.name}</code></summary>
 
-  fullApi.forEach(({ matcher }) => console.log(`${matcher.examples.join('\n')}`));
+\`\`\`ts
+${matcher.examples.join('\n')}
+\`\`\`
 
-  console.log('```');
+</details>
+`);
+  });
 };
 
 generateDocsForPackage('expect-more-jest');
