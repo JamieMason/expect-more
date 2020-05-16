@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@4.0.2...expect-more-jest@4.1.0) (2020-05-16)
+
+
+### Features
+
+* **jasmine:** add expect-more-jasmine ([570c411](https://github.com/JamieMason/expect-more/commit/570c4110db1271858e431d22e05e404be3bc6219))
+
+
+
+
+
 ## [4.0.2](https://github.com/JamieMason/expect-more/compare/expect-more-jest@4.0.1...expect-more-jest@4.0.2) (2020-05-02)
 
 
