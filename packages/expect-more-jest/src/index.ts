@@ -1,6 +1,7 @@
 export { toBeAfterMatcher } from './to-be-after';
 export { toBeArrayMatcher } from './to-be-array';
 export { toBeArrayOfBooleansMatcher } from './to-be-array-of-booleans';
+export { toBeArrayOfMatcher } from './to-be-array-of';
 export { toBeArrayOfNumbersMatcher } from './to-be-array-of-numbers';
 export { toBeArrayOfObjectsMatcher } from './to-be-array-of-objects';
 export { toBeArrayOfSizeMatcher } from './to-be-array-of-size';

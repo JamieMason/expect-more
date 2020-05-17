@@ -51,6 +51,13 @@ require('expect-more-jest');
 describe('expect-more-jest', () => {
   it('makes your tests and output easier to read', () => {
     expect(new Date('2020-01-01')).toBeAfter(new Date('2019-12-31'));
+    expect([
+      { name: 'Guybrush', age: 20 },
+      { name: 'Elaine', age: 22 },
+    ]).toBeArrayOf({
+      name: expect.toBeNonEmptyString(),
+      age: expect.toBeWithinRange(20, 30),
+    });
     expect([true, false, new Boolean(true)]).toBeArrayOfBooleans();
     expect([12, 0, 14]).toBeArrayOfNumbers();
     expect([{}, new Object()]).toBeArrayOfObjects();
