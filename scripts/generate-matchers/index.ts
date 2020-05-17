@@ -225,5 +225,5 @@ const getMetadata = (filePath): FileMeta => {
 
   jestMatcherMetadata.forEach(generateJestMatcher);
   jestMatcherMetadata.forEach(generateJestMatcherTest);
-  generateJestIndex(jestMatcherMetadata);
+  generateJestIndex();
 })();
