@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.0.0...expect-more-jest@5.1.0) (2020-05-17)
+
+
+### Features
+
+* **jest:** add expect(array).toBeArrayOf(<asymmetricMatcher>) ([465aa6c](https://github.com/JamieMason/expect-more/commit/465aa6c632cfdb685b407e13c11fe2a4c91923e4))
+
+
+
+
+
 # [5.0.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@4.1.0...expect-more-jest@5.0.0) (2020-05-17)
 
 
