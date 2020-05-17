@@ -1,3 +1,5 @@
+import 'expect-more-jest';
+
 it('provides expect().toBeLongerThan()', () => {
   expect(['i', 'have', 3]).toBeLongerThan([2, 'items']);
 });

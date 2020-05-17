@@ -8,8 +8,6 @@ import { generateJasmineMemberMatcherTest } from './jasmine-member-matcher-test'
 import { generateJestIndex } from './jest-index';
 import { generateJestMatcher } from './jest-matcher';
 import { generateJestMatcherTest } from './jest-matcher-test';
-import { generateJestMemberMatcher } from './jest-member-matcher';
-import { generateJestMemberMatcherTest } from './jest-member-matcher-test';
 import { allFilePaths, expectMoreJasminePath, expectMoreJestPath, rootFilePaths } from './paths';
 
 export interface FileJsDoc {
@@ -60,11 +58,6 @@ const isAllowableJasmineMemberMatcher = ({ jsDoc }) =>
 const isAllowableJestMatcher = ({ jsDoc }) =>
   jsDoc.matcherName.search(
     /^(toBeGreaterThanOrEqualTo|toBeLessThanOrEqualTo|toBeNear|toBeNull|toBeUndefined|toHaveMember|toThrowAnyError|toThrowErrorOfType)$/,
-  ) === -1;
-
-const isAllowableJestMemberMatcher = ({ jsDoc }) =>
-  jsDoc.memberMatcherName.search(
-    /^(toHaveMethodThrowingAnyError|toHaveMethodThrowingErrorOfType|toHaveNestedMember)$/,
   ) === -1;
 
 const isExportedVariable = ({ kind, modifiers }) =>
@@ -193,8 +186,6 @@ const getMetadata = (filePath): FileMeta => {
       );
       result.jestMatcherPath = getJestMatcherPath(result.jsDoc.matcherName);
       result.jestMatcherTestPath = getJestMatcherTestPath(result.jsDoc.matcherName);
-      result.jestMemberMatcherPath = getJestMatcherPath(result.jsDoc.memberMatcherName);
-      result.jestMemberMatcherTestPath = getJestMatcherTestPath(result.jsDoc.memberMatcherName);
       result.matcherInputs = result.inputs.slice(0, result.inputs.length - 1);
       result.memberMatcherInputs = ['propPath: string'].concat(result.matcherInputs);
       result.inputsWithoutTypes = result.inputs.map((withType) => withType.split(':')[0]);
@@ -225,7 +216,6 @@ const getMetadata = (filePath): FileMeta => {
     isAllowableJasmineMemberMatcher,
   );
   const jestMatcherMetadata: FileMeta[] = allMetadata.filter(isAllowableJestMatcher);
-  const jestMemberMatcherMetadata: FileMeta[] = allMetadata.filter(isAllowableJestMemberMatcher);
 
   jasmineMatcherMetadata.forEach(generateJasmineMatcher);
   jasmineMatcherMetadata.forEach(generateJasmineMatcherTest);
@@ -235,7 +225,5 @@ const getMetadata = (filePath): FileMeta => {
 
   jestMatcherMetadata.forEach(generateJestMatcher);
   jestMatcherMetadata.forEach(generateJestMatcherTest);
-  generateJestIndex(jestMatcherMetadata, jestMemberMatcherMetadata);
-  jestMemberMatcherMetadata.forEach(generateJestMemberMatcher);
-  jestMemberMatcherMetadata.forEach(generateJestMemberMatcherTest);
+  generateJestIndex(jestMatcherMetadata);
 })();

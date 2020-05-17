@@ -1,3 +1,5 @@
+import 'expect-more-jest';
+
 it('provides expect().toBeEvenNumber()', () => {
   expect(2).toBeEvenNumber();
 });

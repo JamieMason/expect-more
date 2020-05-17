@@ -1,3 +1,5 @@
+import 'expect-more-jest';
+
 it('provides expect().toBeArrayOfStrings()', () => {
   expect(['we', 'are', 'all', 'strings']).toBeArrayOfStrings();
 });

@@ -1,3 +1,5 @@
+import 'expect-more-jest';
+
 it('provides expect().toBeNonEmptyString()', () => {
   expect('i am not empty').toBeNonEmptyString();
 });

@@ -1,3 +1,4 @@
+import 'expect-more-jest';
 // eval is workaround for typescript converting generator fns
 
 it('provides expect().toBeGeneratorFunction()', () => {

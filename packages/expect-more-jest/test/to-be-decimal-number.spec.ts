@@ -1,3 +1,5 @@
+import 'expect-more-jest';
+
 it('provides expect().toBeDecimalNumber()', () => {
   expect(12.55).toBeDecimalNumber();
 });

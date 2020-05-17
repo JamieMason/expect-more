@@ -1,3 +1,5 @@
+import 'expect-more-jest';
+
 it('provides expect().toBeString()', () => {
   expect('i am a string').toBeString();
 });

@@ -1,3 +1,5 @@
+import 'expect-more-jest';
+
 it('provides expect().toBeArrayOfNumbers()', () => {
   expect([12, 0, 14]).toBeArrayOfNumbers();
 });

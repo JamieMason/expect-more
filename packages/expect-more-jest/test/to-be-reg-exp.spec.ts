@@ -1,3 +1,5 @@
+import 'expect-more-jest';
+
 it('provides expect().toBeRegExp()', () => {
   expect(new RegExp('i am a regular expression')).toBeRegExp();
 });

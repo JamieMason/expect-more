@@ -1,3 +1,5 @@
+import 'expect-more-jest';
+
 it('provides expect().toBeNonEmptyObject()', () => {
   expect({ i: 'am not empty' }).toBeNonEmptyObject();
 });

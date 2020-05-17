@@ -1,3 +1,5 @@
+import 'expect-more-jest';
+
 it('provides expect().toBeArrayOfObjects()', () => {
   expect([{}, new Object()]).toBeArrayOfObjects();
 });

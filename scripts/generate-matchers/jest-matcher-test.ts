@@ -18,6 +18,7 @@ export const generateJestMatcherTest = (file: FileMeta) => {
     .map(({ exampleValue }) => exampleValue);
   const argsExamplesSource = argsExamples.join(', ');
   const source = `
+import 'expect-more-jest';
 ${comment}
 
 it('provides expect().${matcherName}()', () => {
