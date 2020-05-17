@@ -3,6 +3,122 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@4.1.0...expect-more-jest@5.0.0) (2020-05-17)
+
+
+### Features
+
+* **jest:** deprecate toHave* Matchers ([22f95c5](https://github.com/JamieMason/expect-more/commit/22f95c5f9f50095aabfb13706a36a9a555120cbc))
+
+
+### BREAKING CHANGES
+
+* **jest:** Jest's `toHaveProperty` Matcher and expect-more-jest's Asymmetric
+Matchers (eg. `expect.toBeString()` instead of `expect().toBeString()`)
+can be composed to achieve the same result as the `toHave*` Matchers.
+
+The diff below demonstrates the equivalent assertions:
+
+```diff
+- expect(val).toHaveArray('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeArray())
+- expect(val).toHaveArrayOfBooleans('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeArrayOfBooleans())
+- expect(val).toHaveArrayOfNumbers('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeArrayOfNumbers())
+- expect(val).toHaveArrayOfObjects('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeArrayOfObjects())
+- expect(val).toHaveArrayOfSize('a.b', 5)
++ expect(val).toHaveProperty('a.b', expect.toBeArrayOfSize(5))
+- expect(val).toHaveArrayOfStrings('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeArrayOfStrings())
+- expect(val).toHaveAsyncFunction('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeAsyncFunction())
+- expect(val).toHaveBoolean('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeBoolean())
+- expect(val).toHaveCalculable('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeCalculable())
+- expect(val).toHaveDateAfter('a.b', new Date())
++ expect(val).toHaveProperty('a.b', expect.toBeDateAfter(new Date()))
+- expect(val).toHaveDateBefore('a.b', new Date())
++ expect(val).toHaveProperty('a.b', expect.toBeDateBefore(new Date()))
+- expect(val).toHaveDate('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeDate())
+- expect(val).toHaveDecimalNumber('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeDecimalNumber())
+- expect(val).toHaveDivisibleBy('a.b', 2)
++ expect(val).toHaveProperty('a.b', expect.toBeDivisibleBy(2))
+- expect(val).toHaveEmptyArray('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeEmptyArray())
+- expect(val).toHaveEmptyObject('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeEmptyObject())
+- expect(val).toHaveEmptyString('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeEmptyString())
+- expect(val).toHaveEndingWith('a.b', 'tring')
++ expect(val).toHaveProperty('a.b', expect.toBeEndingWith('tring'))
+- expect(val).toHaveEvenNumber('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeEvenNumber())
+- expect(val).toHaveFalse('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeFalse())
+- expect(val).toHaveGeneratorFunction('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeGeneratorFunction())
+- expect(val).toHaveGreaterThanOrEqualTo('a.b', 3)
++ expect(val).toHaveProperty('a.b', expect.toBeGreaterThanOrEqualTo(3))
+- expect(val).toHaveIso8601('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeIso8601())
+- expect(val).toHaveJsonString('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeJsonString())
+- expect(val).toHaveLessThanOrEqualTo('a.b', 5)
++ expect(val).toHaveProperty('a.b', expect.toBeLessThanOrEqualTo(, 5))
+- expect(val).toHaveLongerThan('a.b', 'abc')
++ expect(val).toHaveProperty('a.b', expect.toBeLongerThan('abc'))
+- expect(val).toHaveMethod('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeFunction())
+- expect(val).toHaveNonEmptyArray('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeNonEmptyArray())
+- expect(val).toHaveNonEmptyObject('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeNonEmptyObject())
+- expect(val).toHaveNonEmptyString('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeNonEmptyString())
+- expect(val).toHaveNull('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeNull())
+- expect(val).toHaveNumber('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeNumber())
+- expect(val).toHaveNumberNear('a.b', 2)
++ expect(val).toHaveProperty('a.b', expect.toBeNumberNear(2))
+- expect(val).toHaveNumberWithinRange('a.b', 1, 5)
++ expect(val).toHaveProperty('a.b', expect.toBeNumberWithinRange(1, 5))
+- expect(val).toHaveObject('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeObject())
+- expect(val).toHaveOddNumber('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeOddNumber())
+- expect(val).toHaveRegExp('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeRegExp())
+- expect(val).toHaveSameLengthAs('a.b', 'other')
++ expect(val).toHaveProperty('a.b', expect.toBeSameLengthAs('other'))
+- expect(val).toHaveShorterThan('a.b', 'abc')
++ expect(val).toHaveProperty('a.b', expect.toBeShorterThan('abc'))
+- expect(val).toHaveStartingWith('a.b', 'ab')
++ expect(val).toHaveProperty('a.b', expect.toBeStartingWith('ab'))
+- expect(val).toHaveString('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeString())
+- expect(val).toHaveTrue('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeTrue())
+- expect(val).toHaveUndefined('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeUndefined())
+- expect(val).toHaveValidDate('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeValidDate())
+- expect(val).toHaveWalkable('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeWalkable())
+- expect(val).toHaveWhitespace('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeWhitespace())
+- expect(val).toHaveWholeNumber('a.b')
++ expect(val).toHaveProperty('a.b', expect.toBeWholeNumber())
+
+
+
+
+
 # [4.1.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@4.0.2...expect-more-jest@4.1.0) (2020-05-16)
 
 
