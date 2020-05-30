@@ -51,18 +51,14 @@ require('expect-more-jest');
 describe('expect-more-jest', () => {
   it('makes your tests and output easier to read', () => {
     expect(new Date('2020-01-01')).toBeAfter(new Date('2019-12-31'));
-    expect([
-      { name: 'Guybrush', age: 20 },
-      { name: 'Elaine', age: 22 },
-    ]).toBeArrayOf({
-      name: expect.toBeNonEmptyString(),
-      age: expect.toBeWithinRange(20, 30),
-    });
     expect([true, false, new Boolean(true)]).toBeArrayOfBooleans();
     expect([12, 0, 14]).toBeArrayOfNumbers();
     expect([{}, new Object()]).toBeArrayOfObjects();
     expect(['i', 'contain', 4, 'items']).toBeArrayOfSize(4);
     expect(['we', 'are', 'all', 'strings']).toBeArrayOfStrings();
+    expect([{ name: 'Guybrush' }, { name: 'Elaine' }]).toBeArrayOf({
+      name: expect.toBeNonEmptyString(),
+    });
     expect([2, true, 'string']).toBeArray();
     expect(async () => {
       await fetch('...');
@@ -88,15 +84,32 @@ describe('expect-more-jest', () => {
     expect(['i', 'am not empty']).toBeNonEmptyArray();
     expect({ i: 'am not empty' }).toBeNonEmptyObject();
     expect('i am not empty').toBeNonEmptyString();
+    expect({ x: 12, y: 22 }).toBeNullableOf({
+      x: expect.toBeNumber(),
+      y: expect.toBeNumber(),
+    });
+    expect(null).toBeNullableOf({
+      x: expect.toBeNumber(),
+      y: expect.toBeNumber(),
+    });
     expect(8).toBeNumber();
     expect({}).toBeObject();
     expect(5).toBeOddNumber();
+    expect({ x: 12, y: 22 }).toBeOptionalOf({
+      x: expect.toBeNumber(),
+      y: expect.toBeNumber(),
+    });
+    expect(undefined).toBeOptionalOf({
+      x: expect.toBeNumber(),
+      y: expect.toBeNumber(),
+    });
     expect(new RegExp('i am a regular expression')).toBeRegExp();
     expect(['i also have', '2 items']).toBeSameLengthAs(['i have', '2 items']);
     expect(['i have one item']).toBeShorterThan(['i', 'have', 4, 'items']);
     expect('i am a string').toBeString();
     expect(true).toBeTrue();
     expect(new Date('2020-01-01')).toBeValidDate();
+    expect('i am visible').toBeVisibleString();
     expect({}).toBeWalkable();
     expect(' ').toBeWhitespace();
     expect(8).toBeWholeNumber();
@@ -106,8 +119,6 @@ describe('expect-more-jest', () => {
   });
 });
 ```
-
-</details>
 
 ## 🙋🏽‍♂️ Getting Help
 

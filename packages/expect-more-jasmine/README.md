@@ -41,759 +41,146 @@ npm install expect-more-jasmine --save-dev
 
 ## 🔬 Matchers
 
-<details><summary><code>toBeAfter</code></summary>
-
-```ts
-expect(new Date('2020-01-01')).toBeAfter(new Date('2019-12-31'));
-```
-
-</details>
-
-<details><summary><code>toBeArrayOfBooleans</code></summary>
-
-```ts
-expect([true, false, new Boolean(true)]).toBeArrayOfBooleans();
-```
-
-</details>
-
-<details><summary><code>toBeArrayOfNumbers</code></summary>
-
-```ts
-expect([12, 0, 14]).toBeArrayOfNumbers();
-```
-
-</details>
-
-<details><summary><code>toBeArrayOfObjects</code></summary>
-
-```ts
-expect([{}, new Object()]).toBeArrayOfObjects();
-```
-
-</details>
-
-<details><summary><code>toBeArrayOfSize</code></summary>
-
-```ts
-expect(['i', 'contain', 4, 'items']).toBeArrayOfSize(4);
-```
-
-</details>
-
-<details><summary><code>toBeArrayOfStrings</code></summary>
-
-```ts
-expect(['we', 'are', 'all', 'strings']).toBeArrayOfStrings();
-```
-
-</details>
-
-<details><summary><code>toBeArray</code></summary>
-
-```ts
-expect([2, true, 'string']).toBeArray();
-```
-
-</details>
-
-<details><summary><code>toBeAsyncFunction</code></summary>
-
-```ts
-expect(async () => {
-  await fetch('...');
-}).toBeAsyncFunction();
-```
-
-</details>
-
-<details><summary><code>toBeBefore</code></summary>
-
-```ts
-expect(new Date('2019-12-31')).toBeBefore(new Date('2020-01-01'));
-```
-
-</details>
-
-<details><summary><code>toBeBoolean</code></summary>
-
-```ts
-expect(false).toBeBoolean();
-```
-
-</details>
-
-<details><summary><code>toBeCalculable</code></summary>
-
-```ts
-expect('100').toBeCalculable();
-```
-
-</details>
-
-<details><summary><code>toBeDate</code></summary>
-
-```ts
-expect(new Date('2019-12-31')).toBeDate();
-```
-
-</details>
-
-<details><summary><code>toBeDecimalNumber</code></summary>
-
-```ts
-expect(12.55).toBeDecimalNumber();
-```
-
-</details>
-
-<details><summary><code>toBeDivisibleBy</code></summary>
-
-```ts
-expect(12).toBeDivisibleBy(2);
-```
-
-</details>
-
-<details><summary><code>toBeEmptyArray</code></summary>
-
-```ts
-expect([]).toBeEmptyArray();
-```
-
-</details>
-
-<details><summary><code>toBeEmptyObject</code></summary>
-
-```ts
-expect({}).toBeEmptyObject();
-```
-
-</details>
-
-<details><summary><code>toBeEmptyString</code></summary>
-
-```ts
-expect('').toBeEmptyString();
-```
-
-</details>
-
-<details><summary><code>toBeEvenNumber</code></summary>
-
-```ts
-expect(2).toBeEvenNumber();
-```
-
-</details>
-
-<details><summary><code>toBeFalse</code></summary>
-
-```ts
-expect(false).toBeFalse();
-```
-
-</details>
-
-<details><summary><code>toBeFunction</code></summary>
-
-```ts
-expect(() => 'i am a function').toBeFunction();
-```
-
-</details>
-
-<details><summary><code>toBeGeneratorFunction</code></summary>
-
-```ts
-expect(function* gen() {
-  yield 'i am a generator';
-}).toBeGeneratorFunction();
-```
-
-</details>
-
-<details><summary><code>toBeIso8601</code></summary>
-
-```ts
-expect('1999-12-31T23:59:59').toBeIso8601();
-```
-
-</details>
-
-<details><summary><code>toBeJsonString</code></summary>
-
-```ts
-expect('{"i":"am valid JSON"}').toBeJsonString();
-```
-
-</details>
-
-<details><summary><code>toBeLongerThan</code></summary>
-
-```ts
-expect(['i', 'have', 3]).toBeLongerThan([2, 'items']);
-```
-
-</details>
-
-<details><summary><code>toBeNonEmptyArray</code></summary>
-
-```ts
-expect(['i', 'am not empty']).toBeNonEmptyArray();
-```
-
-</details>
-
-<details><summary><code>toBeNonEmptyObject</code></summary>
-
-```ts
-expect({ i: 'am not empty' }).toBeNonEmptyObject();
-```
-
-</details>
-
-<details><summary><code>toBeNonEmptyString</code></summary>
-
-```ts
-expect('i am not empty').toBeNonEmptyString();
-```
-
-</details>
-
-<details><summary><code>toBeNumber</code></summary>
-
-```ts
-expect(8).toBeNumber();
-```
-
-</details>
-
-<details><summary><code>toBeObject</code></summary>
-
-```ts
-expect({}).toBeObject();
-```
-
-</details>
-
-<details><summary><code>toBeOddNumber</code></summary>
-
-```ts
-expect(5).toBeOddNumber();
-```
-
-</details>
-
-<details><summary><code>toBeRegExp</code></summary>
-
-```ts
-expect(new RegExp('i am a regular expression')).toBeRegExp();
-```
-
-</details>
-
-<details><summary><code>toBeSameLengthAs</code></summary>
-
-```ts
-expect(['i also have', '2 items']).toBeSameLengthAs(['i have', '2 items']);
-```
-
-</details>
-
-<details><summary><code>toBeShorterThan</code></summary>
-
-```ts
-expect(['i have one item']).toBeShorterThan(['i', 'have', 4, 'items']);
-```
-
-</details>
-
-<details><summary><code>toBeString</code></summary>
-
-```ts
-expect('i am a string').toBeString();
-```
-
-</details>
-
-<details><summary><code>toBeTrue</code></summary>
-
-```ts
-expect(true).toBeTrue();
-```
-
-</details>
-
-<details><summary><code>toBeValidDate</code></summary>
-
-```ts
-expect(new Date('2020-01-01')).toBeValidDate();
-```
-
-</details>
-
-<details><summary><code>toBeWalkable</code></summary>
-
-```ts
-expect({}).toBeWalkable();
-```
-
-</details>
-
-<details><summary><code>toBeWhitespace</code></summary>
-
-```ts
-expect(' ').toBeWhitespace();
-```
-
-</details>
-
-<details><summary><code>toBeWholeNumber</code></summary>
-
-```ts
-expect(8).toBeWholeNumber();
-```
-
-</details>
-
-<details><summary><code>toBeWithinRange</code></summary>
-
-```ts
-expect(7).toBeWithinRange(0, 10);
-```
-
-</details>
-
-<details><summary><code>toEndWith</code></summary>
-
-```ts
-expect('JavaScript').toEndWith('Script');
-```
-
-</details>
-
-<details><summary><code>toHaveArrayOfBooleans</code></summary>
-
-```ts
-expect({ child: { grandchild: [true, false, new Boolean(true)] } }).toHaveArrayOfBooleans(
-  'child.grandchild',
-);
-```
-
-</details>
-
-<details><summary><code>toHaveArrayOfNumbers</code></summary>
-
-```ts
-expect({ child: { grandchild: [12, 0, 14] } }).toHaveArrayOfNumbers('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveArrayOfObjects</code></summary>
-
-```ts
-expect({ child: { grandchild: [{}, new Object()] } }).toHaveArrayOfObjects('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveArrayOfSize</code></summary>
-
-```ts
-expect({ child: { grandchild: ['i', 'contain', 4, 'items'] } }).toHaveArrayOfSize(
-  'child.grandchild',
-  4,
-);
-```
-
-</details>
-
-<details><summary><code>toHaveArrayOfStrings</code></summary>
-
-```ts
-expect({ child: { grandchild: ['we', 'are', 'all', 'strings'] } }).toHaveArrayOfStrings(
-  'child.grandchild',
-);
-```
-
-</details>
-
-<details><summary><code>toHaveArray</code></summary>
-
-```ts
-expect({ child: { grandchild: [2, true, 'string'] } }).toHaveArray('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveAsyncFunction</code></summary>
-
-```ts
-expect({
-  child: {
-    grandchild: async () => {
+```js
+describe('expect-more-jasmine', () => {
+  it('makes your tests and output easier to read', () => {
+    expect(new Date('2020-01-01')).toBeAfter(new Date('2019-12-31'));
+    expect([true, false, new Boolean(true)]).toBeArrayOfBooleans();
+    expect([12, 0, 14]).toBeArrayOfNumbers();
+    expect([{}, new Object()]).toBeArrayOfObjects();
+    expect(['i', 'contain', 4, 'items']).toBeArrayOfSize(4);
+    expect(['we', 'are', 'all', 'strings']).toBeArrayOfStrings();
+    expect([2, true, 'string']).toBeArray();
+    expect(async () => {
       await fetch('...');
-    },
-  },
-}).toHaveAsyncFunction('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveBoolean</code></summary>
-
-```ts
-expect({ child: { grandchild: false } }).toHaveBoolean('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveCalculable</code></summary>
-
-```ts
-expect({ child: { grandchild: '100' } }).toHaveCalculable('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveDateAfter</code></summary>
-
-```ts
-expect({ child: { grandchild: new Date('2020-01-01') } }).toHaveDateAfter(
-  'child.grandchild',
-  new Date('2019-12-31'),
-);
-```
-
-</details>
-
-<details><summary><code>toHaveDateBefore</code></summary>
-
-```ts
-expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDateBefore(
-  'child.grandchild',
-  new Date('2020-01-01'),
-);
-```
-
-</details>
-
-<details><summary><code>toHaveDate</code></summary>
-
-```ts
-expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDate('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveDecimalNumber</code></summary>
-
-```ts
-expect({ child: { grandchild: 12.55 } }).toHaveDecimalNumber('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveDivisibleBy</code></summary>
-
-```ts
-expect({ child: { grandchild: 12 } }).toHaveDivisibleBy('child.grandchild', 2);
-```
-
-</details>
-
-<details><summary><code>toHaveEmptyArray</code></summary>
-
-```ts
-expect({ child: { grandchild: [] } }).toHaveEmptyArray('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveEmptyObject</code></summary>
-
-```ts
-expect({ child: { grandchild: {} } }).toHaveEmptyObject('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveEmptyString</code></summary>
-
-```ts
-expect({ child: { grandchild: '' } }).toHaveEmptyString('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveEndingWith</code></summary>
-
-```ts
-expect({ child: { grandchild: 'JavaScript' } }).toHaveEndingWith('child.grandchild', 'Script');
-```
-
-</details>
-
-<details><summary><code>toHaveEvenNumber</code></summary>
-
-```ts
-expect({ child: { grandchild: 2 } }).toHaveEvenNumber('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveFalse</code></summary>
-
-```ts
-expect({ child: { grandchild: false } }).toHaveFalse('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveGeneratorFunction</code></summary>
-
-```ts
-expect({
-  child: {
-    grandchild: function* gen() {
+    }).toBeAsyncFunction();
+    expect(new Date('2019-12-31')).toBeBefore(new Date('2020-01-01'));
+    expect(false).toBeBoolean();
+    expect('100').toBeCalculable();
+    expect(new Date('2019-12-31')).toBeDate();
+    expect(12.55).toBeDecimalNumber();
+    expect(12).toBeDivisibleBy(2);
+    expect([]).toBeEmptyArray();
+    expect({}).toBeEmptyObject();
+    expect('').toBeEmptyString();
+    expect(2).toBeEvenNumber();
+    expect(() => 'i am a function').toBeFunction();
+    expect(function* gen() {
       yield 'i am a generator';
-    },
-  },
-}).toHaveGeneratorFunction('child.grandchild');
+    }).toBeGeneratorFunction();
+    expect('1999-12-31T23:59:59').toBeIso8601();
+    expect('{"i":"am valid JSON"}').toBeJsonString();
+    expect(['i', 'have', 3]).toBeLongerThan([2, 'items']);
+    expect(['i', 'am not empty']).toBeNonEmptyArray();
+    expect({ i: 'am not empty' }).toBeNonEmptyObject();
+    expect('i am not empty').toBeNonEmptyString();
+    expect(8).toBeNumber();
+    expect({}).toBeObject();
+    expect(5).toBeOddNumber();
+    expect(new RegExp('i am a regular expression')).toBeRegExp();
+    expect(['i also have', '2 items']).toBeSameLengthAs(['i have', '2 items']);
+    expect(['i have one item']).toBeShorterThan(['i', 'have', 4, 'items']);
+    expect('i am a string').toBeString();
+    expect(new Date('2020-01-01')).toBeValidDate();
+    expect('i am visible').toBeVisibleString();
+    expect({}).toBeWalkable();
+    expect(' ').toBeWhitespace();
+    expect(8).toBeWholeNumber();
+    expect(7).toBeWithinRange(0, 10);
+    expect('JavaScript').toEndWith('Script');
+    expect({ child: { grandchild: [true, false, new Boolean(true)] } }).toHaveArrayOfBooleans(
+      'child.grandchild',
+    );
+    expect({ child: { grandchild: [12, 0, 14] } }).toHaveArrayOfNumbers('child.grandchild');
+    expect({ child: { grandchild: [{}, new Object()] } }).toHaveArrayOfObjects('child.grandchild');
+    expect({ child: { grandchild: ['i', 'contain', 4, 'items'] } }).toHaveArrayOfSize(
+      'child.grandchild',
+      4,
+    );
+    expect({ child: { grandchild: ['we', 'are', 'all', 'strings'] } }).toHaveArrayOfStrings(
+      'child.grandchild',
+    );
+    expect({ child: { grandchild: [2, true, 'string'] } }).toHaveArray('child.grandchild');
+    expect({
+      child: {
+        grandchild: async () => {
+          await fetch('...');
+        },
+      },
+    }).toHaveAsyncFunction('child.grandchild');
+    expect({ child: { grandchild: false } }).toHaveBoolean('child.grandchild');
+    expect({ child: { grandchild: '100' } }).toHaveCalculable('child.grandchild');
+    expect({ child: { grandchild: new Date('2020-01-01') } }).toHaveDateAfter(
+      'child.grandchild',
+      new Date('2019-12-31'),
+    );
+    expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDateBefore(
+      'child.grandchild',
+      new Date('2020-01-01'),
+    );
+    expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDate('child.grandchild');
+    expect({ child: { grandchild: 12.55 } }).toHaveDecimalNumber('child.grandchild');
+    expect({ child: { grandchild: 12 } }).toHaveDivisibleBy('child.grandchild', 2);
+    expect({ child: { grandchild: [] } }).toHaveEmptyArray('child.grandchild');
+    expect({ child: { grandchild: {} } }).toHaveEmptyObject('child.grandchild');
+    expect({ child: { grandchild: '' } }).toHaveEmptyString('child.grandchild');
+    expect({ child: { grandchild: 'JavaScript' } }).toHaveEndingWith('child.grandchild', 'Script');
+    expect({ child: { grandchild: 2 } }).toHaveEvenNumber('child.grandchild');
+    expect({ child: { grandchild: false } }).toHaveFalse('child.grandchild');
+    expect({
+      child: {
+        grandchild: function* gen() {
+          yield 'i am a generator';
+        },
+      },
+    }).toHaveGeneratorFunction('child.grandchild');
+    expect({ child: { grandchild: 10 } }).toHaveGreaterThanOrEqualTo('child.grandchild', 5);
+    expect({ child: { grandchild: '1999-12-31T23:59:59' } }).toHaveIso8601('child.grandchild');
+    expect({ child: { grandchild: '{"i":"am valid JSON"}' } }).toHaveJsonString('child.grandchild');
+    expect({ child: { grandchild: 8 } }).toHaveLessThanOrEqualTo('child.grandchild', 12);
+    expect({ child: { grandchild: ['i', 'have', 3] } }).toHaveLongerThan('child.grandchild', [
+      2,
+      'items',
+    ]);
+    expect({ child: { grandchild: () => 'i am a function' } }).toHaveMethod('child.grandchild');
+    expect({ child: { grandchild: ['i', 'am not empty'] } }).toHaveNonEmptyArray(
+      'child.grandchild',
+    );
+    expect({ child: { grandchild: { i: 'am not empty' } } }).toHaveNonEmptyObject(
+      'child.grandchild',
+    );
+    expect({ child: { grandchild: 'i am not empty' } }).toHaveNonEmptyString('child.grandchild');
+    expect({ child: { grandchild: null } }).toHaveNull('child.grandchild');
+    expect({ child: { grandchild: 4.8 } }).toHaveNumberNear('child.grandchild', 5, 0.5);
+    expect({ child: { grandchild: 7 } }).toHaveNumberWithinRange('child.grandchild', 0, 10);
+    expect({ child: { grandchild: 8 } }).toHaveNumber('child.grandchild');
+    expect({ child: { grandchild: {} } }).toHaveObject('child.grandchild');
+    expect({ child: { grandchild: 5 } }).toHaveOddNumber('child.grandchild');
+    expect({ child: { grandchild: new RegExp('i am a regular expression') } }).toHaveRegExp(
+      'child.grandchild',
+    );
+    expect({
+      child: { grandchild: ['i also have', '2 items'] },
+    }).toHaveSameLengthAs('child.grandchild', ['i have', '2 items']);
+    expect({ child: { grandchild: ['i have one item'] } }).toHaveShorterThan('child.grandchild', [
+      'i',
+      'have',
+      4,
+      'items',
+    ]);
+    expect({ child: { grandchild: 'JavaScript' } }).toHaveStartingWith('child.grandchild', 'Java');
+    expect({ child: { grandchild: 'i am a string' } }).toHaveString('child.grandchild');
+    expect({ child: { grandchild: true } }).toHaveTrue('child.grandchild');
+    expect({ child: { grandchild: undefined } }).toHaveUndefined('child.grandchild');
+    expect({ child: { grandchild: new Date('2020-01-01') } }).toHaveValidDate('child.grandchild');
+    expect({ child: { grandchild: 'i am visible' } }).toHaveVisibleString('child.grandchild');
+    expect({ child: { grandchild: {} } }).toHaveWalkable('child.grandchild');
+    expect({ child: { grandchild: ' ' } }).toHaveWhitespace('child.grandchild');
+    expect({ child: { grandchild: 8 } }).toHaveWholeNumber('child.grandchild');
+    expect('JavaScript').toStartWith('Java');
+  });
+});
 ```
-
-</details>
-
-<details><summary><code>toHaveGreaterThanOrEqualTo</code></summary>
-
-```ts
-expect({ child: { grandchild: 10 } }).toHaveGreaterThanOrEqualTo('child.grandchild', 5);
-```
-
-</details>
-
-<details><summary><code>toHaveIso8601</code></summary>
-
-```ts
-expect({ child: { grandchild: '1999-12-31T23:59:59' } }).toHaveIso8601('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveJsonString</code></summary>
-
-```ts
-expect({ child: { grandchild: '{"i":"am valid JSON"}' } }).toHaveJsonString('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveLessThanOrEqualTo</code></summary>
-
-```ts
-expect({ child: { grandchild: 8 } }).toHaveLessThanOrEqualTo('child.grandchild', 12);
-```
-
-</details>
-
-<details><summary><code>toHaveLongerThan</code></summary>
-
-```ts
-expect({ child: { grandchild: ['i', 'have', 3] } }).toHaveLongerThan('child.grandchild', [
-  2,
-  'items',
-]);
-```
-
-</details>
-
-<details><summary><code>toHaveMethod</code></summary>
-
-```ts
-expect({ child: { grandchild: () => 'i am a function' } }).toHaveMethod('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveNonEmptyArray</code></summary>
-
-```ts
-expect({ child: { grandchild: ['i', 'am not empty'] } }).toHaveNonEmptyArray('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveNonEmptyObject</code></summary>
-
-```ts
-expect({ child: { grandchild: { i: 'am not empty' } } }).toHaveNonEmptyObject('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveNonEmptyString</code></summary>
-
-```ts
-expect({ child: { grandchild: 'i am not empty' } }).toHaveNonEmptyString('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveNull</code></summary>
-
-```ts
-expect({ child: { grandchild: null } }).toHaveNull('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveNumberNear</code></summary>
-
-```ts
-expect({ child: { grandchild: 4.8 } }).toHaveNumberNear('child.grandchild', 5, 0.5);
-```
-
-</details>
-
-<details><summary><code>toHaveNumberWithinRange</code></summary>
-
-```ts
-expect({ child: { grandchild: 7 } }).toHaveNumberWithinRange('child.grandchild', 0, 10);
-```
-
-</details>
-
-<details><summary><code>toHaveNumber</code></summary>
-
-```ts
-expect({ child: { grandchild: 8 } }).toHaveNumber('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveObject</code></summary>
-
-```ts
-expect({ child: { grandchild: {} } }).toHaveObject('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveOddNumber</code></summary>
-
-```ts
-expect({ child: { grandchild: 5 } }).toHaveOddNumber('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveRegExp</code></summary>
-
-```ts
-expect({ child: { grandchild: new RegExp('i am a regular expression') } }).toHaveRegExp(
-  'child.grandchild',
-);
-```
-
-</details>
-
-<details><summary><code>toHaveSameLengthAs</code></summary>
-
-```ts
-expect({ child: { grandchild: ['i also have', '2 items'] } }).toHaveSameLengthAs(
-  'child.grandchild',
-  ['i have', '2 items'],
-);
-```
-
-</details>
-
-<details><summary><code>toHaveShorterThan</code></summary>
-
-```ts
-expect({ child: { grandchild: ['i have one item'] } }).toHaveShorterThan('child.grandchild', [
-  'i',
-  'have',
-  4,
-  'items',
-]);
-```
-
-</details>
-
-<details><summary><code>toHaveStartingWith</code></summary>
-
-```ts
-expect({ child: { grandchild: 'JavaScript' } }).toHaveStartingWith('child.grandchild', 'Java');
-```
-
-</details>
-
-<details><summary><code>toHaveString</code></summary>
-
-```ts
-expect({ child: { grandchild: 'i am a string' } }).toHaveString('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveTrue</code></summary>
-
-```ts
-expect({ child: { grandchild: true } }).toHaveTrue('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveUndefined</code></summary>
-
-```ts
-expect({ child: { grandchild: undefined } }).toHaveUndefined('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveValidDate</code></summary>
-
-```ts
-expect({ child: { grandchild: new Date('2020-01-01') } }).toHaveValidDate('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveWalkable</code></summary>
-
-```ts
-expect({ child: { grandchild: {} } }).toHaveWalkable('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveWhitespace</code></summary>
-
-```ts
-expect({ child: { grandchild: ' ' } }).toHaveWhitespace('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toHaveWholeNumber</code></summary>
-
-```ts
-expect({ child: { grandchild: 8 } }).toHaveWholeNumber('child.grandchild');
-```
-
-</details>
-
-<details><summary><code>toStartWith</code></summary>
-
-```ts
-expect('JavaScript').toStartWith('Java');
-```
-
-</details>
 
 ## 🙋🏽‍♂️ Getting Help
 

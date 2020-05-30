@@ -104,6 +104,7 @@ isWithinRange(10, 20, 21);
 - `isSameLengthAs: (other: string, value: any) => boolean`
 - `isShorterThan: (other: string, value: any) => boolean`
 - `isString: (value: any) => boolean`
+- `isVisibleString: (value: any) => boolean`
 - `isWhitespace: (value: any) => boolean`
 - `startsWith: (other: string, value: any) => boolean`
 
