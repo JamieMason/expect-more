@@ -35,6 +35,16 @@ export const nonEmptyStrings = gen.oneOf([
   gen.string.notEmpty(),
   gen.string.then((val) => new String(val)).notEmpty(),
 ]);
+
+export const visibleStrings = gen.oneOf([
+  gen.string.notEmpty().then((str) =>
+    str
+      .split('')
+      .concat('a')
+      .sort(() => 0.5 - Math.random())
+      .join(''),
+  ),
+]);
 export const whitespaceStrings = gen.oneOf([' ', new String(' '), ' ', new String(' ')]);
 export const strings = gen.oneOf([nonEmptyStrings, emptyStrings, whitespaceStrings]);
 

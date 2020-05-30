@@ -119,6 +119,16 @@ export const notNumbers = allBut(
   pos.walkables,
   pos.wholeNumbers,
 );
+
+export const notVisibleStrings = allBut(
+  pos.calculables,
+  pos.iso8601s,
+  pos.jsonStrings,
+  pos.nonEmptyStrings,
+  pos.strings,
+  pos.visibleStrings,
+  pos.walkables,
+);
 export const notWhitespaceStrings = allBut(
   pos.calculables,
   pos.emptyStrings,

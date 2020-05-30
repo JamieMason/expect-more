@@ -41,6 +41,7 @@ export { isString } from './is-string';
 export { isTrue } from './is-true';
 export { isUndefined } from './is-undefined';
 export { isValidDate } from './is-valid-date';
+export { isVisibleString } from './is-visible-string';
 export { isWalkable } from './is-walkable';
 export { isWhitespace } from './is-whitespace';
 export { isWholeNumber } from './is-whole-number';
