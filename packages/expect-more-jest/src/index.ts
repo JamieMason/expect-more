@@ -37,6 +37,7 @@ export { toBeShorterThanMatcher } from './to-be-shorter-than';
 export { toBeStringMatcher } from './to-be-string';
 export { toBeTrueMatcher } from './to-be-true';
 export { toBeValidDateMatcher } from './to-be-valid-date';
+export { toBeVisibleStringMatcher } from './to-be-visible-string';
 export { toBeWalkableMatcher } from './to-be-walkable';
 export { toBeWhitespaceMatcher } from './to-be-whitespace';
 export { toBeWholeNumberMatcher } from './to-be-whole-number';
