@@ -26,6 +26,7 @@ export { toBeLongerThanMatcher } from './to-be-longer-than';
 export { toBeNonEmptyArrayMatcher } from './to-be-non-empty-array';
 export { toBeNonEmptyObjectMatcher } from './to-be-non-empty-object';
 export { toBeNonEmptyStringMatcher } from './to-be-non-empty-string';
+export { toBeNullableOfMatcher } from './to-be-nullable-of';
 export { toBeNumberMatcher } from './to-be-number';
 export { toBeObjectMatcher } from './to-be-object';
 export { toBeOddNumberMatcher } from './to-be-odd-number';

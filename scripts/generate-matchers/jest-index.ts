@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { camelToKebab, FileMeta } from './index';
+import { camelToKebab } from './index';
 import { expectMoreJestPath } from './paths';
 
 export const generateJestIndex = () => {
