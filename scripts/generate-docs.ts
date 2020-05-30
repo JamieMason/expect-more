@@ -50,30 +50,28 @@ const generateDocsForPackage = (name: string) => {
     visitNode(sourceFile);
   };
 
-  const expectMorePath = path.resolve(rootDir, './packages/expect-more-jest/src');
+  const packagePath = path.resolve(rootDir, `./packages/${name}/src`);
   const files = fs
-    .readdirSync(expectMorePath)
+    .readdirSync(packagePath)
     .filter((filename) => filename.endsWith('.ts') && !filename.endsWith('index.ts'))
     .map((filename) => ({
-      filePath: path.resolve(expectMorePath, filename),
-      gitHubUrl: `https://github.com/JamieMason/expect-more/blob/master/packages/expect-more-jest/src/${filename}`,
+      filePath: path.resolve(packagePath, filename),
+      gitHubUrl: `https://github.com/JamieMason/expect-more/blob/master/packages/${name}/src/${filename}`,
     }));
 
   files.forEach(visitFile);
 
-  console.log('#', name);
-
+  console.log('```js');
+  console.log(`describe('${name}', () => {`);
+  console.log(`  it('makes your tests and output easier to read', () => {`);
   fullApi.forEach(({ matcher }) => {
-    console.log(`
-<details><summary><code>${matcher.name}</code></summary>
-
-\`\`\`ts
-${matcher.examples.join('\n')}
-\`\`\`
-
-</details>
-`);
+    matcher.examples.forEach((example) => {
+      console.log(`    ${example}`);
+    });
   });
+  console.log(`  });`);
+  console.log(`});`);
+  console.log('```');
 };
 
 generateDocsForPackage('expect-more-jest');
