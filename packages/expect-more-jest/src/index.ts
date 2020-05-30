@@ -30,6 +30,7 @@ export { toBeNullableOfMatcher } from './to-be-nullable-of';
 export { toBeNumberMatcher } from './to-be-number';
 export { toBeObjectMatcher } from './to-be-object';
 export { toBeOddNumberMatcher } from './to-be-odd-number';
+export { toBeOptionalOfMatcher } from './to-be-optional-of';
 export { toBeRegExpMatcher } from './to-be-reg-exp';
 export { toBeSameLengthAsMatcher } from './to-be-same-length-as';
 export { toBeShorterThanMatcher } from './to-be-shorter-than';
