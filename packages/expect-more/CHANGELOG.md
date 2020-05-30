@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/JamieMason/expect-more/compare/expect-more@0.7.1...expect-more@0.8.0) (2020-05-30)
+
+
+### Features
+
+* **expect:** add isVisibleString ([072e596](https://github.com/JamieMason/expect-more/commit/072e596a40ce6325ca717d78501a4a230f48da89))
+
+
+
+
+
 ## [0.7.1](https://github.com/JamieMason/expect-more/compare/expect-more@0.7.0...expect-more@0.7.1) (2020-04-28)
 
 

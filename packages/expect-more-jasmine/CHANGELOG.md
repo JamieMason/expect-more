@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/JamieMason/expect-more/compare/expect-more-jasmine@0.1.0...expect-more-jasmine@0.2.0) (2020-05-30)
+
+
+### Features
+
+* **jasmine:** add expect(value).toBeVisibleString() ([6852b2f](https://github.com/JamieMason/expect-more/commit/6852b2f74d51b831729b28538df86d25a4b31643))
+
+
+
+
+
 # [0.1.0](https://github.com/JamieMason/expect-more/compare/expect-more-jasmine@0.0.3...expect-more-jasmine@0.1.0) (2020-05-16)
 
 

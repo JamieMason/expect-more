@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.1.0...expect-more-jest@5.2.0) (2020-05-30)
+
+
+### Features
+
+* **jest:** add expect(value).toBeNullableOf(<asymmetricMatcher>) ([e4ce690](https://github.com/JamieMason/expect-more/commit/e4ce690a2c510e8b613e8e3b0ca624d12320496c))
+* **jest:** add expect(value).toBeOptionalOf(<asymmetricMatcher>) ([b8b826f](https://github.com/JamieMason/expect-more/commit/b8b826f26a5bbbd79915d9e411861a291e84c13e))
+* **jest:** add expect(value).toBeVisibleString() ([1b594d4](https://github.com/JamieMason/expect-more/commit/1b594d49ca8ad43eeb03b31302e794fdf4cf26d0))
+
+
+
+
+
 # [5.1.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.0.0...expect-more-jest@5.1.0) (2020-05-17)
 
 
