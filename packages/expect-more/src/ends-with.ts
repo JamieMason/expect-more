@@ -1,4 +1,4 @@
-import { isNonEmptyString } from './index';
+import { isNonEmptyString } from './is-non-empty-string';
 import { curry } from './lib/curry';
 
 /**
