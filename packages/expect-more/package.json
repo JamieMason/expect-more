@@ -15,5 +15,6 @@
   "scripts": {
     "prepublish": "cd ../../ && npm run build:expect-more"
   },
+  "sideEffects": false,
   "typings": "./dist/index.d.ts"
 }
