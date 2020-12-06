@@ -1,7 +1,7 @@
 {
   "name": "expect-more-jest",
   "description": "Write Beautiful Specs with Custom Matchers for Jest",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "author": "Jamie Mason <jamie@foldleft.io> (https://github.com/JamieMason)",
   "bugs": "https://github.com/JamieMason/expect-more/issues",
   "contributors": [
@@ -9,7 +9,7 @@
   ],
   "dependencies": {
     "expect": "26.0.1",
-    "expect-more": "0.8.0",
+    "expect-more": "0.8.1",
     "jest-matcher-utils": "25.5.0"
   },
   "files": [

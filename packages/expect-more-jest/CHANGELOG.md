@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.1](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.2.0...expect-more-jest@5.2.1) (2020-12-06)
+
+
+### Bug Fixes
+
+* **expect:** replace object with Record<any, any> ([19e282b](https://github.com/JamieMason/expect-more/commit/19e282b83ab3485081e8c9aed3db210bd09b7595))
+
+
+
+
+
 # [5.2.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.1.0...expect-more-jest@5.2.0) (2020-05-30)
 
 

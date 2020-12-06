@@ -1,12 +1,12 @@
 {
   "name": "expect-more-jasmine",
   "description": "Write Beautiful Specs with Custom Matchers for Jasmine",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Jamie Mason <jamie@foldleft.io> (https://github.com/JamieMason)",
   "bugs": "https://github.com/JamieMason/expect-more/issues",
   "contributors": [],
   "dependencies": {
-    "expect-more": "0.8.0",
+    "expect-more": "0.8.1",
     "jest-matcher-utils": "25.5.0"
   },
   "files": [

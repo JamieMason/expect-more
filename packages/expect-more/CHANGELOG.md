@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/JamieMason/expect-more/compare/expect-more@0.8.0...expect-more@0.8.1) (2020-12-06)
+
+
+### Bug Fixes
+
+* **expect:** fix circular dependencies ([dfdfe33](https://github.com/JamieMason/expect-more/commit/dfdfe335e96dbd2049ceab5ae2f59b9c5ba44288))
+* **expect:** replace object with Record<any, any> ([19e282b](https://github.com/JamieMason/expect-more/commit/19e282b83ab3485081e8c9aed3db210bd09b7595))
+
+
+### Performance Improvements
+
+* **expect:** mark as side-effect free ([6750966](https://github.com/JamieMason/expect-more/commit/6750966d07bbbea2d0f24f5c5ef1dfe61ecb8676))
+
+
+
+
+
 # [0.8.0](https://github.com/JamieMason/expect-more/compare/expect-more@0.7.1...expect-more@0.8.0) (2020-05-30)
 
 
