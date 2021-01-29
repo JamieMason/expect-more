@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/JamieMason/expect-more/compare/expect-more@0.8.1...expect-more@1.0.1) (2021-01-29)
+
+**Note:** Version bump only for package expect-more
+
+
+
+
+
 ## [0.8.1](https://github.com/JamieMason/expect-more/compare/expect-more@0.8.0...expect-more@0.8.1) (2020-12-06)
 
 

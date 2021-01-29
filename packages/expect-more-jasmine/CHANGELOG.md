@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/JamieMason/expect-more/compare/expect-more-jasmine@0.2.1...expect-more-jasmine@0.2.2) (2021-01-29)
+
+
+### Bug Fixes
+
+* **npm:** update dependencies ([2b18adb](https://github.com/JamieMason/expect-more/commit/2b18adba015b749cf7947bf98cf2a964ecbe15bc))
+
+
+
+
+
 ## [0.2.1](https://github.com/JamieMason/expect-more/compare/expect-more-jasmine@0.2.0...expect-more-jasmine@0.2.1) (2020-12-06)
 
 
