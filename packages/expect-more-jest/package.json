@@ -8,9 +8,9 @@
     "Haroen Viaene (https://github.com/Haroenv)"
   ],
   "dependencies": {
-    "expect": "26.0.1",
+    "expect": "26.6.2",
     "expect-more": "0.8.1",
-    "jest-matcher-utils": "25.5.0"
+    "jest-matcher-utils": "26.6.2"
   },
   "files": [
     "dist"
