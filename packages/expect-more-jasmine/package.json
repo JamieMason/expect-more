@@ -6,7 +6,7 @@
   "bugs": "https://github.com/JamieMason/expect-more/issues",
   "contributors": [],
   "dependencies": {
-    "expect-more": "0.8.1",
+    "expect-more": "1.0.0",
     "jest-matcher-utils": "26.6.2"
   },
   "files": [
