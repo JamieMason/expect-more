@@ -3,6 +3,7 @@ import { printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a valid `String` containing at least one character.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeNonEmptyStringMatcher = () => {
+export const toBeNonEmptyStringMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any) {
+    compare(value: unknown) {
       const pass = isNonEmptyString(value);
       const message = pass
         ? `expected ${printReceived(value)} not to be a string with at least one character`

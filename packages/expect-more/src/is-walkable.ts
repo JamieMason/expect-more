@@ -9,4 +9,5 @@ import { isUndefined } from './is-undefined';
  * @matcherMessage expected ${value} to be walkable
  * @matcherNotMessage expected ${value} not to be walkable
  */
-export const isWalkable = (value: any): boolean => !isNull(value) && !isUndefined(value);
+export const isWalkable = <T = any>(value: unknown): value is T =>
+  !isNull(value) && !isUndefined(value);

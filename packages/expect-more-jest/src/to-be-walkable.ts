@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is safe to attempt to read property values from.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeWalkableMatcher = (value: any) =>
+export const toBeWalkableMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be walkable`,
     notMessage: () => `expected ${printReceived(value)} not to be walkable`,

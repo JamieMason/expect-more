@@ -12,5 +12,5 @@ import { every } from './lib/every';
  * @matcherNotMessage expected ${value} not to be a non-empty array, containing
  * only numbers
  */
-export const isArrayOfNumbers = (value: any): value is number[] =>
+export const isArrayOfNumbers = (value: unknown): value is number[] =>
   isArray(value) && every(isNumber, value);

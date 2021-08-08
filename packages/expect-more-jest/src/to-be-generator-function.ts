@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a `Function` using yield syntax.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeGeneratorFunctionMatcher = (value: any) =>
+export const toBeGeneratorFunctionMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be a function using yield syntax.`,
     notMessage: () => `expected ${printReceived(value)} not to be a function using yield syntax.`,

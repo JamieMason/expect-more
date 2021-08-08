@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Assert value can be used in Mathemetic calculations despite not being a `Number`, for example `'1' * '2' === 2` whereas `'wut?' * 2 === NaN`.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeCalculableMatcher = (value: any) =>
+export const toBeCalculableMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () =>
       `expected ${printReceived(value)} to be coercible for use in mathemetical operations`,

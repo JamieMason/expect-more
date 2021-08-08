@@ -4,6 +4,7 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a valid instance of `Date` whose value occurs after that of ${otherDate}.
@@ -15,9 +16,9 @@ declare global {
   }
 }
 
-export const toHaveDateAfterMatcher = () => {
+export const toHaveDateAfterMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, propPath: string, otherDate: Date) {
+    compare(value: unknown, propPath: string, otherDate: Date) {
       const pass = isAfter(otherDate, getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(

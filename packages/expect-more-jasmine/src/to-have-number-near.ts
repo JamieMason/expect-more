@@ -4,6 +4,7 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a number within the given acceptable distance from ${otherNumber}.
@@ -15,9 +16,9 @@ declare global {
   }
 }
 
-export const toHaveNumberNearMatcher = () => {
+export const toHaveNumberNearMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, propPath: string, otherNumber: number, epsilon: number) {
+    compare(value: unknown, propPath: string, otherNumber: number, epsilon: number) {
       const pass = isNear(otherNumber, epsilon, getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(propPath)}' not to be within ${printExpected(

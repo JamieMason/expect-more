@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a String which conforms to common use-cases of the ISO 8601 standard representation of dates and times.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeIso8601Matcher = (value: any) =>
+export const toBeIso8601Matcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be a valid ISO 8601 date string`,
     notMessage: () => `expected ${printReceived(value)} not to be a valid ISO 8601 date string`,

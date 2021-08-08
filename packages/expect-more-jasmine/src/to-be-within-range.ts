@@ -3,6 +3,7 @@ import { printExpected, printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a `Number` which is both greater than or equal to ${floor} and less than or equal to ${ceiling}.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeWithinRangeMatcher = () => {
+export const toBeWithinRangeMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, floor: number, ceiling: number) {
+    compare(value: unknown, floor: number, ceiling: number) {
       const pass = isWithinRange(floor, ceiling, value);
       const message = pass
         ? `expected ${printReceived(value)} not to be greater than or equal to ${printExpected(

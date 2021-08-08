@@ -3,6 +3,7 @@ import { printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a `String` containing only whitespace characters.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeWhitespaceMatcher = () => {
+export const toBeWhitespaceMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any) {
+    compare(value: unknown) {
       const pass = isWhitespace(value);
       const message = pass
         ? `expected ${printReceived(

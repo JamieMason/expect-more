@@ -8,7 +8,4 @@ import { hasType } from './lib/has-type';
  * @matcherMessage expected ${value} to be an object
  * @matcherNotMessage expected ${value} not to be an object
  */
-export const isObject = hasType<{
-  [key: string]: any;
-  [key: number]: any;
-}>('Object');
+export const isObject = hasType<any>('Object');

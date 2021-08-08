@@ -6,13 +6,13 @@ const withUtil = (_, varName) => {
   return '${methodName(varName)}'.replace('methodName', methodName).replace('varName', varName);
 };
 
-export const generateJasmineMemberMatcher = (file: FileMeta) => {
+export const generateJasmineMemberMatcher = (file: FileMeta): void => {
   try {
     const { jasmineMemberMatcherPath, jsDoc, matcherInputs, matcherInputsWithoutTypes, name } =
       file;
     const { description, matcherMessage, memberMatcherName, matcherNotMessage, params } = jsDoc;
     const argsForMatcherInterface = ['propPath: string'].concat(matcherInputs).join(', ');
-    const typedArgsForMatcherFunction = ['value: any', 'propPath: string']
+    const typedArgsForMatcherFunction = ['value: unknown', 'propPath: string']
       .concat(matcherInputs)
       .join(', ');
     const argsForAssertFunction = matcherInputsWithoutTypes
@@ -42,6 +42,7 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * ${description}
@@ -53,7 +54,7 @@ declare global {
   }
 }
 
-export const ${memberMatcherName}Matcher = () => {
+export const ${memberMatcherName}Matcher: jasmine.CustomMatcherFactory = () => {
   return {
     compare(${typedArgsForMatcherFunction}) {
       const pass = ${name}(${argsForAssertFunction});

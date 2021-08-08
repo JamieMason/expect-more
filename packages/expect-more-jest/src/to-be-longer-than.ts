@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a `String` or `Array` whose length is greater than that of ${otherStringOrArray}.
        * @example
@@ -25,7 +25,10 @@ declare global {
   }
 }
 
-export const toBeLongerThanMatcher = (value: any, otherStringOrArray: string | any[]) =>
+export const toBeLongerThanMatcher = (
+  value: unknown,
+  otherStringOrArray: string | any[],
+): jest.CustomMatcherResult =>
   createResult({
     message: () =>
       `expected ${printReceived(

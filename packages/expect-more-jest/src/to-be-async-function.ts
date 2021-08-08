@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a function using async/await syntax.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeAsyncFunctionMatcher = (value: any) =>
+export const toBeAsyncFunctionMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be a \`Function\` using async/await syntax`,
     notMessage: () =>

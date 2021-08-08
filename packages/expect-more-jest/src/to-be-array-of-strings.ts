@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is an `Array` containing only `String` values.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeArrayOfStringsMatcher = (value: any) =>
+export const toBeArrayOfStringsMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () =>
       `expected ${printReceived(value)} to be a non-empty array, containing only strings`,

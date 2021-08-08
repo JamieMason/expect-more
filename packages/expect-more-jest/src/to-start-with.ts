@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Assert value is a string whose leading characters are equal to `other`.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toStartWithMatcher = (value: any, otherString: string) =>
+export const toStartWithMatcher = (value: unknown, otherString: string): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to start with ${printExpected(otherString)}`,
     notMessage: () =>

@@ -6,6 +6,7 @@ check.it(
   numbersWithinRange,
   (value) => {
     expect(api.isWithinRange(8, 15, value)).toEqual(true);
+    expect(api.isWithinRange(8, 15)(value)).toEqual(true);
     expect(api.isWithinRange(8)(15)(value)).toEqual(true);
   },
 );

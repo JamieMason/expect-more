@@ -2,5 +2,5 @@ import { getType } from './get-type';
 
 export const hasType =
   <T>(type: string) =>
-  (value: any): value is T =>
+  <CallTimeType = T>(value: unknown): value is CallTimeType =>
     getType(value) === `[object ${type}]`;

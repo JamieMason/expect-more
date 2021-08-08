@@ -10,4 +10,5 @@ import { isString } from './is-string';
  * @matcherNotMessage expected ${value} not to be a string containing only
  * whitespace characters
  */
-export const isWhitespace = (value: any): boolean => isString(value) && value.search(/\S/) === -1;
+export const isWhitespace = (value: unknown): value is string =>
+  isString(value) && value.search(/\S/) === -1;

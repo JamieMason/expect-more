@@ -9,4 +9,4 @@
  * @matcherNotMessage expected ${value} not to be coercible for use in
  * mathemetical operations
  */
-export const isCalculable = (value: any): boolean => !isNaN(value * 2);
+export const isCalculable = <T = any>(value: any): value is T => !isNaN(value * 2);

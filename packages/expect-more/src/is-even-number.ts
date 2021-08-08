@@ -9,4 +9,5 @@ import { isNumber } from './is-number';
  * @matcherMessage expected ${value} to be an even number
  * @matcherNotMessage expected ${value} not to be an even number
  */
-export const isEvenNumber = (value: any): boolean => isNumber(value) && isDivisibleBy(2, value);
+export const isEvenNumber = (value: unknown): value is number =>
+  isNumber(value) && isDivisibleBy(2, value);

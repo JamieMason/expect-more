@@ -3,7 +3,7 @@ import * as path from 'path';
 import { camelToKebab } from './index';
 import { expectMoreJestPath } from './paths';
 
-export const generateJestIndex = () => {
+export const generateJestIndex = (): void => {
   const toJestExport = (name) => `export { ${name}Matcher } from './${camelToKebab(name)}';`;
   const kebabToCamel = (kebab) => kebab.replace(/-[a-z]/g, (a) => a[1].toUpperCase());
   const indexPath = path.resolve(expectMoreJestPath, './index.ts');

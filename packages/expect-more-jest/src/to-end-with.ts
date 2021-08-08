@@ -4,13 +4,13 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a string whose trailing characters are equal to ${otherString}.
        * @example
        * expect('JavaScript').toEndWith('Script');
        */
-      toEndWith(otherString: string): R;
+      toEndWith(otherString: unknown): R;
     }
     interface Expect {
       /**
@@ -20,12 +20,12 @@ declare global {
        *   expect.toEndWith('Script')
        * );
        */
-      toEndWith<T>(otherString: string): JestMatchers<T>;
+      toEndWith<T>(otherString: unknown): JestMatchers<T>;
     }
   }
 }
 
-export const toEndWithMatcher = (value: any, otherString: string) =>
+export const toEndWithMatcher = (value: unknown, otherString: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to end with ${printExpected(otherString)}`,
     notMessage: () =>

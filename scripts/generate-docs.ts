@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import ts from 'typescript';
 
-const generateDocsForPackage = (name: string) => {
+const generateDocsForPackage = (name: string): void => {
   const rootDir = path.resolve(__dirname, '..');
   const fullApi = [];
 

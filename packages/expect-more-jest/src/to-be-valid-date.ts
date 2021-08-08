@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is an instance of `Date` whose internal value is valid. `Date` is little like `Promise` in that it is a container for a value. For example, `new Date('wut?')` is a valid `Date` which wraps a value that is not valid.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeValidDateMatcher = (value: any) =>
+export const toBeValidDateMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be an instance of Date with a valid value`,
     notMessage: () =>

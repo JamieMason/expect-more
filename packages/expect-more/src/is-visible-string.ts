@@ -11,5 +11,5 @@ import { isString } from './is-string';
  * @matcherNotMessage expected ${value} not to be a string with at least one
  * non-whitespace character
  */
-export const isVisibleString = (value: any): boolean =>
+export const isVisibleString = (value: unknown): value is string =>
   isString(value) && value.length > 0 && value.search(/\S/) !== -1;

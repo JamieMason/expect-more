@@ -12,5 +12,5 @@ import { every } from './lib/every';
  * @matcherNotMessage expected ${value} not to be a non-empty array, containing
  * only boolean values
  */
-export const isArrayOfBooleans = (value: any): value is boolean[] =>
+export const isArrayOfBooleans = (value: unknown): value is boolean[] =>
   isArray(value) && every(isBoolean, value);

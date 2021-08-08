@@ -10,4 +10,4 @@ import { isString } from './is-string';
  * @matcherNotMessage expected ${value} not to be an empty string or empty
  * instance of String
  */
-export const isEmptyString = (value: any): boolean => isString(value) && value.length === 0;
+export const isEmptyString = (value: unknown): value is '' => isString(value) && value.length === 0;

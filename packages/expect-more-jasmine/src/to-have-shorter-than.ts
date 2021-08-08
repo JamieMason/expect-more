@@ -4,6 +4,7 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a `String` or `Array` whose length is less than that of ${otherStringOrArray}.
@@ -15,9 +16,9 @@ declare global {
   }
 }
 
-export const toHaveShorterThanMatcher = () => {
+export const toHaveShorterThanMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, propPath: string, otherStringOrArray: string | any[]) {
+    compare(value: unknown, propPath: string, otherStringOrArray: string | any[]) {
       const pass = isShorterThan(otherStringOrArray, getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(

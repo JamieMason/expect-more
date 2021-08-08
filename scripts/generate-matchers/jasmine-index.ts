@@ -6,7 +6,7 @@ import { expectMoreJasminePath } from './paths';
 export const generateJasmineIndex = (
   matcherMetadata: FileMeta[],
   memberMatcherMetadata: FileMeta[],
-) => {
+): void => {
   const toJasmineExport = (name) => `export { ${name}Matcher } from './${camelToKebab(name)}';`;
   const indexPath = path.resolve(expectMoreJasminePath, './index.ts');
   const source = []

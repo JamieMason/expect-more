@@ -3,6 +3,7 @@ import { printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a valid `Array` containing none or any number of items of any type.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeArrayMatcher = () => {
+export const toBeArrayMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any) {
+    compare(value: unknown) {
       const pass = isArray(value);
       const message = pass
         ? `expected ${printReceived(value)} not to be an array`

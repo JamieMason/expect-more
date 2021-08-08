@@ -9,4 +9,5 @@ import { isArray } from './is-array';
  * @matcherNotMessage expected ${value} not to be an array with at least one
  * item
  */
-export const isNonEmptyArray = (value: any): boolean => isArray(value) && value.length > 0;
+export const isNonEmptyArray = <T extends any[] = any[]>(value: unknown): value is T =>
+  isArray(value) && value.length > 0;

@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a `Number` with positive decimal places.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeDecimalNumberMatcher = (value: any) =>
+export const toBeDecimalNumberMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be a number with positive decimal places`,
     notMessage: () =>

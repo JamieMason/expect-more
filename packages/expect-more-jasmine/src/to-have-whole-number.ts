@@ -4,6 +4,7 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a `Number` with no positive decimal places.
@@ -15,9 +16,9 @@ declare global {
   }
 }
 
-export const toHaveWholeNumberMatcher = () => {
+export const toHaveWholeNumberMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, propPath: string) {
+    compare(value: unknown, propPath: string) {
       const pass = isWholeNumber(getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(propPath)}' not to be a whole number`

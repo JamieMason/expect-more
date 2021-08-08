@@ -3,6 +3,7 @@ import { printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a `String` or `new String()`.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeStringMatcher = () => {
+export const toBeStringMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any) {
+    compare(value: unknown) {
       const pass = isString(value);
       const message = pass
         ? `expected ${printReceived(value)} not to be a string`

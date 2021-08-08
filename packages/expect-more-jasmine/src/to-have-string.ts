@@ -4,6 +4,7 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a `String` or `new String()`.
@@ -15,9 +16,9 @@ declare global {
   }
 }
 
-export const toHaveStringMatcher = () => {
+export const toHaveStringMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, propPath: string) {
+    compare(value: unknown, propPath: string) {
       const pass = isString(getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(propPath)}' not to be a string`

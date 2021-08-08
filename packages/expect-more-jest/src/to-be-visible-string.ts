@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a valid `String` containing at least one character which is not whitespace.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeVisibleStringMatcher = (value: any) =>
+export const toBeVisibleStringMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () =>
       `expected ${printReceived(value)} to be a string with at least one non-whitespace character`,

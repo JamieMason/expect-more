@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a valid instance of `Date` whose value occurs before that of ${otherDate}.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeBeforeMatcher = (value: any, otherDate: Date) =>
+export const toBeBeforeMatcher = (value: unknown, otherDate: Date): jest.CustomMatcherResult =>
   createResult({
     message: () =>
       `expected ${printReceived(value)} to be an instance of Date, occurring before ${printExpected(

@@ -1,4 +1,5 @@
-import { curry } from './lib/curry';
+import { curry2 } from './lib/curry2';
+import { AnyFn } from './typings';
 
 /**
  * Asserts that ${value} is a `Function` which throws an `Error` of the given
@@ -11,10 +12,7 @@ import { curry } from './lib/curry';
  * @matcherNotMessage expected ${value} not to throw an error of type
  * ${typeName}
  */
-export const throwsErrorOfType: {
-  (typeName: string, value: any): boolean;
-  (typeName: string): (value: any) => boolean;
-} = curry((typeName, value) => {
+export const throwsErrorOfType = curry2<AnyFn>((typeName: string, value: AnyFn): value is AnyFn => {
   try {
     value();
     return false;

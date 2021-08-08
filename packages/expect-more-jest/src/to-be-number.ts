@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a valid `Number` or `new Number()` and not `NaN`.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeNumberMatcher = (value: any) =>
+export const toBeNumberMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be a valid number`,
     notMessage: () => `expected ${printReceived(value)} not to be a valid number`,

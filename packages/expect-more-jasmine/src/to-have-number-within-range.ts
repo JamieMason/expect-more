@@ -4,6 +4,7 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a `Number` which is both greater than or equal to ${floor} and less than or equal to ${ceiling}.
@@ -15,9 +16,9 @@ declare global {
   }
 }
 
-export const toHaveNumberWithinRangeMatcher = () => {
+export const toHaveNumberWithinRangeMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, propPath: string, floor: number, ceiling: number) {
+    compare(value: unknown, propPath: string, floor: number, ceiling: number) {
       const pass = isWithinRange(floor, ceiling, getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(

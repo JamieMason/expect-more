@@ -43,7 +43,8 @@ export interface FileMeta {
   signature: string;
 }
 
-export const camelToKebab = (camel) => camel.replace(/[A-Z]/g, (a) => `-${a.toLowerCase()}`);
+export const camelToKebab = (camel: string): string =>
+  camel.replace(/[A-Z]/g, (a) => `-${a.toLowerCase()}`);
 
 const isAllowableJasmineMatcher = ({ jsDoc }) =>
   jsDoc.matcherName.search(
@@ -69,7 +70,11 @@ const isExportedVariable = ({ kind, modifiers }) =>
 const options = {};
 const program = ts.createProgram(allFilePaths, options);
 
-const isCurriedFn = ({ type }) => type && Array.isArray(type.members) && type.members.length > 1;
+const isCurriedFn = ({ initializer }) =>
+  initializer &&
+  initializer.expression &&
+  initializer.expression.escapedText &&
+  initializer.expression.escapedText.startsWith('curry');
 
 const isUnaryfunction = ({ initializer }) =>
   initializer && initializer.kind === ts.SyntaxKind.ArrowFunction;
@@ -123,7 +128,10 @@ const getMetadata = (filePath): FileMeta => {
 
   const getSignature = (variableDeclaration) => {
     if (isCurriedFn(variableDeclaration)) {
-      const signature = variableDeclaration.type.members[0].getText(sourceFile);
+      const fn = variableDeclaration.initializer.arguments[0];
+      const inTypes = fn.parameters.map((param) => param.getText(sourceFile));
+      const outType = fn.type.getText(sourceFile);
+      const signature = `(${inTypes.join(', ')}) => ${outType}`;
       return signature;
     } else if (isUnaryfunction(variableDeclaration)) {
       const init = variableDeclaration.initializer;
@@ -134,18 +142,17 @@ const getMetadata = (filePath): FileMeta => {
     } else if (isHasTypeFunction(variableDeclaration)) {
       const init = variableDeclaration.initializer;
       const outType = init.typeArguments[0].getText(sourceFile);
-      const signature = `(value: any) => value is ${outType}`;
+      const signature = `(value: unknown) => value is ${outType}`;
       return signature;
     } else {
-      throw new Error('Unrecognised Signature');
+      throw new Error(`Unrecognised Signature at ${filePath}`);
     }
   };
 
   const getArgumentTypes = (variableDeclaration) => {
     if (isCurriedFn(variableDeclaration)) {
-      const signature = variableDeclaration.type.members[0].parameters.map((parameter) =>
-        parameter.getText(sourceFile),
-      );
+      const fn = variableDeclaration.initializer.arguments[0];
+      const signature = fn.parameters.map((param) => param.getText(sourceFile));
       return signature;
     } else if (isUnaryfunction(variableDeclaration)) {
       const signature = variableDeclaration.initializer.parameters.map((param) =>
@@ -153,9 +160,9 @@ const getMetadata = (filePath): FileMeta => {
       );
       return signature;
     } else if (isHasTypeFunction(variableDeclaration)) {
-      return ['value: any'];
+      return ['value: unknown'];
     } else {
-      throw new Error('Unrecognised Signature');
+      throw new Error(`Unrecognised Signature at ${filePath}`);
     }
   };
 

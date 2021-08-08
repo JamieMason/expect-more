@@ -11,4 +11,5 @@ import { keys } from './lib/keys';
  * @matcherNotMessage expected ${value} not to be an object with at least one
  * own member
  */
-export const isNonEmptyObject = (value: any): boolean => isObject(value) && keys(value).length > 0;
+export const isNonEmptyObject = <T = any>(value: unknown): value is T =>
+  isObject(value) && keys(value).length > 0;

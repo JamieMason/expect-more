@@ -3,6 +3,7 @@ import { printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Assert value can be used in Mathemetic calculations despite not being a `Number`, for example `'1' * '2' === 2` whereas `'wut?' * 2 === NaN`.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeCalculableMatcher = () => {
+export const toBeCalculableMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any) {
+    compare(value: unknown) {
       const pass = isCalculable(value);
       const message = pass
         ? `expected ${printReceived(value)} not to be coercible for use in mathemetical operations`

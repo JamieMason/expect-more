@@ -3,6 +3,7 @@ import { printExpected, printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a `Number` which results in a whole number when divided by ${otherNumber}.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeDivisibleByMatcher = () => {
+export const toBeDivisibleByMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, otherNumber: number) {
+    compare(value: unknown, otherNumber: number) {
       const pass = isDivisibleBy(otherNumber, value);
       const message = pass
         ? `expected ${printReceived(value)} not to be divisible by ${printExpected(otherNumber)}`

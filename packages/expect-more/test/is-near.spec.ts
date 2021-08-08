@@ -7,6 +7,8 @@ it('accepts if value is no more than epsilion larger or smaller than another', (
     [-40, 2, -42],
   ].forEach(([otherNumber, epsilon, value]) => {
     expect(api.isNear(otherNumber)(epsilon)(value)).toEqual(true);
+    expect(api.isNear(otherNumber)(epsilon, value)).toEqual(true);
+    expect(api.isNear(otherNumber, epsilon)(value)).toEqual(true);
     expect(api.isNear(otherNumber, epsilon, value)).toEqual(true);
   });
 });

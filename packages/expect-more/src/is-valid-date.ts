@@ -13,4 +13,5 @@ import { isDate } from './is-date';
  * @matcherNotMessage expected ${value} not to be an instance of Date with a
  * valid value
  */
-export const isValidDate = (value: any): value is Date => isDate(value) && !isNaN(value.getTime());
+export const isValidDate = (value: unknown): value is Date =>
+  isDate(value) && !isNaN(value.getTime());

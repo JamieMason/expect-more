@@ -4,6 +4,7 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is less than or equal to ${otherNumber}.
@@ -15,9 +16,9 @@ declare global {
   }
 }
 
-export const toHaveLessThanOrEqualToMatcher = () => {
+export const toHaveLessThanOrEqualToMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, propPath: string, otherNumber: number) {
+    compare(value: unknown, propPath: string, otherNumber: number) {
       const pass = isLessThanOrEqualTo(otherNumber, getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(

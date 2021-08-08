@@ -1,6 +1,6 @@
 import { isArray } from './is-array';
 import { isNumber } from './is-number';
-import { curry } from './lib/curry';
+import { curry2 } from './lib/curry2';
 
 /**
  * Asserts that ${value} is an `Array` containing ${size} number of values.
@@ -13,7 +13,7 @@ import { curry } from './lib/curry';
  * @matcherNotMessage expected ${value} not to be an array containing exactly
  * ${size} items
  */
-export const isArrayOfSize: {
-  (size: number, value: any): value is any[];
-  (size: number): (value: any) => value is any[];
-} = curry((size, value) => isArray(value) && isNumber(size) && value.length === size);
+export const isArrayOfSize = curry2(
+  (size: number, value: unknown): value is any[] =>
+    isArray(value) && isNumber(size) && value.length === size,
+);

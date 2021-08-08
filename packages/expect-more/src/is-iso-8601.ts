@@ -10,7 +10,7 @@ import { isValidDate } from './is-valid-date';
  * @matcherMessage expected ${value} to be a valid ISO 8601 date string
  * @matcherNotMessage expected ${value} not to be a valid ISO 8601 date string
  */
-export const isIso8601 = (value: any): boolean => {
+export const isIso8601 = (value: unknown): value is string => {
   // '1999-12-31'
   // '1999-12-31T23:59'
   // '1999-12-31T23:59:59'

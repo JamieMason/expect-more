@@ -6,13 +6,13 @@ const withUtil = (_, varName) => {
   return '${methodName(varName)}'.replace('methodName', methodName).replace('varName', varName);
 };
 
-export const generateJestMatcher = (file: FileMeta) => {
+export const generateJestMatcher = (file: FileMeta): void => {
   try {
     const { jestMatcherPath, jsDoc, matcherInputs, matcherInputsWithoutTypes, name } = file;
     const { description, matcherMessage, matcherName, matcherNotMessage, params } = jsDoc;
     const utilImports = matcherInputs.length > 0 ? 'printExpected, printReceived' : 'printReceived';
     const argsForMatcherInterface = matcherInputs.join(', ');
-    const typedArgsForMatcherFunction = ['value: any'].concat(matcherInputs).join(', ');
+    const typedArgsForMatcherFunction = ['value: unknown'].concat(matcherInputs).join(', ');
     const argsForAssertFunction = matcherInputsWithoutTypes.concat('value').join(', ');
     const valueExample = params.find(({ name }) => name === 'value').exampleValue;
     const argsExamples = params
@@ -30,7 +30,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * ${description}
        * @example
@@ -51,7 +51,7 @@ declare global {
   }
 }
 
-export const ${matcherName}Matcher = (${typedArgsForMatcherFunction}) => createResult({
+export const ${matcherName}Matcher = (${typedArgsForMatcherFunction}): jest.CustomMatcherResult => createResult({
   message: () => \`${jestMatcherMessage}\`,
   notMessage: () => \`${jestMatcherNotMessage}\`,
   pass: ${name}(${argsForAssertFunction})

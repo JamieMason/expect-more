@@ -1,6 +1,6 @@
 import { isGreaterThanOrEqualTo } from './is-greater-than-or-equal-to';
 import { isLessThanOrEqualTo } from './is-less-than-or-equal-to';
-import { curry } from './lib/curry';
+import { curry3 } from './lib/curry3';
 
 /**
  * Asserts that ${value} is a `Number` which is both greater than or equal to
@@ -15,11 +15,7 @@ import { curry } from './lib/curry';
  * @matcherNotMessage expected ${value} not to be greater than or equal to
  * ${floor} and less than or equal to ${ceiling}
  */
-export const isWithinRange: {
-  (floor: number, ceiling: number, value: any): boolean;
-  (floor: number, ceiling: number): (value: any) => boolean;
-  (floor: number): (ceiling: number, value: any) => boolean;
-} = curry(
-  (floor, ceiling, value) =>
+export const isWithinRange = curry3(
+  (floor: number, ceiling: number, value: unknown): value is number =>
     isLessThanOrEqualTo(ceiling, value) && isGreaterThanOrEqualTo(floor, value),
 );

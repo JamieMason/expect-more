@@ -3,6 +3,7 @@ import { printExpected, printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a `String` or `Array` whose length is less than that of ${otherStringOrArray}.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeShorterThanMatcher = () => {
+export const toBeShorterThanMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, otherStringOrArray: string | any[]) {
+    compare(value: unknown, otherStringOrArray: string | any[]) {
       const pass = isShorterThan(otherStringOrArray, value);
       const message = pass
         ? `expected ${printReceived(

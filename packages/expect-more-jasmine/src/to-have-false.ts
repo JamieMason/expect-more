@@ -4,6 +4,7 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is `false` or `new Boolean(false)`.
@@ -15,9 +16,9 @@ declare global {
   }
 }
 
-export const toHaveFalseMatcher = () => {
+export const toHaveFalseMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, propPath: string) {
+    compare(value: unknown, propPath: string) {
       const pass = isFalse(getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(propPath)}' not to be false or Boolean(false)`

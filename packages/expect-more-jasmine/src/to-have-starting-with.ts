@@ -4,6 +4,7 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Assert value is a string whose leading characters are equal to `other`.
@@ -15,9 +16,9 @@ declare global {
   }
 }
 
-export const toHaveStartingWithMatcher = () => {
+export const toHaveStartingWithMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, propPath: string, otherString: string) {
+    compare(value: unknown, propPath: string, otherString: string) {
       const pass = startsWith(otherString, getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(propPath)}' not to start with ${printExpected(

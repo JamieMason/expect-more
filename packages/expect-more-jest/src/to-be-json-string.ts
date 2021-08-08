@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a `String` of valid JSON.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeJsonStringMatcher = (value: any) =>
+export const toBeJsonStringMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be a string of valid JSON`,
     notMessage: () => `expected ${printReceived(value)} not to be a string of valid JSON`,

@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import { FileMeta } from '.';
 
-export const generateJasmineMatcherTest = (file: FileMeta) => {
+export const generateJasmineMatcherTest = (file: FileMeta): void => {
   const { jasmineMatcherTestPath, jsDoc } = file;
   const { matcherName, params } = jsDoc;
   let comment = '';

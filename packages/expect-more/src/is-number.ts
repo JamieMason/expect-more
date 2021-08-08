@@ -8,5 +8,5 @@ import { hasType } from './lib/has-type';
  * @matcherMessage expected ${value} to be a valid number
  * @matcherNotMessage expected ${value} not to be a valid number
  */
-export const isNumber = (value: any): value is number =>
+export const isNumber = (value: unknown): value is number =>
   hasType<number>('Number')(value) && !isNaN(parseFloat(String(value)));

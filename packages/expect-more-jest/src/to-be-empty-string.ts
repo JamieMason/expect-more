@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a valid `String` containing no characters.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeEmptyStringMatcher = (value: any) =>
+export const toBeEmptyStringMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () =>
       `expected ${printReceived(value)} to be an empty string or empty instance of String`,

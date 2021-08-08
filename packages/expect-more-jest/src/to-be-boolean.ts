@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is `true`, `false`, `new Boolean(true)`, or `new Boolean(false)`.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeBooleanMatcher = (value: any) =>
+export const toBeBooleanMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be true, false, or an instance of Boolean`,
     notMessage: () =>

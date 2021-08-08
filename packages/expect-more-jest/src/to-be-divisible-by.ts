@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a `Number` which results in a whole number when divided by ${otherNumber}.
        * @example
@@ -25,7 +25,10 @@ declare global {
   }
 }
 
-export const toBeDivisibleByMatcher = (value: any, otherNumber: number) =>
+export const toBeDivisibleByMatcher = (
+  value: unknown,
+  otherNumber: number,
+): jest.CustomMatcherResult =>
   createResult({
     message: () =>
       `expected ${printReceived(value)} to be divisible by ${printExpected(otherNumber)}`,

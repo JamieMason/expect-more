@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is an `Object` containing at least one own member.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeNonEmptyObjectMatcher = (value: any) =>
+export const toBeNonEmptyObjectMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be an object with at least one own member`,
     notMessage: () =>

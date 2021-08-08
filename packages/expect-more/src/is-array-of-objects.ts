@@ -12,5 +12,5 @@ import { every } from './lib/every';
  * @matcherNotMessage expected ${value} not to be a non-empty array, containing
  * only objects
  */
-export const isArrayOfObjects = (value: any): value is Record<any, any>[] =>
+export const isArrayOfObjects = <T extends any[] = any[]>(value: unknown): value is T =>
   isArray(value) && every(isObject, value);

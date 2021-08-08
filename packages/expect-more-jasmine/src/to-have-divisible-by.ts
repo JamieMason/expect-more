@@ -4,6 +4,7 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a `Number` which results in a whole number when divided by ${otherNumber}.
@@ -15,9 +16,9 @@ declare global {
   }
 }
 
-export const toHaveDivisibleByMatcher = () => {
+export const toHaveDivisibleByMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, propPath: string, otherNumber: number) {
+    compare(value: unknown, propPath: string, otherNumber: number) {
       const pass = isDivisibleBy(otherNumber, getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(propPath)}' not to be divisible by ${printExpected(

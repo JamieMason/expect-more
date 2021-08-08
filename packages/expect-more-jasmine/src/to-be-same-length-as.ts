@@ -3,6 +3,7 @@ import { printExpected, printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a `String` or `Array` whose length is the same as that of ${otherStringOrArray}.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeSameLengthAsMatcher = () => {
+export const toBeSameLengthAsMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, otherStringOrArray: string | any[]) {
+    compare(value: unknown, otherStringOrArray: string | any[]) {
       const pass = isSameLengthAs(otherStringOrArray, value);
       const message = pass
         ? `expected ${printReceived(

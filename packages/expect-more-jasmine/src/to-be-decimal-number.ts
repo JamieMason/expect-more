@@ -3,6 +3,7 @@ import { printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a `Number` with positive decimal places.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeDecimalNumberMatcher = () => {
+export const toBeDecimalNumberMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any) {
+    compare(value: unknown) {
       const pass = isDecimalNumber(value);
       const message = pass
         ? `expected ${printReceived(value)} not to be a number with positive decimal places`

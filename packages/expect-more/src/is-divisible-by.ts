@@ -1,5 +1,5 @@
 import { isNumber } from './is-number';
-import { curry } from './lib/curry';
+import { curry2 } from './lib/curry2';
 
 /**
  * Asserts that ${value} is a `Number` which results in a whole number when
@@ -11,9 +11,7 @@ import { curry } from './lib/curry';
  * @matcherMessage expected ${value} to be divisible by ${otherNumber}
  * @matcherNotMessage expected ${value} not to be divisible by ${otherNumber}
  */
-export const isDivisibleBy: {
-  (otherNumber: number, value: any): boolean;
-  (otherNumber: number): (value: any) => boolean;
-} = curry(
-  (otherNumber, value) => isNumber(value) && isNumber(otherNumber) && value % otherNumber === 0,
+export const isDivisibleBy = curry2(
+  (otherNumber: number, value: unknown): value is number =>
+    isNumber(value) && isNumber(otherNumber) && value % otherNumber === 0,
 );

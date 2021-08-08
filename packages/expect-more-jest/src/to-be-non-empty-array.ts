@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is an `Array` containing at least one value.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeNonEmptyArrayMatcher = (value: any) =>
+export const toBeNonEmptyArrayMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be an array with at least one item`,
     notMessage: () => `expected ${printReceived(value)} not to be an array with at least one item`,

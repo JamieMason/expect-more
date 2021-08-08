@@ -5,7 +5,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is an `Array` where every member is equal to ${other}.
        * @example
@@ -13,7 +13,7 @@ declare global {
        *   name: expect.toBeNonEmptyString()
        * });
        */
-      toBeArrayOf(other: any): R;
+      toBeArrayOf(other: unknown): R;
     }
     interface Expect {
       /**
@@ -23,12 +23,12 @@ declare global {
        *   expect.toBeArrayOf({ name: expect.toBeNonEmptyString() })
        * );
        */
-      toBeArrayOf<T>(other: any): JestMatchers<T>;
+      toBeArrayOf<T>(other: unknown): JestMatchers<T>;
     }
   }
 }
 
-export const toBeArrayOfMatcher = (value: any, other: any) =>
+export const toBeArrayOfMatcher = (value: unknown, other: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () =>
       `expected ${printReceived(

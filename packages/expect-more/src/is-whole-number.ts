@@ -9,5 +9,5 @@ import { isNumber } from './is-number';
  * @matcherMessage expected ${value} to be a whole number
  * @matcherNotMessage expected ${value} not to be a whole number
  */
-export const isWholeNumber = (value: any): boolean =>
+export const isWholeNumber = (value: unknown): value is number =>
   isNumber(value) && (value === 0 || isDivisibleBy(1, value));

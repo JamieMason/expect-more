@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a `RegExp`.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeRegExpMatcher = (value: any) =>
+export const toBeRegExpMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be a regular expression`,
     notMessage: () => `expected ${printReceived(value)} not to be a regular expression`,

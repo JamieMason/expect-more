@@ -3,6 +3,7 @@ import { printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a valid `Object` containing no instance members.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeEmptyObjectMatcher = () => {
+export const toBeEmptyObjectMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any) {
+    compare(value: unknown) {
       const pass = isEmptyObject(value);
       const message = pass
         ? `expected ${printReceived(value)} not to be an empty object`

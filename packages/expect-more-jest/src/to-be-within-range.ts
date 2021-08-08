@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a `Number` which is both greater than or equal to ${floor} and less than or equal to ${ceiling}.
        * @example
@@ -25,7 +25,11 @@ declare global {
   }
 }
 
-export const toBeWithinRangeMatcher = (value: any, floor: number, ceiling: number) =>
+export const toBeWithinRangeMatcher = (
+  value: unknown,
+  floor: number,
+  ceiling: number,
+): jest.CustomMatcherResult =>
   createResult({
     message: () =>
       `expected ${printReceived(value)} to be greater than or equal to ${printExpected(

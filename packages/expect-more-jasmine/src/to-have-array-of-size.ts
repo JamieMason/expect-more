@@ -4,6 +4,7 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is an `Array` containing ${size} number of values.
@@ -15,9 +16,9 @@ declare global {
   }
 }
 
-export const toHaveArrayOfSizeMatcher = () => {
+export const toHaveArrayOfSizeMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, propPath: string, size: number) {
+    compare(value: unknown, propPath: string, size: number) {
       const pass = isArrayOfSize(size, getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(

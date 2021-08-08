@@ -1,6 +1,6 @@
 import { isString } from './is-string';
 import { isWalkable } from './is-walkable';
-import { curry } from './lib/curry';
+import { curry2 } from './lib/curry2';
 
 /**
  * Asserts that ${value} has a property of the given name, even if the value of
@@ -14,7 +14,7 @@ import { curry } from './lib/curry';
  * @matcherMessage expected ${value} to have a property at ${ownKeyName}
  * @matcherNotMessage expected ${value} not to have a property at ${ownKeyName}
  */
-export const hasMember: {
-  (ownKeyName: string, value: any): boolean;
-  (ownKeyName: string): (value: any) => boolean;
-} = curry((ownKeyName, value) => isString(ownKeyName) && isWalkable(value) && ownKeyName in value);
+export const hasMember = curry2(
+  (ownKeyName: string, value: unknown): value is any =>
+    isString(ownKeyName) && isWalkable(value) && ownKeyName in value,
+);

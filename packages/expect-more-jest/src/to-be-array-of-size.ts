@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is an `Array` containing ${size} number of values.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeArrayOfSizeMatcher = (value: any, size: number) =>
+export const toBeArrayOfSizeMatcher = (value: unknown, size: number): jest.CustomMatcherResult =>
   createResult({
     message: () =>
       `expected ${printReceived(value)} to be an array containing exactly ${printExpected(

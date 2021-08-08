@@ -3,6 +3,7 @@ import { printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is an `Array` containing only `Boolean` values.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeArrayOfBooleansMatcher = () => {
+export const toBeArrayOfBooleansMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any) {
+    compare(value: unknown) {
       const pass = isArrayOfBooleans(value);
       const message = pass
         ? `expected ${printReceived(

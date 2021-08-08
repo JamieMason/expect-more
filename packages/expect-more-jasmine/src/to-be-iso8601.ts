@@ -3,6 +3,7 @@ import { printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a String which conforms to common use-cases of the ISO 8601 standard representation of dates and times.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeIso8601Matcher = () => {
+export const toBeIso8601Matcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any) {
+    compare(value: unknown) {
       const pass = isIso8601(value);
       const message = pass
         ? `expected ${printReceived(value)} not to be a valid ISO 8601 date string`

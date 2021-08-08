@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a valid `Object` containing no instance members.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeEmptyObjectMatcher = (value: any) =>
+export const toBeEmptyObjectMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be an empty object`,
     notMessage: () => `expected ${printReceived(value)} not to be an empty object`,

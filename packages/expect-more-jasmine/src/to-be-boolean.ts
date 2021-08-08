@@ -3,6 +3,7 @@ import { printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is `true`, `false`, `new Boolean(true)`, or `new Boolean(false)`.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeBooleanMatcher = () => {
+export const toBeBooleanMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any) {
+    compare(value: unknown) {
       const pass = isBoolean(value);
       const message = pass
         ? `expected ${printReceived(value)} not to be true, false, or an instance of Boolean`

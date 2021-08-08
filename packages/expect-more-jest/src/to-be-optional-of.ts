@@ -5,7 +5,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is equal to ${other} or undefined.
        * @example
@@ -18,7 +18,7 @@ declare global {
        *   y: expect.toBeNumber(),
        * });
        */
-      toBeOptionalOf(other: any): R;
+      toBeOptionalOf(other: unknown): R;
     }
     interface Expect {
       /**
@@ -37,12 +37,12 @@ declare global {
        *   })
        * );
        */
-      toBeOptionalOf<T>(other: any): JestMatchers<T>;
+      toBeOptionalOf<T>(other: unknown): JestMatchers<T>;
     }
   }
 }
 
-export const toBeOptionalOfMatcher = (value: any, other: any) =>
+export const toBeOptionalOfMatcher = (value: unknown, other: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () =>
       `expected ${printReceived(value)} to equal ${printExpected(other)} or ${printExpected(

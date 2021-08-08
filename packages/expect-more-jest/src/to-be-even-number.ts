@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is an even `Number`.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeEvenNumberMatcher = (value: any) =>
+export const toBeEvenNumberMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be an even number`,
     notMessage: () => `expected ${printReceived(value)} not to be an even number`,

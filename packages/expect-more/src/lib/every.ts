@@ -1,7 +1,7 @@
 import { UnaryBoolFn } from '../typings';
-import { curry } from './curry';
+import { curry2 } from './curry2';
 
-export const every = curry((fn: UnaryBoolFn, array: any[]): boolean => {
+export const every = curry2((fn: UnaryBoolFn, array: any[]): array is any[] => {
   for (let i = 0, len = array.length; i < len; i++) {
     if (fn(array[i]) === false) {
       return false;

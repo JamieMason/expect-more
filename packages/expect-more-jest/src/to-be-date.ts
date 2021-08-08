@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is an instance of `Date`.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeDateMatcher = (value: any) =>
+export const toBeDateMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be an instance of Date`,
     notMessage: () => `expected ${printReceived(value)} not to be an instance of Date`,

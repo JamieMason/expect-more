@@ -3,6 +3,7 @@ import { printExpected, printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a valid instance of `Date` whose value occurs after that of ${otherDate}.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeAfterMatcher = () => {
+export const toBeAfterMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, otherDate: Date) {
+    compare(value: unknown, otherDate: Date) {
       const pass = isAfter(otherDate, value);
       const message = pass
         ? `expected ${printReceived(

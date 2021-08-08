@@ -4,7 +4,7 @@ import { createResult } from './lib/create-result';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that ${value} is a valid `Array` containing no items.
        * @example
@@ -25,7 +25,7 @@ declare global {
   }
 }
 
-export const toBeEmptyArrayMatcher = (value: any) =>
+export const toBeEmptyArrayMatcher = (value: unknown): jest.CustomMatcherResult =>
   createResult({
     message: () => `expected ${printReceived(value)} to be an array containing no items`,
     notMessage: () => `expected ${printReceived(value)} not to be an array containing no items`,

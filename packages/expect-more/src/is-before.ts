@@ -1,5 +1,5 @@
 import { isAfter } from './is-after';
-import { curry } from './lib/curry';
+import { curry2 } from './lib/curry2';
 
 /**
  * Asserts that ${value} is a valid instance of `Date` whose value occurs before
@@ -13,7 +13,6 @@ import { curry } from './lib/curry';
  * @matcherNotMessage expected ${value} not to be an instance of Date, occurring
  * before ${otherDate}
  */
-export const isBefore: {
-  (otherDate: Date, value: any): boolean;
-  (otherDate: Date): (value: any) => boolean;
-} = curry((otherDate, value) => isAfter(value, otherDate));
+export const isBefore = curry2((otherDate: Date, value: unknown): value is Date =>
+  isAfter(value, otherDate),
+);

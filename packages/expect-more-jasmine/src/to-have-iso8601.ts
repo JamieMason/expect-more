@@ -4,6 +4,7 @@ import { getIn } from './lib/get-in';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a String which conforms to common use-cases of the ISO 8601 standard representation of dates and times.
@@ -15,9 +16,9 @@ declare global {
   }
 }
 
-export const toHaveIso8601Matcher = () => {
+export const toHaveIso8601Matcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any, propPath: string) {
+    compare(value: unknown, propPath: string) {
       const pass = isIso8601(getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(propPath)}' not to be a valid ISO 8601 date string`

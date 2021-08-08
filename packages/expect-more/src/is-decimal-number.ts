@@ -9,5 +9,5 @@ import { isNumber } from './is-number';
  * @matcherNotMessage expected ${value} not to be a number with positive decimal
  * places
  */
-export const isDecimalNumber = (value: any): boolean =>
+export const isDecimalNumber = (value: unknown): value is number =>
   isNumber(value) && String(value).indexOf('.') !== -1;

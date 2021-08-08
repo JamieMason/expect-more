@@ -3,6 +3,7 @@ import { printReceived } from 'jest-matcher-utils';
 
 declare global {
   namespace jasmine {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
        * Asserts that ${value} is a `String` of valid JSON.
@@ -14,9 +15,9 @@ declare global {
   }
 }
 
-export const toBeJsonStringMatcher = () => {
+export const toBeJsonStringMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: any) {
+    compare(value: unknown) {
       const pass = isJsonString(value);
       const message = pass
         ? `expected ${printReceived(value)} not to be a string of valid JSON`
