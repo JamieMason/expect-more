@@ -8,13 +8,8 @@ const withUtil = (_, varName) => {
 
 export const generateJasmineMemberMatcher = (file: FileMeta) => {
   try {
-    const {
-      jasmineMemberMatcherPath,
-      jsDoc,
-      matcherInputs,
-      matcherInputsWithoutTypes,
-      name,
-    } = file;
+    const { jasmineMemberMatcherPath, jsDoc, matcherInputs, matcherInputsWithoutTypes, name } =
+      file;
     const { description, matcherMessage, memberMatcherName, matcherNotMessage, params } = jsDoc;
     const argsForMatcherInterface = ['propPath: string'].concat(matcherInputs).join(', ');
     const typedArgsForMatcherFunction = ['value: any', 'propPath: string']
