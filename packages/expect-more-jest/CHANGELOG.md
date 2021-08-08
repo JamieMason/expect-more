@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.2.2...expect-more-jest@5.3.0) (2021-08-08)
+
+
+### Bug Fixes
+
+* **npm:** update dependencies ([b34b440](https://github.com/JamieMason/expect-more/commit/b34b44027162306ecf678830a65a74852c442d9a))
+
+
+### Features
+
+* **typings:** improve type information ([4cff05e](https://github.com/JamieMason/expect-more/commit/4cff05e535460a2b7e10ce69528c0789f429dcce))
+
+
+
+
+
 ## [5.2.2](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.2.1...expect-more-jest@5.2.2) (2021-01-29)
 
 
