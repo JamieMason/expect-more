@@ -7,7 +7,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a `RegExp`.
+       * Asserts that a value is a `RegExp`.
        * @example
        * expect({ child: { grandchild: new RegExp('i am a regular expression') } }).toHaveRegExp('child.grandchild');
        */

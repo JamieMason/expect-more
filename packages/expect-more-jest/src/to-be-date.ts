@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is an instance of `Date`.
+       * Asserts that a value is an instance of `Date`.
        * @example
        * expect(new Date('2019-12-31')).toBeDate();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is an instance of `Date`.
+       * Asserts that a value is an instance of `Date`.
        * @example
        * expect(new Date('2019-12-31')).toEqual(
        *   expect.toBeDate()

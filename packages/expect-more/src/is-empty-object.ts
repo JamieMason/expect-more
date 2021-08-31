@@ -2,7 +2,7 @@ import { isObject } from './is-object';
 import { keys } from './lib/keys';
 
 /**
- * Asserts that ${value} is a valid `Object` containing no instance members.
+ * Asserts that a value is a valid `Object` containing no instance members.
  * @param value {} {}
  * @matcherName toBeEmptyObject
  * @memberMatcherName toHaveEmptyObject

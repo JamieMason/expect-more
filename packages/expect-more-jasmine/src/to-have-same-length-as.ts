@@ -7,30 +7,28 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a `String` or `Array` whose length is the same as that of ${otherStringOrArray}.
+       * Asserts that a value is a `String` or `Array` whose length is the same as that of the other provided.
        * @example
        * expect({ child: { grandchild: ['i also have', '2 items'] } }).toHaveSameLengthAs('child.grandchild', ['i have', '2 items']);
        */
-      toHaveSameLengthAs(propPath: string, otherStringOrArray: string | any[]): boolean;
+      toHaveSameLengthAs(propPath: string, other: string | any[]): boolean;
     }
   }
 }
 
 export const toHaveSameLengthAsMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: unknown, propPath: string, otherStringOrArray: string | any[]) {
-      const pass = isSameLengthAs(otherStringOrArray, getIn(propPath.split('.'), value));
+    compare(value: unknown, propPath: string, other: string | any[]) {
+      const pass = isSameLengthAs(other, getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(
             propPath,
           )}' not to be a string or array whose length is the same as that of ${printExpected(
-            otherStringOrArray,
+            other,
           )}`
         : `expected value at '${printExpected(
             propPath,
-          )}' to be a string or array whose length is the same as that of ${printExpected(
-            otherStringOrArray,
-          )}`;
+          )}' to be a string or array whose length is the same as that of ${printExpected(other)}`;
       return { message, pass };
     },
   };

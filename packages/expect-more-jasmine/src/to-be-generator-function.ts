@@ -6,7 +6,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a `Function` using yield syntax.
+       * Asserts that a value is a `Function` using `yield` syntax.
        * @example
        * expect(function* gen() { yield 'i am a generator' }).toBeGeneratorFunction();
        */

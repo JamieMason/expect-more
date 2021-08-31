@@ -2,7 +2,7 @@ import { isObject } from './is-object';
 import { keys } from './lib/keys';
 
 /**
- * Asserts that ${value} is an `Object` containing at least one own member.
+ * Asserts that a value is an `Object` containing at least one own member.
  * @param value {} { i: 'am not empty' }
  * @matcherName toBeNonEmptyObject
  * @memberMatcherName toHaveNonEmptyObject

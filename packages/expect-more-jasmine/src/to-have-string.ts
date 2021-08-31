@@ -7,7 +7,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a `String` or `new String()`.
+       * Asserts that a value is a `String` or `new String()`.
        * @example
        * expect({ child: { grandchild: 'i am a string' } }).toHaveString('child.grandchild');
        */

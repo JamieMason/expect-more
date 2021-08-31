@@ -7,7 +7,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a function using async/await syntax.
+       * Asserts that a value is a function using `async` and `await` syntax.
        * @example
        * expect({ child: { grandchild: async () => { await fetch('...') } } }).toHaveAsyncFunction('child.grandchild');
        */

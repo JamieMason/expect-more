@@ -1,7 +1,7 @@
 import { isBoolean } from './is-boolean';
 
 /**
- * Asserts that ${value} is `true` or `new Boolean(true)`.
+ * Asserts that a value is `true` or `new Boolean(true)`.
  * @param value true
  * @matcherName toBeTrue
  * @memberMatcherName toHaveTrue

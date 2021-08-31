@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a valid `String` containing no characters.
+       * Asserts that a value is a valid `String` containing no characters.
        * @example
        * expect('').toBeEmptyString();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a valid `String` containing no characters.
+       * Asserts that a value is a valid `String` containing no characters.
        * @example
        * expect('').toEqual(
        *   expect.toBeEmptyString()

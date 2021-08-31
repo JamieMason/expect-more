@@ -6,7 +6,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a valid `Number` or `new Number()` and not `NaN`.
+       * Asserts that a value is a valid `Number` or `new Number()` and not `NaN`.
        * @example
        * expect(8).toBeNumber();
        */

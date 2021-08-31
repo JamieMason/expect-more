@@ -6,7 +6,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a `String` of valid JSON.
+       * Asserts that a value is a `String` of valid JSON.
        * @example
        * expect('{"i":"am valid JSON"}').toBeJsonString();
        */

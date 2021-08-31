@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a `String` or `new String()`.
+       * Asserts that a value is a `String` or `new String()`.
        * @example
        * expect('i am a string').toBeString();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a `String` or `new String()`.
+       * Asserts that a value is a `String` or `new String()`.
        * @example
        * expect('i am a string').toEqual(
        *   expect.toBeString()

@@ -7,7 +7,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a valid `Array` containing no items.
+       * Asserts that a value is a valid `Array` containing no items.
        * @example
        * expect({ child: { grandchild: [] } }).toHaveEmptyArray('child.grandchild');
        */

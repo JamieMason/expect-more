@@ -1,7 +1,7 @@
 import { hasType } from './lib/has-type';
 
 /**
- * Asserts that ${value} is a `RegExp`.
+ * Asserts that a value is a `RegExp`.
  * @param value new RegExp('i am a regular expression')
  * @matcherName toBeRegExp
  * @memberMatcherName toHaveRegExp

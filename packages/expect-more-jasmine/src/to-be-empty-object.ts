@@ -6,7 +6,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a valid `Object` containing no instance members.
+       * Asserts that a value is a valid `Object` containing no instance members.
        * @example
        * expect({}).toBeEmptyObject();
        */

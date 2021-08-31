@@ -6,7 +6,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a `Function`.
+       * Asserts that a value is a `Function`.
        * @example
        * expect(() => 'i am a function').toBeFunction();
        */

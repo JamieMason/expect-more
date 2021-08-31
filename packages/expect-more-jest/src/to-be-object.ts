@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is an `Object`.
+       * Asserts that a value is an `Object`.
        * @example
        * expect({}).toBeObject();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is an `Object`.
+       * Asserts that a value is an `Object`.
        * @example
        * expect({}).toEqual(
        *   expect.toBeObject()

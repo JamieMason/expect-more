@@ -6,7 +6,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a `Number` with no positive decimal places.
+       * Asserts that a value is a `Number` with no positive decimal places.
        * @example
        * expect(8).toBeWholeNumber();
        */

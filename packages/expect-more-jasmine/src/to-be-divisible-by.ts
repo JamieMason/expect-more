@@ -6,22 +6,22 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a `Number` which results in a whole number when divided by ${otherNumber}.
+       * Asserts that a value is a `Number` which results in a whole number when divided by another.
        * @example
        * expect(12).toBeDivisibleBy(2);
        */
-      toBeDivisibleBy(otherNumber: number): boolean;
+      toBeDivisibleBy(other: number): boolean;
     }
   }
 }
 
 export const toBeDivisibleByMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: unknown, otherNumber: number) {
-      const pass = isDivisibleBy(otherNumber, value);
+    compare(value: unknown, other: number) {
+      const pass = isDivisibleBy(other, value);
       const message = pass
-        ? `expected ${printReceived(value)} not to be divisible by ${printExpected(otherNumber)}`
-        : `expected ${printReceived(value)} to be divisible by ${printExpected(otherNumber)}`;
+        ? `expected ${printReceived(value)} not to be divisible by ${printExpected(other)}`
+        : `expected ${printReceived(value)} to be divisible by ${printExpected(other)}`;
       return { message, pass };
     },
   };

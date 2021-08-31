@@ -2,7 +2,7 @@ import { curry2 } from './lib/curry2';
 import { AnyFn } from './typings';
 
 /**
- * Asserts that ${value} is a `Function` which throws an `Error` of the given
+ * Asserts that a value is a `Function` which throws an `Error` of the given
  * type.
  * @param typeName 'TypeError'
  * @param value () => thisValueIsUndefined.someProp

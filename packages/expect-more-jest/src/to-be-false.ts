@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is `false` or `new Boolean(false)`.
+       * Asserts that a value is `false` or `new Boolean(false)`.
        * @example
        * expect(false).toBeFalse();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is `false` or `new Boolean(false)`.
+       * Asserts that a value is `false` or `new Boolean(false)`.
        * @example
        * expect(false).toEqual(
        *   expect.toBeFalse()

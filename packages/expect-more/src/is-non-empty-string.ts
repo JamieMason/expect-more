@@ -1,7 +1,7 @@
 import { isString } from './is-string';
 
 /**
- * Asserts that ${value} is a valid `String` containing at least one character.
+ * Asserts that a value is a valid `String` containing at least one character.
  * @param value 'i am not empty'
  * @matcherName toBeNonEmptyString
  * @memberMatcherName toHaveNonEmptyString

@@ -6,35 +6,31 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a `Number` which results in a whole number when divided by ${otherNumber}.
+       * Asserts that a value is a `Number` which results in a whole number when divided by another.
        * @example
        * expect(12).toBeDivisibleBy(2);
        */
-      toBeDivisibleBy(otherNumber: number): R;
+      toBeDivisibleBy(other: number): R;
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a `Number` which results in a whole number when divided by ${otherNumber}.
+       * Asserts that a value is a `Number` which results in a whole number when divided by another.
        * @example
        * expect(12).toEqual(
        *   expect.toBeDivisibleBy(2)
        * );
        */
-      toBeDivisibleBy<T>(otherNumber: number): JestMatchers<T>;
+      toBeDivisibleBy<T>(other: number): JestMatchers<T>;
     }
   }
 }
 
-export const toBeDivisibleByMatcher = (
-  value: unknown,
-  otherNumber: number,
-): jest.CustomMatcherResult =>
+export const toBeDivisibleByMatcher = (value: unknown, other: number): jest.CustomMatcherResult =>
   createResult({
-    message: () =>
-      `expected ${printReceived(value)} to be divisible by ${printExpected(otherNumber)}`,
+    message: () => `expected ${printReceived(value)} to be divisible by ${printExpected(other)}`,
     notMessage: () =>
-      `expected ${printReceived(value)} not to be divisible by ${printExpected(otherNumber)}`,
-    pass: isDivisibleBy(otherNumber, value),
+      `expected ${printReceived(value)} not to be divisible by ${printExpected(other)}`,
+    pass: isDivisibleBy(other, value),
   });
 
 expect.extend({ toBeDivisibleBy: toBeDivisibleByMatcher });

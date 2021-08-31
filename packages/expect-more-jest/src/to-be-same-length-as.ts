@@ -6,43 +6,39 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a `String` or `Array` whose length is the same as that of ${otherStringOrArray}.
+       * Asserts that a value is a `String` or `Array` whose length is the same as that of the other provided.
        * @example
        * expect(['i also have', '2 items']).toBeSameLengthAs(['i have', '2 items']);
        */
-      toBeSameLengthAs(otherStringOrArray: string | any[]): R;
+      toBeSameLengthAs(other: string | any[]): R;
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a `String` or `Array` whose length is the same as that of ${otherStringOrArray}.
+       * Asserts that a value is a `String` or `Array` whose length is the same as that of the other provided.
        * @example
        * expect(['i also have', '2 items']).toEqual(
        *   expect.toBeSameLengthAs(['i have', '2 items'])
        * );
        */
-      toBeSameLengthAs<T>(otherStringOrArray: string | any[]): JestMatchers<T>;
+      toBeSameLengthAs<T>(other: string | any[]): JestMatchers<T>;
     }
   }
 }
 
 export const toBeSameLengthAsMatcher = (
   value: unknown,
-  otherStringOrArray: string | any[],
+  other: string | any[],
 ): jest.CustomMatcherResult =>
   createResult({
     message: () =>
       `expected ${printReceived(
         value,
-      )} to be a string or array whose length is the same as that of ${printExpected(
-        otherStringOrArray,
-      )}`,
+      )} to be a string or array whose length is the same as that of ${printExpected(other)}`,
     notMessage: () =>
       `expected ${printReceived(
         value,
-      )} not to be a string or array whose length is the same as that of ${printExpected(
-        otherStringOrArray,
-      )}`,
-    pass: isSameLengthAs(otherStringOrArray, value),
+      )} not to be a string or array whose length is the same as that of ${printExpected(other)}`,
+    pass: isSameLengthAs(other, value),
   });
 
 expect.extend({ toBeSameLengthAs: toBeSameLengthAsMatcher });

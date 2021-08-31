@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a `Number` which is both greater than or equal to ${floor} and less than or equal to ${ceiling}.
+       * Asserts that a value is a `Number` which is both greater than or equal to `floor` and less than or equal to `ceiling`.
        * @example
        * expect(7).toBeWithinRange(0, 10);
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a `Number` which is both greater than or equal to ${floor} and less than or equal to ${ceiling}.
+       * Asserts that a value is a `Number` which is both greater than or equal to `floor` and less than or equal to `ceiling`.
        * @example
        * expect(7).toEqual(
        *   expect.toBeWithinRange(0, 10)

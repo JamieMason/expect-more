@@ -2,7 +2,8 @@ import { isNonEmptyString } from './is-non-empty-string';
 import { curry2 } from './lib/curry2';
 
 /**
- * Asserts that ${value} is a string whose trailing characters are equal to ${otherString}.
+ * Asserts that value is a string whose trailing characters are equal to
+ * those of the provided string.
  * @param otherString 'Script'
  * @param value 'JavaScript'
  * @matcherName toEndWith

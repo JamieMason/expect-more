@@ -3,8 +3,8 @@ import { isWalkable } from './is-walkable';
 import { curry2 } from './lib/curry2';
 
 /**
- * Asserts that ${value} has a property of the given name, even if the value of
- * that property is undefined. This assertion describes the shape of the given
+ * Asserts that a value has a property of the given name, even if the value of
+ * that property is `undefined`. This assertion describes the shape of the given
  * value. For example, value.prop is `undefined` in both of the following
  * scenarios, but `{ prop: undefined }` and `{ }` do not have the same shape.
  * @param ownKeyName 'name'

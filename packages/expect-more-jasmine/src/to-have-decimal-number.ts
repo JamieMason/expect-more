@@ -7,7 +7,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a `Number` with positive decimal places.
+       * Asserts that a value is a `Number` with positive decimal places.
        * @example
        * expect({ child: { grandchild: 12.55 } }).toHaveDecimalNumber('child.grandchild');
        */

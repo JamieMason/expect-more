@@ -1,7 +1,7 @@
 import { AnyFn } from './typings';
 
 /**
- * Asserts that ${value} is a `Function`.
+ * Asserts that a value is a `Function`.
  * @param value () => 'i am a function'
  * @matcherName toBeFunction
  * @memberMatcherName toHaveMethod

@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is an `Object` containing at least one own member.
+       * Asserts that a value is an `Object` containing at least one own member.
        * @example
        * expect({ i: 'am not empty' }).toBeNonEmptyObject();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is an `Object` containing at least one own member.
+       * Asserts that a value is an `Object` containing at least one own member.
        * @example
        * expect({ i: 'am not empty' }).toEqual(
        *   expect.toBeNonEmptyObject()

@@ -6,30 +6,26 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a `String` or `Array` whose length is less than that of ${otherStringOrArray}.
+       * Asserts that a value is a `String` or `Array` whose length is less than that of the other provided.
        * @example
        * expect(['i have one item']).toBeShorterThan(['i', 'have', 4, 'items']);
        */
-      toBeShorterThan(otherStringOrArray: string | any[]): boolean;
+      toBeShorterThan(other: string | any[]): boolean;
     }
   }
 }
 
 export const toBeShorterThanMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: unknown, otherStringOrArray: string | any[]) {
-      const pass = isShorterThan(otherStringOrArray, value);
+    compare(value: unknown, other: string | any[]) {
+      const pass = isShorterThan(other, value);
       const message = pass
         ? `expected ${printReceived(
             value,
-          )} not to be a string or array whose length is less than that of ${printExpected(
-            otherStringOrArray,
-          )}`
+          )} not to be a string or array whose length is less than that of ${printExpected(other)}`
         : `expected ${printReceived(
             value,
-          )} to be a string or array whose length is less than that of ${printExpected(
-            otherStringOrArray,
-          )}`;
+          )} to be a string or array whose length is less than that of ${printExpected(other)}`;
       return { message, pass };
     },
   };

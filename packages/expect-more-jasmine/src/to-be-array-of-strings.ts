@@ -6,7 +6,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is an `Array` containing only `String` values.
+       * Asserts that a value is an `Array` containing only `String` values.
        * @example
        * expect(['we', 'are', 'all', 'strings']).toBeArrayOfStrings();
        */

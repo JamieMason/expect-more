@@ -3,7 +3,7 @@ import { isObject } from './is-object';
 import { every } from './lib/every';
 
 /**
- * Asserts that ${value} is an `Array` containing only `Object` values.
+ * Asserts that a value is an `Array` containing only `Object` values.
  * @param value [{}, new Object()]
  * @matcherName toBeArrayOfObjects
  * @memberMatcherName toHaveArrayOfObjects

@@ -7,7 +7,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a number within the given acceptable distance from ${otherNumber}.
+       * Asserts that a value is a number within the given acceptable distance from another.
        * @example
        * expect({ child: { grandchild: 4.8 } }).toHaveNumberNear('child.grandchild', 5, 0.5);
        */

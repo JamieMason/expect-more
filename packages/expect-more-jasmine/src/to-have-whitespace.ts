@@ -7,7 +7,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a `String` containing only whitespace characters.
+       * Asserts that a value is a `String` containing only whitespace characters.
        * @example
        * expect({ child: { grandchild: ' ' } }).toHaveWhitespace('child.grandchild');
        */

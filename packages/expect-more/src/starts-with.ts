@@ -2,7 +2,8 @@ import { isNonEmptyString } from './is-non-empty-string';
 import { curry2 } from './lib/curry2';
 
 /**
- * Assert value is a string whose leading characters are equal to `other`.
+ * Asserts that value is a string whose trailing characters are equal to
+ * those of the provided string.
  * @param otherString 'Java'
  * @param value 'JavaScript'
  * @matcherName toStartWith

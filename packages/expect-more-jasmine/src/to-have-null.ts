@@ -7,7 +7,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is null
+       * Asserts that a value is `null`.
        * @example
        * expect({ child: { grandchild: null } }).toHaveNull('child.grandchild');
        */
@@ -21,8 +21,8 @@ export const toHaveNullMatcher: jasmine.CustomMatcherFactory = () => {
     compare(value: unknown, propPath: string) {
       const pass = isNull(getIn(propPath.split('.'), value));
       const message = pass
-        ? `expected value at '${printExpected(propPath)}' not to be is null`
-        : `expected value at '${printExpected(propPath)}' to be is null`;
+        ? `expected value at '${printExpected(propPath)}' not to be null`
+        : `expected value at '${printExpected(propPath)}' to be null`;
       return { message, pass };
     },
   };

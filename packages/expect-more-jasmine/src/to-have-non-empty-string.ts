@@ -7,7 +7,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a valid `String` containing at least one character.
+       * Asserts that a value is a valid `String` containing at least one character.
        * @example
        * expect({ child: { grandchild: 'i am not empty' } }).toHaveNonEmptyString('child.grandchild');
        */

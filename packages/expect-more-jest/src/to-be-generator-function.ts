@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a `Function` using yield syntax.
+       * Asserts that a value is a `Function` using `yield` syntax.
        * @example
        * expect(function* gen() { yield 'i am a generator' }).toBeGeneratorFunction();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a `Function` using yield syntax.
+       * Asserts that a value is a `Function` using `yield` syntax.
        * @example
        * expect(function* gen() { yield 'i am a generator' }).toEqual(
        *   expect.toBeGeneratorFunction()

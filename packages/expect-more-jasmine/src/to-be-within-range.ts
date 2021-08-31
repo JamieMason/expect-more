@@ -6,7 +6,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a `Number` which is both greater than or equal to ${floor} and less than or equal to ${ceiling}.
+       * Asserts that a value is a `Number` which is both greater than or equal to `floor` and less than or equal to `ceiling`.
        * @example
        * expect(7).toBeWithinRange(0, 10);
        */

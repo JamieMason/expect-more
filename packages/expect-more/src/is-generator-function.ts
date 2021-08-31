@@ -1,7 +1,7 @@
 import { hasType } from './lib/has-type';
 
 /**
- * Asserts that ${value} is a `Function` using yield syntax.
+ * Asserts that a value is a `Function` using `yield` syntax.
  * @param value function* gen() { yield 'i am a generator' }
  * @matcherName toBeGeneratorFunction
  * @memberMatcherName toHaveGeneratorFunction

@@ -7,26 +7,26 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a valid instance of `Date` whose value occurs before that of ${otherDate}.
+       * Asserts that a value is a valid instance of `Date` whose value occurs before that of another.
        * @example
        * expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDateBefore('child.grandchild', new Date('2020-01-01'));
        */
-      toHaveDateBefore(propPath: string, otherDate: Date): boolean;
+      toHaveDateBefore(propPath: string, other: Date): boolean;
     }
   }
 }
 
 export const toHaveDateBeforeMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: unknown, propPath: string, otherDate: Date) {
-      const pass = isBefore(otherDate, getIn(propPath.split('.'), value));
+    compare(value: unknown, propPath: string, other: Date) {
+      const pass = isBefore(other, getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(
             propPath,
-          )}' not to be an instance of Date, occurring before ${printExpected(otherDate)}`
+          )}' not to be an instance of Date, occurring before ${printExpected(other)}`
         : `expected value at '${printExpected(
             propPath,
-          )}' to be an instance of Date, occurring before ${printExpected(otherDate)}`;
+          )}' to be an instance of Date, occurring before ${printExpected(other)}`;
       return { message, pass };
     },
   };

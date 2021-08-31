@@ -1,7 +1,7 @@
 import { isArrayOfSize } from './is-array-of-size';
 
 /**
- * Asserts that ${value} is a valid `Array` containing no items.
+ * Asserts that a value is a valid `Array` containing no items.
  * @param value []
  * @matcherName toBeEmptyArray
  * @memberMatcherName toHaveEmptyArray

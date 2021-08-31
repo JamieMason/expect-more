@@ -1,7 +1,7 @@
 import { hasType } from './lib/has-type';
 
 /**
- * Asserts that ${value} is an instance of `Date`.
+ * Asserts that a value is an instance of `Date`.
  * @param value new Date('2019-12-31')
  * @matcherName toBeDate
  * @memberMatcherName toHaveDate

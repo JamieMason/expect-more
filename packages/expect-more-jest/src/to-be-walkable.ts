@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is safe to attempt to read property values from.
+       * Asserts that a value is safe to attempt to read property values from.
        * @example
        * expect({}).toBeWalkable();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is safe to attempt to read property values from.
+       * Asserts that a value is safe to attempt to read property values from.
        * @example
        * expect({}).toEqual(
        *   expect.toBeWalkable()

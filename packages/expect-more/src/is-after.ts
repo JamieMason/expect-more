@@ -2,8 +2,8 @@ import { isDate } from './is-date';
 import { curry2 } from './lib/curry2';
 
 /**
- * Asserts that ${value} is a valid instance of `Date` whose value occurs after
- * that of ${otherDate}.
+ * Asserts that a value is a valid instance of `Date` whose value occurs after
+ * that of another.
  * @param otherDate new Date('2019-12-31')
  * @param value new Date('2020-01-01')
  * @matcherName toBeAfter

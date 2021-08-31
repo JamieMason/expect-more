@@ -6,7 +6,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is an `Array` containing only `Boolean` values.
+       * Asserts that a value is an `Array` containing only `Boolean` values.
        * @example
        * expect([true, false, new Boolean(true)]).toBeArrayOfBooleans();
        */

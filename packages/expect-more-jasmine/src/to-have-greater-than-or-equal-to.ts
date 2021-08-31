@@ -7,26 +7,26 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is greater than or equal to ${otherNumber}.
+       * Asserts that a value is greater than or equal to ${other}.
        * @example
        * expect({ child: { grandchild: 10 } }).toHaveGreaterThanOrEqualTo('child.grandchild', 5);
        */
-      toHaveGreaterThanOrEqualTo(propPath: string, otherNumber: number): boolean;
+      toHaveGreaterThanOrEqualTo(propPath: string, other: number): boolean;
     }
   }
 }
 
 export const toHaveGreaterThanOrEqualToMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: unknown, propPath: string, otherNumber: number) {
-      const pass = isGreaterThanOrEqualTo(otherNumber, getIn(propPath.split('.'), value));
+    compare(value: unknown, propPath: string, other: number) {
+      const pass = isGreaterThanOrEqualTo(other, getIn(propPath.split('.'), value));
       const message = pass
         ? `expected value at '${printExpected(
             propPath,
-          )}' not to be greater than or equal to ${printExpected(otherNumber)}`
+          )}' not to be greater than or equal to ${printExpected(other)}`
         : `expected value at '${printExpected(
             propPath,
-          )}' to be greater than or equal to ${printExpected(otherNumber)}`;
+          )}' to be greater than or equal to ${printExpected(other)}`;
       return { message, pass };
     },
   };

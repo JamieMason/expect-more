@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a valid `Array` containing no items.
+       * Asserts that a value is a valid `Array` containing no items.
        * @example
        * expect([]).toBeEmptyArray();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a valid `Array` containing no items.
+       * Asserts that a value is a valid `Array` containing no items.
        * @example
        * expect([]).toEqual(
        *   expect.toBeEmptyArray()

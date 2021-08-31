@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is an `Array` containing only `Number` values.
+       * Asserts that a value is an `Array` containing only `Number` values.
        * @example
        * expect([12, 0, 14]).toBeArrayOfNumbers();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is an `Array` containing only `Number` values.
+       * Asserts that a value is an `Array` containing only `Number` values.
        * @example
        * expect([12, 0, 14]).toEqual(
        *   expect.toBeArrayOfNumbers()

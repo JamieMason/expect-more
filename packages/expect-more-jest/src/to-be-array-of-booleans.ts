@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is an `Array` containing only `Boolean` values.
+       * Asserts that a value is an `Array` containing only `Boolean` values.
        * @example
        * expect([true, false, new Boolean(true)]).toBeArrayOfBooleans();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is an `Array` containing only `Boolean` values.
+       * Asserts that a value is an `Array` containing only `Boolean` values.
        * @example
        * expect([true, false, new Boolean(true)]).toEqual(
        *   expect.toBeArrayOfBooleans()

@@ -7,7 +7,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is an odd `Number`.
+       * Asserts that a value is an odd `Number`.
        * @example
        * expect({ child: { grandchild: 5 } }).toHaveOddNumber('child.grandchild');
        */

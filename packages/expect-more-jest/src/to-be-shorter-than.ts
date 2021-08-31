@@ -6,43 +6,39 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a `String` or `Array` whose length is less than that of ${otherStringOrArray}.
+       * Asserts that a value is a `String` or `Array` whose length is less than that of the other provided.
        * @example
        * expect(['i have one item']).toBeShorterThan(['i', 'have', 4, 'items']);
        */
-      toBeShorterThan(otherStringOrArray: string | any[]): R;
+      toBeShorterThan(other: string | any[]): R;
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a `String` or `Array` whose length is less than that of ${otherStringOrArray}.
+       * Asserts that a value is a `String` or `Array` whose length is less than that of the other provided.
        * @example
        * expect(['i have one item']).toEqual(
        *   expect.toBeShorterThan(['i', 'have', 4, 'items'])
        * );
        */
-      toBeShorterThan<T>(otherStringOrArray: string | any[]): JestMatchers<T>;
+      toBeShorterThan<T>(other: string | any[]): JestMatchers<T>;
     }
   }
 }
 
 export const toBeShorterThanMatcher = (
   value: unknown,
-  otherStringOrArray: string | any[],
+  other: string | any[],
 ): jest.CustomMatcherResult =>
   createResult({
     message: () =>
       `expected ${printReceived(
         value,
-      )} to be a string or array whose length is less than that of ${printExpected(
-        otherStringOrArray,
-      )}`,
+      )} to be a string or array whose length is less than that of ${printExpected(other)}`,
     notMessage: () =>
       `expected ${printReceived(
         value,
-      )} not to be a string or array whose length is less than that of ${printExpected(
-        otherStringOrArray,
-      )}`,
-    pass: isShorterThan(otherStringOrArray, value),
+      )} not to be a string or array whose length is less than that of ${printExpected(other)}`,
+    pass: isShorterThan(other, value),
   });
 
 expect.extend({ toBeShorterThan: toBeShorterThanMatcher });

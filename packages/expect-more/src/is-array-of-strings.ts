@@ -3,7 +3,7 @@ import { isString } from './is-string';
 import { every } from './lib/every';
 
 /**
- * Asserts that ${value} is an `Array` containing only `String` values.
+ * Asserts that a value is an `Array` containing only `String` values.
  * @param value ['we', 'are', 'all', 'strings']
  * @matcherName toBeArrayOfStrings
  * @memberMatcherName toHaveArrayOfStrings

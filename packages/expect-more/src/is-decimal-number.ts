@@ -1,7 +1,7 @@
 import { isNumber } from './is-number';
 
 /**
- * Asserts that ${value} is a `Number` with positive decimal places.
+ * Asserts that a value is a `Number` with positive decimal places.
  * @param value 12.55
  * @matcherName toBeDecimalNumber
  * @memberMatcherName toHaveDecimalNumber

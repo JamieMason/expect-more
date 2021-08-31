@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a `Function`.
+       * Asserts that a value is a `Function`.
        * @example
        * expect(() => 'i am a function').toBeFunction();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a `Function`.
+       * Asserts that a value is a `Function`.
        * @example
        * expect(() => 'i am a function').toEqual(
        *   expect.toBeFunction()

@@ -2,7 +2,7 @@ import { isString } from './is-string';
 import { isValidDate } from './is-valid-date';
 
 /**
- * Asserts that ${value} is a String which conforms to common use-cases of the
+ * Asserts that a value is a String which conforms to common use-cases of the
  * ISO 8601 standard representation of dates and times.
  * @param value '1999-12-31T23:59:59'
  * @matcherName toBeIso8601

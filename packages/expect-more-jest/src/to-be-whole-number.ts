@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a `Number` with no positive decimal places.
+       * Asserts that a value is a `Number` with no positive decimal places.
        * @example
        * expect(8).toBeWholeNumber();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a `Number` with no positive decimal places.
+       * Asserts that a value is a `Number` with no positive decimal places.
        * @example
        * expect(8).toEqual(
        *   expect.toBeWholeNumber()

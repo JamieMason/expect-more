@@ -7,7 +7,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is equal to ${other} or undefined.
+       * Asserts that a value is equal to ${other} or undefined.
        * @example
        * expect({ x: 12, y: 22 }).toBeOptionalOf({
        *   x: expect.toBeNumber(),
@@ -22,7 +22,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is equal to ${other} or undefined.
+       * Asserts that a value is equal to ${other} or undefined.
        * @example
        * expect({ x: 12, y: 22 }).toEqual(
        *   expect.toBeOptionalOf({

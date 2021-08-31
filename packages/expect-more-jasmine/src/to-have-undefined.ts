@@ -7,7 +7,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is undefined
+       * Asserts that a value is `undefined`
        * @example
        * expect({ child: { grandchild: undefined } }).toHaveUndefined('child.grandchild');
        */

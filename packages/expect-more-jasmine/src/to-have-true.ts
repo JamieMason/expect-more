@@ -7,7 +7,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is `true` or `new Boolean(true)`.
+       * Asserts that a value is `true` or `new Boolean(true)`.
        * @example
        * expect({ child: { grandchild: true } }).toHaveTrue('child.grandchild');
        */

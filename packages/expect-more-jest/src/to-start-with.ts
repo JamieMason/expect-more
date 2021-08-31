@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Assert value is a string whose leading characters are equal to `other`.
+       * Asserts that value is a string whose trailing characters are equal to those of the provided string.
        * @example
        * expect('JavaScript').toStartWith('Java');
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Assert value is a string whose leading characters are equal to `other`.
+       * Asserts that value is a string whose trailing characters are equal to those of the provided string.
        * @example
        * expect('JavaScript').toEqual(
        *   expect.toStartWith('Java')

@@ -2,7 +2,7 @@ import { isDivisibleBy } from './is-divisible-by';
 import { isNumber } from './is-number';
 
 /**
- * Asserts that ${value} is an odd `Number`.
+ * Asserts that a value is an odd `Number`.
  * @param value 5
  * @matcherName toBeOddNumber
  * @memberMatcherName toHaveOddNumber

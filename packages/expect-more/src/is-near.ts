@@ -2,8 +2,8 @@ import { isWithinRange } from './is-within-range';
 import { curry3 } from './lib/curry3';
 
 /**
- * Asserts that ${value} is a number within the given acceptable distance from
- * ${otherNumber}.
+ * Asserts that a value is a number within the given acceptable distance from
+ * another.
  * @param otherNumber 5
  * @param epsilon 0.5
  * @param value 4.8

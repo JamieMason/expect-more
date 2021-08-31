@@ -3,7 +3,7 @@ import { isNumber } from './is-number';
 import { curry2 } from './lib/curry2';
 
 /**
- * Asserts that ${value} is an `Array` containing ${size} number of values.
+ * Asserts that a value is an `Array` containing a specific number of values.
  * @param size 4
  * @param value ['i', 'contain', 4, 'items']
  * @matcherName toBeArrayOfSize

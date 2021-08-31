@@ -6,7 +6,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a string whose trailing characters are equal to ${otherString}.
+       * Asserts that value is a string whose trailing characters are equal to those of the provided string.
        * @example
        * expect('JavaScript').toEndWith('Script');
        */

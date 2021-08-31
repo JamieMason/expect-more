@@ -1,7 +1,7 @@
 import type { AnyFn } from './typings';
 
 /**
- * Asserts that ${value} is a `Function` which throws when invoked.
+ * Asserts that a value is a `Function` which throws when invoked.
  * @param value () => { throw new Error("it wasn't me!") }
  * @matcherName toThrowAnyError
  * @memberMatcherName toHaveMethodThrowingAnyError

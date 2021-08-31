@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a function using async/await syntax.
+       * Asserts that a value is a function using `async` and `await` syntax.
        * @example
        * expect(async () => { await fetch('...') }).toBeAsyncFunction();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a function using async/await syntax.
+       * Asserts that a value is a function using `async` and `await` syntax.
        * @example
        * expect(async () => { await fetch('...') }).toEqual(
        *   expect.toBeAsyncFunction()

@@ -2,7 +2,7 @@ import { isNull } from './is-null';
 import { isUndefined } from './is-undefined';
 
 /**
- * Asserts that ${value} is safe to attempt to read property values from.
+ * Asserts that a value is safe to attempt to read property values from.
  * @param value {} {}
  * @matcherName toBeWalkable
  * @memberMatcherName toHaveWalkable

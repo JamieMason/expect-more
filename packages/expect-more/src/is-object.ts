@@ -1,7 +1,7 @@
 import { hasType } from './lib/has-type';
 
 /**
- * Asserts that ${value} is an `Object`.
+ * Asserts that a value is an `Object`.
  * @param value {} {}
  * @matcherName toBeObject
  * @memberMatcherName toHaveObject

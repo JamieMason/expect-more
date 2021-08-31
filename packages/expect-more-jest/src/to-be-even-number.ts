@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is an even `Number`.
+       * Asserts that a value is an even `Number`.
        * @example
        * expect(2).toBeEvenNumber();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is an even `Number`.
+       * Asserts that a value is an even `Number`.
        * @example
        * expect(2).toEqual(
        *   expect.toBeEvenNumber()

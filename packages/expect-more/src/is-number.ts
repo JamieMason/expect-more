@@ -1,7 +1,7 @@
 import { hasType } from './lib/has-type';
 
 /**
- * Asserts that ${value} is a valid `Number` or `new Number()` and not `NaN`.
+ * Asserts that a value is a valid `Number` or `new Number()` and not `NaN`.
  * @param value 8
  * @matcherName toBeNumber
  * @memberMatcherName toHaveNumber

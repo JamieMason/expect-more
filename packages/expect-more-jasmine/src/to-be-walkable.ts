@@ -6,7 +6,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is safe to attempt to read property values from.
+       * Asserts that a value is safe to attempt to read property values from.
        * @example
        * expect({}).toBeWalkable();
        */

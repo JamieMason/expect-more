@@ -6,7 +6,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a valid `Array` containing none or any number of items of any type.
+       * Asserts that a value is a valid `Array` containing none or any number of items of any type.
        * @example
        * expect([2, true, 'string']).toBeArray();
        */

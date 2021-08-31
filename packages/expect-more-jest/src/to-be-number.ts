@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a valid `Number` or `new Number()` and not `NaN`.
+       * Asserts that a value is a valid `Number` or `new Number()` and not `NaN`.
        * @example
        * expect(8).toBeNumber();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a valid `Number` or `new Number()` and not `NaN`.
+       * Asserts that a value is a valid `Number` or `new Number()` and not `NaN`.
        * @example
        * expect(8).toEqual(
        *   expect.toBeNumber()

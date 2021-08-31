@@ -1,7 +1,7 @@
 import { hasType } from './lib/has-type';
 
 /**
- * Asserts that ${value} is a `String` or `new String()`.
+ * Asserts that a value is a `String` or `new String()`.
  * @param value 'i am a string'
  * @matcherName toBeString
  * @memberMatcherName toHaveString

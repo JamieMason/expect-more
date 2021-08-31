@@ -1,7 +1,7 @@
 import { hasType } from './lib/has-type';
 
 /**
- * Asserts that ${value} is a function using async/await syntax.
+ * Asserts that a value is a function using `async` and `await` syntax.
  * @param value async () => { await fetch('...') }
  * @matcherName toBeAsyncFunction
  * @memberMatcherName toHaveAsyncFunction

@@ -1,7 +1,7 @@
 import { isString } from './is-string';
 
 /**
- * Asserts that ${value} is a `String` of valid JSON.
+ * Asserts that a value is a `String` of valid JSON.
  * @param value '{"i":"am valid JSON"}'
  * @matcherName toBeJsonString
  * @memberMatcherName toHaveJsonString

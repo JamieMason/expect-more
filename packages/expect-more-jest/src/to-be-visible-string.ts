@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a valid `String` containing at least one character which is not whitespace.
+       * Asserts that a value is a valid `String` containing at least one character which is not whitespace.
        * @example
        * expect('i am visible').toBeVisibleString();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a valid `String` containing at least one character which is not whitespace.
+       * Asserts that a value is a valid `String` containing at least one character which is not whitespace.
        * @example
        * expect('i am visible').toEqual(
        *   expect.toBeVisibleString()

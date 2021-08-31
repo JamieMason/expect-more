@@ -7,7 +7,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is a valid instance of `Date` whose value occurs after that of ${otherDate}.
+       * Asserts that a value is a valid instance of `Date` whose value occurs after that of another.
        * @example
        * expect({ child: { grandchild: new Date('2020-01-01') } }).toHaveDateAfter('child.grandchild', new Date('2019-12-31'));
        */

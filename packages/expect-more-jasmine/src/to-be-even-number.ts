@@ -6,7 +6,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that ${value} is an even `Number`.
+       * Asserts that a value is an even `Number`.
        * @example
        * expect(2).toBeEvenNumber();
        */

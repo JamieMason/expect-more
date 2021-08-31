@@ -1,7 +1,7 @@
 import { isArray } from './is-array';
 
 /**
- * Asserts that ${value} is an `Array` containing at least one value.
+ * Asserts that a value is an `Array` containing at least one value.
  * @param value ['i', 'am not empty']
  * @matcherName toBeNonEmptyArray
  * @memberMatcherName toHaveNonEmptyArray

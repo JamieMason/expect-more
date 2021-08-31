@@ -7,7 +7,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is an `Array` where every member is equal to ${other}.
+       * Asserts that a value is an `Array` where every member is equal to ${other}.
        * @example
        * expect([{ name: 'Guybrush' }, { name: 'Elaine' }]).toBeArrayOf({
        *   name: expect.toBeNonEmptyString()
@@ -17,7 +17,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is an `Array` containing only `Boolean` values.
+       * Asserts that a value is an `Array` containing only `Boolean` values.
        * @example
        * expect([{ name: 'Guybrush' }, { name: 'Elaine' }]).toEqual(
        *   expect.toBeArrayOf({ name: expect.toBeNonEmptyString() })

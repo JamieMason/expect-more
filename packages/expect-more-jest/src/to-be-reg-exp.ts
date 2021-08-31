@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a `RegExp`.
+       * Asserts that a value is a `RegExp`.
        * @example
        * expect(new RegExp('i am a regular expression')).toBeRegExp();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a `RegExp`.
+       * Asserts that a value is a `RegExp`.
        * @example
        * expect(new RegExp('i am a regular expression')).toEqual(
        *   expect.toBeRegExp()

@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a valid instance of `Date` whose value occurs after that of ${otherDate}.
+       * Asserts that a value is a valid instance of `Date` whose value occurs after that of another.
        * @example
        * expect(new Date('2020-01-01')).toBeAfter(new Date('2019-12-31'));
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a valid instance of `Date` whose value occurs after that of ${otherDate}.
+       * Asserts that a value is a valid instance of `Date` whose value occurs after that of another.
        * @example
        * expect(new Date('2020-01-01')).toEqual(
        *   expect.toBeAfter(new Date('2019-12-31'))

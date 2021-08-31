@@ -6,7 +6,7 @@ declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that ${value} is a `String` of valid JSON.
+       * Asserts that a value is a `String` of valid JSON.
        * @example
        * expect('{"i":"am valid JSON"}').toBeJsonString();
        */
@@ -14,7 +14,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is a `String` of valid JSON.
+       * Asserts that a value is a `String` of valid JSON.
        * @example
        * expect('{"i":"am valid JSON"}').toEqual(
        *   expect.toBeJsonString()
