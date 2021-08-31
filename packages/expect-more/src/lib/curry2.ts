@@ -9,11 +9,8 @@ export type CurriedFn2<R = any> = {
 
 export function curry2<R>(fn: Fn2<R>): CurriedFn2<R> {
   return function curriedFn2(b, a) {
-    switch (arguments.length) {
-      case 2:
-        return fn(b, a);
-      case 1:
-        return curry1<R>(fn.bind(null, b));
-    }
+    const len = arguments.length;
+    if (len >= 2) return fn(b, a);
+    if (len >= 1) return curry1<R>(fn.bind(null, b));
   } as CurriedFn2<R>;
 }

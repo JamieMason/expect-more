@@ -11,13 +11,9 @@ export type CurriedFn3<R = any> = {
 
 export function curry3<R>(fn: Fn3<R>): CurriedFn3<R> {
   return function curriedFn3(c, b, a) {
-    switch (arguments.length) {
-      case 3:
-        return fn(c, b, a);
-      case 2:
-        return curry1<R>(fn.bind(null, c, b));
-      case 1:
-        return curry2<R>(fn.bind(null, c));
-    }
+    const len = arguments.length;
+    if (len >= 3) return fn(c, b, a);
+    if (len >= 2) return curry1<R>(fn.bind(null, c, b));
+    if (len >= 1) return curry2<R>(fn.bind(null, c));
   } as CurriedFn3<R>;
 }

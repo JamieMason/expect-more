@@ -6,9 +6,6 @@ export type CurriedFn1<R = any> = {
 
 export function curry1<R>(fn: Fn1<R>): CurriedFn1<R> {
   return function curriedFn1(a) {
-    switch (arguments.length) {
-      case 1:
-        return fn(a);
-    }
+    if (arguments.length >= 1) return fn(a);
   } as CurriedFn1<R>;
 }
