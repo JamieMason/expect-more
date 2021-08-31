@@ -39,24 +39,24 @@ isWithinRange(10, 20, 21);
 ### General
 
 ```ts
-export declare const isBoolean: (value: unknown) => value is boolean;
-export declare const isFalse: (value: unknown) => value is false;
-export declare const isNull: (value: unknown) => value is null;
-export declare const isRegExp: (value: unknown) => value is RegExp;
-export declare const isTrue: (value: unknown) => value is true;
-export declare const isUndefined: (value: unknown) => value is undefined;
+declare const isBoolean: (value: unknown) => value is boolean;
+declare const isFalse: (value: unknown) => value is false;
+declare const isNull: (value: unknown) => value is null;
+declare const isRegExp: (value: unknown) => value is RegExp;
+declare const isTrue: (value: unknown) => value is true;
+declare const isUndefined: (value: unknown) => value is undefined;
 ```
 
 ### Functions
 
 ```ts
-export declare const isAsyncFunction: <T = (...args: any[]) => Promise<any>>(
+declare const isAsyncFunction: <T = (...args: any[]) => Promise<any>>(
   value: unknown,
 ) => value is T;
-export declare const isFunction: <T = (...args: any[]) => any>(value: unknown) => value is T;
-export declare const isGeneratorFunction: <T = Generator>(value: unknown) => value is T;
-export declare const throwsAnyError: <T = (...args: any[]) => any>(value: unknown) => value is T;
-export declare const throwsErrorOfType: <T = (...args: any[]) => any>(
+declare const isFunction: <T = (...args: any[]) => any>(value: unknown) => value is T;
+declare const isGeneratorFunction: <T = Generator>(value: unknown) => value is T;
+declare const throwsAnyError: <T = (...args: any[]) => any>(value: unknown) => value is T;
+declare const throwsErrorOfType: <T = (...args: any[]) => any>(
   typeName: string,
   value: unknown,
 ) => value is T;
@@ -65,52 +65,65 @@ export declare const throwsErrorOfType: <T = (...args: any[]) => any>(
 ### Objects
 
 ```ts
-export declare const hasMember: <T = any>(memberName: string, value: unknown) => value is T;
-export declare const isEmptyObject: <T = any>(value: unknown) => value is T;
-export declare const isNonEmptyObject: <T = any>(value: unknown) => value is T;
-export declare const isObject: <T = any>(value: unknown) => value is T;
-export declare const isWalkable: <T = any>(value: unknown) => value is T;
+declare const hasMember: <T = any>(memberName: string, value: unknown) => value is T;
+declare const isEmptyObject: <T = any>(value: unknown) => value is T;
+declare const isNil: (value: unknown) => value is undefined | null;
+declare const isNonEmptyObject: <T = any>(value: unknown) => value is T;
+declare const isObject: <T = any>(value: unknown) => value is T;
+declare const isWalkable: <T = any>(value: unknown) => value is T;
 ```
 
 ### Arrays
 
 ```ts
-export declare const isArray: <T extends any[] = any[]>(value: unknown) => value is T;
-export declare const isArrayOfBooleans: (value: unknown) => value is boolean[];
-export declare const isArrayOfNumbers: (value: unknown) => value is number[];
-export declare const isArrayOfObjects: <T extends any[] = any[]>(value: unknown) => value is T;
-export declare const isArrayOfSize: <T extends any[] = any[]>(
+declare const isArray: <T extends any[] = any[]>(value: unknown) => value is T;
+declare const isArrayIncludingAllOf: <T extends any[] = any[]>(needed: any[], value: unknown) => value is T;
+declare const isArrayIncludingAnyOf: <T extends any[] = any[]>(needed: any[], value: unknown) => value is T;
+declare const isArrayIncludingOnly: <T extends any[] = any[]>(needed: any[], value: unknown) => value is T;
+declare const isArrayOfBooleans: (value: unknown) => value is boolean[];
+declare const isArrayOfNumbers: (value: unknown) => value is number[];
+declare const isArrayOfObjects: <T extends any[] = any[]>(value: unknown) => value is T;
+declare const isArrayOfSize: <T extends any[] = any[]>(
   size: number,
   value: unknown,
 ) => value is T;
-export declare const isArrayOfStrings: (value: unknown) => value is string[];
-export declare const isEmptyArray: <T extends [] = []>(any) => value is T;
-export declare const isNonEmptyArray: <T extends any[] = any[]>(value: unknown) => value is T;
+declare const isArrayOfStrings: (value: unknown) => value is string[];
+declare const isEmptyArray: <T extends [] = []>(any) => value is T;
+declare const isNonEmptyArray: <T extends any[] = any[]>(value: unknown) => value is T;
 ```
 
 ### Dates
 
 ```ts
-export declare const isAfter: (other: Date, value: unknown) => value is Date;
-export declare const isBefore: (other: Date, value: unknown) => value is Date;
-export declare const isDate: (value: unknown) => value is Date;
-export declare const isValidDate: (value: unknown) => value is Date;
+declare const isAfter: (other: Date, value: unknown) => value is Date;
+declare const isBefore: (other: Date, value: unknown) => value is Date;
+declare const isDate: (value: unknown) => value is Date;
+declare const isDateBetween: (floor: Date, ceiling: Date, value: unknown) => value is Date;
+declare const isDateInMonth: (index: number, value: unknown) => value is Date;
+declare const isDateInYear: (year: number, value: unknown) => value is Date;
+declare const isDateOnDayOfMonth: (day: number, value: unknown) => value is Date;
+declare const isDateOnDayOfWeek: (index: number, value: unknown) => value is Date;
+declare const isDateOnOrAfter: (other: Date, value: unknown) => value is Date;
+declare const isDateOnOrBefore: (other: Date, value: unknown) => value is Date;
+declare const isValidDate: (value: unknown) => value is Date;
 ```
 
 ### Numbers
 
 ```ts
-export declare const isCalculable: (value: unknown) => value is number;
-export declare const isDecimalNumber: (value: unknown) => value is number;
-export declare const isDivisibleBy: (other: number, value: unknown) => value is number;
-export declare const isEvenNumber: (value: unknown) => value is number;
-export declare const isGreaterThanOrEqualTo: (other: number, value: unknown) => value is number;
-export declare const isLessThanOrEqualTo: (other: number, value: unknown) => value is number;
-export declare const isNear: (other: number, epsilon: number, value: unknown) => value is number;
-export declare const isNumber: (value: unknown) => value is number;
-export declare const isOddNumber: (value: unknown) => value is number;
-export declare const isWholeNumber: (value: unknown) => value is number;
-export declare const isWithinRange: (
+declare const isCalculable: (value: unknown) => value is number;
+declare const isDecimalNumber: (value: unknown) => value is number;
+declare const isDivisibleBy: (other: number, value: unknown) => value is number;
+declare const isEvenNumber: (value: unknown) => value is number;
+declare const isGreaterThanOrEqualTo: (other: number, value: unknown) => value is number;
+declare const isLessThanOrEqualTo: (other: number, value: unknown) => value is number;
+declare const isNear: (other: number, epsilon: number, value: unknown) => value is number;
+declare const isNegativeNumber: (value: unknown) => value is number;
+declare const isNumber: (value: unknown) => value is number;
+declare const isOddNumber: (value: unknown) => value is number;
+declare const isPositiveNumber: (value: unknown) => value is number;
+declare const isWholeNumber: (value: unknown) => value is number;
+declare const isWithinRange: (
   floor: number,
   ceiling: number,
   value: unknown,
@@ -120,27 +133,27 @@ export declare const isWithinRange: (
 ### Strings
 
 ```ts
-export declare const endsWith: (other: string, value: unknown) => value is number;
-export declare const isEmptyString: (value: unknown) => value is number;
-export declare const isIso8601: (value: unknown) => value is number;
-export declare const isJsonString: (value: unknown) => value is number;
-export declare const isLongerThan: (other: string, value: unknown) => value is number;
-export declare const isNonEmptyString: (value: unknown) => value is number;
-export declare const isSameLengthAs: (other: string, value: unknown) => value is number;
-export declare const isShorterThan: (other: string, value: unknown) => value is number;
-export declare const isString: (value: unknown) => value is number;
-export declare const isVisibleString: (value: unknown) => value is number;
-export declare const isWhitespace: (value: unknown) => value is number;
-export declare const startsWith: (other: string, value: unknown) => value is number;
+declare const endsWith: (other: string, value: unknown) => value is string;
+declare const isEmptyString: (value: unknown) => value is string;
+declare const isIso8601: (value: unknown) => value is string;
+declare const isJsonString: (value: unknown) => value is string;
+declare const isLongerThan: (other: string, value: unknown) => value is string;
+declare const isNonEmptyString: (value: unknown) => value is string;
+declare const isSameLengthAs: (other: string, value: unknown) => value is string;
+declare const isShorterThan: (other: string, value: unknown) => value is string;
+declare const isString: (value: unknown) => value is string;
+declare const isVisibleString: (value: unknown) => value is string;
+declare const isWhitespace: (value: unknown) => value is string;
+declare const startsWith: (other: string, value: unknown) => value is string;
 ```
 
 ## API: `expect-more/gen`
 
 ```ts
-export declare const withMissingBranches: (value: object | any[]) => Generator;
-export declare const withMissingLeaves: (value: object | any[]) => Generator;
-export declare const withMissingNodes: (value: object | any[]) => Generator;
-export declare const withNullBranches: (value: object | any[]) => Generator;
-export declare const withNullLeaves: (value: object | any[]) => Generator;
-export declare const withNullNodes: (value: object | any[]) => Generator;
+declare const withMissingBranches: (value: object | any[]) => Generator;
+declare const withMissingLeaves: (value: object | any[]) => Generator;
+declare const withMissingNodes: (value: object | any[]) => Generator;
+declare const withNullBranches: (value: object | any[]) => Generator;
+declare const withNullLeaves: (value: object | any[]) => Generator;
+declare const withNullNodes: (value: object | any[]) => Generator;
 ```

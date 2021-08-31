@@ -45,6 +45,9 @@ npm install expect-more-jasmine --save-dev
 describe('expect-more-jasmine', () => {
   it('makes your tests and output easier to read', () => {
     expect(new Date('2020-01-01')).toBeAfter(new Date('2019-12-31'));
+    expect([12, 0, 14, 'Ivo']).toBeArrayIncludingAllOf(['Ivo', 14]);
+    expect([12, 0, 14, 'Ginola']).toBeArrayIncludingAnyOf(['Ginola', 3]);
+    expect([5, 10, 1]).toBeArrayIncludingOnly([1, 5, 10]);
     expect([true, false, new Boolean(true)]).toBeArrayOfBooleans();
     expect([12, 0, 14]).toBeArrayOfNumbers();
     expect([{}, new Object()]).toBeArrayOfObjects();
@@ -57,6 +60,13 @@ describe('expect-more-jasmine', () => {
     expect(new Date('2019-12-31')).toBeBefore(new Date('2020-01-01'));
     expect(false).toBeBoolean();
     expect('100').toBeCalculable();
+    expect(new Date('2019-12-11')).toBeDateBetween(new Date('2019-12-10'), new Date('2019-12-12'));
+    expect(new Date('2021-08-29')).toBeDateInMonth(7);
+    expect(new Date('2021-08-29')).toBeDateInYear(2021);
+    expect(new Date('2021-08-29')).toBeDateOnDayOfMonth(29);
+    expect(new Date('2021-08-29')).toBeDateOnDayOfWeek(0);
+    expect(new Date('2019-12-31')).toBeDateOnOrAfter(new Date('2019-12-15'));
+    expect(new Date('2019-12-15')).toBeDateOnOrBefore(new Date('2019-12-31'));
     expect(new Date('2019-12-31')).toBeDate();
     expect(12.55).toBeDecimalNumber();
     expect(12).toBeDivisibleBy(2);
@@ -71,12 +81,15 @@ describe('expect-more-jasmine', () => {
     expect('1999-12-31T23:59:59').toBeIso8601();
     expect('{"i":"am valid JSON"}').toBeJsonString();
     expect(['i', 'have', 3]).toBeLongerThan([2, 'items']);
+    expect(-18).toBeNegativeNumber();
+    expect(undefined).toBeNil();
     expect(['i', 'am not empty']).toBeNonEmptyArray();
     expect({ i: 'am not empty' }).toBeNonEmptyObject();
     expect('i am not empty').toBeNonEmptyString();
     expect(8).toBeNumber();
     expect({}).toBeObject();
     expect(5).toBeOddNumber();
+    expect(5).toBePositiveNumber();
     expect(new RegExp('i am a regular expression')).toBeRegExp();
     expect(['i also have', '2 items']).toBeSameLengthAs(['i have', '2 items']);
     expect(['i have one item']).toBeShorterThan(['i', 'have', 4, 'items']);
@@ -88,18 +101,14 @@ describe('expect-more-jasmine', () => {
     expect(8).toBeWholeNumber();
     expect(7).toBeWithinRange(0, 10);
     expect('JavaScript').toEndWith('Script');
-    expect({ child: { grandchild: [true, false, new Boolean(true)] } }).toHaveArrayOfBooleans(
-      'child.grandchild',
-    );
+    expect({ child: { grandchild: [12, 0, 14, 'Ivo'] } }).toHaveArrayIncludingAllOf('child.grandchild', ['Ivo', 14]);
+    expect({ child: { grandchild: [12, 0, 14, 'Ginola'] } }).toHaveArrayIncludingAnyOf('child.grandchild', ['Ginola', 3]);
+    expect({ child: { grandchild: [5, 10, 1] } }).toHaveArrayIncludingOnly('child.grandchild', [1, 5, 10]);
+    expect({ child: { grandchild: [true, false, new Boolean(true)] } }).toHaveArrayOfBooleans('child.grandchild');
     expect({ child: { grandchild: [12, 0, 14] } }).toHaveArrayOfNumbers('child.grandchild');
     expect({ child: { grandchild: [{}, new Object()] } }).toHaveArrayOfObjects('child.grandchild');
-    expect({ child: { grandchild: ['i', 'contain', 4, 'items'] } }).toHaveArrayOfSize(
-      'child.grandchild',
-      4,
-    );
-    expect({ child: { grandchild: ['we', 'are', 'all', 'strings'] } }).toHaveArrayOfStrings(
-      'child.grandchild',
-    );
+    expect({ child: { grandchild: ['i', 'contain', 4, 'items'] } }).toHaveArrayOfSize('child.grandchild', 4);
+    expect({ child: { grandchild: ['we', 'are', 'all', 'strings'] } }).toHaveArrayOfStrings('child.grandchild');
     expect({ child: { grandchild: [2, true, 'string'] } }).toHaveArray('child.grandchild');
     expect({
       child: {
@@ -110,14 +119,15 @@ describe('expect-more-jasmine', () => {
     }).toHaveAsyncFunction('child.grandchild');
     expect({ child: { grandchild: false } }).toHaveBoolean('child.grandchild');
     expect({ child: { grandchild: '100' } }).toHaveCalculable('child.grandchild');
-    expect({ child: { grandchild: new Date('2020-01-01') } }).toHaveDateAfter(
-      'child.grandchild',
-      new Date('2019-12-31'),
-    );
-    expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDateBefore(
-      'child.grandchild',
-      new Date('2020-01-01'),
-    );
+    expect({ child: { grandchild: new Date('2020-01-01') } }).toHaveDateAfter('child.grandchild', new Date('2019-12-31'));
+    expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDateBefore('child.grandchild', new Date('2020-01-01'));
+    expect({ child: { grandchild: new Date('2019-12-11') } }).toHaveDateBetween('child.grandchild', new Date('2019-12-10'), new Date('2019-12-12'));
+    expect({ child: { grandchild: new Date('2021-08-29') } }).toHaveDateInMonth('child.grandchild', 7);
+    expect({ child: { grandchild: new Date('2021-08-29') } }).toHaveDateInYear('child.grandchild', 2021);
+    expect({ child: { grandchild: new Date('2021-08-29') } }).toHaveDateOnDayOfMonth('child.grandchild', 29);
+    expect({ child: { grandchild: new Date('2021-08-29') } }).toHaveDateOnDayOfWeek('child.grandchild', 0);
+    expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDateOnOrAfter('child.grandchild', new Date('2019-12-15'));
+    expect({ child: { grandchild: new Date('2019-12-15') } }).toHaveDateOnOrBefore('child.grandchild', new Date('2019-12-31'));
     expect({ child: { grandchild: new Date('2019-12-31') } }).toHaveDate('child.grandchild');
     expect({ child: { grandchild: 12.55 } }).toHaveDecimalNumber('child.grandchild');
     expect({ child: { grandchild: 12 } }).toHaveDivisibleBy('child.grandchild', 2);
@@ -138,17 +148,12 @@ describe('expect-more-jasmine', () => {
     expect({ child: { grandchild: '1999-12-31T23:59:59' } }).toHaveIso8601('child.grandchild');
     expect({ child: { grandchild: '{"i":"am valid JSON"}' } }).toHaveJsonString('child.grandchild');
     expect({ child: { grandchild: 8 } }).toHaveLessThanOrEqualTo('child.grandchild', 12);
-    expect({ child: { grandchild: ['i', 'have', 3] } }).toHaveLongerThan('child.grandchild', [
-      2,
-      'items',
-    ]);
+    expect({ child: { grandchild: ['i', 'have', 3] } }).toHaveLongerThan('child.grandchild', [2, 'items']);
     expect({ child: { grandchild: () => 'i am a function' } }).toHaveMethod('child.grandchild');
-    expect({ child: { grandchild: ['i', 'am not empty'] } }).toHaveNonEmptyArray(
-      'child.grandchild',
-    );
-    expect({ child: { grandchild: { i: 'am not empty' } } }).toHaveNonEmptyObject(
-      'child.grandchild',
-    );
+    expect({ child: { grandchild: -18 } }).toHaveNegativeNumber('child.grandchild');
+    expect({ child: { grandchild: undefined } }).toHaveNil('child.grandchild');
+    expect({ child: { grandchild: ['i', 'am not empty'] } }).toHaveNonEmptyArray('child.grandchild');
+    expect({ child: { grandchild: { i: 'am not empty' } } }).toHaveNonEmptyObject('child.grandchild');
     expect({ child: { grandchild: 'i am not empty' } }).toHaveNonEmptyString('child.grandchild');
     expect({ child: { grandchild: null } }).toHaveNull('child.grandchild');
     expect({ child: { grandchild: 4.8 } }).toHaveNumberNear('child.grandchild', 5, 0.5);
@@ -156,18 +161,10 @@ describe('expect-more-jasmine', () => {
     expect({ child: { grandchild: 8 } }).toHaveNumber('child.grandchild');
     expect({ child: { grandchild: {} } }).toHaveObject('child.grandchild');
     expect({ child: { grandchild: 5 } }).toHaveOddNumber('child.grandchild');
-    expect({ child: { grandchild: new RegExp('i am a regular expression') } }).toHaveRegExp(
-      'child.grandchild',
-    );
-    expect({
-      child: { grandchild: ['i also have', '2 items'] },
-    }).toHaveSameLengthAs('child.grandchild', ['i have', '2 items']);
-    expect({ child: { grandchild: ['i have one item'] } }).toHaveShorterThan('child.grandchild', [
-      'i',
-      'have',
-      4,
-      'items',
-    ]);
+    expect({ child: { grandchild: 5 } }).toHavePositiveNumber('child.grandchild');
+    expect({ child: { grandchild: new RegExp('i am a regular expression') } }).toHaveRegExp('child.grandchild');
+    expect({ child: { grandchild: ['i also have', '2 items'] } }).toHaveSameLengthAs('child.grandchild', ['i have', '2 items']);
+    expect({ child: { grandchild: ['i have one item'] } }).toHaveShorterThan('child.grandchild', ['i', 'have', 4, 'items']);
     expect({ child: { grandchild: 'JavaScript' } }).toHaveStartingWith('child.grandchild', 'Java');
     expect({ child: { grandchild: 'i am a string' } }).toHaveString('child.grandchild');
     expect({ child: { grandchild: true } }).toHaveTrue('child.grandchild');
