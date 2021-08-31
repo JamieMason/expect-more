@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.3.0...expect-more-jest@5.4.0) (2021-08-31)
+
+
+### Features
+
+* **expect:** add 13 new matchers ([d880ff3](https://github.com/JamieMason/expect-more/commit/d880ff3e4f0f49f1ddbaa9afaf9217c9a1e084d3)), closes [#8](https://github.com/JamieMason/expect-more/issues/8) [#9](https://github.com/JamieMason/expect-more/issues/9) [#10](https://github.com/JamieMason/expect-more/issues/10) [#11](https://github.com/JamieMason/expect-more/issues/11) [#12](https://github.com/JamieMason/expect-more/issues/12) [#13](https://github.com/JamieMason/expect-more/issues/13) [#14](https://github.com/JamieMason/expect-more/issues/14) [#15](https://github.com/JamieMason/expect-more/issues/15) [#16](https://github.com/JamieMason/expect-more/issues/16)
+
+
+
+
+
 # [5.3.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.2.2...expect-more-jest@5.3.0) (2021-08-08)
 
 
