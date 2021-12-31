@@ -8,6 +8,7 @@ const expectedShape = {
 it('provides expect().toBeOptionalOf()', () => {
   expect({ x: 0, y: 12 }).toBeOptionalOf(expectedShape);
   expect(undefined).toBeOptionalOf(expectedShape);
+  expect(null).toBeOptionalOf(expectedShape);
 });
 
 it('provides expect().not.toBeOptionalOf()', () => {
