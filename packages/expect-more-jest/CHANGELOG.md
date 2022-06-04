@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.1](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.4.0...expect-more-jest@5.4.1) (2022-06-04)
+
+
+### Bug Fixes
+
+* **expect:** fix use of deprecated expect/build/jasmineUtils ([3ebb252](https://github.com/JamieMason/expect-more/commit/3ebb2523f8b5f7bd879bc529be493b49de6ef120))
+
+
+
+
+
 # [5.4.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.3.0...expect-more-jest@5.4.0) (2021-08-31)
 
 
