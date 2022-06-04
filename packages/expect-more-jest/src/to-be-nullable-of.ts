@@ -1,5 +1,5 @@
 import { isNull } from 'expect-more';
-import { equals } from 'expect/build/jasmineUtils';
+import { equals } from '@jest/expect-utils';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 
