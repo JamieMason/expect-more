@@ -30,7 +30,7 @@
     "build:expect-more-jest": "tsc --project ./packages/expect-more-jest",
     "generate:docs": "ts-node --project ./scripts/tsconfig.json ./scripts/generate-docs.ts",
     "generate:matchers": "./scripts/generate-matchers.sh",
-    "lint": "eslint --fix --ext .ts .",
+    "lint": "eslint --ext .ts .",
     "prebuild": "rimraf ./packages/*/dist",
     "test": "yarn test:jest && yarn test:jasmine",
     "test:jasmine": "ts-node node_modules/jasmine/bin/jasmine JASMINE_CONFIG_PATH=jasmine.json",
