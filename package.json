@@ -23,10 +23,6 @@
   },
   "manager": "yarn",
   "private": true,
-  "resolutions": {
-    "deep-extend": ">=0.5.1",
-    "mem": ">=4.0.0"
-  },
   "scripts": {
     "build": "yarn build:expect-more && yarn build:expect-more-jasmine && yarn build:expect-more-jest",
     "build:expect-more": "tsc --project ./packages/expect-more",
