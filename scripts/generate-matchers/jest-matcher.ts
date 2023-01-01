@@ -24,6 +24,8 @@ export const generateJestMatcher = (file: FileMeta): void => {
     const jestMatcherNotMessage = matcherNotMessage.replace(/\$\{([a-z]+)\}/gi, withUtil);
 
     const source = `
+/// <reference types="jest" />
+
 import { ${name} } from 'expect-more';
 import { ${utilImports} } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';

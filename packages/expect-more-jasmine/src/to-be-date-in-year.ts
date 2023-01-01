@@ -1,3 +1,5 @@
+/// <reference types="jasmine" />
+
 import { isDateInYear } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 

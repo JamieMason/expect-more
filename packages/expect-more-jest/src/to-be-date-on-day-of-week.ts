@@ -1,3 +1,5 @@
+/// <reference types="jest" />
+
 import { isDateOnDayOfWeek } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';

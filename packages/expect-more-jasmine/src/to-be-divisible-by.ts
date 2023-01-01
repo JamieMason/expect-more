@@ -1,3 +1,5 @@
+/// <reference types="jasmine" />
+
 import { isDivisibleBy } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 

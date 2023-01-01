@@ -9,5 +9,5 @@ import { keys } from './lib/keys';
  * @matcherMessage expected ${value} to be an empty object
  * @matcherNotMessage expected ${value} not to be an empty object
  */
-export const isEmptyObject = <T extends any = any>(value: unknown): value is T =>
+export const isEmptyObject = <T extends Record<string, unknown>>(value: unknown): value is T =>
   isObject(value) && keys(value).length === 0;

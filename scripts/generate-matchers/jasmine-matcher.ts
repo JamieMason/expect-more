@@ -24,6 +24,8 @@ export const generateJasmineMatcher = (file: FileMeta): void => {
     const jasmineMatcherNotMessage = matcherNotMessage.replace(/\$\{([a-z]+)\}/gi, withUtil);
 
     const source = `
+/// <reference types="jasmine" />
+
 import { ${name} } from 'expect-more';
 import { ${utilImports} } from 'jest-matcher-utils';
 

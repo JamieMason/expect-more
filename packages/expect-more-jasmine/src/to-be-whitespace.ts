@@ -1,3 +1,5 @@
+/// <reference types="jasmine" />
+
 import { isWhitespace } from 'expect-more';
 import { printReceived } from 'jest-matcher-utils';
 

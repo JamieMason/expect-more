@@ -1,3 +1,5 @@
+/// <reference types="jest" />
+
 import { isWalkable } from 'expect-more';
 import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';

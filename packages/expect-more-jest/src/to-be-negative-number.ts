@@ -1,3 +1,5 @@
+/// <reference types="jest" />
+
 import { isNegativeNumber } from 'expect-more';
 import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';

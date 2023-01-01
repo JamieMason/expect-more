@@ -1,3 +1,5 @@
+/// <reference types="jasmine" />
+
 import { isDecimalNumber } from 'expect-more';
 import { printReceived } from 'jest-matcher-utils';
 

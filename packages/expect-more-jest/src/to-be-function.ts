@@ -1,3 +1,5 @@
+/// <reference types="jest" />
+
 import { isFunction } from 'expect-more';
 import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';

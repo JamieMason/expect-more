@@ -1,3 +1,5 @@
+/// <reference types="jest" />
+
 import { isDateInMonth } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';

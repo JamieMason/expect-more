@@ -1,3 +1,5 @@
+/// <reference types="jasmine" />
+
 import { isNil } from 'expect-more';
 import { printReceived } from 'jest-matcher-utils';
 

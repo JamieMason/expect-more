@@ -1,3 +1,5 @@
+/// <reference types="jasmine" />
+
 import { isIso8601 } from 'expect-more';
 import { printReceived } from 'jest-matcher-utils';
 

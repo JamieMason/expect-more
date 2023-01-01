@@ -1,3 +1,5 @@
+/// <reference types="jasmine" />
+
 import { isEmptyArray } from 'expect-more';
 import { printReceived } from 'jest-matcher-utils';
 

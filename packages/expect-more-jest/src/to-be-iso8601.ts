@@ -1,3 +1,5 @@
+/// <reference types="jest" />
+
 import { isIso8601 } from 'expect-more';
 import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';

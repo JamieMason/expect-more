@@ -1,3 +1,5 @@
+/// <reference types="jasmine" />
+
 import { endsWith } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 
