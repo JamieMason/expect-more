@@ -1,109 +1,98 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [5.4.2](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.4.1...expect-more-jest@5.4.2) (2023-01-01)
+
+### Bug Fixes
+
+- **npm:** update dependencies
+  ([df99eeb](https://github.com/JamieMason/expect-more/commit/df99eebcd191fa10d3298c3a1b83ca3d02cc960b))
 
 ## [5.4.1](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.4.0...expect-more-jest@5.4.1) (2022-06-04)
 
-
 ### Bug Fixes
 
-* **expect:** fix use of deprecated expect/build/jasmineUtils ([3ebb252](https://github.com/JamieMason/expect-more/commit/3ebb2523f8b5f7bd879bc529be493b49de6ef120))
-
-
-
-
+- **expect:** fix use of deprecated expect/build/jasmineUtils
+  ([3ebb252](https://github.com/JamieMason/expect-more/commit/3ebb2523f8b5f7bd879bc529be493b49de6ef120))
 
 # [5.4.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.3.0...expect-more-jest@5.4.0) (2021-08-31)
 
-
 ### Features
 
-* **expect:** add 13 new matchers ([d880ff3](https://github.com/JamieMason/expect-more/commit/d880ff3e4f0f49f1ddbaa9afaf9217c9a1e084d3)), closes [#8](https://github.com/JamieMason/expect-more/issues/8) [#9](https://github.com/JamieMason/expect-more/issues/9) [#10](https://github.com/JamieMason/expect-more/issues/10) [#11](https://github.com/JamieMason/expect-more/issues/11) [#12](https://github.com/JamieMason/expect-more/issues/12) [#13](https://github.com/JamieMason/expect-more/issues/13) [#14](https://github.com/JamieMason/expect-more/issues/14) [#15](https://github.com/JamieMason/expect-more/issues/15) [#16](https://github.com/JamieMason/expect-more/issues/16)
-
-
-
-
+- **expect:** add 13 new matchers
+  ([d880ff3](https://github.com/JamieMason/expect-more/commit/d880ff3e4f0f49f1ddbaa9afaf9217c9a1e084d3)),
+  closes [#8](https://github.com/JamieMason/expect-more/issues/8)
+  [#9](https://github.com/JamieMason/expect-more/issues/9)
+  [#10](https://github.com/JamieMason/expect-more/issues/10)
+  [#11](https://github.com/JamieMason/expect-more/issues/11)
+  [#12](https://github.com/JamieMason/expect-more/issues/12)
+  [#13](https://github.com/JamieMason/expect-more/issues/13)
+  [#14](https://github.com/JamieMason/expect-more/issues/14)
+  [#15](https://github.com/JamieMason/expect-more/issues/15)
+  [#16](https://github.com/JamieMason/expect-more/issues/16)
 
 # [5.3.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.2.2...expect-more-jest@5.3.0) (2021-08-08)
 
-
 ### Bug Fixes
 
-* **npm:** update dependencies ([b34b440](https://github.com/JamieMason/expect-more/commit/b34b44027162306ecf678830a65a74852c442d9a))
-
+- **npm:** update dependencies
+  ([b34b440](https://github.com/JamieMason/expect-more/commit/b34b44027162306ecf678830a65a74852c442d9a))
 
 ### Features
 
-* **typings:** improve type information ([4cff05e](https://github.com/JamieMason/expect-more/commit/4cff05e535460a2b7e10ce69528c0789f429dcce))
-
-
-
-
+- **typings:** improve type information
+  ([4cff05e](https://github.com/JamieMason/expect-more/commit/4cff05e535460a2b7e10ce69528c0789f429dcce))
 
 ## [5.2.2](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.2.1...expect-more-jest@5.2.2) (2021-01-29)
 
-
 ### Bug Fixes
 
-* **npm:** update dependencies ([2b18adb](https://github.com/JamieMason/expect-more/commit/2b18adba015b749cf7947bf98cf2a964ecbe15bc))
-
-
-
-
+- **npm:** update dependencies
+  ([2b18adb](https://github.com/JamieMason/expect-more/commit/2b18adba015b749cf7947bf98cf2a964ecbe15bc))
 
 ## [5.2.1](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.2.0...expect-more-jest@5.2.1) (2020-12-06)
 
-
 ### Bug Fixes
 
-* **expect:** replace object with Record<any, any> ([19e282b](https://github.com/JamieMason/expect-more/commit/19e282b83ab3485081e8c9aed3db210bd09b7595))
-
-
-
-
+- **expect:** replace object with Record<any, any>
+  ([19e282b](https://github.com/JamieMason/expect-more/commit/19e282b83ab3485081e8c9aed3db210bd09b7595))
 
 # [5.2.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.1.0...expect-more-jest@5.2.0) (2020-05-30)
 
-
 ### Features
 
-* **jest:** add expect(value).toBeNullableOf(<asymmetricMatcher>) ([e4ce690](https://github.com/JamieMason/expect-more/commit/e4ce690a2c510e8b613e8e3b0ca624d12320496c))
-* **jest:** add expect(value).toBeOptionalOf(<asymmetricMatcher>) ([b8b826f](https://github.com/JamieMason/expect-more/commit/b8b826f26a5bbbd79915d9e411861a291e84c13e))
-* **jest:** add expect(value).toBeVisibleString() ([1b594d4](https://github.com/JamieMason/expect-more/commit/1b594d49ca8ad43eeb03b31302e794fdf4cf26d0))
-
-
-
-
+- **jest:** add expect(value).toBeNullableOf(<asymmetricMatcher>)
+  ([e4ce690](https://github.com/JamieMason/expect-more/commit/e4ce690a2c510e8b613e8e3b0ca624d12320496c))
+- **jest:** add expect(value).toBeOptionalOf(<asymmetricMatcher>)
+  ([b8b826f](https://github.com/JamieMason/expect-more/commit/b8b826f26a5bbbd79915d9e411861a291e84c13e))
+- **jest:** add expect(value).toBeVisibleString()
+  ([1b594d4](https://github.com/JamieMason/expect-more/commit/1b594d49ca8ad43eeb03b31302e794fdf4cf26d0))
 
 # [5.1.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.0.0...expect-more-jest@5.1.0) (2020-05-17)
 
-
 ### Features
 
-* **jest:** add expect(array).toBeArrayOf(<asymmetricMatcher>) ([465aa6c](https://github.com/JamieMason/expect-more/commit/465aa6c632cfdb685b407e13c11fe2a4c91923e4))
-
-
-
-
+- **jest:** add expect(array).toBeArrayOf(<asymmetricMatcher>)
+  ([465aa6c](https://github.com/JamieMason/expect-more/commit/465aa6c632cfdb685b407e13c11fe2a4c91923e4))
 
 # [5.0.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@4.1.0...expect-more-jest@5.0.0) (2020-05-17)
 
-
 ### Features
 
-* **jest:** deprecate toHave* Matchers ([22f95c5](https://github.com/JamieMason/expect-more/commit/22f95c5f9f50095aabfb13706a36a9a555120cbc))
-
+- **jest:** deprecate toHave\* Matchers
+  ([22f95c5](https://github.com/JamieMason/expect-more/commit/22f95c5f9f50095aabfb13706a36a9a555120cbc))
 
 ### BREAKING CHANGES
 
-* **jest:** Jest's `toHaveProperty` Matcher and expect-more-jest's Asymmetric
-Matchers (eg. `expect.toBeString()` instead of `expect().toBeString()`)
-can be composed to achieve the same result as the `toHave*` Matchers.
+- **jest:** Jest's `toHaveProperty` Matcher and expect-more-jest's Asymmetric Matchers (eg.
+  `expect.toBeString()` instead of `expect().toBeString()`) can be composed to achieve the same
+  result as the `toHave*` Matchers.
 
 The diff below demonstrates the equivalent assertions:
 
-```diff
+````diff
 - expect(val).toHaveArray('a.b')
 + expect(val).toHaveProperty('a.b', expect.toBeArray())
 - expect(val).toHaveArrayOfBooleans('a.b')
@@ -265,84 +254,74 @@ it('should return null if any part of the API contract is broken', () => {
     expect(fn(brokenContract)).toBeNull();
   }
 });
-```
-
-
-
-
+````
 
 # [3.0.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.4.2...expect-more-jest@3.0.0) (2019-11-03)
 
-
 ### Bug Fixes
 
-* **npm:** update dependencies ([1ecf9a0](https://github.com/JamieMason/expect-more/commit/1ecf9a04d914725c4aea904d809b2e0ca26c93ee)), closes [DefinitelyTyped/DefinitelyTyped#39243](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/39243)
-
+- **npm:** update dependencies
+  ([1ecf9a0](https://github.com/JamieMason/expect-more/commit/1ecf9a04d914725c4aea904d809b2e0ca26c93ee)),
+  closes
+  [DefinitelyTyped/DefinitelyTyped#39243](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/39243)
 
 ### Features
 
-* **jest:** add toBeAsyncFunction matcher ([1f49f77](https://github.com/JamieMason/expect-more/commit/1f49f771e8c0543b1e57e8435e9d69859574d913)), closes [#21](https://github.com/JamieMason/expect-more/issues/21)
-* **jest:** add toBeGeneratorFunction matcher ([4fde99e](https://github.com/JamieMason/expect-more/commit/4fde99e485a35403dd5c139c5b2a0b932a1833dd)), closes [#21](https://github.com/JamieMason/expect-more/issues/21)
-
+- **jest:** add toBeAsyncFunction matcher
+  ([1f49f77](https://github.com/JamieMason/expect-more/commit/1f49f771e8c0543b1e57e8435e9d69859574d913)),
+  closes [#21](https://github.com/JamieMason/expect-more/issues/21)
+- **jest:** add toBeGeneratorFunction matcher
+  ([4fde99e](https://github.com/JamieMason/expect-more/commit/4fde99e485a35403dd5c139c5b2a0b932a1833dd)),
+  closes [#21](https://github.com/JamieMason/expect-more/issues/21)
 
 ### BREAKING CHANGES
 
-* **npm:** https://github.com/DefinitelyTyped/DefinitelyTyped/pull/39243 introduced
-a breaking change which affects any TypeScript project that uses
-`expect.extend`. This may have a knock-on effect on projects using
-expect-more-jest.
-
-
-
-
+- **npm:** https://github.com/DefinitelyTyped/DefinitelyTyped/pull/39243 introduced a breaking
+  change which affects any TypeScript project that uses `expect.extend`. This may have a knock-on
+  effect on projects using expect-more-jest.
 
 ## [2.4.2](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.4.1...expect-more-jest@2.4.2) (2019-06-17)
 
-
 ### Bug Fixes
 
-* **npm:** update dependencies ([69c2ada](https://github.com/JamieMason/expect-more/commit/69c2ada)), closes [#25](https://github.com/JamieMason/expect-more/issues/25) [#26](https://github.com/JamieMason/expect-more/issues/26) [#27](https://github.com/JamieMason/expect-more/issues/27) [#28](https://github.com/JamieMason/expect-more/issues/28) [#29](https://github.com/JamieMason/expect-more/issues/29) [#30](https://github.com/JamieMason/expect-more/issues/30)
-
-
-
-
+- **npm:** update dependencies
+  ([69c2ada](https://github.com/JamieMason/expect-more/commit/69c2ada)), closes
+  [#25](https://github.com/JamieMason/expect-more/issues/25)
+  [#26](https://github.com/JamieMason/expect-more/issues/26)
+  [#27](https://github.com/JamieMason/expect-more/issues/27)
+  [#28](https://github.com/JamieMason/expect-more/issues/28)
+  [#29](https://github.com/JamieMason/expect-more/issues/29)
+  [#30](https://github.com/JamieMason/expect-more/issues/30)
 
 ## [2.4.1](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.4.0...expect-more-jest@2.4.1) (2019-02-02)
 
-
 ### Bug Fixes
 
-* **npm:** update dependencies ([44fe454](https://github.com/JamieMason/expect-more/commit/44fe454))
-* **typings:** correct typings for toBeWithinRange ([99038a8](https://github.com/JamieMason/expect-more/commit/99038a8)), closes [#22](https://github.com/JamieMason/expect-more/issues/22) [#23](https://github.com/JamieMason/expect-more/issues/23)
-
-
-
-
+- **npm:** update dependencies ([44fe454](https://github.com/JamieMason/expect-more/commit/44fe454))
+- **typings:** correct typings for toBeWithinRange
+  ([99038a8](https://github.com/JamieMason/expect-more/commit/99038a8)), closes
+  [#22](https://github.com/JamieMason/expect-more/issues/22)
+  [#23](https://github.com/JamieMason/expect-more/issues/23)
 
 # [2.4.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.3.0...expect-more-jest@2.4.0) (2019-01-12)
 
-
 ### Features
 
-* **jest:** add CLI to generate new matchers ([b61c08e](https://github.com/JamieMason/expect-more/commit/b61c08e))
-* **jest:** add shorthand property matchers ([631f5f4](https://github.com/JamieMason/expect-more/commit/631f5f4))
-* **jest:** add toBeWithinRange matcher ([b7163b1](https://github.com/JamieMason/expect-more/commit/b7163b1))
-
-
-
-
+- **jest:** add CLI to generate new matchers
+  ([b61c08e](https://github.com/JamieMason/expect-more/commit/b61c08e))
+- **jest:** add shorthand property matchers
+  ([631f5f4](https://github.com/JamieMason/expect-more/commit/631f5f4))
+- **jest:** add toBeWithinRange matcher
+  ([b7163b1](https://github.com/JamieMason/expect-more/commit/b7163b1))
 
 <a name="2.3.0"></a>
-# [2.3.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.2.0...expect-more-jest@2.3.0) (2018-08-26)
 
+# [2.3.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@2.2.0...expect-more-jest@2.3.0) (2018-08-26)
 
 ### Features
 
-* **jest:** improve asymmetric matcher intellisense documentation ([a818b20](https://github.com/JamieMason/expect-more/commit/a818b20))
-
-
-
-
+- **jest:** improve asymmetric matcher intellisense documentation
+  ([a818b20](https://github.com/JamieMason/expect-more/commit/a818b20))
 
 <a name="2.2.0"></a>
 
@@ -359,7 +338,8 @@ expect-more-jest.
 
 ### Features
 
-- **jest:** add types for asymmetric matchers ([13fe78d](https://github.com/JamieMason/expect-more/commit/13fe78d))
+- **jest:** add types for asymmetric matchers
+  ([13fe78d](https://github.com/JamieMason/expect-more/commit/13fe78d))
 
 <a name="2.0.0"></a>
 
@@ -367,43 +347,52 @@ expect-more-jest.
 
 ### Bug Fixes
 
-- **jest:** export correct typings ([0c0bdf8](https://github.com/JamieMason/expect-more/commit/0c0bdf8))
-- **jest:** fix expect().toHandle\* regression ([12e7cf6](https://github.com/JamieMason/expect-more/commit/12e7cf6))
+- **jest:** export correct typings
+  ([0c0bdf8](https://github.com/JamieMason/expect-more/commit/0c0bdf8))
+- **jest:** fix expect().toHandle\* regression
+  ([12e7cf6](https://github.com/JamieMason/expect-more/commit/12e7cf6))
 
 ### Features
 
 - **core:** update length comparing methods to accept arrays
   ([3878699](https://github.com/JamieMason/expect-more/commit/3878699))
-- **jest:** add asymmetric matchers ([71238d5](https://github.com/JamieMason/expect-more/commit/71238d5))
+- **jest:** add asymmetric matchers
+  ([71238d5](https://github.com/JamieMason/expect-more/commit/71238d5))
 - **jest:** add toHandle[Missing|Null][branches|leaves|nodes]
   ([41302c8](https://github.com/JamieMason/expect-more/commit/41302c8)), closes
   [#5](https://github.com/JamieMason/expect-more/issues/5)
-- **jest:** add toSurvive matcher ([5763fab](https://github.com/JamieMason/expect-more/commit/5763fab))
-- **jest:** expose library as jest matchers ([db74006](https://github.com/JamieMason/expect-more/commit/db74006))
+- **jest:** add toSurvive matcher
+  ([5763fab](https://github.com/JamieMason/expect-more/commit/5763fab))
+- **jest:** expose library as jest matchers
+  ([db74006](https://github.com/JamieMason/expect-more/commit/db74006))
 - **jest:** generators of incomplete forms of a given shape
   ([622fe52](https://github.com/JamieMason/expect-more/commit/622fe52))
 - **jest:** improve fail message for expect().toSurvive()
   ([2f4052b](https://github.com/JamieMason/expect-more/commit/2f4052b))
 - **jest:** remove expect.walkable and expect().toBeWalkable
   ([6e2e2c4](https://github.com/JamieMason/expect-more/commit/6e2e2c4))
-- **jest:** use jest v23's asymmetric matchers ([b20d6b2](https://github.com/JamieMason/expect-more/commit/b20d6b2))
+- **jest:** use jest v23's asymmetric matchers
+  ([b20d6b2](https://github.com/JamieMason/expect-more/commit/b20d6b2))
 
 ### BREAKING CHANGES
 
-- **jest:** Jest did not previously support custom asymmetric matchers, so `expect` was decorated from the outside to
-  provide this behaviour. Since Jest v23 it is now supported officially.
+- **jest:** Jest did not previously support custom asymmetric matchers, so `expect` was decorated
+  from the outside to provide this behaviour. Since Jest v23 it is now supported officially.
 
 As such, the following asymmetric matchers have been renamed:
 
-expect.after → expect.toBeAfter expect.arrayOfBooleans → expect.toBeArrayOfBooleans expect.arrayOfNumbers →
-expect.toBeArrayOfNumbers expect.arrayOfObjects → expect.toBeArrayOfObjects expect.arrayOfSize → expect.toBeArrayOfSize
-expect.arrayOfStrings → expect.toBeArrayOfStrings expect.before → expect.toBeBefore expect.calculable →
-expect.toBeCalculable expect.divisibleBy → expect.toBeDivisibleBy expect.endingWith → expect.toBeEndingWith
-expect.evenNumber → expect.toBeEvenNumber expect.iso8601 → expect.toBeIso8601 expect.jsonString → expect.toBeJsonString
-expect.longerThan → expect.toBeLongerThan expect.near → expect.toBeNear expect.nonEmptyArray → expect.toBeNonEmptyArray
-expect.nonEmptyObject → expect.toBeNonEmptyObject expect.nonEmptyString → expect.toBeNonEmptyString expect.oddNumber →
-expect.toBeOddNumber expect.sameLengthAs → expect.toBeSameLengthAs expect.shorterThan → expect.toBeShorterThan
-expect.startingWith → expect.toBeStartingWith expect.validDate → expect.toBeValidDate expect.whitespace →
-expect.toBeWhitespace expect.wholeNumber → expect.toBeWholeNumber expect.withinRange → expect.toBeWithinRange
+expect.after → expect.toBeAfter expect.arrayOfBooleans → expect.toBeArrayOfBooleans
+expect.arrayOfNumbers → expect.toBeArrayOfNumbers expect.arrayOfObjects → expect.toBeArrayOfObjects
+expect.arrayOfSize → expect.toBeArrayOfSize expect.arrayOfStrings → expect.toBeArrayOfStrings
+expect.before → expect.toBeBefore expect.calculable → expect.toBeCalculable expect.divisibleBy →
+expect.toBeDivisibleBy expect.endingWith → expect.toBeEndingWith expect.evenNumber →
+expect.toBeEvenNumber expect.iso8601 → expect.toBeIso8601 expect.jsonString → expect.toBeJsonString
+expect.longerThan → expect.toBeLongerThan expect.near → expect.toBeNear expect.nonEmptyArray →
+expect.toBeNonEmptyArray expect.nonEmptyObject → expect.toBeNonEmptyObject expect.nonEmptyString →
+expect.toBeNonEmptyString expect.oddNumber → expect.toBeOddNumber expect.sameLengthAs →
+expect.toBeSameLengthAs expect.shorterThan → expect.toBeShorterThan expect.startingWith →
+expect.toBeStartingWith expect.validDate → expect.toBeValidDate expect.whitespace →
+expect.toBeWhitespace expect.wholeNumber → expect.toBeWholeNumber expect.withinRange →
+expect.toBeWithinRange
 
 - **jest:** These matchers replace expect().toSurvive()
