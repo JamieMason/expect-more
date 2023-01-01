@@ -1,8 +1,30 @@
 /// <reference types="jest" />
 
+import { expect } from '@jest/globals';
 import { isLongerThan } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
+
+declare module 'expect' {
+  interface Matchers<R> {
+    /**
+     * Asserts that a value is a `String` or `Array` whose length is greater than that of another.
+     * @example
+     * expect(['i', 'have', 3]).toBeLongerThan([2, 'items']);
+     */
+    toBeLongerThan(other: string | any[]): R;
+  }
+  interface AsymmetricMatchers {
+    /**
+     * Asserts that a value is a `String` or `Array` whose length is greater than that of another.
+     * @example
+     * expect(['i', 'have', 3]).toEqual(
+     *   expect.toBeLongerThan([2, 'items'])
+     * );
+     */
+    toBeLongerThan(other: string | any[]): void;
+  }
+}
 
 declare global {
   namespace jest {
@@ -27,10 +49,7 @@ declare global {
   }
 }
 
-export const toBeLongerThanMatcher = (
-  value: unknown,
-  other: string | any[],
-): jest.CustomMatcherResult =>
+export const toBeLongerThanMatcher = (value: unknown, other: string | any[]) =>
   createResult({
     message: () =>
       `expected ${printReceived(

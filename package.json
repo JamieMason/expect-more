@@ -28,6 +28,7 @@
     "build:expect-more": "tsc --project ./packages/expect-more",
     "build:expect-more-jasmine": "tsc --project ./packages/expect-more-jasmine",
     "build:expect-more-jest": "tsc --project ./packages/expect-more-jest",
+    "format": "eslint --fix --ext .ts .",
     "generate:docs": "ts-node --project ./scripts/tsconfig.json ./scripts/generate-docs.ts",
     "generate:matchers": "./scripts/generate-matchers.sh",
     "lint": "eslint --ext .ts .",

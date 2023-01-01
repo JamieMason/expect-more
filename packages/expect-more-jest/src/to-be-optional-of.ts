@@ -1,5 +1,5 @@
-import { isUndefined } from 'expect-more';
 import { equals } from '@jest/expect-utils';
+import { isUndefined } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
 

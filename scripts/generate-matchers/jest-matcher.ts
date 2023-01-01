@@ -26,9 +26,31 @@ export const generateJestMatcher = (file: FileMeta): void => {
     const source = `
 /// <reference types="jest" />
 
+import { expect } from '@jest/globals';
 import { ${name} } from 'expect-more';
 import { ${utilImports} } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
+
+declare module 'expect' {
+  interface Matchers<R> {
+    /**
+     * ${description}
+     * @example
+     * expect(${valueExample}).${matcherName}(${argsExamplesSource});
+     */
+    ${matcherName}(${argsForMatcherInterface}): R;
+  }
+  interface AsymmetricMatchers {
+    /**
+     * ${description}
+     * @example
+     * expect(${valueExample}).toEqual(
+     *   expect.${matcherName}(${argsExamplesSource})
+     * );
+     */
+    ${matcherName}(${argsForMatcherInterface}): void;
+  }
+}
 
 declare global {
   namespace jest {
@@ -53,7 +75,7 @@ declare global {
   }
 }
 
-export const ${matcherName}Matcher = (${typedArgsForMatcherFunction}): jest.CustomMatcherResult => createResult({
+export const ${matcherName}Matcher = (${typedArgsForMatcherFunction}) => createResult({
   message: () => \`${jestMatcherMessage}\`,
   notMessage: () => \`${jestMatcherNotMessage}\`,
   pass: ${name}(${argsForAssertFunction})

@@ -1,8 +1,30 @@
 /// <reference types="jest" />
 
+import { expect } from '@jest/globals';
 import { isDateInMonth } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
+
+declare module 'expect' {
+  interface Matchers<R> {
+    /**
+     * Asserts that a value is an instance of `Date` occurring on the given month of the year, where January is `0` and December is `11`.
+     * @example
+     * expect(new Date('2021-08-29')).toBeDateInMonth(7);
+     */
+    toBeDateInMonth(index: number): R;
+  }
+  interface AsymmetricMatchers {
+    /**
+     * Asserts that a value is an instance of `Date` occurring on the given month of the year, where January is `0` and December is `11`.
+     * @example
+     * expect(new Date('2021-08-29')).toEqual(
+     *   expect.toBeDateInMonth(7)
+     * );
+     */
+    toBeDateInMonth(index: number): void;
+  }
+}
 
 declare global {
   namespace jest {
@@ -27,7 +49,7 @@ declare global {
   }
 }
 
-export const toBeDateInMonthMatcher = (value: unknown, index: number): jest.CustomMatcherResult =>
+export const toBeDateInMonthMatcher = (value: unknown, index: number) =>
   createResult({
     message: () =>
       `expected ${printReceived(

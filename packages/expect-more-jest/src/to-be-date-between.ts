@@ -1,8 +1,30 @@
 /// <reference types="jest" />
 
+import { expect } from '@jest/globals';
 import { isDateBetween } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
+
+declare module 'expect' {
+  interface Matchers<R> {
+    /**
+     * Asserts that a value is an instance of `Date` occurring on or after `floor` and on or before `ceiling`.
+     * @example
+     * expect(new Date('2019-12-11')).toBeDateBetween(new Date('2019-12-10'), new Date('2019-12-12'));
+     */
+    toBeDateBetween(floor: unknown, ceiling: unknown): R;
+  }
+  interface AsymmetricMatchers {
+    /**
+     * Asserts that a value is an instance of `Date` occurring on or after `floor` and on or before `ceiling`.
+     * @example
+     * expect(new Date('2019-12-11')).toEqual(
+     *   expect.toBeDateBetween(new Date('2019-12-10'), new Date('2019-12-12'))
+     * );
+     */
+    toBeDateBetween(floor: unknown, ceiling: unknown): void;
+  }
+}
 
 declare global {
   namespace jest {
@@ -27,11 +49,7 @@ declare global {
   }
 }
 
-export const toBeDateBetweenMatcher = (
-  value: unknown,
-  floor: unknown,
-  ceiling: unknown,
-): jest.CustomMatcherResult =>
+export const toBeDateBetweenMatcher = (value: unknown, floor: unknown, ceiling: unknown) =>
   createResult({
     message: () =>
       `expected ${printReceived(

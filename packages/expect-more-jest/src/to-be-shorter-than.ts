@@ -1,8 +1,30 @@
 /// <reference types="jest" />
 
+import { expect } from '@jest/globals';
 import { isShorterThan } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
+
+declare module 'expect' {
+  interface Matchers<R> {
+    /**
+     * Asserts that a value is a `String` or `Array` whose length is less than that of the other provided.
+     * @example
+     * expect(['i have one item']).toBeShorterThan(['i', 'have', 4, 'items']);
+     */
+    toBeShorterThan(other: string | any[]): R;
+  }
+  interface AsymmetricMatchers {
+    /**
+     * Asserts that a value is a `String` or `Array` whose length is less than that of the other provided.
+     * @example
+     * expect(['i have one item']).toEqual(
+     *   expect.toBeShorterThan(['i', 'have', 4, 'items'])
+     * );
+     */
+    toBeShorterThan(other: string | any[]): void;
+  }
+}
 
 declare global {
   namespace jest {
@@ -27,10 +49,7 @@ declare global {
   }
 }
 
-export const toBeShorterThanMatcher = (
-  value: unknown,
-  other: string | any[],
-): jest.CustomMatcherResult =>
+export const toBeShorterThanMatcher = (value: unknown, other: string | any[]) =>
   createResult({
     message: () =>
       `expected ${printReceived(

@@ -1,8 +1,30 @@
 /// <reference types="jest" />
 
+import { expect } from '@jest/globals';
 import { isPositiveNumber } from 'expect-more';
 import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
+
+declare module 'expect' {
+  interface Matchers<R> {
+    /**
+     * Asserts that a value is a `Number` greater than 0.
+     * @example
+     * expect(5).toBePositiveNumber();
+     */
+    toBePositiveNumber(): R;
+  }
+  interface AsymmetricMatchers {
+    /**
+     * Asserts that a value is a `Number` greater than 0.
+     * @example
+     * expect(5).toEqual(
+     *   expect.toBePositiveNumber()
+     * );
+     */
+    toBePositiveNumber(): void;
+  }
+}
 
 declare global {
   namespace jest {
@@ -27,7 +49,7 @@ declare global {
   }
 }
 
-export const toBePositiveNumberMatcher = (value: unknown): jest.CustomMatcherResult =>
+export const toBePositiveNumberMatcher = (value: unknown) =>
   createResult({
     message: () => `expected ${printReceived(value)} to be a positive number`,
     notMessage: () => `expected ${printReceived(value)} not to be a positive number`,

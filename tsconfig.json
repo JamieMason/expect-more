@@ -5,6 +5,6 @@
     "forceConsistentCasingInFileNames": true,
     "lib": ["es6"],
     "target": "es3",
-    "types": []
+    "skipLibCheck": true
   }
 }

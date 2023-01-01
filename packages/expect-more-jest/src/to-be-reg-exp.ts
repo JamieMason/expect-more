@@ -1,8 +1,30 @@
 /// <reference types="jest" />
 
+import { expect } from '@jest/globals';
 import { isRegExp } from 'expect-more';
 import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
+
+declare module 'expect' {
+  interface Matchers<R> {
+    /**
+     * Asserts that a value is a `RegExp`.
+     * @example
+     * expect(new RegExp('i am a regular expression')).toBeRegExp();
+     */
+    toBeRegExp(): R;
+  }
+  interface AsymmetricMatchers {
+    /**
+     * Asserts that a value is a `RegExp`.
+     * @example
+     * expect(new RegExp('i am a regular expression')).toEqual(
+     *   expect.toBeRegExp()
+     * );
+     */
+    toBeRegExp(): void;
+  }
+}
 
 declare global {
   namespace jest {
@@ -27,7 +49,7 @@ declare global {
   }
 }
 
-export const toBeRegExpMatcher = (value: unknown): jest.CustomMatcherResult =>
+export const toBeRegExpMatcher = (value: unknown) =>
   createResult({
     message: () => `expected ${printReceived(value)} to be a regular expression`,
     notMessage: () => `expected ${printReceived(value)} not to be a regular expression`,

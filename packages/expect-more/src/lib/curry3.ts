@@ -1,5 +1,5 @@
-import { CurriedFn2, curry2 } from './curry2';
 import { CurriedFn1, curry1 } from './curry1';
+import { CurriedFn2, curry2 } from './curry2';
 
 type Fn3<R = any> = (c: unknown, b: unknown, a: unknown) => a is R;
 

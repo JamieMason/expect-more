@@ -1,8 +1,30 @@
 /// <reference types="jest" />
 
+import { expect } from '@jest/globals';
 import { isBefore } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
+
+declare module 'expect' {
+  interface Matchers<R> {
+    /**
+     * Asserts that a value is a valid instance of `Date` whose value occurs before that of another.
+     * @example
+     * expect(new Date('2019-12-31')).toBeBefore(new Date('2020-01-01'));
+     */
+    toBeBefore(other: Date): R;
+  }
+  interface AsymmetricMatchers {
+    /**
+     * Asserts that a value is a valid instance of `Date` whose value occurs before that of another.
+     * @example
+     * expect(new Date('2019-12-31')).toEqual(
+     *   expect.toBeBefore(new Date('2020-01-01'))
+     * );
+     */
+    toBeBefore(other: Date): void;
+  }
+}
 
 declare global {
   namespace jest {
@@ -27,7 +49,7 @@ declare global {
   }
 }
 
-export const toBeBeforeMatcher = (value: unknown, other: Date): jest.CustomMatcherResult =>
+export const toBeBeforeMatcher = (value: unknown, other: Date) =>
   createResult({
     message: () =>
       `expected ${printReceived(value)} to be an instance of Date, occurring before ${printExpected(

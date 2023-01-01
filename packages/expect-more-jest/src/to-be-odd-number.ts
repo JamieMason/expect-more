@@ -1,8 +1,30 @@
 /// <reference types="jest" />
 
+import { expect } from '@jest/globals';
 import { isOddNumber } from 'expect-more';
 import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
+
+declare module 'expect' {
+  interface Matchers<R> {
+    /**
+     * Asserts that a value is an odd `Number`.
+     * @example
+     * expect(5).toBeOddNumber();
+     */
+    toBeOddNumber(): R;
+  }
+  interface AsymmetricMatchers {
+    /**
+     * Asserts that a value is an odd `Number`.
+     * @example
+     * expect(5).toEqual(
+     *   expect.toBeOddNumber()
+     * );
+     */
+    toBeOddNumber(): void;
+  }
+}
 
 declare global {
   namespace jest {
@@ -27,7 +49,7 @@ declare global {
   }
 }
 
-export const toBeOddNumberMatcher = (value: unknown): jest.CustomMatcherResult =>
+export const toBeOddNumberMatcher = (value: unknown) =>
   createResult({
     message: () => `expected ${printReceived(value)} to be an odd number`,
     notMessage: () => `expected ${printReceived(value)} not to be an odd number`,

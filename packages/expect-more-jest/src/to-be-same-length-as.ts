@@ -1,8 +1,30 @@
 /// <reference types="jest" />
 
+import { expect } from '@jest/globals';
 import { isSameLengthAs } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
+
+declare module 'expect' {
+  interface Matchers<R> {
+    /**
+     * Asserts that a value is a `String` or `Array` whose length is the same as that of the other provided.
+     * @example
+     * expect(['i also have', '2 items']).toBeSameLengthAs(['i have', '2 items']);
+     */
+    toBeSameLengthAs(other: string | any[]): R;
+  }
+  interface AsymmetricMatchers {
+    /**
+     * Asserts that a value is a `String` or `Array` whose length is the same as that of the other provided.
+     * @example
+     * expect(['i also have', '2 items']).toEqual(
+     *   expect.toBeSameLengthAs(['i have', '2 items'])
+     * );
+     */
+    toBeSameLengthAs(other: string | any[]): void;
+  }
+}
 
 declare global {
   namespace jest {
@@ -27,10 +49,7 @@ declare global {
   }
 }
 
-export const toBeSameLengthAsMatcher = (
-  value: unknown,
-  other: string | any[],
-): jest.CustomMatcherResult =>
+export const toBeSameLengthAsMatcher = (value: unknown, other: string | any[]) =>
   createResult({
     message: () =>
       `expected ${printReceived(

@@ -1,8 +1,30 @@
 /// <reference types="jest" />
 
+import { expect } from '@jest/globals';
 import { isDateOnDayOfMonth } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
+
+declare module 'expect' {
+  interface Matchers<R> {
+    /**
+     * Asserts that a value is an instance of `Date` occurring on the given day of the month, where the first day of the month is `1` and last is `31`.
+     * @example
+     * expect(new Date('2021-08-29')).toBeDateOnDayOfMonth(29);
+     */
+    toBeDateOnDayOfMonth(dayOfMonth: number): R;
+  }
+  interface AsymmetricMatchers {
+    /**
+     * Asserts that a value is an instance of `Date` occurring on the given day of the month, where the first day of the month is `1` and last is `31`.
+     * @example
+     * expect(new Date('2021-08-29')).toEqual(
+     *   expect.toBeDateOnDayOfMonth(29)
+     * );
+     */
+    toBeDateOnDayOfMonth(dayOfMonth: number): void;
+  }
+}
 
 declare global {
   namespace jest {
@@ -27,10 +49,7 @@ declare global {
   }
 }
 
-export const toBeDateOnDayOfMonthMatcher = (
-  value: unknown,
-  dayOfMonth: number,
-): jest.CustomMatcherResult =>
+export const toBeDateOnDayOfMonthMatcher = (value: unknown, dayOfMonth: number) =>
   createResult({
     message: () =>
       `expected ${printReceived(value)} to be an instance of Date occurring on the ${printExpected(

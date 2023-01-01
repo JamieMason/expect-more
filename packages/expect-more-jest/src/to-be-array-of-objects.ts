@@ -1,8 +1,30 @@
 /// <reference types="jest" />
 
+import { expect } from '@jest/globals';
 import { isArrayOfObjects } from 'expect-more';
 import { printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
+
+declare module 'expect' {
+  interface Matchers<R> {
+    /**
+     * Asserts that a value is an `Array` containing only `Object` values.
+     * @example
+     * expect([{}, new Object()]).toBeArrayOfObjects();
+     */
+    toBeArrayOfObjects(): R;
+  }
+  interface AsymmetricMatchers {
+    /**
+     * Asserts that a value is an `Array` containing only `Object` values.
+     * @example
+     * expect([{}, new Object()]).toEqual(
+     *   expect.toBeArrayOfObjects()
+     * );
+     */
+    toBeArrayOfObjects(): void;
+  }
+}
 
 declare global {
   namespace jest {
@@ -27,7 +49,7 @@ declare global {
   }
 }
 
-export const toBeArrayOfObjectsMatcher = (value: unknown): jest.CustomMatcherResult =>
+export const toBeArrayOfObjectsMatcher = (value: unknown) =>
   createResult({
     message: () =>
       `expected ${printReceived(value)} to be a non-empty array, containing only objects`,

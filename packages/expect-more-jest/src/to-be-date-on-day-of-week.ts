@@ -1,8 +1,30 @@
 /// <reference types="jest" />
 
+import { expect } from '@jest/globals';
 import { isDateOnDayOfWeek } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
+
+declare module 'expect' {
+  interface Matchers<R> {
+    /**
+     * Asserts that a value is an instance of `Date` occurring on the day of the week with the given index, where Sunday is `0` and Saturday is `6`.
+     * @example
+     * expect(new Date('2021-08-29')).toBeDateOnDayOfWeek(0);
+     */
+    toBeDateOnDayOfWeek(index: number): R;
+  }
+  interface AsymmetricMatchers {
+    /**
+     * Asserts that a value is an instance of `Date` occurring on the day of the week with the given index, where Sunday is `0` and Saturday is `6`.
+     * @example
+     * expect(new Date('2021-08-29')).toEqual(
+     *   expect.toBeDateOnDayOfWeek(0)
+     * );
+     */
+    toBeDateOnDayOfWeek(index: number): void;
+  }
+}
 
 declare global {
   namespace jest {
@@ -27,10 +49,7 @@ declare global {
   }
 }
 
-export const toBeDateOnDayOfWeekMatcher = (
-  value: unknown,
-  index: number,
-): jest.CustomMatcherResult =>
+export const toBeDateOnDayOfWeekMatcher = (value: unknown, index: number) =>
   createResult({
     message: () =>
       `expected ${printReceived(

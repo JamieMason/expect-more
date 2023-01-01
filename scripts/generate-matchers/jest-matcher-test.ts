@@ -18,19 +18,32 @@ export const generateJestMatcherTest = (file: FileMeta): void => {
     .map(({ exampleValue }) => exampleValue);
   const argsExamplesSource = argsExamples.join(', ');
   const source = `
+import { expect as esmExpect, it } from '@jest/globals';
 import 'expect-more-jest';
 ${comment}
 
-it('provides expect().${matcherName}()', () => {
+it('provides global.expect().${matcherName}()', () => {
   expect(${valueExample}).${matcherName}(${argsExamplesSource});
 });
 
-it('provides expect().not.${matcherName}()', () => {
+it('provides global.expect().not.${matcherName}()', () => {
   expect(() => expect(${valueExample}).not.${matcherName}(${argsExamplesSource})).toThrow();
 });
 
-it('provides expect.${matcherName}()', () => {
+it('provides global.expect.${matcherName}()', () => {
   expect(${valueExample}).toEqual(expect.${matcherName}(${argsExamplesSource}));
+});
+
+it('provides expect().${matcherName}()', () => {
+  esmExpect(${valueExample}).${matcherName}(${argsExamplesSource});
+});
+
+it('provides expect().not.${matcherName}()', () => {
+  esmExpect(() => esmExpect(${valueExample}).not.${matcherName}(${argsExamplesSource})).toThrow();
+});
+
+it('provides expect.${matcherName}()', () => {
+  esmExpect(${valueExample}).toEqual(esmExpect.${matcherName}(${argsExamplesSource}));
 });
   `;
   fs.writeFileSync(jestMatcherTestPath, source, 'utf8');

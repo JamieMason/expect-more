@@ -1,8 +1,30 @@
 /// <reference types="jest" />
 
+import { expect } from '@jest/globals';
 import { isWithinRange } from 'expect-more';
 import { printExpected, printReceived } from 'jest-matcher-utils';
 import { createResult } from './lib/create-result';
+
+declare module 'expect' {
+  interface Matchers<R> {
+    /**
+     * Asserts that a value is a `Number` which is both greater than or equal to `floor` and less than or equal to `ceiling`.
+     * @example
+     * expect(7).toBeWithinRange(0, 10);
+     */
+    toBeWithinRange(floor: number, ceiling: number): R;
+  }
+  interface AsymmetricMatchers {
+    /**
+     * Asserts that a value is a `Number` which is both greater than or equal to `floor` and less than or equal to `ceiling`.
+     * @example
+     * expect(7).toEqual(
+     *   expect.toBeWithinRange(0, 10)
+     * );
+     */
+    toBeWithinRange(floor: number, ceiling: number): void;
+  }
+}
 
 declare global {
   namespace jest {
@@ -27,11 +49,7 @@ declare global {
   }
 }
 
-export const toBeWithinRangeMatcher = (
-  value: unknown,
-  floor: number,
-  ceiling: number,
-): jest.CustomMatcherResult =>
+export const toBeWithinRangeMatcher = (value: unknown, floor: number, ceiling: number) =>
   createResult({
     message: () =>
       `expected ${printReceived(value)} to be greater than or equal to ${printExpected(
