@@ -1,4 +1,4 @@
-import { visibleStrings, notVisibleStrings } from '../../../test/fixtures';
+import { notVisibleStrings, visibleStrings } from '../../../test/fixtures';
 import api = require('../src');
 
 check.it(

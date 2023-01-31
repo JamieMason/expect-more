@@ -1,5 +1,5 @@
-import 'jasmine';
 import 'expect-more-jasmine';
+import 'jasmine';
 
 it('provides expect().toHaveShorterThan()', () => {
   expect({ child: { grandchild: ['i have one item'] } }).toHaveShorterThan('child.grandchild', [

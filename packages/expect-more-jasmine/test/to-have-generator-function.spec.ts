@@ -1,5 +1,5 @@
-import 'jasmine';
 import 'expect-more-jasmine';
+import 'jasmine';
 
 // eval is workaround for typescript converting generator fns
 

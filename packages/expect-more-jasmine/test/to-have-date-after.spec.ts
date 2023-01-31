@@ -1,5 +1,5 @@
-import 'jasmine';
 import 'expect-more-jasmine';
+import 'jasmine';
 
 it('provides expect().toHaveDateAfter()', () => {
   expect({ child: { grandchild: new Date('2020-01-01') } }).toHaveDateAfter(

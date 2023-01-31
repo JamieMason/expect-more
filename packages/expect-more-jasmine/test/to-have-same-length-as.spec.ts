@@ -1,5 +1,5 @@
-import 'jasmine';
 import 'expect-more-jasmine';
+import 'jasmine';
 
 it('provides expect().toHaveSameLengthAs()', () => {
   expect({ child: { grandchild: ['i also have', '2 items'] } }).toHaveSameLengthAs(
