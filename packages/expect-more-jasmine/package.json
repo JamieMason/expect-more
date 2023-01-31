@@ -7,7 +7,7 @@
   "contributors": [],
   "dependencies": {
     "expect-more": "1.2.1",
-    "jest-matcher-utils": "27.0.6"
+    "jest-matcher-utils": "29.4.1"
   },
   "files": [
     "dist"
