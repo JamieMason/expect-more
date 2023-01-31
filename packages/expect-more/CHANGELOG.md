@@ -1,5 +1,21 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [1.3.0](https://github.com/JamieMason/expect-more/compare/expect-more@1.2.1...expect-more@1.3.0) (2023-01-31)
+
+
+### Features
+
+* **expect:** accept asymmetric matchers as input ([fe39564](https://github.com/JamieMason/expect-more/commit/fe395645f8b53dcbdb7ef50e51fe1ccd4072ff64)), closes [#51](https://github.com/JamieMason/expect-more/issues/51)
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

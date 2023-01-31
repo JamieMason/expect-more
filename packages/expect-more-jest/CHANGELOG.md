@@ -1,5 +1,26 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [5.5.0](https://github.com/JamieMason/expect-more/compare/expect-more-jest@5.4.2...expect-more-jest@5.5.0) (2023-01-31)
+
+
+### Bug Fixes
+
+* **npm:** update dependencies ([276256f](https://github.com/JamieMason/expect-more/commit/276256f0ee9001419ddef3a0fcecd18de5e32b88))
+
+
+### Features
+
+* **expect:** accept asymmetric matchers as input ([fe39564](https://github.com/JamieMason/expect-more/commit/fe395645f8b53dcbdb7ef50e51fe1ccd4072ff64)), closes [#51](https://github.com/JamieMason/expect-more/issues/51)
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
