@@ -8,26 +8,26 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Matchers<T> {
       /**
-       * Asserts that `value` is an `Array` including at least one of the members of `values`.
+       * Asserts that `value` is an `Array` including at least one of the members of `allowedValues`.
        * @example
        * expect([12, 0, 14, 'Ginola']).toBeArrayIncludingAnyOf(['Ginola', 3]);
        */
-      toBeArrayIncludingAnyOf(values: unknown[]): boolean;
+      toBeArrayIncludingAnyOf(allowedValues: unknown[]): boolean;
     }
   }
 }
 
 export const toBeArrayIncludingAnyOfMatcher: jasmine.CustomMatcherFactory = () => {
   return {
-    compare(value: unknown, values: unknown[]) {
-      const pass = isArrayIncludingAnyOf(values, value);
+    compare(value: unknown, allowedValues: unknown[]) {
+      const pass = isArrayIncludingAnyOf(allowedValues, value);
       const message = pass
         ? `expected ${printReceived(
             value,
-          )} not to include at least one of the values in ${printExpected(values)}`
+          )} not to include at least one of the values in ${printExpected(allowedValues)}`
         : `expected ${printReceived(
             value,
-          )} to include at least one of the values in ${printExpected(values)}`;
+          )} to include at least one of the values in ${printExpected(allowedValues)}`;
       return { message, pass };
     },
   };

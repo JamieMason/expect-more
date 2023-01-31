@@ -1,7 +1,8 @@
 import { isArray } from './is-array';
 import { curry2 } from './lib/curry2';
 import { every } from './lib/every';
-import { includes } from './lib/includes';
+import { isJestEqual } from './lib/is-jest-equal';
+import { some } from './lib/some';
 
 /**
  * Asserts that a value is an `Array` including only the values provided in the
@@ -21,5 +22,5 @@ export const isArrayIncludingOnly = curry2(
   (allowedValues: unknown[], value: unknown): value is any[] =>
     isArray(allowedValues) &&
     isArray(value) &&
-    every((member) => includes(member, allowedValues), value),
+    every((member: unknown) => some(isJestEqual(member), allowedValues), value),
 );
